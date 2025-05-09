@@ -1,0 +1,50 @@
+{
+	"name": "prettier-config-generator",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"format": "npx prettier . --write"
+	},
+	"dependencies": {
+		"@next/third-parties": "^15.3.3",
+		"@radix-ui/react-accordion": "^1.2.11",
+		"@radix-ui/react-alert-dialog": "^1.1.14",
+		"@radix-ui/react-dialog": "^1.1.14",
+		"@radix-ui/react-popover": "^1.1.14",
+		"@radix-ui/react-select": "^2.2.5",
+		"@radix-ui/react-slot": "^1.2.3",
+		"@radix-ui/react-tooltip": "^1.2.7",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"cmdk": "^1.1.1",
+		"lucide-react": "^0.509.0",
+		"next": "15.3.2",
+		"next-themes": "^0.4.6",
+		"prettier": "^3.5.3",
+		"prettier-plugin-tailwindcss": "^0.6.12",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
+		"react-syntax-highlighter": "^15.6.1",
+		"schema-dts": "^1.1.5",
+		"sonner": "^2.0.5",
+		"tailwind-merge": "^3.3.1",
+		"vaul": "^1.1.2"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3.3.1",
+		"@tailwindcss/postcss": "^4.1.10",
+		"@types/node": "^20.19.0",
+		"@types/react": "^19.1.8",
+		"@types/react-dom": "^19.1.6",
+		"@types/react-syntax-highlighter": "^15.5.13",
+		"eslint": "^9.29.0",
+		"eslint-config-next": "15.3.2",
+		"tailwindcss": "^4.1.10",
+		"tw-animate-css": "^1.3.4",
+		"typescript": "^5.8.3"
+	}
+}

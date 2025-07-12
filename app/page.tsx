@@ -4,10 +4,10 @@ import { useState, useEffect, useMemo } from "react";
 import options from "@/lib/options";
 import { generateConfig } from "@/lib/generateConfig";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { PrettierOption } from "@/components/PrettierOption";
 import { GeneratedModal } from "@/components/GeneratedModal";
-import { RotateCcw, FilePlus, Search, X, Github } from "lucide-react";
+import { ConfigAside } from "@/components/ConfigAside";
+import { RotateCcw, FilePlus } from "lucide-react";
 import {
 	Tooltip,
 	TooltipContent,
@@ -25,12 +25,9 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import ThemeChanger from "@/components/ButtonThemeChanger";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
-import FAQ from "@/components/section/FAQ";
-import WhyPrettierConfigGenerator from "@/components/section/WhyPrettierConfigGenerator";
+import { Footer } from "@/components/section/Footer";
+import Header from "@/components/section/Header";
 
 type PrettierOptionKey = (typeof options)[number]["key"];
 type SelectedOptions = {
@@ -51,12 +48,44 @@ export default function PrettierConfigPage() {
 	);
 	// ✨ Added: State to manage the visibility of the reset confirmation dialog
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
+	const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+	const hasSelectedOptions = Object.values(selected).some(
+		(value) =>
+			value !== null &&
+			value !== "" &&
+			!(Array.isArray(value) && value.length === 0)
+	);
+
+	useEffect(() => {
+		const checkScreenSize = () => {
+			const newIsLargeScreen = window.innerWidth >= 1024; // lg breakpoint
+			setIsLargeScreen(newIsLargeScreen);
+
+			// Auto-generate config when switching to large screen if there are selected options
+			if (newIsLargeScreen && !isLargeScreen && hasSelectedOptions) {
+				const config = generateConfig(selected);
+				setGeneratedConfig(config);
+			}
+		};
+		checkScreenSize();
+		window.addEventListener("resize", checkScreenSize);
+		return () => window.removeEventListener("resize", checkScreenSize);
+	}, [isLargeScreen, hasSelectedOptions, selected]);
 
 	useEffect(() => {
 		setShowTooltip(true);
 		const timer = setTimeout(() => setShowTooltip(undefined), 10000);
 		return () => clearTimeout(timer);
 	}, []);
+
+	// Auto-generate config on initial load if large screen and has selections
+	useEffect(() => {
+		if (isLargeScreen && hasSelectedOptions && !generatedConfig) {
+			const config = generateConfig(selected);
+			setGeneratedConfig(config);
+		}
+	}, [isLargeScreen, hasSelectedOptions, selected, generatedConfig]);
 
 	const filteredOptions = useMemo(() => {
 		if (!searchQuery.trim()) return options;
@@ -73,13 +102,25 @@ export default function PrettierConfigPage() {
 		key: keyof SelectedOptions,
 		value: string | number | boolean | string[] | null
 	) => {
-		setSelected((prev) => ({ ...prev, [key]: value }));
+		setSelected((prev) => {
+			const newSelected = { ...prev, [key]: value };
+
+			// Auto-generate config for large screens in real-time
+			if (isLargeScreen) {
+				const config = generateConfig(newSelected);
+				setGeneratedConfig(config);
+			}
+
+			return newSelected;
+		});
 	};
 
 	const handleGenerate = () => {
 		const config = generateConfig(selected);
 		setGeneratedConfig(config);
-		setShowConfig(true);
+		if (!isLargeScreen) {
+			setShowConfig(true);
+		}
 	};
 
 	// ✨ Updated: This function now contains the original reset logic.
@@ -92,214 +133,144 @@ export default function PrettierConfigPage() {
 	};
 
 	return (
-		<div>
-			<header
-				className={cn(
-					"border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
-				)}
-			>
-				<div className="container mx-auto flex items-center justify-between px-4 py-3 sm:px-6">
-					{/* Logo and Title */}
-					<Link href="/" className="flex items-center space-x-3">
-						<Image
-							src="/favicon.ico"
-							alt="Prettier Config Generator Logo"
-							width={32}
-							height={32}
-							className="h-8 w-8 rounded-md"
-						/>
-						<h1 className="text-xl font-semibold tracking-tight">
-							Prettier Config Generator
-						</h1>
-					</Link>
+		<div className="flex min-h-screen flex-col">
+			{/* Main Content Area with Aside */}
+			<div className="flex flex-1">
+				{/* Main content area */}
+				<main className="flex flex-1 flex-col">
+					{/* Header - Sticky at top */}
+					<div className="bg-background border-border/40 sticky top-0 z-40 rounded-b-3xl border-b px-2 py-2">
+						<Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+					</div>
 
-					{/* Right-side Actions */}
-					<div className="flex items-center gap-4">
-						{/* Github Repository */}
-						<TooltipProvider>
-							<Tooltip open={showTooltip}>
-								<TooltipTrigger asChild>
-									<Link href="https://github.com/NooobtimeX/prettier-config-generator">
-										<Button
-											variant="outline"
-											size="icon"
-											className="rounded-full"
-											aria-label="Github Repository"
-										>
-											<Github className="h-4 w-4" />
-										</Button>
-									</Link>
-								</TooltipTrigger>
-								<TooltipContent side="left" sideOffset={8}>
-									Github Repository
-								</TooltipContent>
-							</Tooltip>
-						</TooltipProvider>
-						{/* Theme Changer */}
-						<TooltipProvider>
-							<Tooltip open={showTooltip}>
-								<TooltipTrigger asChild>
-									<div>
-										<ThemeChanger />
-									</div>
-								</TooltipTrigger>
-								<TooltipContent side="bottom" sideOffset={8}>
-									Toggle Theme
-								</TooltipContent>
-							</Tooltip>
-						</TooltipProvider>
-						{/* Search Bar - Hidden on small screens, visible on medium and up */}
-						<div className="hidden max-w-md flex-1 md:block">
-							<div className="relative">
-								<Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-								<Input
-									placeholder="Search"
-									value={searchQuery}
-									onChange={(e) => setSearchQuery(e.target.value)}
-									className="pr-10 pl-10"
+					{/* Scrollable content container */}
+					<div className="flex-1 overflow-auto p-2 md:px-0">
+						{/* Search results indicator */}
+						{searchQuery && (
+							<div className="text-muted-foreground mb-4 text-center text-sm">
+								Found {filteredOptions.length} of {options.length} options
+							</div>
+						)}
+
+						{/* Options Grid */}
+						<div
+							className={cn(
+								"grid grid-cols-1 gap-2 pb-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+							)}
+						>
+							{filteredOptions.map((opt) => (
+								<PrettierOption
+									key={opt.key}
+									option={opt}
+									value={selected[opt.key]}
+									onChange={(val) => handleChange(opt.key, val)}
 								/>
-								{searchQuery && (
+							))}
+						</div>
+
+						{searchQuery && filteredOptions.length === 0 && (
+							<div className="py-12 text-center">
+								<div className="text-muted-foreground mb-2 text-lg">
+									No options found
+								</div>
+								<div className="text-muted-foreground text-sm">
+									Try searching for different terms or{" "}
 									<button
 										onClick={() => setSearchQuery("")}
-										className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 transition-colors"
-										aria-label="Clear search"
+										className="text-primary hover:underline"
 									>
-										<X className="h-4 w-4" />
+										clear your search
 									</button>
-								)}
+								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-			</header>
-
-			<main className="mx-auto p-4">
-				{/* Search Bar - Visible on small screens only */}
-				<section id="generator" className="mx-auto mb-4 max-w-md md:hidden">
-					<div className="relative">
-						<Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-						<Input
-							placeholder="Search options, descriptions, values..."
-							value={searchQuery}
-							onChange={(e) => setSearchQuery(e.target.value)}
-							className="pr-10 pl-10"
-						/>
-						{searchQuery && (
-							<button
-								onClick={() => setSearchQuery("")}
-								className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 transition-colors"
-								aria-label="Clear search"
-							>
-								<X className="h-4 w-4" />
-							</button>
 						)}
-					</div>
-				</section>
 
-				{/* Search results indicator */}
-				{searchQuery && (
-					<div className="text-muted-foreground mb-4 text-center text-sm">
-						Found {filteredOptions.length} of {options.length} options
-					</div>
-				)}
+						{/* Floating Action Buttons - Only visible on small screens */}
+						{!isLargeScreen && (
+							<TooltipProvider>
+								<div className="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3">
+									<Tooltip open={showTooltip}>
+										<TooltipTrigger asChild>
+											<Button
+												size="icon"
+												variant="default"
+												className="h-12 w-12 rounded-full shadow-md"
+												onClick={handleGenerate}
+												aria-label="Generate Config"
+											>
+												<FilePlus className="h-5 w-5" />
+											</Button>
+										</TooltipTrigger>
+										<TooltipContent side="left" sideOffset={8}>
+											Generate Config
+										</TooltipContent>
+									</Tooltip>
 
-				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-					{filteredOptions.map((opt) => (
-						<PrettierOption
-							key={opt.key}
-							option={opt}
-							value={selected[opt.key]}
-							onChange={(val) => handleChange(opt.key, val)}
+									<Tooltip open={showTooltip}>
+										<TooltipTrigger asChild>
+											<Button
+												size="icon"
+												variant="secondary"
+												className="h-12 w-12 rounded-full shadow-md"
+												onClick={() => setIsResetDialogOpen(true)}
+												aria-label="Reset Config"
+											>
+												<RotateCcw className="h-5 w-5" />
+											</Button>
+										</TooltipTrigger>
+										<TooltipContent side="left" sideOffset={8}>
+											Reset Selections
+										</TooltipContent>
+									</Tooltip>
+								</div>
+							</TooltipProvider>
+						)}
+
+						<GeneratedModal
+							open={showConfig}
+							config={generatedConfig}
+							onClose={() => setShowConfig(false)}
 						/>
-					))}
-				</div>
 
-				{searchQuery && filteredOptions.length === 0 && (
-					<div className="py-12 text-center">
-						<div className="text-muted-foreground mb-2 text-lg">
-							No options found
-						</div>
-						<div className="text-muted-foreground text-sm">
-							Try searching for different terms or{" "}
-							<button
-								onClick={() => setSearchQuery("")}
-								className="text-primary hover:underline"
-							>
-								clear your search
-							</button>
-						</div>
+						{/* ✨ Added: The AlertDialog component for reset confirmation */}
+						<AlertDialog
+							open={isResetDialogOpen}
+							onOpenChange={setIsResetDialogOpen}
+						>
+							<AlertDialogContent>
+								<AlertDialogHeader>
+									<AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+									<AlertDialogDescription>
+										This action cannot be undone. This will clear all your
+										selected options and reset the generator to its initial
+										state.
+									</AlertDialogDescription>
+								</AlertDialogHeader>
+								<AlertDialogFooter>
+									<AlertDialogCancel>Cancel</AlertDialogCancel>
+									<AlertDialogAction onClick={executeReset}>
+										Continue
+									</AlertDialogAction>
+								</AlertDialogFooter>
+							</AlertDialogContent>
+						</AlertDialog>
+
+						{/* Footer - Full Width */}
+						<Footer />
 					</div>
+				</main>
+
+				{/* Aside Panel - Only visible on large screens */}
+				{isLargeScreen && (
+					<aside className="sticky top-0 h-screen w-90 flex-shrink-0 self-start px-2">
+						<ConfigAside
+							config={generatedConfig}
+							onReset={() => setIsResetDialogOpen(true)}
+							hasConfig={hasSelectedOptions}
+						/>
+					</aside>
 				)}
-
-				<TooltipProvider>
-					<div className="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3">
-						<Tooltip open={showTooltip}>
-							<TooltipTrigger asChild>
-								<Button
-									size="icon"
-									variant="default"
-									className="h-12 w-12 rounded-full shadow-md"
-									onClick={handleGenerate}
-									aria-label="Generate Config"
-								>
-									<FilePlus className="h-5 w-5" />
-								</Button>
-							</TooltipTrigger>
-							<TooltipContent side="left" sideOffset={8}>
-								Generate Config
-							</TooltipContent>
-						</Tooltip>
-
-						<Tooltip open={showTooltip}>
-							<TooltipTrigger asChild>
-								<Button
-									size="icon"
-									variant="secondary"
-									className="h-12 w-12 rounded-full shadow-md"
-									onClick={() => setIsResetDialogOpen(true)}
-									aria-label="Reset Config"
-								>
-									<RotateCcw className="h-5 w-5" />
-								</Button>
-							</TooltipTrigger>
-							<TooltipContent side="left" sideOffset={8}>
-								Reset Selections
-							</TooltipContent>
-						</Tooltip>
-					</div>
-				</TooltipProvider>
-
-				<GeneratedModal
-					open={showConfig}
-					config={generatedConfig}
-					onClose={() => setShowConfig(false)}
-				/>
-
-				{/* ✨ Added: The AlertDialog component for reset confirmation */}
-				<AlertDialog
-					open={isResetDialogOpen}
-					onOpenChange={setIsResetDialogOpen}
-				>
-					<AlertDialogContent>
-						<AlertDialogHeader>
-							<AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-							<AlertDialogDescription>
-								This action cannot be undone. This will clear all your selected
-								options and reset the generator to its initial state.
-							</AlertDialogDescription>
-						</AlertDialogHeader>
-						<AlertDialogFooter>
-							<AlertDialogCancel>Cancel</AlertDialogCancel>
-							<AlertDialogAction onClick={executeReset}>
-								Continue
-							</AlertDialogAction>
-						</AlertDialogFooter>
-					</AlertDialogContent>
-				</AlertDialog>
-
-				<WhyPrettierConfigGenerator />
-				<FAQ />
-			</main>
+			</div>
 		</div>
 	);
 }

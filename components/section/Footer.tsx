@@ -8,7 +8,7 @@ export function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className="bg-background/95 supports-[backdrop-filter]:bg-background/60 mt-auto border-t backdrop-blur">
+		<footer className="bg-background/95 supports-[backdrop-filter]:bg-background/60 mt-auto w-full border-t backdrop-blur">
 			<div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
 				{/* Main Footer Content */}
 				<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">

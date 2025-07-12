@@ -139,7 +139,15 @@ export function PrettierOption({ option, value, onChange }: Props) {
 				{option.type === "select" ?
 					<Select
 						value={value?.toString() ?? ""}
-						onValueChange={(val) => onChange(val === "__clear__" ? null : val)}
+						onValueChange={(val) => {
+							if (val === "__clear__") {
+								onChange(null);
+							} else if (option.validate === "boolean") {
+								onChange(val === "true");
+							} else {
+								onChange(val);
+							}
+						}}
 						aria-label={`Select ${option.name}`}
 					>
 						<SelectTrigger className="w-full">
@@ -159,17 +167,27 @@ export function PrettierOption({ option, value, onChange }: Props) {
 					</Select>
 				: option.type === "buttons" ?
 					<div className="flex flex-wrap gap-2">
-						{allOptions.map((o) => (
-							<Button
-								key={o}
-								variant={value === o ? "default" : "outline"}
-								onClick={() => onChange(value === o ? null : o)}
-								className="flex-1"
-								aria-label={o}
-							>
-								{o}
-							</Button>
-						))}
+						{allOptions.map((o) => {
+							// Convert string representation to actual value type
+							let actualValue: string | boolean = o;
+							if (option.validate === "boolean") {
+								actualValue = o === "true";
+							}
+
+							return (
+								<Button
+									key={o}
+									variant={value === actualValue ? "default" : "outline"}
+									onClick={() =>
+										onChange(value === actualValue ? null : actualValue)
+									}
+									className="flex-1"
+									aria-label={o}
+								>
+									{o}
+								</Button>
+							);
+						})}
 					</div>
 				: option.type === "multiselect" ?
 					isMobile ?

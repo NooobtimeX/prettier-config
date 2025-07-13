@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import options from "@/lib/options";
-import { generateConfig } from "@/lib/generateConfig";
 import { Button } from "@/components/ui/button";
 import { PrettierOption } from "@/components/PrettierOption";
-import { GeneratedModal } from "@/components/GeneratedModal";
+import { ConfigModal } from "@/components/ConfigModal";
+import { DemoModal } from "@/components/DemoModal";
 import { ConfigAside } from "@/components/ConfigAside";
-import { RotateCcw, FilePlus } from "lucide-react";
+import { RotateCcw, FilePlus, Play } from "lucide-react";
 import {
 	Tooltip,
 	TooltipContent,
@@ -29,10 +29,103 @@ import { cn } from "@/lib/utils";
 import { Footer } from "@/components/section/Footer";
 import Header from "@/components/section/Header";
 
-type PrettierOptionKey = (typeof options)[number]["key"];
+// Type-safe keys from options
+type OptionKey = (typeof options)[number]["key"];
+type OptionValue = string | number | boolean | string[] | null;
 type SelectedOptions = {
-	[key in PrettierOptionKey]: string | number | boolean | string[] | null;
+	[key in OptionKey]: OptionValue;
 };
+
+// Sample code to format - covers most Prettier options
+const SAMPLE_CODE = `const user={name:"John",age:30,active:true,hobbies:["coding","reading"]};
+const greeting=user.active?\`Hello \${user.name}!\`:"Inactive user";
+function process(data){const result=data.filter(item=>item.active).map(item=>({...item,name:item.name.toUpperCase(),}));return result;}
+const users=[{id:1,name:"Alice",active:true},{id:2,name:"Bob",active:false}];
+export{user,greeting,process};`;
+
+// Generate config function
+function generateConfig(selected: SelectedOptions): string {
+	const config: Partial<SelectedOptions> = {};
+
+	for (const [key, value] of Object.entries(selected) as [
+		OptionKey,
+		OptionValue,
+	][]) {
+		if (
+			value !== null &&
+			value !== "" &&
+			!(Array.isArray(value) && value.length === 0)
+		) {
+			config[key] = value;
+		}
+	}
+
+	return JSON.stringify(config, null, 2);
+}
+
+// Code formatter hook
+function useCodeFormatter(config: string, shouldFormat: boolean = true) {
+	const [formattedCode, setFormattedCode] = useState("");
+	const [isFormatting, setIsFormatting] = useState(false);
+	const [formatError, setFormatError] = useState("");
+
+	const formatCode = useCallback(async () => {
+		console.log("formatCode: Starting format with config:", config);
+		setIsFormatting(true);
+		setFormatError("");
+
+		try {
+			// Parse the config
+			const prettierOptions = config ? JSON.parse(config) : {};
+			console.log("formatCode: Using options:", prettierOptions);
+
+			// Call the API to format the code
+			const response = await fetch("/api/format", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					code: SAMPLE_CODE,
+					options: prettierOptions,
+				}),
+			});
+
+			if (!response.ok) {
+				throw new Error("Failed to format code");
+			}
+
+			const { formatted } = await response.json();
+			console.log("formatCode: Successfully formatted code");
+			setFormattedCode(formatted);
+		} catch (err) {
+			console.error("formatCode: Error occurred:", err);
+			console.error("Config used:", config);
+			setFormatError("Failed to format code. Please check your configuration.");
+			setFormattedCode("");
+		} finally {
+			console.log(
+				"formatCode: Finished formatting, setting isFormatting to false"
+			);
+			setIsFormatting(false);
+		}
+	}, [config]);
+
+	// Auto-format when config changes and should format
+	useEffect(() => {
+		if (shouldFormat && config) {
+			formatCode();
+		}
+	}, [config, shouldFormat, formatCode]);
+
+	return {
+		formattedCode,
+		isFormatting,
+		formatError,
+		formatCode,
+		originalCode: SAMPLE_CODE,
+	};
+}
 
 export default function PrettierConfigPage() {
 	const emptyConfig = Object.fromEntries(
@@ -48,7 +141,12 @@ export default function PrettierConfigPage() {
 	);
 	// ✨ Added: State to manage the visibility of the reset confirmation dialog
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
+	const [showDemoModal, setShowDemoModal] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+	// Use the code formatter hook
+	const { formatCode, originalCode, formattedCode, isFormatting, formatError } =
+		useCodeFormatter(generatedConfig, false);
 
 	const hasSelectedOptions = Object.values(selected).some(
 		(value) =>
@@ -144,7 +242,7 @@ export default function PrettierConfigPage() {
 					</div>
 
 					{/* Scrollable content container */}
-					<div className="flex-1 overflow-auto p-2 md:px-0">
+					<div className="flex-1 overflow-auto p-2 md:pr-0">
 						{/* Search results indicator */}
 						{searchQuery && (
 							<div className="text-muted-foreground mb-4 text-center text-sm">
@@ -155,7 +253,7 @@ export default function PrettierConfigPage() {
 						{/* Options Grid */}
 						<div
 							className={cn(
-								"grid grid-cols-1 gap-2 pb-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+								"grid grid-cols-1 gap-2 pb-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
 							)}
 						>
 							{filteredOptions.map((opt) => (
@@ -206,6 +304,25 @@ export default function PrettierConfigPage() {
 										</TooltipContent>
 									</Tooltip>
 
+									{/* Demo Button - only show when has config */}
+									{hasSelectedOptions && (
+										<Tooltip>
+											<TooltipTrigger asChild>
+												<Button
+													size="icon"
+													className="h-12 w-12 rounded-full shadow-md"
+													onClick={() => setShowDemoModal(true)}
+													aria-label="See Demo"
+												>
+													<Play className="h-5 w-5" />
+												</Button>
+											</TooltipTrigger>
+											<TooltipContent side="left" sideOffset={8}>
+												See Demo
+											</TooltipContent>
+										</Tooltip>
+									)}
+
 									<Tooltip open={showTooltip}>
 										<TooltipTrigger asChild>
 											<Button
@@ -226,10 +343,22 @@ export default function PrettierConfigPage() {
 							</TooltipProvider>
 						)}
 
-						<GeneratedModal
+						<ConfigModal
 							open={showConfig}
 							config={generatedConfig}
 							onClose={() => setShowConfig(false)}
+						/>
+
+						{/* Demo Modal - for small screens */}
+						<DemoModal
+							open={showDemoModal}
+							config={generatedConfig}
+							onClose={() => setShowDemoModal(false)}
+							formatCode={formatCode}
+							originalCode={originalCode}
+							formattedCode={formattedCode}
+							isFormatting={isFormatting}
+							formatError={formatError}
 						/>
 
 						{/* ✨ Added: The AlertDialog component for reset confirmation */}
@@ -262,11 +391,16 @@ export default function PrettierConfigPage() {
 
 				{/* Aside Panel - Only visible on large screens */}
 				{isLargeScreen && (
-					<aside className="sticky top-0 h-screen w-90 flex-shrink-0 self-start px-2">
+					<aside className="sticky top-0 h-screen w-80 flex-shrink-0 self-start px-2 xl:w-96">
 						<ConfigAside
 							config={generatedConfig}
 							onReset={() => setIsResetDialogOpen(true)}
 							hasConfig={hasSelectedOptions}
+							formatCode={formatCode}
+							originalCode={originalCode}
+							formattedCode={formattedCode}
+							isFormatting={isFormatting}
+							formatError={formatError}
 						/>
 					</aside>
 				)}

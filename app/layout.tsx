@@ -3,7 +3,6 @@ import { Oswald as OswaldFont } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { Footer } from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import options from "@/lib/options";
 
@@ -111,7 +110,6 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					{children}
-					<Footer />
 					<Toaster />
 				</ThemeProvider>
 			</body>

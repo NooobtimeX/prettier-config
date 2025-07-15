@@ -10,6 +10,18 @@ const options: PrettierOptionType[] = [
 		options: [true, false],
 		validate: "boolean",
 		recommend: "true — aligns with future Prettier default behavior",
+		example: [
+			{
+				before: `const result = condition\n  ? "very long true value that exceeds line length"\n  : "short false";`,
+				label: "New ternary formatting",
+				optionValue: "true",
+			},
+			{
+				before: `const result = condition\n  ? "very long true value that exceeds line length"\n  : "short false";`,
+				label: "Legacy ternary formatting",
+				optionValue: "false",
+			},
+		],
 	},
 	{
 		name: "Experimental Operator Position",
@@ -20,6 +32,18 @@ const options: PrettierOptionType[] = [
 		options: ["start", "end"],
 		validate: "string",
 		recommend: `"end" — more common and readable style`,
+		example: [
+			{
+				before: `const result = longVariableName\n  + anotherLongVariable\n  + yetAnotherVariable;`,
+				label: "Operators at start",
+				optionValue: "start",
+			},
+			{
+				before: `const result = longVariableName +\n  anotherLongVariable +\n  yetAnotherVariable;`,
+				label: "Operators at end",
+				optionValue: "end",
+			},
+		],
 	},
 	{
 		name: "Print Width",
@@ -29,6 +53,20 @@ const options: PrettierOptionType[] = [
 		type: "input",
 		validate: "integer",
 		recommend: "80 — widely accepted line length limit for readability",
+		example: [
+			{
+				before: `const veryLongVariableName = someFunction(argument1, argument2, argument3, argument4);`,
+				label: `Print width: 80 characters`,
+			},
+			{
+				before: `const veryLongVariableName = someFunction(argument1, argument2, argument3, argument4);`,
+				label: `Print width: 100 characters`,
+			},
+			{
+				before: `const veryLongVariableName = someFunction(argument1, argument2, argument3, argument4);`,
+				label: `Print width: 120 characters`,
+			},
+		],
 	},
 	{
 		name: "Tab Width",
@@ -38,6 +76,20 @@ const options: PrettierOptionType[] = [
 		type: "input",
 		validate: "integer",
 		recommend: "2 — compact and commonly used in modern JS",
+		example: [
+			{
+				before: `function example() {\nreturn {\nkey: "value"\n};\n}`,
+				label: `Tab width: 2 spaces`,
+			},
+			{
+				before: `function example() {\nreturn {\nkey: "value"\n};\n}`,
+				label: `Tab width: 4 spaces`,
+			},
+			{
+				before: `function example() {\nreturn {\nkey: "value"\n};\n}`,
+				label: `Tab width: 8 spaces`,
+			},
+		],
 	},
 	{
 		name: "Tabs",
@@ -48,6 +100,18 @@ const options: PrettierOptionType[] = [
 		options: [true, false],
 		validate: "boolean",
 		recommend: "false — spaces are more consistent across environments",
+		example: [
+			{
+				before: `function greet() {\n  return "Hello";\n}`,
+				label: "Using tabs",
+				optionValue: "true",
+			},
+			{
+				before: `function greet() {\n\treturn "Hello";\n}`,
+				label: "Using spaces",
+				optionValue: "false",
+			},
+		],
 	},
 	{
 		name: "Semicolons",
@@ -58,6 +122,18 @@ const options: PrettierOptionType[] = [
 		options: [true, false],
 		validate: "boolean",
 		recommend: "true — prevents ASI bugs and aligns with default",
+		example: [
+			{
+				before: `const greeting = "Hello World"\nconst numbers = [1, 2, 3]`,
+				label: "With semicolons",
+				optionValue: "true",
+			},
+			{
+				before: `const greeting = "Hello World";\nconst numbers = [1, 2, 3];`,
+				label: "Without semicolons",
+				optionValue: "false",
+			},
+		],
 	},
 	{
 		name: "Quotes",
@@ -68,6 +144,18 @@ const options: PrettierOptionType[] = [
 		options: [true, false],
 		validate: "boolean",
 		recommend: "true — fewer escape characters in JS",
+		example: [
+			{
+				before: `const message = "Hello World";\nconst name = "John";`,
+				label: "Single quotes",
+				optionValue: "true",
+			},
+			{
+				before: `const message = 'Hello World';\nconst name = 'John';`,
+				label: "Double quotes",
+				optionValue: "false",
+			},
+		],
 	},
 	{
 		name: "Quote Props",
@@ -78,6 +166,23 @@ const options: PrettierOptionType[] = [
 		options: ["as-needed", "consistent", "preserve"],
 		validate: "string",
 		recommend: `"as-needed" — keeps output clean and minimal`,
+		example: [
+			{
+				before: `const obj = {\n  "simple": 1,\n  "kebab-case": 2,\n  "123": 3\n};`,
+				label: "Quote only when needed",
+				optionValue: "as-needed",
+			},
+			{
+				before: `const obj = {\n  simple: 1,\n  "kebab-case": 2,\n  normal: 3\n};`,
+				label: "Quote all or none",
+				optionValue: "consistent",
+			},
+			{
+				before: `const obj = {\n  "quoted": 1,\n  unquoted: 2\n};`,
+				label: "Preserve original quotes",
+				optionValue: "preserve",
+			},
+		],
 	},
 	{
 		name: "JSX Quotes",
@@ -88,6 +193,18 @@ const options: PrettierOptionType[] = [
 		options: [true, false],
 		validate: "boolean",
 		recommend: "false — HTML convention uses double quotes",
+		example: [
+			{
+				before: `<Component name="value" title="hello" />`,
+				label: "JSX with single quotes",
+				optionValue: "true",
+			},
+			{
+				before: `<Component name='value' title='hello' />`,
+				label: "JSX with double quotes",
+				optionValue: "false",
+			},
+		],
 	},
 	{
 		name: "Trailing Commas",
@@ -98,6 +215,23 @@ const options: PrettierOptionType[] = [
 		options: ["none", "es5", "all"],
 		validate: "string",
 		recommend: `"es5" — adds commas where valid in ES5 (more maintainable)`,
+		example: [
+			{
+				before: `const arr = [\n  1,\n  2,\n  3,\n];\nconst obj = {\n  a: 1,\n  b: 2,\n};`,
+				label: "No trailing commas",
+				optionValue: "none",
+			},
+			{
+				before: `const arr = [\n  1,\n  2,\n  3\n];\nconst obj = {\n  a: 1,\n  b: 2\n};`,
+				label: "ES5 trailing commas",
+				optionValue: "es5",
+			},
+			{
+				before: `function example(\n  param1,\n  param2\n) {\n  return { param1, param2 };\n}`,
+				label: "All trailing commas",
+				optionValue: "all",
+			},
+		],
 	},
 	{
 		name: "Bracket Spacing",
@@ -109,6 +243,18 @@ const options: PrettierOptionType[] = [
 		examples: ["{ foo: bar }", "{foo: bar}"],
 		validate: "boolean",
 		recommend: "true — improves readability",
+		example: [
+			{
+				before: `const obj = {foo: 'bar', baz: 42};`,
+				label: "With spaces",
+				optionValue: "true",
+			},
+			{
+				before: `const obj = { foo: 'bar', baz: 42 };`,
+				label: "Without spaces",
+				optionValue: "false",
+			},
+		],
 	},
 	{
 		name: "Object Wrap",
@@ -119,6 +265,18 @@ const options: PrettierOptionType[] = [
 		options: ["preserve", "collapse"],
 		validate: "string",
 		recommend: `"preserve" — respects original formatting`,
+		example: [
+			{
+				before: `const obj = {\n  key1: "value1",\n  key2: "value2"\n};`,
+				label: "Preserve formatting",
+				optionValue: "preserve",
+			},
+			{
+				before: `const obj = {\n  key1: "value1",\n  key2: "value2"\n};`,
+				label: "Collapse formatting",
+				optionValue: "collapse",
+			},
+		],
 	},
 	{
 		name: "Bracket Line",
@@ -129,6 +287,18 @@ const options: PrettierOptionType[] = [
 		options: [true, false],
 		validate: "boolean",
 		recommend: "false — improves readability and consistency",
+		example: [
+			{
+				before: `<Component\n  prop1="value1"\n  prop2="value2"\n>`,
+				label: "Bracket on same line",
+				optionValue: "true",
+			},
+			{
+				before: `<Component\n  prop1="value1"\n  prop2="value2">`,
+				label: "Bracket on new line",
+				optionValue: "false",
+			},
+		],
 	},
 	{
 		name: "Arrow Function Parentheses",
@@ -140,6 +310,18 @@ const options: PrettierOptionType[] = [
 		examples: ["x => x", "(x) => x"],
 		validate: "string",
 		recommend: `"always" — reduces ambiguity in complex cases`,
+		example: [
+			{
+				before: `const fn = (x) => x * 2;\nconst fn2 = (a, b) => a + b;`,
+				label: "Avoid unnecessary parens",
+				optionValue: "avoid",
+			},
+			{
+				before: `const fn = x => x * 2;\nconst fn2 = a => a.toUpperCase();`,
+				label: "Always use parens",
+				optionValue: "always",
+			},
+		],
 	},
 	{
 		name: "Range Start",
@@ -149,6 +331,20 @@ const options: PrettierOptionType[] = [
 		type: "input",
 		validate: "integer",
 		recommend: "0 — usually start from beginning",
+		example: [
+			{
+				before: `const first = "line";\nconst second = "line";\nconst third = "line";`,
+				label: `Range start: 0`,
+			},
+			{
+				before: `const first = "line";\nconst second = "line";\nconst third = "line";`,
+				label: `Range start: 10`,
+			},
+			{
+				before: `const first = "line";\nconst second = "line";\nconst third = "line";`,
+				label: `Range start: 20`,
+			},
+		],
 	},
 	{
 		name: "Range End",
@@ -158,6 +354,20 @@ const options: PrettierOptionType[] = [
 		type: "input",
 		validate: "integer",
 		recommend: "Infinity — typically format the whole file",
+		example: [
+			{
+				before: `const first = "line";\nconst second = "line";\nconst third = "line";`,
+				label: `Range end: 50`,
+			},
+			{
+				before: `const first = "line";\nconst second = "line";\nconst third = "line";`,
+				label: `Range end: 100`,
+			},
+			{
+				before: `const first = "line";\nconst second = "line";\nconst third = "line";`,
+				label: `Range end: Infinity`,
+			},
+		],
 	},
 	{
 		name: "Parser",
@@ -281,6 +491,18 @@ const options: PrettierOptionType[] = [
 		options: [true, false],
 		validate: "boolean",
 		recommend: "false — multiple attributes per line is more compact",
+		example: [
+			{
+				before: `<button className="btn" type="submit" onClick={handleClick}>Submit</button>`,
+				label: "Single attribute per line",
+				optionValue: "true",
+			},
+			{
+				before: `<button\n  className="btn"\n  type="submit"\n  onClick={handleClick}\n>\n  Submit\n</button>`,
+				label: "Multiple attributes per line",
+				optionValue: "false",
+			},
+		],
 	},
 	{
 		name: "Official Plugins",

@@ -9,4 +9,9 @@ export type PrettierOptionType = {
 	examples?: string[];
 	recommend?: string;
 	images?: string[];
+	example?: Array<{
+		before: string;
+		label: string;
+		optionValue?: string;
+	}>;
 };

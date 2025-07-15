@@ -53,10 +53,6 @@ export function CodeDemo({
 					<h4 className="text-muted-foreground text-xs font-semibold">
 						BEFORE (Original)
 					</h4>
-					<Button size="sm" variant="outline" onClick={copyOriginalCode}>
-						<Copy className="mr-1 h-3 w-3" />
-						Copy
-					</Button>
 				</div>
 				<div
 					className={
@@ -87,15 +83,6 @@ export function CodeDemo({
 					<h4 className="text-muted-foreground text-xs font-semibold">
 						AFTER (Formatted)
 					</h4>
-					<Button
-						size="sm"
-						variant="outline"
-						onClick={copyFormattedCode}
-						disabled={!formattedCode}
-					>
-						<Copy className="mr-1 h-3 w-3" />
-						Copy
-					</Button>
 				</div>
 				<div
 					className={

@@ -14,43 +14,6 @@
 
 ---
 
-## ✨ Features
-
-<table>
-<tr>
-<td width="50%">
-
-🚀 **Interactive Configuration**
-
-> Real-time configuration generation as you select options
-
-🎨 **Modern UI**
-
-> Beautiful, responsive interface with dark/light theme support
-
-🔍 **Search & Filter**
-
-> Find specific options quickly with built-in search
-
-</td>
-<td width="50%">
-
-📋 **Copy & Export**
-
-> Easily copy generated configurations to your clipboard
-
-🛡️ **Type-Safe**
-
-> Full TypeScript support with type-safe option handling
-
-📱 **Mobile Responsive**
-
-> Works seamlessly on all device sizes
-
-</td>
-</tr>
-</table>
-
 ## 🧑‍💻 Tech Stack
 
 <div align="center">
@@ -62,19 +25,41 @@
 
 </div>
 
+## ✨ Features
+
+### 🚀 **Interactive**
+
+- **Real-time Generation**: Configuration updates as you select options
+- **Multiple Input Types**: Support for buttons, selects, inputs, and multi-select options
+- **Modern UI**: Beautiful, responsive interface with dark/light theme support
+- **Tooltips**: Comprehensive help system with detailed explanations for each option
+- **Information Dialogs**: Extended documentation and examples for complex settings
+- **Syntax Highlighting**: Beautiful JSON config display with dark theme support
+- **Search Integration**: Find options by name, description, or related terms
+- **Toast Notifications**: Instant feedback for user actions with beautiful notifications
+- **Sample Code**: Live demonstration with before/after code comparison
+- **Aside Dashboard**: Dedicated config panel on large screens for enhanced workflow
+
+### 📐 **Configuration Management**
+
+- **Smart Copy & Export**: One-click copy to clipboard with toast notifications
+- **Configuration Sorting**: Sort config keys alphabetically (A-Z or Z-A) for better organization
+- **Copy Functionality**: One-click clipboard copying with success notifications
+- **Format Validation**: Server-side formatting ensures accurate Prettier output
+
 ## 📸 Screenshots
 
 <div align="center">
 
 ### 🎯 Option Selection Interface
 
-![Option Selection](./public/Screenshots/Selection.jpeg)
+![Option Selection](./public/Screenshots/Config.jpeg)
 _Interactive interface for selecting and configuring Prettier options_
 
-### � Configuration Export
+### 🧑‍💻 Code formatting demo
 
-![Configuration Export](./public/Screenshots/Export.jpeg)
-_Generated configuration ready to copy and use in your project_
+![Code formatting demo](./public/Screenshots/Demo.jpeg)
+_Generated Code formatting live demo_
 
 </div>
 
@@ -86,12 +71,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-|                                   🎉 **Special Thanks**                                   |
-| :---------------------------------------------------------------------------------------: |
-| 🌟 [**mnicole**](https://github.com/mnicole/prettier-config) - _Original project creator_ |
-|          💎 [**Prettier Team**](https://prettier.io/) - _Amazing code formatter_          |
-|          🎨 [**shadcn/ui**](https://ui.shadcn.com/) - _Beautiful UI components_           |
-|         🚀 [**Vercel**](https://vercel.com/) - _Next.js and deployment platform_          |
+|                                            🎉 **Special Thanks**                                            |
+| :---------------------------------------------------------------------------------------------------------: |
+| 🌟 [**mnicole**](https://github.com/mnicole/prettier-config) - _Original project that this was forked from_ |
+|                   💎 [**Prettier Team**](https://prettier.io/) - _Amazing code formatter_                   |
+|                   🎨 [**shadcn/ui**](https://ui.shadcn.com/) - _Beautiful UI components_                    |
+|                  🚀 [**Vercel**](https://vercel.com/) - _Next.js and deployment platform_                   |
 
 </div>
 

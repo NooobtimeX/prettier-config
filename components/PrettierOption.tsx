@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check, Info } from "lucide-react";
+import { Check } from "lucide-react";
 import { PrettierOptionType } from "@/interface/PrettierOptionType";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -14,13 +14,6 @@ import {
 	CommandItem,
 	CommandList,
 } from "@/components/ui/command";
-import {
-	Dialog,
-	DialogContent,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "@/components/ui/dialog";
 import {
 	Drawer,
 	DrawerContent,
@@ -42,14 +35,6 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 interface Props {
 	option: PrettierOptionType;
@@ -59,7 +44,6 @@ interface Props {
 
 export function PrettierOption({ option, value, onChange }: Props) {
 	const [open, setOpen] = useState(false);
-	const [dialogOpen, setDialogOpen] = useState(false);
 	const [isMobile, setIsMobile] = useState(false);
 
 	useEffect(() => {
@@ -76,29 +60,6 @@ export function PrettierOption({ option, value, onChange }: Props) {
 		Array.isArray(option.options) && option.options.length > 0 ?
 			option.options.map((o) => o.toString())
 		:	[];
-
-	// Inline component to render code examples
-	const renderCodeDemo = (before: string, label: string) => (
-		<div>
-			<div className="text-center text-xs font-medium">{label}</div>
-			<div className="mt-1">
-				<SyntaxHighlighter
-					language="javascript"
-					style={atomDark}
-					customStyle={{
-						fontSize: "0.65rem",
-						borderRadius: "0.25rem",
-						margin: 0,
-						padding: "0.5rem",
-						maxHeight: "120px",
-						overflow: "auto",
-					}}
-				>
-					{before}
-				</SyntaxHighlighter>
-			</div>
-		</div>
-	);
 
 	const handleToggle = (item: string) => {
 		const newSelectedValues =

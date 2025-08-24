@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import options from "@/lib/options";
 import { Button } from "@/components/ui/button";
@@ -35,13 +35,6 @@ type SelectedOptions = {
 	[key in OptionKey]: OptionValue;
 };
 
-// Sample code to format - covers most Prettier options
-const SAMPLE_CODE = `const user={name:"John",age:30,active:true,hobbies:["coding","reading"]};
-const greeting=user.active?\`Hello \${user.name}!\`:"Inactive user";
-function process(data){const result=data.filter(item=>item.active).map(item=>({...item,name:item.name.toUpperCase(),}));return result;}
-const users=[{id:1,name:"Alice",active:true},{id:2,name:"Bob",active:false}];
-export{user,greeting,process};`;
-
 // Generate config function
 function generateConfig(selected: SelectedOptions): string {
 	const config: Partial<SelectedOptions> = {};
@@ -62,58 +55,6 @@ function generateConfig(selected: SelectedOptions): string {
 	return JSON.stringify(config, null, 2);
 }
 
-// Code formatter hook
-function useCodeFormatter(config: string, shouldFormat: boolean = true) {
-	const [formattedCode, setFormattedCode] = useState("");
-	const [isFormatting, setIsFormatting] = useState(false);
-	const [formatError, setFormatError] = useState("");
-
-	const formatCode = useCallback(async () => {
-		setIsFormatting(true);
-		setFormatError("");
-		try {
-			// Parse the config
-			const prettierOptions = config ? JSON.parse(config) : {};
-			// Call the API to format the code
-			const response = await fetch("/api/format", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					code: SAMPLE_CODE,
-					options: prettierOptions,
-				}),
-			});
-			if (!response.ok) {
-				throw new Error("Failed to format code");
-			}
-			const { formatted } = await response.json();
-			setFormattedCode(formatted);
-		} catch {
-			setFormatError("Failed to format code. Please check your configuration.");
-			setFormattedCode("");
-		} finally {
-			setIsFormatting(false);
-		}
-	}, [config]);
-
-	// Auto-format when config changes and should format
-	useEffect(() => {
-		if (shouldFormat && config) {
-			formatCode();
-		}
-	}, [config, shouldFormat, formatCode]);
-
-	return {
-		formattedCode,
-		isFormatting,
-		formatError,
-		formatCode,
-		originalCode: SAMPLE_CODE,
-	};
-}
-
 export default function PrettierConfigPage() {
 	// The useTranslations hook will use the correct locale context from the provider
 	const t = useTranslations("Page");
@@ -131,10 +72,6 @@ export default function PrettierConfigPage() {
 	// ✨ Added: State to manage the visibility of the reset confirmation dialog
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
-
-	// Use the code formatter hook
-	const { formatCode, originalCode, formattedCode, isFormatting, formatError } =
-		useCodeFormatter(generatedConfig, false);
 
 	const hasSelectedOptions = Object.values(selected).some(
 		(value) =>
@@ -355,11 +292,6 @@ export default function PrettierConfigPage() {
 							config={generatedConfig}
 							onReset={() => setIsResetDialogOpen(true)}
 							hasConfig={hasSelectedOptions}
-							formatCode={formatCode}
-							originalCode={originalCode}
-							formattedCode={formattedCode}
-							isFormatting={isFormatting}
-							formatError={formatError}
 						/>
 					</aside>
 				)}

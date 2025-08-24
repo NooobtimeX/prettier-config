@@ -17,12 +17,6 @@ interface ConfigAsideProps {
 	config: string;
 	onReset: () => void;
 	hasConfig: boolean;
-	// Code formatter props - still needed for interface compatibility but not used
-	formatCode: () => Promise<void>;
-	originalCode: string;
-	formattedCode: string;
-	isFormatting: boolean;
-	formatError: string;
 }
 
 export function ConfigAside({ config, onReset, hasConfig }: ConfigAsideProps) {

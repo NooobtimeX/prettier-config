@@ -77,9 +77,6 @@ export function PrettierOption({ option, value, onChange }: Props) {
 			option.options.map((o) => o.toString())
 		:	[];
 
-	// Get code examples for the current option
-	const codeExamples = option.example || [];
-
 	// Inline component to render code examples
 	const renderCodeDemo = (before: string, label: string) => (
 		<div>
@@ -102,98 +99,6 @@ export function PrettierOption({ option, value, onChange }: Props) {
 			</div>
 		</div>
 	);
-
-	// Generate tooltip content based on option type
-	const getTooltipContent = () => {
-		if (option.type === "buttons" && allOptions.length > 0) {
-			// For button options, show examples for each possible value
-			return (
-				<div className="max-w-md space-y-4">
-					{allOptions.map((optionValue) => {
-						const example = codeExamples.find(
-							(ex) => ex.optionValue === optionValue
-						);
-						if (example) {
-							return (
-								<div key={optionValue}>
-									{renderCodeDemo(example.before, example.label)}
-								</div>
-							);
-						}
-						return null;
-					})}
-					{codeExamples.length === 0 && (
-						<div className="text-muted-foreground text-sm">
-							{option.recommend || "No examples available for this option."}
-						</div>
-					)}
-				</div>
-			);
-		} else if (option.type === "select" && allOptions.length > 0) {
-			// For select options, show examples for each possible value
-			return (
-				<div className="max-w-md space-y-4">
-					{allOptions.slice(0, 3).map((optionValue) => {
-						const example = codeExamples.find(
-							(ex) => ex.optionValue === optionValue
-						);
-						if (example) {
-							return (
-								<div key={optionValue}>
-									{renderCodeDemo(example.before, example.label)}
-								</div>
-							);
-						}
-						return null;
-					})}
-					{allOptions.length > 3 && (
-						<div className="text-muted-foreground text-center text-xs">
-							...and {allOptions.length - 3} more options
-						</div>
-					)}
-					{codeExamples.length === 0 && (
-						<div className="text-muted-foreground text-sm">
-							{option.recommend || "No examples available for this option."}
-						</div>
-					)}
-				</div>
-			);
-		} else if (option.type === "input") {
-			// For input options, show multiple examples with different values
-			if (codeExamples.length > 0) {
-				return (
-					<div className="max-w-md space-y-4">
-						{codeExamples.map((example, index) => (
-							<div key={index}>
-								{renderCodeDemo(example.before, example.label)}
-							</div>
-						))}
-					</div>
-				);
-			}
-
-			return (
-				<div className="text-muted-foreground max-w-xs text-sm">
-					{option.recommend ||
-						"Enter a value to configure this option. Example values will be shown with live formatting."}
-				</div>
-			);
-		} else if (option.type === "multiselect") {
-			return (
-				<div className="text-muted-foreground max-w-xs text-sm">
-					{option.recommend ||
-						"Select multiple options to extend Prettier's functionality."}
-				</div>
-			);
-		}
-
-		return (
-			<div className="text-muted-foreground max-w-xs text-sm">
-				{option.recommend ||
-					"This option modifies how Prettier formats your code."}
-			</div>
-		);
-	};
 
 	const handleToggle = (item: string) => {
 		const newSelectedValues =
@@ -233,48 +138,6 @@ export function PrettierOption({ option, value, onChange }: Props) {
 
 	return (
 		<Card className="relative flex h-full min-h-[100px] flex-col justify-between p-4">
-			<div className="absolute top-2 right-2">
-				{isMobile ?
-					<Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-						<DialogTrigger asChild>
-							<Button
-								variant="ghost"
-								size="icon"
-								className="text-muted-foreground hover:text-foreground h-6 w-6"
-								aria-label="More information"
-							>
-								<Info className="h-4 w-4" />
-							</Button>
-						</DialogTrigger>
-						<DialogContent className="max-w-md">
-							<DialogHeader>
-								<DialogTitle>{option.name} - Information</DialogTitle>
-							</DialogHeader>
-							<div className="max-h-96 overflow-y-auto">
-								{getTooltipContent()}
-							</div>
-						</DialogContent>
-					</Dialog>
-				:	<TooltipProvider>
-						<Tooltip>
-							<TooltipTrigger asChild>
-								<Button
-									variant="ghost"
-									size="icon"
-									className="text-muted-foreground hover:text-foreground h-6 w-6"
-									aria-label="More information"
-								>
-									<Info className="h-4 w-4" />
-								</Button>
-							</TooltipTrigger>
-							<TooltipContent side="left" className="max-w-xs text-sm">
-								{getTooltipContent()}
-							</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
-				}
-			</div>
-
 			<div>
 				<h2 className="mb-1 text-center font-bold">{option.name}</h2>
 				<p className="text-muted-foreground mb-2 text-center text-sm">

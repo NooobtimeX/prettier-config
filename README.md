@@ -37,7 +37,7 @@
 - **Syntax Highlighting**: Beautiful JSON config display with dark theme support
 - **Search Integration**: Find options by name, description, or related terms
 - **Toast Notifications**: Instant feedback for user actions with beautiful notifications
-- **Sample Code**: Live demonstration with before/after code comparison
+
 - **Aside Dashboard**: Dedicated config panel on large screens for enhanced workflow
 
 ### 📐 **Configuration Management**
@@ -55,11 +55,6 @@
 
 ![Option Selection](./public/Screenshots/Config.jpeg)
 _Interactive interface for selecting and configuring Prettier options_
-
-### 🧑‍💻 Code formatting demo
-
-![Code formatting demo](./public/Screenshots/Demo.jpeg)
-_Generated Code formatting live demo_
 
 </div>
 

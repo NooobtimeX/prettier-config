@@ -1,0 +1,53 @@
+{
+	"Page": {
+		"search": {
+			"found": "Found {count} of {total} options",
+			"noOptions": "No options found",
+			"tryOtherTerms": "Try searching for different terms or",
+			"clearSearch": "clear your search"
+		},
+		"fab": {
+			"generateConfig": "Generate Config",
+			"resetSelections": "Reset Selections"
+		},
+		"resetDialog": {
+			"title": "Are you absolutely sure?",
+			"description": "This action cannot be undone. This will clear all your selected options and reset the generator to its initial state.",
+			"cancel": "Cancel",
+			"continue": "Continue"
+		},
+		"ConfigAside": {
+			"copyConfig": "Copy Config",
+			"viewConfig": "View Config",
+			"noConfig": "No config generated yet.",
+			"selectOptions": "Select options to generate your Prettier config."
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Prettier Config Generator",
+			"name": "Prettier Config Generator",
+			"description": "Generate your .prettierrc file effortlessly with this interactive Prettier configuration tool."
+		},
+		"quickLinks": {
+			"title": "Quick Links",
+			"generator": "Config Generator",
+			"faq": "FAQ",
+			"whyPrettier": "Why Prettier?"
+		},
+		"resources": {
+			"title": "Resources",
+			"docs": "Prettier Docs",
+			"configurationGuide": "Configuration Guide",
+			"playground": "Prettier Playground"
+		},
+		"developer": {
+			"title": "Developer",
+			"createdBy": "Created by",
+			"viewOnGitHub": "View on GitHub"
+		},
+		"bottom": {
+			"copyright": "Prettier Config Generator"
+		}
+	}
+}

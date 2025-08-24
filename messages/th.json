@@ -1,0 +1,53 @@
+{
+	"Page": {
+		"search": {
+			"found": "พบ {count} จากทั้งหมด {total} ตัวเลือก",
+			"noOptions": "ไม่พบตัวเลือก",
+			"tryOtherTerms": "ลองค้นหาด้วยคำอื่น หรือ",
+			"clearSearch": "ล้างการค้นหา"
+		},
+		"fab": {
+			"generateConfig": "สร้างคอนฟิก",
+			"resetSelections": "รีเซ็ตตัวเลือก"
+		},
+		"resetDialog": {
+			"title": "คุณแน่ใจหรือไม่?",
+			"description": "การกระทำนี้ไม่สามารถย้อนกลับได้ จะล้างตัวเลือกทั้งหมดและรีเซ็ตตัวสร้างคอนฟิกกลับสู่ค่าเริ่มต้น",
+			"cancel": "ยกเลิก",
+			"continue": "ดำเนินการต่อ"
+		},
+		"ConfigAside": {
+			"copyConfig": "คัดลอกการตั้งค่า",
+			"viewConfig": "ดูการตั้งค่า",
+			"noConfig": "ยังไม่มีการสร้างคอนฟิก",
+			"selectOptions": "เลือกตัวเลือกเพื่อสร้างคอนฟิก Prettier ของคุณ"
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "ตัวสร้างการตั้งค่า Prettier",
+			"name": "ตัวสร้างการตั้งค่า Prettier",
+			"description": "สร้างไฟล์ .prettierrc ของคุณได้อย่างง่ายดายด้วยเครื่องมือการตั้งค่า Prettier แบบโต้ตอบนี้"
+		},
+		"quickLinks": {
+			"title": "ลิงก์ด่วน",
+			"generator": "ตัวสร้างการตั้งค่า",
+			"faq": "คำถามที่พบบ่อย",
+			"whyPrettier": "ทำไมต้อง Prettier?"
+		},
+		"resources": {
+			"title": "ทรัพยากร",
+			"docs": "เอกสาร Prettier",
+			"configurationGuide": "คู่มือการตั้งค่า",
+			"playground": "พื้นที่ทดลอง Prettier"
+		},
+		"developer": {
+			"title": "นักพัฒนา",
+			"createdBy": "สร้างโดย",
+			"viewOnGitHub": "ดูบน GitHub"
+		},
+		"bottom": {
+			"copyright": "ตัวสร้างการตั้งค่า Prettier"
+		}
+	}
+}

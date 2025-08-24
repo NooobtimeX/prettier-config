@@ -1,20 +1,19 @@
 "use client";
 
 import { useState, useEffect, useMemo, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import options from "@/lib/options";
 import { Button } from "@/components/ui/button";
 import { PrettierOption } from "@/components/PrettierOption";
 import { ConfigModal } from "@/components/ConfigModal";
-import { DemoModal } from "@/components/DemoModal";
 import { ConfigAside } from "@/components/ConfigAside";
-import { RotateCcw, FilePlus, Play } from "lucide-react";
+import { RotateCcw, FilePlus } from "lucide-react";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-// ✨ Added: Imports for the AlertDialog component from shadcn/ui
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -70,15 +69,11 @@ function useCodeFormatter(config: string, shouldFormat: boolean = true) {
 	const [formatError, setFormatError] = useState("");
 
 	const formatCode = useCallback(async () => {
-		console.log("formatCode: Starting format with config:", config);
 		setIsFormatting(true);
 		setFormatError("");
-
 		try {
 			// Parse the config
 			const prettierOptions = config ? JSON.parse(config) : {};
-			console.log("formatCode: Using options:", prettierOptions);
-
 			// Call the API to format the code
 			const response = await fetch("/api/format", {
 				method: "POST",
@@ -90,23 +85,15 @@ function useCodeFormatter(config: string, shouldFormat: boolean = true) {
 					options: prettierOptions,
 				}),
 			});
-
 			if (!response.ok) {
 				throw new Error("Failed to format code");
 			}
-
 			const { formatted } = await response.json();
-			console.log("formatCode: Successfully formatted code");
 			setFormattedCode(formatted);
-		} catch (err) {
-			console.error("formatCode: Error occurred:", err);
-			console.error("Config used:", config);
+		} catch {
 			setFormatError("Failed to format code. Please check your configuration.");
 			setFormattedCode("");
 		} finally {
-			console.log(
-				"formatCode: Finished formatting, setting isFormatting to false"
-			);
 			setIsFormatting(false);
 		}
 	}, [config]);
@@ -128,6 +115,8 @@ function useCodeFormatter(config: string, shouldFormat: boolean = true) {
 }
 
 export default function PrettierConfigPage() {
+	// The useTranslations hook will use the correct locale context from the provider
+	const t = useTranslations("Page");
 	const emptyConfig = Object.fromEntries(
 		options.map((opt) => [opt.key, null])
 	) as SelectedOptions;
@@ -141,7 +130,6 @@ export default function PrettierConfigPage() {
 	);
 	// ✨ Added: State to manage the visibility of the reset confirmation dialog
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
-	const [showDemoModal, setShowDemoModal] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
 
 	// Use the code formatter hook
@@ -196,33 +184,32 @@ export default function PrettierConfigPage() {
 		});
 	}, [searchQuery]);
 
-	const handleChange = (
-		key: keyof SelectedOptions,
-		value: string | number | boolean | string[] | null
-	) => {
+	/**
+	 * Handles option changes and updates config in real-time for large screens.
+	 */
+	const handleChange = (key: keyof SelectedOptions, value: OptionValue) => {
 		setSelected((prev) => {
 			const newSelected = { ...prev, [key]: value };
-
-			// Auto-generate config for large screens in real-time
 			if (isLargeScreen) {
-				const config = generateConfig(newSelected);
-				setGeneratedConfig(config);
+				setGeneratedConfig(generateConfig(newSelected));
 			}
-
 			return newSelected;
 		});
 	};
 
+	/**
+	 * Generates config and shows modal on small screens.
+	 */
 	const handleGenerate = () => {
-		const config = generateConfig(selected);
-		setGeneratedConfig(config);
+		setGeneratedConfig(generateConfig(selected));
 		if (!isLargeScreen) {
 			setShowConfig(true);
 		}
 	};
 
-	// ✨ Updated: This function now contains the original reset logic.
-	// It is called when the user confirms the action in the dialog.
+	/**
+	 * Resets all selections and config to initial state.
+	 */
 	const executeReset = () => {
 		setSelected(emptyConfig);
 		setGeneratedConfig("");
@@ -246,7 +233,10 @@ export default function PrettierConfigPage() {
 						{/* Search results indicator */}
 						{searchQuery && (
 							<div className="text-muted-foreground mb-4 text-center text-sm">
-								Found {filteredOptions.length} of {options.length} options
+								{t("search.found", {
+									count: filteredOptions.length,
+									total: options.length,
+								})}
 							</div>
 						)}
 
@@ -269,15 +259,15 @@ export default function PrettierConfigPage() {
 						{searchQuery && filteredOptions.length === 0 && (
 							<div className="py-12 text-center">
 								<div className="text-muted-foreground mb-2 text-lg">
-									No options found
+									{t("search.noOptions")}
 								</div>
 								<div className="text-muted-foreground text-sm">
-									Try searching for different terms or{" "}
+									{t("search.tryOtherTerms")}{" "}
 									<button
 										onClick={() => setSearchQuery("")}
 										className="text-primary hover:underline"
 									>
-										clear your search
+										{t("search.clearSearch")}
 									</button>
 								</div>
 							</div>
@@ -294,34 +284,15 @@ export default function PrettierConfigPage() {
 												variant="default"
 												className="h-12 w-12 rounded-full shadow-md"
 												onClick={handleGenerate}
-												aria-label="Generate Config"
+												aria-label={t("fab.generateConfig")}
 											>
 												<FilePlus className="h-5 w-5" />
 											</Button>
 										</TooltipTrigger>
 										<TooltipContent side="left" sideOffset={8}>
-											Generate Config
+											{t("fab.generateConfig")}
 										</TooltipContent>
 									</Tooltip>
-
-									{/* Demo Button - only show when has config */}
-									{hasSelectedOptions && (
-										<Tooltip>
-											<TooltipTrigger asChild>
-												<Button
-													size="icon"
-													className="h-12 w-12 rounded-full shadow-md"
-													onClick={() => setShowDemoModal(true)}
-													aria-label="See Demo"
-												>
-													<Play className="h-5 w-5" />
-												</Button>
-											</TooltipTrigger>
-											<TooltipContent side="left" sideOffset={8}>
-												See Demo
-											</TooltipContent>
-										</Tooltip>
-									)}
 
 									<Tooltip open={showTooltip}>
 										<TooltipTrigger asChild>
@@ -330,13 +301,13 @@ export default function PrettierConfigPage() {
 												variant="secondary"
 												className="h-12 w-12 rounded-full shadow-md"
 												onClick={() => setIsResetDialogOpen(true)}
-												aria-label="Reset Config"
+												aria-label={t("fab.resetSelections")}
 											>
 												<RotateCcw className="h-5 w-5" />
 											</Button>
 										</TooltipTrigger>
 										<TooltipContent side="left" sideOffset={8}>
-											Reset Selections
+											{t("fab.resetSelections")}
 										</TooltipContent>
 									</Tooltip>
 								</div>
@@ -349,18 +320,6 @@ export default function PrettierConfigPage() {
 							onClose={() => setShowConfig(false)}
 						/>
 
-						{/* Demo Modal - for small screens */}
-						<DemoModal
-							open={showDemoModal}
-							config={generatedConfig}
-							onClose={() => setShowDemoModal(false)}
-							formatCode={formatCode}
-							originalCode={originalCode}
-							formattedCode={formattedCode}
-							isFormatting={isFormatting}
-							formatError={formatError}
-						/>
-
 						{/* ✨ Added: The AlertDialog component for reset confirmation */}
 						<AlertDialog
 							open={isResetDialogOpen}
@@ -368,17 +327,17 @@ export default function PrettierConfigPage() {
 						>
 							<AlertDialogContent>
 								<AlertDialogHeader>
-									<AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+									<AlertDialogTitle>{t("resetDialog.title")}</AlertDialogTitle>
 									<AlertDialogDescription>
-										This action cannot be undone. This will clear all your
-										selected options and reset the generator to its initial
-										state.
+										{t("resetDialog.description")}
 									</AlertDialogDescription>
 								</AlertDialogHeader>
 								<AlertDialogFooter>
-									<AlertDialogCancel>Cancel</AlertDialogCancel>
+									<AlertDialogCancel>
+										{t("resetDialog.cancel")}
+									</AlertDialogCancel>
 									<AlertDialogAction onClick={executeReset}>
-										Continue
+										{t("resetDialog.continue")}
 									</AlertDialogAction>
 								</AlertDialogFooter>
 							</AlertDialogContent>

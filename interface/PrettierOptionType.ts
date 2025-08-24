@@ -1,17 +1,14 @@
+import {
+	PrettierOptionTypeEnum,
+	PrettierOptionValidateEnum,
+} from "@/enum/prettierOption";
+
 export type PrettierOptionType = {
 	name: string;
 	key: string;
 	description: string;
-	type: "input" | "select" | "buttons" | "multiselect";
+	type: PrettierOptionTypeEnum;
 	options?: (string | boolean)[];
-	validate: "string" | "boolean" | "integer" | "string[]";
+	validate: PrettierOptionValidateEnum;
 	since?: string;
-	examples?: string[];
-	recommend?: string;
-	images?: string[];
-	example?: Array<{
-		before: string;
-		label: string;
-		optionValue?: string;
-	}>;
 };

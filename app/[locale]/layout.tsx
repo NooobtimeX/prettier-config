@@ -1,14 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import { Oswald as OswaldFont } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
 import options from "@/lib/options";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { routing } from "@/next-intl.config";
 
 const oswald = OswaldFont({ subsets: ["latin"] });
 
 const prettierOptionKeywords = options.map((opt) => `Prettier ${opt.name}`);
+
+export function generateStaticParams() {
+	return routing.locales.map((locale) => ({ locale }));
+}
 
 export const viewport: Viewport = {
 	width: "device-width",
@@ -80,13 +87,21 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function RootLayout({
+export default async function LocaleLayout({
 	children,
-}: Readonly<{
+	params,
+}: {
 	children: React.ReactNode;
-}>) {
+	params: Promise<{ locale: string }>;
+}) {
+	const { locale } = await params;
+
+	// Providing all messages to the client
+	// side is the easiest way to get started
+	const messages = await getMessages({ locale });
+
 	return (
-		<html suppressHydrationWarning lang="en">
+		<html suppressHydrationWarning lang={locale}>
 			<head>
 				<Script
 					id="gtm"
@@ -109,7 +124,9 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					{children}
+					<NextIntlClientProvider messages={messages}>
+						{children}
+					</NextIntlClientProvider>
 					<Toaster />
 				</ThemeProvider>
 			</body>

@@ -1,4 +1,51 @@
 {
+	"Home": {
+		"hero": {
+			"badge": "Free & Open Source",
+			"title": "Generate Your",
+			"titleSuffix": "Configuration",
+			"description": "A modern, user-friendly web application that helps developers easily create and customize their Prettier configuration files with an interactive interface.",
+			"startButton": "Start Generating",
+			"githubButton": "View on GitHub"
+		},
+		"features": {
+			"title": "Why Choose Our Generator?",
+			"subtitle": "Built with modern web technologies and designed for the best developer experience",
+			"realtime": {
+				"title": "Real-time Generation",
+				"description": "Configuration updates instantly as you select options. See your .prettierrc file generate in real-time."
+			},
+			"interactive": {
+				"title": "Interactive Interface",
+				"description": "Beautiful, responsive interface with dark/light theme support and comprehensive tooltips for each option."
+			},
+			"search": {
+				"title": "Smart Search",
+				"description": "Find options quickly by name, description, or related terms with our integrated search functionality."
+			},
+			"copy": {
+				"title": "One-Click Copy",
+				"description": "Copy your generated configuration to clipboard instantly with beautiful toast notifications."
+			},
+			"validation": {
+				"title": "Format Validation",
+				"description": "Server-side formatting ensures your Prettier configuration is always accurate and properly formatted."
+			},
+			"design": {
+				"title": "Modern Design",
+				"description": "Built with Next.js 15, TypeScript, Tailwind CSS, and shadcn/ui for a beautiful, fast experience."
+			}
+		},
+		"techStack": {
+			"title": "Built with Modern Technologies",
+			"subtitle": "Powered by the latest web development tools and frameworks"
+		},
+		"cta": {
+			"title": "Ready to Generate Your Config?",
+			"description": "Start creating your perfect Prettier configuration in seconds. No signup required, completely free to use.",
+			"button": "Generate Config Now"
+		}
+	},
 	"Page": {
 		"search": {
 			"found": "Found {count} of {total} options",
@@ -32,6 +79,7 @@
 		"quickLinks": {
 			"title": "Quick Links",
 			"generator": "Config Generator",
+			"docs": "Documentation",
 			"faq": "FAQ",
 			"whyPrettier": "Why Prettier?"
 		},

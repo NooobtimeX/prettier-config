@@ -8,9 +8,9 @@ import {
 	TooltipContent,
 } from "@/components/ui/tooltip";
 import { Github, Search, X } from "lucide-react";
-import ThemeChanger from "../ButtonThemeChanger";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import ThemeChanger from "@/components/ButtonThemeChanger";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import Link from "next/link";
 

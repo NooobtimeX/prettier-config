@@ -5,7 +5,7 @@ import { Github, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-export function Footer() {
+export default function Footer() {
 	const t = useTranslations("Footer");
 	const currentYear = new Date().getFullYear();
 
@@ -41,6 +41,14 @@ export function Footer() {
 									className="text-muted-foreground hover:text-foreground transition-colors"
 								>
 									{t("quickLinks.generator")}
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="/docs"
+									className="text-muted-foreground hover:text-foreground transition-colors"
+								>
+									{t("quickLinks.docs")}
 								</Link>
 							</li>
 							<li>

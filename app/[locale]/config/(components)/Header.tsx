@@ -45,13 +45,13 @@ export default function Header({
 				<Link href="/" className="flex items-center space-x-3">
 					<Image
 						src="/favicon.ico"
-						alt="Prettier Config Generator Logo"
+						alt="Prettier Config Logo"
 						width={32}
 						height={32}
 						className="h-8 w-8 rounded-md"
 					/>
 					<h1 className="text-xl font-semibold tracking-tight">
-						Prettier Config Generator
+						Prettier Config
 					</h1>
 				</Link>
 
@@ -61,7 +61,7 @@ export default function Header({
 					<TooltipProvider>
 						<Tooltip open={showTooltip}>
 							<TooltipTrigger asChild>
-								<Link href="https://github.com/NooobtimeX/prettier-config-generator">
+								<Link href="https://github.com/NooobtimeX/prettier-config.dev">
 									<Button
 										variant="outline"
 										size="icon"

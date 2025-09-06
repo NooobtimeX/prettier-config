@@ -25,10 +25,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-	title: "Prettier Config Generator",
+	title: "Prettier Config",
 	description:
 		"Generate your .prettierrc file effortlessly with this interactive Prettier configuration tool.",
-	metadataBase: new URL("https://prettier-config-generator.com/"),
+	metadataBase: new URL("https://prettier-config.dev/"),
 	keywords: [
 		"Prettier",
 		"Prettier Config Generator",
@@ -51,28 +51,28 @@ export const metadata: Metadata = {
 		apple: "/apple-touch-icon.png",
 	},
 	openGraph: {
-		title: "Prettier Config Generator",
+		title: "Prettier Config",
 		description:
 			"Interactive tool to generate a Prettier configuration file effortlessly.",
-		url: "https://prettier-config-generator.com/",
-		siteName: "Prettier Config Generator",
+		url: "https://prettier-config.dev/",
+		siteName: "Prettier Config",
 		type: "website",
 		images: [
 			{
-				url: "https://prettier-config-generator.com/og-image.png",
+				url: "https://prettier-config.dev/og-image.png",
 				width: 500,
 				height: 500,
-				alt: "Prettier Config Generator",
+				alt: "Prettier Config",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Prettier Config Generator",
+		title: "Prettier Config",
 		description:
 			"Effortlessly generate a Prettier config file with this interactive tool.",
 		creator: "@nooobtimex",
-		images: ["https://prettier-config-generator.com/og-image.png"],
+		images: ["https://prettier-config.dev/og-image.png"],
 	},
 	robots: {
 		index: true,

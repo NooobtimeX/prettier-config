@@ -72,8 +72,8 @@
 	},
 	"Footer": {
 		"brand": {
-			"alt": "Prettier Config Generator",
-			"name": "Prettier Config Generator",
+			"alt": "Prettier Config",
+			"name": "Prettier Config",
 			"description": "Generate your .prettierrc file effortlessly with this interactive Prettier configuration tool."
 		},
 		"quickLinks": {
@@ -95,7 +95,7 @@
 			"viewOnGitHub": "View on GitHub"
 		},
 		"bottom": {
-			"copyright": "Prettier Config Generator"
+			"copyright": "Prettier Config"
 		}
 	}
 }

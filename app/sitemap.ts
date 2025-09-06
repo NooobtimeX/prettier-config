@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://prettier-config-generator.com";
+const SITE_URL = "https://prettier-config.dev";
 export default function sitemap(): MetadataRoute.Sitemap {
 	return [
 		{
@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 1,
 			alternates: {
 				languages: {
-					es: `${SITE_URL}/es`,
+					es: `${SITE_URL}/en`,
 					th: `${SITE_URL}/th`,
 				},
 			},
@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 0.9,
 			alternates: {
 				languages: {
-					es: `${SITE_URL}/es/config`,
+					es: `${SITE_URL}/en/config`,
 					th: `${SITE_URL}/th/config`,
 				},
 			},

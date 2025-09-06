@@ -34,7 +34,7 @@ export default function HeroSection() {
 						</Button>
 					</Link>
 					<Link
-						href="https://github.com/NooobtimeX/prettier-config-generator"
+						href="https://github.com/NooobtimeX/prettier-config.dev"
 						target="_blank"
 					>
 						<Button variant="outline" size="lg" className="px-8 py-6 text-lg">

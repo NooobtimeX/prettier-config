@@ -1,7 +1,7 @@
 import {
 	PrettierOptionTypeEnum,
 	PrettierOptionValidateEnum,
-} from "@/enum/prettierOption";
+} from "@/common/enum/prettierOption";
 
 export type PrettierOptionType = {
 	name: string;

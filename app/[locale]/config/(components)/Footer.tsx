@@ -121,7 +121,7 @@ export default function Footer() {
 								</Link>
 							</div>
 							<Link
-								href="https://github.com/nooobtimex/prettier-config.dev"
+								href="https://github.com/nooobtimex/prettier-config"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm transition-colors"

@@ -43,8 +43,8 @@ export const metadata: Metadata = {
 		"prettier config file",
 		...prettierOptionKeywords,
 	],
-	authors: [{ name: "Wongsaphat Puangsorn", url: "https://nooobtimex.me" }],
-	creator: "Wongsaphat Puangsorn",
+	authors: [{ name: "NooobtimeX", url: "https://nooobtimex.me" }],
+	creator: "NooobtimeX",
 	icons: {
 		icon: "/favicon.ico",
 		shortcut: "/favicon.ico",

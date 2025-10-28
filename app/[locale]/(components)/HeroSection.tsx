@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Star, ArrowRight, Github } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { REPOSITORY } from "@/common/constants";
 
 export default function HeroSection() {
 	const t = useTranslations("Home.hero");
@@ -33,10 +34,7 @@ export default function HeroSection() {
 							<ArrowRight className="ml-2 h-5 w-5" />
 						</Button>
 					</Link>
-					<Link
-						href="https://github.com/NooobtimeX/prettier-config"
-						target="_blank"
-					>
+					<Link href={REPOSITORY.GITHUB_URL} target="_blank">
 						<Button variant="outline" size="lg" className="px-8 py-6 text-lg">
 							<Github className="mr-2 h-5 w-5" />
 							{t("githubButton")}

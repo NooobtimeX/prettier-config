@@ -12,6 +12,7 @@ import ThemeChanger from "@/components/ButtonThemeChanger";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { REPOSITORY } from "@/common/constants";
 
 interface HeaderProps {
 	searchQuery?: string;
@@ -51,7 +52,7 @@ export default function Header({}: HeaderProps) {
 					<TooltipProvider>
 						<Tooltip open={showTooltip}>
 							<TooltipTrigger asChild>
-								<Link href="https://github.com/NooobtimeX/prettier-config">
+								<Link href={REPOSITORY.GITHUB_URL}>
 									<Button
 										variant="outline"
 										size="icon"

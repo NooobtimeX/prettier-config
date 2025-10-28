@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Github, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { REPOSITORY, EXTERNAL_LINKS, DEVELOPER } from "@/common/constants";
 
 export default function Footer() {
 	const t = useTranslations("Footer");
@@ -68,7 +69,7 @@ export default function Footer() {
 						<ul className="space-y-2 text-sm">
 							<li>
 								<Link
-									href="https://prettier.io/docs/en/"
+									href={EXTERNAL_LINKS.PRETTIER_DOCS}
 									target="_blank"
 									rel="noopener noreferrer"
 									className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors"
@@ -79,7 +80,7 @@ export default function Footer() {
 							</li>
 							<li>
 								<Link
-									href="https://prettier.io/docs/en/configuration.html"
+									href={EXTERNAL_LINKS.PRETTIER_CONFIG_GUIDE}
 									target="_blank"
 									rel="noopener noreferrer"
 									className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors"
@@ -90,7 +91,7 @@ export default function Footer() {
 							</li>
 							<li>
 								<Link
-									href="https://prettier.io/playground/"
+									href={EXTERNAL_LINKS.PRETTIER_PLAYGROUND}
 									target="_blank"
 									rel="noopener noreferrer"
 									className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors"
@@ -111,17 +112,17 @@ export default function Footer() {
 									{t("developer.createdBy")}
 								</p>
 								<Link
-									href="https://nooobtimex.me"
+									href={DEVELOPER.WEBSITE}
 									target="_blank"
 									rel="noopener noreferrer"
 									className="hover:text-primary inline-flex items-center gap-1 font-medium transition-colors"
 								>
-									Wongsaphat Puangsorn
+									{DEVELOPER.NAME}
 									<ExternalLink className="h-3 w-3" />
 								</Link>
 							</div>
 							<Link
-								href="https://github.com/nooobtimex/prettier-config"
+								href={REPOSITORY.GITHUB_URL}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm transition-colors"

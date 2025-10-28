@@ -1,8 +1,8 @@
 import {
 	PrettierOptionTypeEnum,
 	PrettierOptionValidateEnum,
-} from "@/enum/prettierOption";
-import { PrettierOptionType } from "@/interface/PrettierOptionType";
+} from "@/common/enum/prettierOption";
+import { PrettierOptionType } from "@/common/interface/PrettierOptionType";
 
 const options: PrettierOptionType[] = [
 	{

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 	title: "Prettier Config",
 	description:
 		"Generate your .prettierrc file effortlessly with this interactive Prettier configuration tool.",
-	metadataBase: new URL("https://prettier-config.dev/"),
+	metadataBase: new URL("https://prettier-config.nooobtimex.me/"),
 	keywords: [
 		"Prettier",
 		"Prettier Config Generator",
@@ -54,12 +54,12 @@ export const metadata: Metadata = {
 		title: "Prettier Config",
 		description:
 			"Interactive tool to generate a Prettier configuration file effortlessly.",
-		url: "https://prettier-config.dev/",
+		url: "https://prettier-config.nooobtimex.me/",
 		siteName: "Prettier Config",
 		type: "website",
 		images: [
 			{
-				url: "https://prettier-config.dev/og-image.png",
+				url: "https://prettier-config.nooobtimex.me/og-image.png",
 				width: 500,
 				height: 500,
 				alt: "Prettier Config",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
 		description:
 			"Effortlessly generate a Prettier config file with this interactive tool.",
 		creator: "@nooobtimex",
-		images: ["https://prettier-config.dev/og-image.png"],
+		images: ["https://prettier-config.nooobtimex.me/og-image.png"],
 	},
 	robots: {
 		index: true,

@@ -51,7 +51,7 @@ export default function Header({}: HeaderProps) {
 					<TooltipProvider>
 						<Tooltip open={showTooltip}>
 							<TooltipTrigger asChild>
-								<Link href="https://github.com/NooobtimeX/prettier-config.dev">
+								<Link href="https://github.com/NooobtimeX/prettier-config">
 									<Button
 										variant="outline"
 										size="icon"

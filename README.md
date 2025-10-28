@@ -6,8 +6,8 @@
 
 **Built with Next.js 15, TypeScript, and Tailwind CSS**
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-prettier--config--.dev-blue?style=for-the-badge)](https://prettier-config.dev/)
-[![GitHub Stars](https://img.shields.io/github/stars/NooobtimeX/prettier-config.dev?style=for-the-badge&logo=github)](https://github.com/NooobtimeX/prettier-config.dev)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-prettier--config--.dev-blue?style=for-the-badge)](https://prettier-config.nooobtimex.me/)
+[![GitHub Stars](https://img.shields.io/github/stars/NooobtimeX/prettier-config?style=for-the-badge&logo=github)](https://github.com/NooobtimeX/prettier-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 </div>
@@ -66,12 +66,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-|                                              🎉 **Special Thanks**                                              |
-| :-------------------------------------------------------------------------------------------------------------: |
-| 🌟 [**mnicole**](https://github.com/mnicole/prettier-config.dev) - _Original project that this was forked from_ |
-|                     💎 [**Prettier Team**](https://prettier.io/) - _Amazing code formatter_                     |
-|                     🎨 [**shadcn/ui**](https://ui.shadcn.com/) - _Beautiful UI components_                      |
-|                    🚀 [**Vercel**](https://vercel.com/) - _Next.js and deployment platform_                     |
+|                                            🎉 **Special Thanks**                                            |
+| :---------------------------------------------------------------------------------------------------------: |
+| 🌟 [**mnicole**](https://github.com/mnicole/prettier-config) - _Original project that this was forked from_ |
+|                   💎 [**Prettier Team**](https://prettier.io/) - _Amazing code formatter_                   |
+|                   🎨 [**shadcn/ui**](https://ui.shadcn.com/) - _Beautiful UI components_                    |
+|                  🚀 [**Vercel**](https://vercel.com/) - _Next.js and deployment platform_                   |
 
 </div>
 
@@ -88,7 +88,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### ⭐ **Found this helpful? Give us a star!**
 
-[![Star on GitHub](https://img.shields.io/github/stars/NooobtimeX/prettier-config.dev?style=social)](https://github.com/NooobtimeX/prettier-config.dev)
+[![Star on GitHub](https://img.shields.io/github/stars/NooobtimeX/prettier-config?style=social)](https://github.com/NooobtimeX/prettier-config)
 
 _Your support helps us improve and maintain this project_ 💖
 

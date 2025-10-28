@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
-import { PrettierOptionType } from "@/interface/PrettierOptionType";
+import { PrettierOptionType } from "@/common/interface/PrettierOptionType";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";

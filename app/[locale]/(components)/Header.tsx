@@ -25,9 +25,12 @@ export default function Header({}: HeaderProps) {
 	);
 
 	useEffect(() => {
-		setShowTooltip(true);
-		const timer = setTimeout(() => setShowTooltip(undefined), 10000);
-		return () => clearTimeout(timer);
+		const showTimer = setTimeout(() => setShowTooltip(true), 0);
+		const hideTimer = setTimeout(() => setShowTooltip(undefined), 10000);
+		return () => {
+			clearTimeout(showTimer);
+			clearTimeout(hideTimer);
+		};
 	}, []);
 	return (
 		<header>

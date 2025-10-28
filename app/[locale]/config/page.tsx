@@ -97,16 +97,22 @@ export default function PrettierConfigPage() {
 	}, [isLargeScreen, hasSelectedOptions, selected]);
 
 	useEffect(() => {
-		setShowTooltip(true);
-		const timer = setTimeout(() => setShowTooltip(undefined), 10000);
-		return () => clearTimeout(timer);
+		const showTimer = setTimeout(() => setShowTooltip(true), 0);
+		const hideTimer = setTimeout(() => setShowTooltip(undefined), 10000);
+		return () => {
+			clearTimeout(showTimer);
+			clearTimeout(hideTimer);
+		};
 	}, []);
 
 	// Auto-generate config on initial load if large screen and has selections
 	useEffect(() => {
 		if (isLargeScreen && hasSelectedOptions && !generatedConfig) {
-			const config = generateConfig(selected);
-			setGeneratedConfig(config);
+			const timer = setTimeout(() => {
+				const config = generateConfig(selected);
+				setGeneratedConfig(config);
+			}, 0);
+			return () => clearTimeout(timer);
 		}
 	}, [isLargeScreen, hasSelectedOptions, selected, generatedConfig]);
 

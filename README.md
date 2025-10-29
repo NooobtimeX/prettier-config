@@ -6,7 +6,7 @@
 
 **Built with Next.js 15, TypeScript, and Tailwind CSS**
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-prettier--config--.dev-blue?style=for-the-badge)](https://prettier-config.nooobtimex.me/)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-prettier--config--.dev-blue?style=for-the-badge)](https://prettier-config.dev)
 [![GitHub Stars](https://img.shields.io/github/stars/NooobtimeX/prettier-config?style=for-the-badge&logo=github)](https://github.com/NooobtimeX/prettier-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 

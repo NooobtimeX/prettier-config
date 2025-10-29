@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://prettier-config.nooobtimex.me";
+const SITE_URL = "https://prettier-config.dev";
 export default function sitemap(): MetadataRoute.Sitemap {
 	return [
 		{

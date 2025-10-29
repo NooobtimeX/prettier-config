@@ -116,6 +116,10 @@ export default async function LocaleLayout({
             gtag('config', 'GTM-N3C2N4G7');
           `}
 				</Script>
+				<meta
+					name="google-adsense-account"
+					content="ca-pub-6034794215506479"
+				></meta>
 			</head>
 			<body className={oswald.className}>
 				<ThemeProvider

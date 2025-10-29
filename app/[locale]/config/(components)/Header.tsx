@@ -1,14 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import {
-	TooltipProvider,
-	Tooltip,
-	TooltipTrigger,
-	TooltipContent,
-} from "@/components/ui/tooltip";
+import { useState } from "react";
 import { Github, Search, X } from "lucide-react";
 import ThemeChanger from "@/components/ButtonThemeChanger";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
@@ -24,24 +19,12 @@ export default function Header({
 	searchQuery = "",
 	onSearchChange,
 }: HeaderProps) {
-	const [showTooltip, setShowTooltip] = useState<boolean | undefined>(
-		undefined
-	);
 	const [internalSearchQuery, setInternalSearchQuery] = useState("");
 
 	// Use external search query if provided, otherwise use internal
 	const currentSearchQuery = onSearchChange ? searchQuery : internalSearchQuery;
 	const setCurrentSearchQuery =
 		onSearchChange ? onSearchChange : setInternalSearchQuery;
-
-	useEffect(() => {
-		const showTimer = setTimeout(() => setShowTooltip(true), 0);
-		const hideTimer = setTimeout(() => setShowTooltip(undefined), 10000);
-		return () => {
-			clearTimeout(showTimer);
-			clearTimeout(hideTimer);
-		};
-	}, []);
 	return (
 		<header>
 			<div className="container mx-auto flex items-center justify-between px-4 py-3 sm:px-6">
@@ -61,39 +44,22 @@ export default function Header({
 
 				{/* Right-side Actions */}
 				<div className="flex items-center gap-4">
+					{/* Language Switcher */}
+					<LanguageSwitcher />
+
 					{/* Github Repository */}
-					<TooltipProvider>
-						<Tooltip open={showTooltip}>
-							<TooltipTrigger asChild>
-								<Link href={REPOSITORY.GITHUB_URL}>
-									<Button
-										variant="outline"
-										size="icon"
-										className="rounded-full"
-										aria-label="Github Repository"
-									>
-										<Github className="h-4 w-4" />
-									</Button>
-								</Link>
-							</TooltipTrigger>
-							<TooltipContent side="left" sideOffset={8}>
-								Github Repository
-							</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
+					<Link href={REPOSITORY.GITHUB_URL}>
+						<Button
+							variant="outline"
+							size="icon"
+							className="rounded-full"
+							aria-label="Github Repository"
+						>
+							<Github className="h-4 w-4" />
+						</Button>
+					</Link>
 					{/* Theme Changer */}
-					<TooltipProvider>
-						<Tooltip open={showTooltip}>
-							<TooltipTrigger asChild>
-								<div>
-									<ThemeChanger />
-								</div>
-							</TooltipTrigger>
-							<TooltipContent side="bottom" sideOffset={8}>
-								Toggle Theme
-							</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
+					<ThemeChanger />
 					{/* Search Bar - Visible on medium screens and up */}
 					<div className="hidden max-w-md flex-1 md:block">
 						<div className="relative">

@@ -35,6 +35,7 @@ export const metadata: Metadata = {
 			en: "https://prettier-config.dev/en",
 			th: "https://prettier-config.dev/th",
 			zh: "https://prettier-config.dev/zh",
+			es: "https://prettier-config.dev/es",
 		},
 	},
 	keywords: [

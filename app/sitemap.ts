@@ -4,7 +4,7 @@ const SITE_URL = "https://prettier-config.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const routes = [""];
-	const locales = ["en", "th", "zh"];
+	const locales = ["en", "th", "zh", "es"];
 	const currentDate = new Date().toISOString();
 
 	const sitemap: MetadataRoute.Sitemap = [];

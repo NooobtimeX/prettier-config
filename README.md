@@ -25,6 +25,42 @@
 
 </div>
 
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Bun](https://bun.sh) (recommended) or Node.js & npm/yarn/pnpm
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/NooobtimeX/prettier-config.git
+
+# Install dependencies
+bun install
+
+# Start the development server
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 🏗️ Project Structure
+
+```text
+├── app/              # Next.js App Router (pages and layouts)
+│   └── [locale]/     # Localization-aware routes
+├── common/           # Shared constants, enums, and interfaces
+├── components/       # React components (UI and specialized)
+│   └── ui/           # shadcn/ui base components
+├── lib/              # Utility functions and configuration data
+│   ├── options.ts    # Main Prettier options database
+│   └── sortConfig.ts # Config sorting logic
+├── public/           # Static assets
+└── messages/         # i18n translation files
+```
+
 ## ✨ Features
 
 ### 🚀 **Interactive**

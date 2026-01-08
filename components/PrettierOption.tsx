@@ -36,12 +36,24 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 
+/**
+ * Properties for the PrettierOption component.
+ */
 interface Props {
+	/** The metadata for the Prettier option being rendered. */
 	option: PrettierOptionType;
+	/** The current selected value for this option. */
 	value: string | number | boolean | string[] | null;
+	/** Callback function to update the value of this option. */
 	onChange: (val: string | number | boolean | string[] | null) => void;
 }
 
+/**
+ * A component that renders an interactive input for a specific Prettier configuration option.
+ * Supports different input types like buttons, selects, multiselects, and text/number inputs.
+ *
+ * @param props - The component properties.
+ */
 export function PrettierOption({ option, value, onChange }: Props) {
 	const [open, setOpen] = useState(false);
 	const [isMobile, setIsMobile] = useState(false);

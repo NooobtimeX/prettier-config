@@ -1,5 +1,12 @@
 export type SortOrder = "asc" | "desc";
 
+/**
+ * Sorts the keys of a JSON configuration string alphabetically.
+ *
+ * @param config - The JSON string representation of the configuration.
+ * @param sortOrder - The order to sort the keys ("asc" or "desc").
+ * @returns A JSON string with sorted keys, or the original string if parsing fails.
+ */
 export function sortConfig(config: string, sortOrder: SortOrder): string {
 	if (!config) {
 		return "";

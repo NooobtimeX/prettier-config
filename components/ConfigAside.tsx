@@ -13,12 +13,24 @@ import {
 
 import { sortConfig, type SortOrder } from "@/lib/sortConfig";
 import { useTranslations } from "next-intl";
+/**
+ * Properties for the ConfigAside component.
+ */
 interface ConfigAsideProps {
+	/** The JSON string representation of the generated Prettier configuration. */
 	config: string;
+	/** Callback function to reset all selected options. */
 	onReset: () => void;
+	/** Indicates whether any options have been selected. */
 	hasConfig: boolean;
 }
 
+/**
+ * A sidebar component that displays the generated Prettier configuration in real-time.
+ * Provides functionality to view, copy, and reset the configuration.
+ *
+ * @param props - The component properties.
+ */
 export function ConfigAside({ config, onReset, hasConfig }: ConfigAsideProps) {
 	const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
 	const [displayConfig, setDisplayConfig] = useState(config);

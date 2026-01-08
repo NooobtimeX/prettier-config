@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import { PanelLeftIcon } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -397,7 +397,7 @@ function SidebarGroupLabel({
 	className,
 	asChild = false,
 	...props
-}: React.ComponentProps<"div"> & { asChild?: boolean }) {
+}: React.ComponentPropsWithoutRef<"div"> & { asChild?: boolean }) {
 	const Comp = asChild ? Slot : "div";
 
 	return (
@@ -418,7 +418,7 @@ function SidebarGroupAction({
 	className,
 	asChild = false,
 	...props
-}: React.ComponentProps<"button"> & { asChild?: boolean }) {
+}: React.ComponentPropsWithoutRef<"button"> & { asChild?: boolean }) {
 	const Comp = asChild ? Slot : "button";
 
 	return (
@@ -503,7 +503,7 @@ function SidebarMenuButton({
 	tooltip,
 	className,
 	...props
-}: React.ComponentProps<"button"> & {
+}: React.ComponentPropsWithoutRef<"button"> & {
 	asChild?: boolean;
 	isActive?: boolean;
 	tooltip?: string | React.ComponentProps<typeof TooltipContent>;
@@ -550,7 +550,7 @@ function SidebarMenuAction({
 	asChild = false,
 	showOnHover = false,
 	...props
-}: React.ComponentProps<"button"> & {
+}: React.ComponentPropsWithoutRef<"button"> & {
 	asChild?: boolean;
 	showOnHover?: boolean;
 }) {
@@ -607,8 +607,10 @@ function SidebarMenuSkeleton({
 	showIcon?: boolean;
 }) {
 	// Random width between 50 to 90%.
-	const width = React.useMemo(() => {
-		return `${Math.floor(Math.random() * 40) + 50}%`;
+	// Use effect to avoid calling impure functions during render.
+	const [width, setWidth] = React.useState<string>("70%");
+	React.useEffect(() => {
+		setWidth(`${Math.floor(Math.random() * 40) + 50}%`);
 	}, []);
 
 	return (
@@ -672,7 +674,7 @@ function SidebarMenuSubButton({
 	isActive = false,
 	className,
 	...props
-}: React.ComponentProps<"a"> & {
+}: React.ComponentPropsWithoutRef<"a"> & {
 	asChild?: boolean;
 	size?: "sm" | "md";
 	isActive?: boolean;

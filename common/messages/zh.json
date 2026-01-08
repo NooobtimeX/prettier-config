@@ -1,0 +1,101 @@
+{
+	"Home": {
+		"hero": {
+			"badge": "免费且开源",
+			"title": "生成您的",
+			"titleSuffix": "配置",
+			"description": "一个现代化的、用户友好的 Web 应用程序，帮助开发人员通过交互式界面轻松创建和自定义 Prettier 配置文件。",
+			"startButton": "开始生成",
+			"githubButton": "在 GitHub 上查看"
+		},
+		"features": {
+			"title": "为什么选择我们的生成器？",
+			"subtitle": "采用现代 Web 技术构建，旨在提供最佳的开发体验",
+			"realtime": {
+				"title": "实时生成",
+				"description": "配置会在您选择选项时立即更新。实时查看生成的 .prettierrc 文件。"
+			},
+			"interactive": {
+				"title": "交互式界面",
+				"description": "美观、响应式的界面，支持深色/浅色主题，并为每个选项提供全面的工具提示。"
+			},
+			"search": {
+				"title": "智能搜索",
+				"description": "通过名称、描述或相关术语快速查找选项。"
+			},
+			"copy": {
+				"title": "一键复制",
+				"description": "通过漂亮的 toast 通知瞬间将生成的配置复制到剪贴板。"
+			},
+			"validation": {
+				"title": "格式验证",
+				"description": "服务端格式化确保您的 Prettier 配置始终准确且格式正确。"
+			},
+			"design": {
+				"title": "现代设计",
+				"description": "基于 Next.js 15、TypeScript、Tailwind CSS 和 shadcn/ui 构建，提供美观、快速的体验。"
+			}
+		},
+		"techStack": {
+			"title": "采用现代技术构建",
+			"subtitle": "由最新的 Web 开发工具和框架驱动"
+		},
+		"cta": {
+			"title": "准备好生成您的配置了吗？",
+			"description": "几秒钟内开始创建您完美的 Prettier 配置。无需注册，完全免费使用。",
+			"button": "立即生成配置"
+		}
+	},
+	"Page": {
+		"search": {
+			"found": "找到 {count} 个选项（共 {total} 个）",
+			"noOptions": "未找到选项",
+			"tryOtherTerms": "尝试搜索不同的术语或",
+			"clearSearch": "清除搜索"
+		},
+		"fab": {
+			"generateConfig": "生成配置",
+			"resetSelections": "重置选择"
+		},
+		"resetDialog": {
+			"title": "您确定吗？",
+			"description": "此操作无法撤销。这将清除您所有已选的选项并将生成器重置为初始状态。",
+			"cancel": "取消",
+			"continue": "继续"
+		},
+		"ConfigAside": {
+			"copyConfig": "复制配置",
+			"viewConfig": "查看配置",
+			"noConfig": "尚未生成配置。",
+			"selectOptions": "选择选项以生成您的 Prettier 配置。"
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Prettier Config",
+			"name": "Prettier Config",
+			"description": "使用此交互式 Prettier 配置工具轻松生成您的 .prettierrc 文件。"
+		},
+		"quickLinks": {
+			"title": "快速链接",
+			"generator": "配置生成器",
+			"docs": "文档",
+			"faq": "常见问题",
+			"whyPrettier": "为什么选择 Prettier？"
+		},
+		"resources": {
+			"title": "资源",
+			"docs": "Prettier 文档",
+			"configurationGuide": "配置指南",
+			"playground": "Prettier Playground"
+		},
+		"developer": {
+			"title": "开发者",
+			"createdBy": "创建者",
+			"viewOnGitHub": "在 GitHub 上查看"
+		},
+		"bottom": {
+			"copyright": "Prettier Config"
+		}
+	}
+}

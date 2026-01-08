@@ -29,6 +29,14 @@ export const metadata: Metadata = {
 	description:
 		"Prettier Config - The ultimate interactive tool to generate your .prettierrc file effortlessly. Customize and optimize your code formatting with ease.",
 	metadataBase: new URL("https://prettier-config.dev/"),
+	alternates: {
+		canonical: "https://prettier-config.dev",
+		languages: {
+			en: "https://prettier-config.dev/en",
+			th: "https://prettier-config.dev/th",
+			zh: "https://prettier-config.dev/zh",
+		},
+	},
 	keywords: [
 		"Prettier Config",
 		"Prettier Config Generator",

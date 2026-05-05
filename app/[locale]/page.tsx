@@ -52,7 +52,8 @@ export default function HomePage() {
 	const [showConfig, setShowConfig] = useState(false);
 	const [generatedConfig, setGeneratedConfig] = useState('');
 	const [searchQuery, setSearchQuery] = useState('');
-	const [showTooltip, setShowTooltip] = useState<boolean | undefined>(undefined);
+	const [openGenerateTooltip, setOpenGenerateTooltip] = useState(false);
+	const [openResetTooltip, setOpenResetTooltip] = useState(false);
 	// ✨ Added: State to manage the visibility of the reset confirmation dialog
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
@@ -78,8 +79,14 @@ export default function HomePage() {
 	}, [isLargeScreen, hasSelectedOptions, selected]);
 
 	useEffect(() => {
-		const showTimer = setTimeout(() => setShowTooltip(true), 0);
-		const hideTimer = setTimeout(() => setShowTooltip(undefined), 10000);
+		const showTimer = setTimeout(() => {
+			setOpenGenerateTooltip(true);
+			setOpenResetTooltip(true);
+		}, 0);
+		const hideTimer = setTimeout(() => {
+			setOpenGenerateTooltip(false);
+			setOpenResetTooltip(false);
+		}, 10000);
 		return () => {
 			clearTimeout(showTimer);
 			clearTimeout(hideTimer);
@@ -202,7 +209,10 @@ export default function HomePage() {
 						{!isLargeScreen && (
 							<TooltipProvider>
 								<div className="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3">
-									<Tooltip open={showTooltip}>
+									<Tooltip
+										open={openGenerateTooltip}
+										onOpenChange={setOpenGenerateTooltip}
+									>
 										<TooltipTrigger
 											render={
 												<Button
@@ -224,7 +234,10 @@ export default function HomePage() {
 										</TooltipContent>
 									</Tooltip>
 
-									<Tooltip open={showTooltip}>
+									<Tooltip
+										open={openResetTooltip}
+										onOpenChange={setOpenResetTooltip}
+									>
 										<TooltipTrigger
 											render={
 												<Button

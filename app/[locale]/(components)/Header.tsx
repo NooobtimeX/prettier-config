@@ -1,36 +1,35 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Search, X } from "lucide-react";
-import { FaGithub } from "react-icons/fa6";
-import ThemeChanger from "@/components/ButtonThemeChanger";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import { REPOSITORY } from "@/common/constants";
+import { useState } from 'react';
+import { Search, X } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa6';
+import ThemeChanger from '@/components/ButtonThemeChanger';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
+import { REPOSITORY } from '@/common/constants';
 
 interface HeaderProps {
 	searchQuery?: string;
 	onSearchChange?: (query: string) => void;
 }
 
-export default function Header({
-	searchQuery = "",
-	onSearchChange,
-}: HeaderProps) {
-	const [internalSearchQuery, setInternalSearchQuery] = useState("");
+export default function Header({ searchQuery = '', onSearchChange }: HeaderProps) {
+	const [internalSearchQuery, setInternalSearchQuery] = useState('');
 
 	// Use external search query if provided, otherwise use internal
 	const currentSearchQuery = onSearchChange ? searchQuery : internalSearchQuery;
-	const setCurrentSearchQuery =
-		onSearchChange ? onSearchChange : setInternalSearchQuery;
+	const setCurrentSearchQuery = onSearchChange ? onSearchChange : setInternalSearchQuery;
 	return (
 		<header>
 			<div className="container mx-auto flex items-center justify-between px-4 py-3 sm:px-6">
 				{/* Logo and Title */}
-				<Link href="/" className="flex items-center space-x-3">
+				<Link
+					href="/"
+					className="flex items-center space-x-3"
+				>
 					<Image
 						src="/favicon.ico"
 						alt="Prettier Config Logo"
@@ -38,9 +37,7 @@ export default function Header({
 						height={32}
 						className="h-8 w-8 rounded-md"
 					/>
-					<h1 className="text-xl font-semibold tracking-tight">
-						Prettier Config
-					</h1>
+					<h1 className="text-xl font-semibold tracking-tight">Prettier Config</h1>
 				</Link>
 
 				{/* Right-side Actions */}
@@ -73,7 +70,7 @@ export default function Header({
 							/>
 							{currentSearchQuery && (
 								<button
-									onClick={() => setCurrentSearchQuery("")}
+									onClick={() => setCurrentSearchQuery('')}
 									className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 transition-colors"
 									aria-label="Clear search"
 								>
@@ -97,7 +94,7 @@ export default function Header({
 					/>
 					{currentSearchQuery && (
 						<button
-							onClick={() => setCurrentSearchQuery("")}
+							onClick={() => setCurrentSearchQuery('')}
 							className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 transition-colors"
 							aria-label="Clear search"
 						>

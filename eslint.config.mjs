@@ -1,8 +1,8 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
-import prettier from "eslint-config-prettier";
-import prettierPlugin from "eslint-plugin-prettier";
+import { defineConfig, globalIgnores } from 'eslint/config';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTs from 'eslint-config-next/typescript';
+import prettier from 'eslint-config-prettier';
+import prettierPlugin from 'eslint-plugin-prettier';
 
 const eslintConfig = defineConfig([
 	...nextVitals,
@@ -13,16 +13,25 @@ const eslintConfig = defineConfig([
 			prettier: prettierPlugin,
 		},
 		rules: {
-			"prettier/prettier": "warn", // Show Prettier issues as warnings
+			'prettier/prettier': 'error',
+			'@typescript-eslint/no-explicit-any': 'error',
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{
+					argsIgnorePattern: '^_',
+					varsIgnorePattern: '^_',
+				},
+			],
+			'no-console': ['warn', { allow: ['warn', 'error'] }],
 		},
 	},
 	// Override default ignores of eslint-config-next.
 	globalIgnores([
 		// Default ignores of eslint-config-next:
-		".next/**",
-		"out/**",
-		"build/**",
-		"next-env.d.ts",
+		'.next/**',
+		'out/**',
+		'build/**',
+		'next-env.d.ts',
 	]),
 ]);
 

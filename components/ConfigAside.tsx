@@ -1,18 +1,13 @@
-import { useState, useMemo } from "react";
-import { Button } from "@/components/ui/button";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { Copy, ArrowUpAZ, ArrowDownAZ, RotateCcw } from "lucide-react";
-import { toast } from "sonner";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { useState, useMemo } from 'react';
+import { Button } from '@/components/ui/button';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Copy, ArrowUpAZ, ArrowDownAZ, RotateCcw } from 'lucide-react';
+import { toast } from 'sonner';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
-import { sortConfig, type SortOrder } from "@/lib/sortConfig";
-import { useTranslations } from "next-intl";
+import { sortConfig, type SortOrder } from '@/lib/sortConfig';
+import { useTranslations } from 'next-intl';
 /**
  * Properties for the ConfigAside component.
  */
@@ -32,34 +27,29 @@ interface ConfigAsideProps {
  * @param props - The component properties.
  */
 export function ConfigAside({ config, onReset, hasConfig }: ConfigAsideProps) {
-	const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
-	const displayConfig = useMemo(
-		() => sortConfig(config, sortOrder),
-		[config, sortOrder]
-	);
+	const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
+	const displayConfig = useMemo(() => sortConfig(config, sortOrder), [config, sortOrder]);
 
 	const copyToClipboard = async () => {
 		if (displayConfig) {
 			await navigator.clipboard.writeText(displayConfig);
-			toast.success("Config copied to clipboard!");
+			toast.success('Config copied to clipboard!');
 		}
 	};
-	const t = useTranslations("Page.ConfigAside");
+	const t = useTranslations('Page.ConfigAside');
 
 	return (
 		<div className="relative flex h-full flex-col overflow-hidden rounded-lg border-l">
 			{/* Sticky Header */}
 			<div className="bg-background/95 sticky top-0 z-10 shrink-0 rounded-t-lg border-b backdrop-blur">
 				<div className="p-2">
-					<h2 className="my-4 text-center text-lg font-semibold">
-						Prettier Config
-					</h2>
+					<h2 className="my-4 text-center text-lg font-semibold">Prettier Config</h2>
 				</div>
 			</div>
 
 			{/* Scrollable Content Area */}
 			<div className="flex min-h-0 flex-1 flex-col overflow-auto">
-				{hasConfig && displayConfig ?
+				{hasConfig && displayConfig ? (
 					<>
 						{/* Sort Controls */}
 						<div className="shrink-0 border-b p-2">
@@ -87,14 +77,12 @@ export function ConfigAside({ config, onReset, hasConfig }: ConfigAsideProps) {
 								</div>
 								{/* Sort buttons */}
 								<div className="flex flex-1 items-center justify-end gap-2">
-									<span className="text-muted-foreground text-sm font-medium">
-										Sort:
-									</span>
+									<span className="text-muted-foreground text-sm font-medium">Sort:</span>
 									<div className="flex gap-1">
 										<Button
-											variant={sortOrder === "asc" ? "default" : "outline"}
+											variant={sortOrder === 'asc' ? 'default' : 'outline'}
 											size="sm"
-											onClick={() => setSortOrder("asc")}
+											onClick={() => setSortOrder('asc')}
 											className="text-xs"
 											aria-label="Sort A to Z"
 										>
@@ -102,9 +90,9 @@ export function ConfigAside({ config, onReset, hasConfig }: ConfigAsideProps) {
 											A-Z
 										</Button>
 										<Button
-											variant={sortOrder === "desc" ? "default" : "outline"}
+											variant={sortOrder === 'desc' ? 'default' : 'outline'}
 											size="sm"
-											onClick={() => setSortOrder("desc")}
+											onClick={() => setSortOrder('desc')}
 											className="text-xs"
 											aria-label="Sort Z to A"
 										>
@@ -123,8 +111,8 @@ export function ConfigAside({ config, onReset, hasConfig }: ConfigAsideProps) {
 									language="json"
 									style={atomDark}
 									customStyle={{
-										fontSize: "0.75rem",
-										borderRadius: "0.375rem",
+										fontSize: '0.75rem',
+										borderRadius: '0.375rem',
 										margin: 0,
 									}}
 								>
@@ -147,17 +135,18 @@ export function ConfigAside({ config, onReset, hasConfig }: ConfigAsideProps) {
 								disabled={!displayConfig}
 							>
 								<Copy className="mr-2 h-4 w-4" />
-								{t("copyConfig")}
+								{t('copyConfig')}
 							</Button>
 						</div>
 					</>
-				:	<div className="flex flex-1 items-center justify-center p-2">
+				) : (
+					<div className="flex flex-1 items-center justify-center p-2">
 						<div className="text-muted-foreground text-center">
-							<p className="mb-2 text-sm">{t("noConfig")}</p>
-							<p className="text-xs">{t("selectOptions")}</p>
+							<p className="mb-2 text-sm">{t('noConfig')}</p>
+							<p className="text-xs">{t('selectOptions')}</p>
 						</div>
 					</div>
-				}
+				)}
 			</div>
 		</div>
 	);

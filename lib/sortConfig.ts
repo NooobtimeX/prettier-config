@@ -1,4 +1,4 @@
-export type SortOrder = "asc" | "desc";
+export type SortOrder = 'asc' | 'desc';
 
 /**
  * Sorts the keys of a JSON configuration string alphabetically.
@@ -9,14 +9,14 @@ export type SortOrder = "asc" | "desc";
  */
 export function sortConfig(config: string, sortOrder: SortOrder): string {
 	if (!config) {
-		return "";
+		return '';
 	}
 
 	try {
 		const parsedConfig = JSON.parse(config);
 		let sortedConfig: Record<string, unknown>;
 
-		if (sortOrder === "asc") {
+		if (sortOrder === 'asc') {
 			// Sort keys A-Z
 			const sortedKeys = Object.keys(parsedConfig).sort();
 			sortedConfig = sortedKeys.reduce(
@@ -24,9 +24,9 @@ export function sortConfig(config: string, sortOrder: SortOrder): string {
 					acc[key] = parsedConfig[key];
 					return acc;
 				},
-				{} as Record<string, unknown>
+				{} as Record<string, unknown>,
 			);
-		} else if (sortOrder === "desc") {
+		} else if (sortOrder === 'desc') {
 			// Sort keys Z-A
 			const sortedKeys = Object.keys(parsedConfig).sort().reverse();
 			sortedConfig = sortedKeys.reduce(
@@ -34,7 +34,7 @@ export function sortConfig(config: string, sortOrder: SortOrder): string {
 					acc[key] = parsedConfig[key];
 					return acc;
 				},
-				{} as Record<string, unknown>
+				{} as Record<string, unknown>,
 			);
 		} else {
 			// Original order

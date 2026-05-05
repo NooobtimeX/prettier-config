@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { Moon, Sun } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const ThemeChanger = () => {
 	const { theme, setTheme } = useTheme();
@@ -17,7 +17,7 @@ const ThemeChanger = () => {
 	if (!mounted) return null;
 
 	const toggleTheme = () => {
-		setTheme(theme === "light" ? "dark" : "light");
+		setTheme(theme === 'light' ? 'dark' : 'light');
 	};
 
 	return (
@@ -28,9 +28,7 @@ const ThemeChanger = () => {
 			className="rounded-full"
 			aria-label="Toggle theme"
 		>
-			{theme === "dark" ?
-				<Moon size={20} />
-			:	<Sun size={20} />}
+			{theme === 'dark' ? <Moon size={20} /> : <Sun size={20} />}
 		</Button>
 	);
 };

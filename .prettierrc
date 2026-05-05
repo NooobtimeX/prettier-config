@@ -1,16 +1,13 @@
 {
-	"experimentalTernaries": true,
-	"experimentalOperatorPosition": "end",
-	"printWidth": 80,
-	"tabWidth": 2,
 	"useTabs": true,
+	"tabWidth": 2,
+	"printWidth": 100,
 	"semi": true,
-	"singleQuote": false,
+	"singleQuote": true,
 	"quoteProps": "as-needed",
 	"jsxSingleQuote": false,
-	"trailingComma": "es5",
+	"trailingComma": "all",
 	"bracketSpacing": true,
-	"objectWrap": "preserve",
 	"bracketSameLine": false,
 	"arrowParens": "always",
 	"rangeStart": 0,
@@ -21,6 +18,6 @@
 	"vueIndentScriptAndStyle": true,
 	"endOfLine": "lf",
 	"embeddedLanguageFormatting": "auto",
-	"singleAttributePerLine": false,
+	"singleAttributePerLine": true,
 	"plugins": ["prettier-plugin-tailwindcss"]
 }

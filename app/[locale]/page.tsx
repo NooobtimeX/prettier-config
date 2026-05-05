@@ -1,19 +1,14 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useMemo } from "react";
-import { useTranslations } from "next-intl";
-import options from "@/lib/options";
-import { Button } from "@/components/ui/button";
-import { PrettierOption } from "@/components/PrettierOption";
-import { ConfigModal } from "@/components/ConfigModal";
-import { ConfigAside } from "@/components/ConfigAside";
-import { RotateCcw, FilePlus } from "lucide-react";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { useState, useEffect, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
+import options from '@/lib/options';
+import { Button } from '@/components/ui/button';
+import { PrettierOption } from '@/components/PrettierOption';
+import { ConfigModal } from '@/components/ConfigModal';
+import { ConfigAside } from '@/components/ConfigAside';
+import { RotateCcw, FilePlus } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -23,13 +18,13 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { cn } from "@/lib/utils";
-import Footer from "./(components)/Footer";
-import Header from "./(components)/Header";
+} from '@/components/ui/alert-dialog';
+import { cn } from '@/lib/utils';
+import Footer from './(components)/Footer';
+import Header from './(components)/Header';
 
 // Type-safe keys from options
-type OptionKey = (typeof options)[number]["key"];
+type OptionKey = (typeof options)[number]['key'];
 type OptionValue = string | number | boolean | string[] | null;
 type SelectedOptions = {
 	[key in OptionKey]: OptionValue;
@@ -39,15 +34,8 @@ type SelectedOptions = {
 function generateConfig(selected: SelectedOptions): string {
 	const config: Partial<SelectedOptions> = {};
 
-	for (const [key, value] of Object.entries(selected) as [
-		OptionKey,
-		OptionValue,
-	][]) {
-		if (
-			value !== null &&
-			value !== "" &&
-			!(Array.isArray(value) && value.length === 0)
-		) {
+	for (const [key, value] of Object.entries(selected) as [OptionKey, OptionValue][]) {
+		if (value !== null && value !== '' && !(Array.isArray(value) && value.length === 0)) {
 			config[key] = value;
 		}
 	}
@@ -57,27 +45,20 @@ function generateConfig(selected: SelectedOptions): string {
 
 export default function HomePage() {
 	// The useTranslations hook will use the correct locale context from the provider
-	const t = useTranslations("Page");
-	const emptyConfig = Object.fromEntries(
-		options.map((opt) => [opt.key, null])
-	) as SelectedOptions;
+	const t = useTranslations('Page');
+	const emptyConfig = Object.fromEntries(options.map((opt) => [opt.key, null])) as SelectedOptions;
 
 	const [selected, setSelected] = useState<SelectedOptions>(emptyConfig);
 	const [showConfig, setShowConfig] = useState(false);
-	const [generatedConfig, setGeneratedConfig] = useState("");
-	const [searchQuery, setSearchQuery] = useState("");
-	const [showTooltip, setShowTooltip] = useState<boolean | undefined>(
-		undefined
-	);
+	const [generatedConfig, setGeneratedConfig] = useState('');
+	const [searchQuery, setSearchQuery] = useState('');
+	const [showTooltip, setShowTooltip] = useState<boolean | undefined>(undefined);
 	// ✨ Added: State to manage the visibility of the reset confirmation dialog
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
 
 	const hasSelectedOptions = Object.values(selected).some(
-		(value) =>
-			value !== null &&
-			value !== "" &&
-			!(Array.isArray(value) && value.length === 0)
+		(value) => value !== null && value !== '' && !(Array.isArray(value) && value.length === 0),
 	);
 
 	useEffect(() => {
@@ -92,8 +73,8 @@ export default function HomePage() {
 			}
 		};
 		checkScreenSize();
-		window.addEventListener("resize", checkScreenSize);
-		return () => window.removeEventListener("resize", checkScreenSize);
+		window.addEventListener('resize', checkScreenSize);
+		return () => window.removeEventListener('resize', checkScreenSize);
 	}, [isLargeScreen, hasSelectedOptions, selected]);
 
 	useEffect(() => {
@@ -155,9 +136,9 @@ export default function HomePage() {
 	 */
 	const executeReset = () => {
 		setSelected(emptyConfig);
-		setGeneratedConfig("");
+		setGeneratedConfig('');
 		setShowConfig(false);
-		setSearchQuery("");
+		setSearchQuery('');
 	};
 
 	return (
@@ -168,7 +149,10 @@ export default function HomePage() {
 				<main className="flex flex-1 flex-col">
 					{/* Header - Sticky at top */}
 					<div className="bg-background border-border/40 sticky top-0 z-40 rounded-b-3xl border-b px-2 py-2">
-						<Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+						<Header
+							searchQuery={searchQuery}
+							onSearchChange={setSearchQuery}
+						/>
 					</div>
 
 					{/* Scrollable content container */}
@@ -176,7 +160,7 @@ export default function HomePage() {
 						{/* Search results indicator */}
 						{searchQuery && (
 							<div className="text-muted-foreground mb-4 text-center text-sm">
-								{t("search.found", {
+								{t('search.found', {
 									count: filteredOptions.length,
 									total: options.length,
 								})}
@@ -186,7 +170,7 @@ export default function HomePage() {
 						{/* Options Grid */}
 						<div
 							className={cn(
-								"grid grid-cols-1 gap-2 pb-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+								'grid grid-cols-1 gap-2 pb-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
 							)}
 						>
 							{filteredOptions.map((opt) => (
@@ -201,16 +185,14 @@ export default function HomePage() {
 
 						{searchQuery && filteredOptions.length === 0 && (
 							<div className="py-12 text-center">
-								<div className="text-muted-foreground mb-2 text-lg">
-									{t("search.noOptions")}
-								</div>
+								<div className="text-muted-foreground mb-2 text-lg">{t('search.noOptions')}</div>
 								<div className="text-muted-foreground text-sm">
-									{t("search.tryOtherTerms")}{" "}
+									{t('search.tryOtherTerms')}{' '}
 									<button
-										onClick={() => setSearchQuery("")}
+										onClick={() => setSearchQuery('')}
 										className="text-primary hover:underline"
 									>
-										{t("search.clearSearch")}
+										{t('search.clearSearch')}
 									</button>
 								</div>
 							</div>
@@ -228,14 +210,17 @@ export default function HomePage() {
 													variant="default"
 													className="h-12 w-12 rounded-full shadow-md"
 													onClick={handleGenerate}
-													aria-label={t("fab.generateConfig")}
+													aria-label={t('fab.generateConfig')}
 												>
 													<FilePlus className="h-5 w-5" />
 												</Button>
 											}
 										/>
-										<TooltipContent side="left" sideOffset={8}>
-											{t("fab.generateConfig")}
+										<TooltipContent
+											side="left"
+											sideOffset={8}
+										>
+											{t('fab.generateConfig')}
 										</TooltipContent>
 									</Tooltip>
 
@@ -247,14 +232,17 @@ export default function HomePage() {
 													variant="secondary"
 													className="h-12 w-12 rounded-full shadow-md"
 													onClick={() => setIsResetDialogOpen(true)}
-													aria-label={t("fab.resetSelections")}
+													aria-label={t('fab.resetSelections')}
 												>
 													<RotateCcw className="h-5 w-5" />
 												</Button>
 											}
 										/>
-										<TooltipContent side="left" sideOffset={8}>
-											{t("fab.resetSelections")}
+										<TooltipContent
+											side="left"
+											sideOffset={8}
+										>
+											{t('fab.resetSelections')}
 										</TooltipContent>
 									</Tooltip>
 								</div>
@@ -274,17 +262,13 @@ export default function HomePage() {
 						>
 							<AlertDialogContent>
 								<AlertDialogHeader>
-									<AlertDialogTitle>{t("resetDialog.title")}</AlertDialogTitle>
-									<AlertDialogDescription>
-										{t("resetDialog.description")}
-									</AlertDialogDescription>
+									<AlertDialogTitle>{t('resetDialog.title')}</AlertDialogTitle>
+									<AlertDialogDescription>{t('resetDialog.description')}</AlertDialogDescription>
 								</AlertDialogHeader>
 								<AlertDialogFooter>
-									<AlertDialogCancel>
-										{t("resetDialog.cancel")}
-									</AlertDialogCancel>
+									<AlertDialogCancel>{t('resetDialog.cancel')}</AlertDialogCancel>
 									<AlertDialogAction onClick={executeReset}>
-										{t("resetDialog.continue")}
+										{t('resetDialog.continue')}
 									</AlertDialogAction>
 								</AlertDialogFooter>
 							</AlertDialogContent>

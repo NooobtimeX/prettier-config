@@ -1,17 +1,12 @@
-"use client";
+'use client';
 
-import { useLocale } from "next-intl";
-import { useParams } from "next/navigation";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-} from "@/components/ui/select";
-import { Globe } from "lucide-react";
-import { LANGUAGES, LANGUAGE_LIST } from "@/common/constants";
-import { Locale } from "@/common/enum/locale";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { useLocale } from 'next-intl';
+import { useParams } from 'next/navigation';
+import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
+import { Globe } from 'lucide-react';
+import { LANGUAGES, LANGUAGE_LIST } from '@/common/constants';
+import { Locale } from '@/common/enum/locale';
+import { usePathname, useRouter } from '@/i18n/navigation';
 
 export default function LanguageSwitcher() {
 	const locale = useLocale() as Locale;
@@ -27,7 +22,7 @@ export default function LanguageSwitcher() {
 
 		// Safeguard: Ensure the pathname does not start with a locale prefix
 		// next-intl's usePathname should handle this, but we'll be explicit to prevent /ko/pt issues
-		const cleanPathname = pathname.replace(/^\/[a-z]{2}(\/|$)/, "/");
+		const cleanPathname = pathname.replace(/^\/[a-z]{2}(\/|$)/, '/');
 
 		router.replace(cleanPathname, { locale: newLocale });
 	};
@@ -35,23 +30,27 @@ export default function LanguageSwitcher() {
 	const currentLanguage = LANGUAGES[currentLocale];
 
 	return (
-		<Select value={currentLocale} onValueChange={handleLanguageChange}>
+		<Select
+			value={currentLocale}
+			onValueChange={handleLanguageChange}
+		>
 			<SelectTrigger className="w-[140px]">
 				<div className="flex items-center gap-2">
 					<Globe className="h-4 w-4" />
 					{currentLanguage && (
 						<span className="flex items-center gap-2">
 							<span>{currentLanguage.flag}</span>
-							<span className="hidden sm:inline">
-								{currentLanguage.nativeName}
-							</span>
+							<span className="hidden sm:inline">{currentLanguage.nativeName}</span>
 						</span>
 					)}
 				</div>
 			</SelectTrigger>
 			<SelectContent>
 				{LANGUAGE_LIST.map((language) => (
-					<SelectItem key={language.code} value={language.code}>
+					<SelectItem
+						key={language.code}
+						value={language.code}
+					>
 						<div className="flex items-center gap-2">
 							<span>{language.flag}</span>
 							<span>{language.nativeName}</span>

@@ -1,15 +1,15 @@
-import type { Metadata, Viewport } from "next";
-import { Oswald as OswaldFont } from "next/font/google";
-import "../globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { Toaster } from "@/components/ui/sonner";
-import options from "@/lib/options";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import { routing } from "@/next-intl.config";
-import { GoogleTagManager } from "@next/third-parties/google";
+import type { Metadata, Viewport } from 'next';
+import { Oswald as OswaldFont } from 'next/font/google';
+import '../globals.css';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import { Toaster } from '@/components/ui/sonner';
+import options from '@/lib/options';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { routing } from '@/next-intl.config';
+import { GoogleTagManager } from '@next/third-parties/google';
 
-const oswald = OswaldFont({ subsets: ["latin"] });
+const oswald = OswaldFont({ subsets: ['latin'] });
 
 const prettierOptionKeywords = options.map((opt) => `Prettier ${opt.name}`);
 
@@ -18,65 +18,63 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-	width: "device-width",
+	width: 'device-width',
 	initialScale: 1,
 	maximumScale: 5,
 	userScalable: true,
 };
 
 export const metadata: Metadata = {
-	title: "Prettier Config",
+	title: 'Prettier Config',
 	description:
-		"Prettier Config - The ultimate interactive tool to generate your .prettierrc file effortlessly. Customize and optimize your code formatting with ease.",
-	metadataBase: new URL("https://prettier-config.dev/"),
+		'Prettier Config - The ultimate interactive tool to generate your .prettierrc file effortlessly. Customize and optimize your code formatting with ease.',
+	metadataBase: new URL('https://prettier-config.dev/'),
 	alternates: {
-		canonical: "https://prettier-config.dev",
+		canonical: 'https://prettier-config.dev',
 		languages: {
-			en: "https://prettier-config.dev/en",
-			th: "https://prettier-config.dev/th",
-			zh: "https://prettier-config.dev/zh",
-			es: "https://prettier-config.dev/es",
+			en: 'https://prettier-config.dev/en',
+			th: 'https://prettier-config.dev/th',
+			zh: 'https://prettier-config.dev/zh',
+			es: 'https://prettier-config.dev/es',
 		},
 	},
 	keywords: [
-		"Prettier Config",
-		"Prettier Config Generator",
-		"Prettierrc Generator",
-		".prettierrc creator",
-		"online prettier config",
-		"interactive prettier config",
+		'Prettier Config',
+		'Prettier Config Generator',
+		'Prettierrc Generator',
+		'.prettierrc creator',
+		'online prettier config',
+		'interactive prettier config',
 		...prettierOptionKeywords,
 	],
-	authors: [{ name: "NooobtimeX", url: "https://nooobtimex.me" }],
-	creator: "NooobtimeX",
+	authors: [{ name: 'NooobtimeX', url: 'https://nooobtimex.me' }],
+	creator: 'NooobtimeX',
 	icons: {
-		icon: "/favicon.ico",
-		shortcut: "/favicon.ico",
-		apple: "/apple-touch-icon.png",
+		icon: '/favicon.ico',
+		shortcut: '/favicon.ico',
+		apple: '/apple-touch-icon.png',
 	},
 	openGraph: {
-		title: "Prettier Config",
-		description:
-			"Interactive tool to generate a Prettier configuration file effortlessly.",
-		url: "https://prettier-config.dev/",
-		siteName: "Prettier Config",
-		type: "website",
+		title: 'Prettier Config',
+		description: 'Interactive tool to generate a Prettier configuration file effortlessly.',
+		url: 'https://prettier-config.dev/',
+		siteName: 'Prettier Config',
+		type: 'website',
 		images: [
 			{
-				url: "https://prettier-config.dev/og-image.png",
+				url: 'https://prettier-config.dev/og-image.png',
 				width: 500,
 				height: 500,
-				alt: "Prettier Config",
+				alt: 'Prettier Config',
 			},
 		],
 	},
 	twitter: {
-		card: "summary_large_image",
-		title: "Prettier Config",
-		description:
-			"Effortlessly generate a Prettier config file with this interactive tool.",
-		creator: "@nooobtimex",
-		images: ["https://prettier-config.dev/og-image.png"],
+		card: 'summary_large_image',
+		title: 'Prettier Config',
+		description: 'Effortlessly generate a Prettier config file with this interactive tool.',
+		creator: '@nooobtimex',
+		images: ['https://prettier-config.dev/og-image.png'],
 	},
 	robots: {
 		index: true,
@@ -84,9 +82,9 @@ export const metadata: Metadata = {
 		googleBot: {
 			index: true,
 			follow: true,
-			"max-video-preview": -1,
-			"max-image-preview": "large",
-			"max-snippet": -1,
+			'max-video-preview': -1,
+			'max-image-preview': 'large',
+			'max-snippet': -1,
 		},
 	},
 };
@@ -105,14 +103,20 @@ export default async function LocaleLayout({
 	const messages = await getMessages({ locale });
 
 	return (
-		<html suppressHydrationWarning lang={locale}>
+		<html
+			suppressHydrationWarning
+			lang={locale}
+		>
 			<head>
 				<meta
 					name="google-adsense-account"
 					content="ca-pub-6034794215506479"
 				></meta>
 			</head>
-			<body suppressHydrationWarning className={oswald.className}>
+			<body
+				suppressHydrationWarning
+				className={oswald.className}
+			>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"

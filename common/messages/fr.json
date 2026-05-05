@@ -1,0 +1,101 @@
+{
+	"Home": {
+		"hero": {
+			"badge": "Gratuit & Open Source",
+			"title": "Générez votre",
+			"titleSuffix": "Configuration",
+			"description": "Une application web moderne et conviviale qui aide les développeurs à créer et personnaliser facilement leurs fichiers de configuration Prettier avec une interface interactive.",
+			"startButton": "Commencer à générer",
+			"githubButton": "Voir sur GitHub"
+		},
+		"features": {
+			"title": "Pourquoi choisir notre générateur ?",
+			"subtitle": "Construit avec des technologies web modernes et conçu pour la meilleure expérience développeur",
+			"realtime": {
+				"title": "Génération en temps réel",
+				"description": "La configuration se met à jour instantanément au fur et à mesure que vous sélectionnez des options. Regardez votre fichier .prettierrc se générer en temps réel."
+			},
+			"interactive": {
+				"title": "Interface interactive",
+				"description": "Interface magnifique et réactive avec support des thèmes sombre/clair et infobulles complètes pour chaque option."
+			},
+			"search": {
+				"title": "Recherche intelligente",
+				"description": "Trouvez des options rapidement par nom, description ou termes associés grâce à notre fonctionnalité de recherche intégrée."
+			},
+			"copy": {
+				"title": "Copie en un clic",
+				"description": "Copiez instantanément votre configuration générée dans le presse-papiers avec de magnifiques notifications toast."
+			},
+			"validation": {
+				"title": "Validation du format",
+				"description": "Le formatage côté serveur garantit que votre configuration Prettier est toujours précise et correctement formatée."
+			},
+			"design": {
+				"title": "Design moderne",
+				"description": "Construit avec Next.js 15, TypeScript, Tailwind CSS et shadcn/ui pour une expérience magnifique et rapide."
+			}
+		},
+		"techStack": {
+			"title": "Construit avec des technologies modernes",
+			"subtitle": "Propulsé par les derniers outils et frameworks de développement web"
+		},
+		"cta": {
+			"title": "Prêt à générer votre configuration ?",
+			"description": "Commencez à créer votre configuration Prettier parfaite en quelques secondes. Aucune inscription requise, utilisation totalement gratuite.",
+			"button": "Générer la configuration maintenant"
+		}
+	},
+	"Page": {
+		"search": {
+			"found": "{count} options trouvées sur {total}",
+			"noOptions": "Aucune option trouvée",
+			"tryOtherTerms": "Essayez de rechercher d'autres termes ou",
+			"clearSearch": "effacez votre recherche"
+		},
+		"fab": {
+			"generateConfig": "Générer la configuration",
+			"resetSelections": "Réinitialiser les sélections"
+		},
+		"resetDialog": {
+			"title": "Êtes-vous absolument sûr ?",
+			"description": "Cette action ne peut pas être annulée. Cela effacera toutes vos options sélectionnées et réinitialisera le générateur à son état initial.",
+			"cancel": "Annuler",
+			"continue": "Continuer"
+		},
+		"ConfigAside": {
+			"copyConfig": "Copier la config",
+			"viewConfig": "Voir la config",
+			"noConfig": "Aucune config générée pour le moment.",
+			"selectOptions": "Sélectionnez des options pour générer votre config Prettier."
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Configuration Prettier",
+			"name": "Configuration Prettier",
+			"description": "Générez votre fichier .prettierrc sans effort avec cet outil de configuration Prettier interactif."
+		},
+		"quickLinks": {
+			"title": "Liens rapides",
+			"generator": "Générateur de config",
+			"docs": "Documentation",
+			"faq": "FAQ",
+			"whyPrettier": "Pourquoi Prettier ?"
+		},
+		"resources": {
+			"title": "Ressources",
+			"docs": "Docs Prettier",
+			"configurationGuide": "Guide de configuration",
+			"playground": "Playground Prettier"
+		},
+		"developer": {
+			"title": "Développeur",
+			"createdBy": "Créé par",
+			"viewOnGitHub": "Voir sur GitHub"
+		},
+		"bottom": {
+			"copyright": "Configuration Prettier"
+		}
+	}
+}

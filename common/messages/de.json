@@ -1,0 +1,101 @@
+{
+	"Home": {
+		"hero": {
+			"badge": "Kostenlos & Open Source",
+			"title": "Erstellen Sie Ihre",
+			"titleSuffix": "Konfiguration",
+			"description": "Eine moderne, benutzerfreundliche Webanwendung, die Entwicklern hilft, ihre Prettier-Konfigurationsdateien einfach über eine interaktive Oberfläche zu erstellen und anzupassen.",
+			"startButton": "Erstellung starten",
+			"githubButton": "Auf GitHub anzeigen"
+		},
+		"features": {
+			"title": "Warum unseren Generator wählen?",
+			"subtitle": "Gebaut mit modernen Webtechnologien und entwickelt für die beste Entwicklererfahrung",
+			"realtime": {
+				"title": "Echtzeit-Erstellung",
+				"description": "Konfigurations-Updates erfolgen sofort, während Sie Optionen auswählen. Sehen Sie die Erstellung Ihrer .prettierrc-Datei in Echtzeit."
+			},
+			"interactive": {
+				"title": "Interaktive Oberfläche",
+				"description": "Schöne, reaktionsschnelle Oberfläche mit Unterstützung für dunkle/helle Themes und umfassenden Tooltips für jede Option."
+			},
+			"search": {
+				"title": "Intelligente Suche",
+				"description": "Finden Sie Optionen schnell nach Name, Beschreibung oder verwandten Begriffen mit unserer integrierten Suchfunktion."
+			},
+			"copy": {
+				"title": "Ein-Klick-Kopie",
+				"description": "Kopieren Sie Ihre generierte Konfiguration sofort in die Zwischenablage mit schönen Toast-Benachrichtigungen."
+			},
+			"validation": {
+				"title": "Format-Validierung",
+				"description": "Serverseitige Formatierung stellt sicher, dass Ihre Prettier-Konfiguration immer genau und korrekt formatiert ist."
+			},
+			"design": {
+				"title": "Modernes Design",
+				"description": "Gebaut mit Next.js 15, TypeScript, Tailwind CSS und shadcn/ui für ein schönes, schnelles Erlebnis."
+			}
+		},
+		"techStack": {
+			"title": "Gebaut mit modernen Technologien",
+			"subtitle": "Angetrieben von den neuesten Web-Entwicklungstools und Frameworks"
+		},
+		"cta": {
+			"title": "Bereit, Ihre Konfiguration zu erstellen?",
+			"description": "Beginnen Sie in Sekundenschnelle mit der Erstellung Ihrer perfekten Prettier-Konfiguration. Keine Anmeldung erforderlich, völlig kostenlos nutzbar.",
+			"button": "Konfiguration jetzt erstellen"
+		}
+	},
+	"Page": {
+		"search": {
+			"found": "{count} von {total} Optionen gefunden",
+			"noOptions": "Keine Optionen gefunden",
+			"tryOtherTerms": "Versuchen Sie es mit anderen Begriffen oder",
+			"clearSearch": "leeren Sie Ihre Suche"
+		},
+		"fab": {
+			"generateConfig": "Konfiguration erstellen",
+			"resetSelections": "Auswahl zurücksetzen"
+		},
+		"resetDialog": {
+			"title": "Sind Sie absolut sicher?",
+			"description": "Diese Aktion kann nicht rückgängig gemacht werden. Dies löscht alle Ihre ausgewählten Optionen und setzt den Generator in seinen Ausgangszustand zurück.",
+			"cancel": "Abbrechen",
+			"continue": "Fortfahren"
+		},
+		"ConfigAside": {
+			"copyConfig": "Konfiguration kopieren",
+			"viewConfig": "Konfiguration anzeigen",
+			"noConfig": "Noch keine Konfiguration erstellt.",
+			"selectOptions": "Wählen Sie Optionen aus, um Ihre Prettier-Konfiguration zu erstellen."
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Prettier Konfiguration",
+			"name": "Prettier Konfiguration",
+			"description": "Erstellen Sie Ihre .prettierrc-Datei mühelos mit diesem interaktiven Prettier-Konfigurationstool."
+		},
+		"quickLinks": {
+			"title": "Quick-Links",
+			"generator": "Konfigurations-Generator",
+			"docs": "Dokumentation",
+			"faq": "FAQ",
+			"whyPrettier": "Warum Prettier?"
+		},
+		"resources": {
+			"title": "Ressourcen",
+			"docs": "Prettier-Docs",
+			"configurationGuide": "Konfigurations-Leitfaden",
+			"playground": "Prettier-Playground"
+		},
+		"developer": {
+			"title": "Entwickler",
+			"createdBy": "Erstellt von",
+			"viewOnGitHub": "Auf GitHub anzeigen"
+		},
+		"bottom": {
+			"copyright": "Prettier Konfiguration"
+		}
+	}
+}

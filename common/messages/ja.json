@@ -1,0 +1,101 @@
+{
+	"Home": {
+		"hero": {
+			"badge": "無料かつオープンソース",
+			"title": "自分だけの",
+			"titleSuffix": "設定を生成する",
+			"description": "開発者がインタラクティブなインターフェースでPrettier設定ファイルを簡単に作成およびカスタマイズできるように設計された、モダンでユーザーフレンドリーなWebアプリケーションです。",
+			"startButton": "生成を開始する",
+			"githubButton": "GitHubで表示"
+		},
+		"features": {
+			"title": "なぜ当サイトのジェネレーターを選ぶのか？",
+			"subtitle": "最新のWeb技術で構築され、最高の開発者体験を提供するために設計されています",
+			"realtime": {
+				"title": "リアルタイム生成",
+				"description": "オプションを選択すると即座に設定が更新されます。自分の.prettierrcファイルがリアルタイムで生成されるのを確認できます。"
+			},
+			"interactive": {
+				"title": "インタラクティブなインターフェース",
+				"description": "ダーク/ライトテーマに対応し、各オプションに詳細なツールチップを備えた美しくレスポンシブなインターフェース。"
+			},
+			"search": {
+				"title": "スマート検索",
+				"description": "統合された検索機能により、名前、説明、または関連用語からオプションを素早く見つけることができます。"
+			},
+			"copy": {
+				"title": "ワンクリックコピー",
+				"description": "生成された設定を、美しいトースト通知と共に即座にクリップボードへコピーできます。"
+			},
+			"validation": {
+				"title": "フォーマット検証",
+				"description": "サーバー側のフォーマット処理により、Prettier設定が常に正確かつ適切にフォーマットされていることを保証します。"
+			},
+			"design": {
+				"title": "モダンなデザイン",
+				"description": "Next.js 15、TypeScript、Tailwind CSS、shadcn/uiを使用して構築されており、美しく高速な体験を提供します。"
+			}
+		},
+		"techStack": {
+			"title": "モダンな技術で構築",
+			"subtitle": "最新のWeb開発ツールとフレームワークによって駆動されています"
+		},
+		"cta": {
+			"title": "設定を生成する準備はできましたか？",
+			"description": "数秒で自分だけの完璧なPrettier設定の作成を開始できます。登録は不要で、完全に無料で使用できます。",
+			"button": "今すぐ設定を生成する"
+		}
+	},
+	"Page": {
+		"search": {
+			"found": "{total}個中 {count}個のオプションが見つかりました",
+			"noOptions": "オプションが見つかりません",
+			"tryOtherTerms": "別の用語で検索するか、",
+			"clearSearch": "検索をクリアしてください"
+		},
+		"fab": {
+			"generateConfig": "設定を生成",
+			"resetSelections": "選択をリセット"
+		},
+		"resetDialog": {
+			"title": "本当によろしいですか？",
+			"description": "この操作は取り消せません。選択したすべてのオプションがクリアされ、ジェネレーターが初期状態に戻ります。",
+			"cancel": "キャンセル",
+			"continue": "続行"
+		},
+		"ConfigAside": {
+			"copyConfig": "設定をコピー",
+			"viewConfig": "設定を表示",
+			"noConfig": "設定はまだ生成されていません。",
+			"selectOptions": "オプションを選択してPrettier設定を生成してください。"
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Prettier Config",
+			"name": "Prettier Config",
+			"description": "このインタラクティブなPrettier設定ツールを使用して、.prettierrcファイルを簡単に生成できます。"
+		},
+		"quickLinks": {
+			"title": "クイックリンク",
+			"generator": "設定ジェネレーター",
+			"docs": "ドキュメント",
+			"faq": "よくある質問",
+			"whyPrettier": "なぜPrettierを使うのか？"
+		},
+		"resources": {
+			"title": "リソース",
+			"docs": "Prettierドキュメント",
+			"configurationGuide": "設定ガイド",
+			"playground": "Prettierプレイグラウンド"
+		},
+		"developer": {
+			"title": "開発者",
+			"createdBy": "作成者",
+			"viewOnGitHub": "GitHubで表示"
+		},
+		"bottom": {
+			"copyright": "Prettier Config"
+		}
+	}
+}

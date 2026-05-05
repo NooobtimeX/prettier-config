@@ -70,6 +70,157 @@
 			"selectOptions": "옵션을 선택하여 Prettier 설정을 생성하세요."
 		}
 	},
+	"Faq": {
+		"meta": {
+			"title": "FAQ - Prettier Config",
+			"description": "Prettier, .prettierrc 파일 및 Prettier Config Generator 사용에 관한 자주 묻는 질문에 대한 답변."
+		},
+		"hero": {
+			"badge": "도움말 센터",
+			"title": "자주 묻는 질문",
+			"description": "Prettier와 이 구성 생성기에 대해 알아야 할 모든 것."
+		},
+		"items": [
+			{
+				"question": "Prettier Config Generator란 무엇인가요?",
+				"answer": "모든 Prettier 옵션을 시각적으로 구성하고 생성된 .prettierrc 파일을 즉시 복사할 수 있는 무료 인터랙티브 웹 도구입니다."
+			},
+			{
+				"question": "Prettier란 무엇이고 왜 사용해야 하나요?",
+				"answer": "Prettier는 코드베이스 전체에 일관된 스타일을 적용하는 코드 포매터로, 코드 리뷰에서 스타일 논쟁을 없애줍니다."
+			},
+			{
+				"question": ".prettierrc 파일이란 무엇인가요?",
+				"answer": "프로젝트 루트에 배치하는 구성 파일로, Prettier에 코드 형식 지정 방법을 알려줍니다."
+			},
+			{
+				"question": "이 도구를 사용해 구성을 생성하는 방법은?",
+				"answer": "메인 페이지에서 Prettier 옵션을 선택하면 사이드바에서 실시간으로 구성이 업데이트됩니다. \"구성 복사\"를 클릭하고 .prettierrc 파일에 붙여넣기 하세요."
+			},
+			{
+				"question": "Prettier Config Generator는 무료인가요?",
+				"answer": "예, 완전히 무료입니다. 회원가입, 계정 불필요, 사용 제한 없음."
+			},
+			{
+				"question": "이 도구는 모든 Prettier 옵션을 다루나요?",
+				"answer": "예. 공식 지원되는 모든 Prettier 옵션이 설명 및 기본값과 함께 포함되어 있습니다."
+			},
+			{
+				"question": "생성된 구성을 복사하고 사용하는 방법은?",
+				"answer": "데스크톱에서는 사이드바의 \"구성 복사\" 버튼을, 모바일에서는 플로팅 버튼을 클릭하세요."
+			},
+			{
+				"question": ".prettierrc, prettier.config.js, package.json의 prettier 키 차이는?",
+				"answer": "세 가지 모두 유효한 방법입니다. .prettierrc는 JSON/YAML 지원, prettier.config.js는 JavaScript 모듈, package.json의 prettier 키는 모든 것을 한 파일에."
+			},
+			{
+				"question": "Prettier가 TypeScript, React, Vue와 함께 작동하나요?",
+				"answer": "예. TypeScript, JSX/TSX, Vue 단일 파일 컴포넌트 등을 기본 지원합니다."
+			},
+			{
+				"question": "VS Code에 Prettier를 통합하는 방법은?",
+				"answer": "VS Code 마켓플레이스에서 \"Prettier - Code formatter\" 확장 설치 후 formatOnSave: true 설정."
+			},
+			{
+				"question": "전체 프로젝트에 Prettier를 실행하는 방법은?",
+				"answer": "프로젝트 루트에서 npx prettier --write . 실행."
+			},
+			{
+				"question": "Prettier가 지원하는 언어와 파일 형식은?",
+				"answer": "JavaScript, TypeScript, JSX, CSS, HTML, Vue, JSON, YAML, Markdown 등."
+			},
+			{
+				"question": "Prettier 형식 지정에서 파일을 제외하는 방법은?",
+				"answer": "프로젝트 루트에 .prettierignore 파일 생성."
+			},
+			{
+				"question": "Prettier와 ESLint를 함께 사용할 수 있나요?",
+				"answer": "예, eslint-config-prettier 설치."
+			},
+			{
+				"question": "printWidth 옵션은 무엇을 하나요?",
+				"answer": "코드가 들어가야 하는 목표 줄 길이. 기본값 80."
+			},
+			{
+				"question": "singleQuote와 jsxSingleQuote의 차이는?",
+				"answer": "singleQuote는 JS/TS 문자열 따옴표, jsxSingleQuote는 JSX 속성 제어."
+			},
+			{
+				"question": "이 사이트의 검색 기능 사용 방법은?",
+				"answer": "페이지 상단의 검색창 사용."
+			},
+			{
+				"question": "이 사이트는 다크 모드를 지원하나요?",
+				"answer": "예, 헤더의 테마 전환 버튼 클릭."
+			},
+			{
+				"question": "Prettier 기본 구성은 무엇인가요?",
+				"answer": "printWidth: 80, tabWidth: 2, semi: true, singleQuote: false, trailingComma: \"all\"."
+			},
+			{
+				"question": "버그 보고나 프로젝트 기여 방법은?",
+				"answer": "GitHub 저장소에서 이슈 또는 풀 리퀘스트 열기."
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "소개 - Prettier Config",
+			"description": "Prettier Config Generator 소개 — .prettierrc 파일을 쉽게 만들 수 있는 무료 오픈소스 도구."
+		},
+		"hero": {
+			"badge": "소개",
+			"title": "Prettier Config 소개",
+			"description": "개발자가 번거로움 없이 Prettier를 구성할 수 있도록 만들어진 무료 오픈소스 도구."
+		},
+		"whatIsThis": {
+			"title": "이 도구는 무엇인가요?",
+			"description": "Prettier Config Generator는 Prettier 구성을 쉽게 만들어주는 인터랙티브 웹 애플리케이션입니다. 모든 Prettier 설정을 시각적으로 조정하고 구성 파일이 실시간으로 업데이트되는 것을 확인할 수 있습니다."
+		},
+		"features": {
+			"title": "기능",
+			"items": [
+				{
+					"title": "Real-time Generation",
+					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+				},
+				{
+					"title": "Interactive Interface",
+					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+				},
+				{
+					"title": "Smart Search",
+					"description": "Find options quickly by name, description, or keyword with integrated search."
+				},
+				{
+					"title": "One-Click Copy",
+					"description": "Copy your generated configuration to clipboard instantly."
+				},
+				{
+					"title": "All Options Covered",
+					"description": "Every officially supported Prettier option is included with its default value and description."
+				},
+				{
+					"title": "15 Languages",
+					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+				}
+			]
+		},
+		"techStack": {
+			"title": "사용 기술",
+			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+		},
+		"openSource": {
+			"title": "오픈소스",
+			"description": "이 도구는 완전히 무료이며 오픈소스입니다. 기여, 버그 보고, 제안을 언제나 환영합니다.",
+			"button": "GitHub에서 보기"
+		},
+		"creator": {
+			"title": "제작자",
+			"builtBy": "제작",
+			"description": "개발자 커뮤니티를 위해 정성껏 만들었습니다. 이 도구가 유용하다면 GitHub 저장소에 스타를 주세요."
+		}
+	},
 	"Footer": {
 		"brand": {
 			"alt": "Prettier 설정",
@@ -81,6 +232,7 @@
 			"generator": "설정 생성기",
 			"docs": "문서",
 			"faq": "자주 묻는 질문",
+			"about": "소개",
 			"whyPrettier": "왜 Prettier인가요?"
 		},
 		"resources": {

@@ -70,6 +70,157 @@
 			"selectOptions": "เลือกตัวเลือกเพื่อสร้างคอนฟิก Prettier ของคุณ"
 		}
 	},
+	"Faq": {
+		"meta": {
+			"title": "FAQ - Prettier Config",
+			"description": "คำตอบสำหรับคำถามที่พบบ่อยเกี่ยวกับ Prettier, ไฟล์ .prettierrc และวิธีใช้ Prettier Config Generator"
+		},
+		"hero": {
+			"badge": "ศูนย์ช่วยเหลือ",
+			"title": "คำถามที่พบบ่อย",
+			"description": "ทุกสิ่งที่คุณต้องรู้เกี่ยวกับ Prettier และตัวสร้างการตั้งค่านี้"
+		},
+		"items": [
+			{
+				"question": "Prettier Config Generator คืออะไร?",
+				"answer": "Prettier Config Generator เป็นเครื่องมือเว็บแบบโต้ตอบฟรีที่ช่วยให้คุณตั้งค่าทุกออปชันของ Prettier ได้อย่างง่ายดายและคัดลอกไฟล์ .prettierrc ที่ได้ทันที ไม่ต้องแก้ไขด้วยตนเอง"
+			},
+			{
+				"question": "Prettier คืออะไรและทำไมต้องใช้?",
+				"answer": "Prettier เป็นตัวจัดรูปแบบโค้ดที่กำหนดสไตล์ตายตัว ช่วยให้โค้ดมีรูปแบบที่สม่ำเสมอทั่วทั้งโปรเจกต์ ขจัดการถกเถียงเรื่องสไตล์โค้ดในการรีวิว"
+			},
+			{
+				"question": "ไฟล์ .prettierrc คืออะไร?",
+				"answer": "ไฟล์ .prettierrc เป็นไฟล์การตั้งค่าที่วางไว้ที่ root ของโปรเจกต์ บอก Prettier ว่าต้องจัดรูปแบบโค้ดอย่างไร ควบคุมออปชันต่างๆ เช่น การเยื้อง สไตล์เครื่องหมายคำพูด และความกว้างของบรรทัด"
+			},
+			{
+				"question": "ใช้เครื่องมือนี้สร้างคอนฟิกอย่างไร?",
+				"answer": "เลือกออปชัน Prettier ที่ต้องการในหน้าหลัก การตั้งค่าจะอัปเดตแบบเรียลไทม์ในแถบด้านข้าง คลิก \"คัดลอกคอนฟิก\" เพื่อคัดลอก JSON ไปยังคลิปบอร์ด แล้ววางลงในไฟล์ .prettierrc ที่ root ของโปรเจกต์"
+			},
+			{
+				"question": "Prettier Config Generator ใช้ฟรีหรือเปล่า?",
+				"answer": "ใช่ ฟรีทั้งหมด ไม่ต้องสมัครสมาชิก ไม่ต้องมีบัญชี และไม่มีข้อจำกัดในการใช้งาน เครื่องมือนี้ยังเป็นโอเพ่นซอร์สบน GitHub"
+			},
+			{
+				"question": "เครื่องมือนี้ครอบคลุมออปชัน Prettier ทั้งหมดหรือไม่?",
+				"answer": "ใช่ เครื่องมือนี้รวมทุกออปชัน Prettier ที่รองรับอย่างเป็นทางการ พร้อมคำอธิบายและค่าเริ่มต้นสำหรับแต่ละออปชัน"
+			},
+			{
+				"question": "คัดลอกและใช้คอนฟิกที่สร้างขึ้นอย่างไร?",
+				"answer": "คลิกปุ่ม \"คัดลอกคอนฟิก\" ในแถบด้านข้างบนเดสก์ท็อป หรือแตะปุ่มลอยบนมือถือ วางเนื้อหา JSON ที่คัดลอกไปยังไฟล์ใหม่ชื่อ .prettierrc ที่ root ของโปรเจกต์"
+			},
+			{
+				"question": ".prettierrc, prettier.config.js และ prettier ใน package.json ต่างกันอย่างไร?",
+				"answer": "ทั้งสามวิธีเป็นวิธีที่ถูกต้องในการตั้งค่า Prettier .prettierrc รองรับ JSON หรือ YAML, prettier.config.js เป็น JavaScript module ที่ช่วยให้ตั้งค่าแบบไดนามิก และ prettier ใน package.json รวมทุกอย่างไว้ในไฟล์เดียว ฟังก์ชันการทำงานเหมือนกัน ขึ้นอยู่กับความชอบ"
+			},
+			{
+				"question": "Prettier รองรับ TypeScript, React และ Vue หรือไม่?",
+				"answer": "ใช่ Prettier รองรับ TypeScript, JSX/TSX (React), Vue single-file components และรูปแบบอื่นๆ อีกมาก อาจต้องติดตั้งปลั๊กอินเพิ่มเติมสำหรับบางเฟรมเวิร์ก"
+			},
+			{
+				"question": "รวม Prettier กับ VS Code อย่างไร?",
+				"answer": "ติดตั้งส่วนขยาย \"Prettier - Code formatter\" จาก VS Code marketplace จากนั้นเพิ่ม \"editor.defaultFormatter\": \"esbenp.prettier-vscode\" และ \"editor.formatOnSave\": true ในการตั้งค่า VS Code"
+			},
+			{
+				"question": "รัน Prettier กับทั้งโปรเจกต์อย่างไร?",
+				"answer": "รัน npx prettier --write . ที่ root ของโปรเจกต์ คำสั่งนี้จะจัดรูปแบบไฟล์ที่รองรับทั้งหมด เพิ่ม prettier เป็น dev dependency ด้วย npm install --save-dev prettier"
+			},
+			{
+				"question": "Prettier รองรับภาษาและประเภทไฟล์อะไรบ้าง?",
+				"answer": "Prettier รองรับ JavaScript, TypeScript, JSX, TSX, CSS, SCSS, Less, HTML, Vue, Angular, JSON, YAML, Markdown และอื่นๆ อีกมาก สามารถขยายด้วยปลั๊กอินสำหรับภาษาเพิ่มเติม"
+			},
+			{
+				"question": "ยกเว้นไฟล์จากการจัดรูปแบบ Prettier อย่างไร?",
+				"answer": "สร้างไฟล์ .prettierignore ที่ root ของโปรเจกต์ โดยใช้ syntax เดียวกับ .gitignore ไฟล์และไดเรกทอรีที่ระบุจะถูกข้ามโดย Prettier"
+			},
+			{
+				"question": "ใช้ Prettier ร่วมกับ ESLint ได้หรือไม่?",
+				"answer": "ได้ ติดตั้ง eslint-config-prettier เพื่อปิดกฎการจัดรูปแบบ ESLint ที่ขัดแย้งกับ Prettier ใช้ Prettier สำหรับการจัดรูปแบบและ ESLint สำหรับกฎคุณภาพโค้ด"
+			},
+			{
+				"question": "ออปชัน printWidth ทำอะไร?",
+				"answer": "printWidth บอก Prettier ถึงความยาวบรรทัดที่ควรพยายามจัดโค้ดให้พอดี ค่าเริ่มต้นคือ 80 นี่เป็นเป้าหมายอ่อน Prettier อาจเกินได้หากการตัดบรรทัดทำให้โค้ดอ่านยากขึ้น"
+			},
+			{
+				"question": "singleQuote และ jsxSingleQuote ต่างกันอย่างไร?",
+				"answer": "singleQuote ควบคุมว่า Prettier ใช้ single quote ใน JavaScript/TypeScript หรือไม่ jsxSingleQuote ควบคุม JSX attribute strings โดยเฉพาะ คุณสามารถตั้งค่าแยกกันได้"
+			},
+			{
+				"question": "ใช้ฟีเจอร์ค้นหาบนเว็บไซต์นี้อย่างไร?",
+				"answer": "ใช้แถบค้นหาด้านบนหน้าเพื่อกรองออปชัน Prettier ตามชื่อ คำอธิบาย หรือคำหลัก ผลลัพธ์จะอัปเดตทันทีขณะพิมพ์"
+			},
+			{
+				"question": "เว็บไซต์นี้รองรับโหมดมืดหรือไม่?",
+				"answer": "ใช่ คลิกปุ่มสลับธีมในส่วนหัวเพื่อสลับระหว่างโหมดสว่าง โหมดมืด และการตั้งค่าระบบ การเลือกของคุณจะถูกบันทึกโดยอัตโนมัติ"
+			},
+			{
+				"question": "การตั้งค่า Prettier เริ่มต้นคืออะไร?",
+				"answer": "ค่าเริ่มต้น Prettier รวมถึง: printWidth: 80, tabWidth: 2, useTabs: false, semi: true, singleQuote: false, trailingComma: \"all\", bracketSpacing: true และ arrowParens: \"always\""
+			},
+			{
+				"question": "รายงานข้อผิดพลาดหรือมีส่วนร่วมในโปรเจกต์นี้อย่างไร?",
+				"answer": "เปิด issue หรือ pull request บน GitHub repository โปรเจกต์ยินดีรับการมีส่วนร่วมทุกประเภท รวมถึงฟีเจอร์ใหม่ การแก้ไขข้อผิดพลาด และการปรับปรุงการแปล"
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "เกี่ยวกับเรา - Prettier Config",
+			"description": "เรียนรู้เกี่ยวกับ Prettier Config Generator — เครื่องมือโอเพ่นซอร์สฟรีสำหรับช่วยนักพัฒนาสร้างไฟล์ .prettierrc ได้อย่างง่ายดาย"
+		},
+		"hero": {
+			"badge": "เกี่ยวกับเรา",
+			"title": "เกี่ยวกับ Prettier Config",
+			"description": "เครื่องมือฟรีและโอเพ่นซอร์สที่สร้างขึ้นเพื่อช่วยนักพัฒนาตั้งค่า Prettier โดยไม่ต้องยุ่งยาก"
+		},
+		"whatIsThis": {
+			"title": "เครื่องมือนี้คืออะไร?",
+			"description": "Prettier Config Generator เป็นเว็บแอปพลิเคชันแบบโต้ตอบที่ทำให้การตั้งค่า Prettier เป็นเรื่องง่าย แทนที่จะเขียน JSON ด้วยตนเองและค้นหาแต่ละออปชันในเอกสาร คุณสามารถสลับและปรับทุกการตั้งค่า Prettier ได้อย่างสะดวกและเห็นไฟล์คอนฟิกอัปเดตแบบเรียลไทม์"
+		},
+		"features": {
+			"title": "ฟีเจอร์",
+			"items": [
+				{
+					"title": "สร้างแบบเรียลไทม์",
+					"description": "การตั้งค่าอัปเดตทันทีเมื่อคุณเลือกออปชัน เห็นไฟล์ .prettierrc สร้างสดๆ"
+				},
+				{
+					"title": "อินเทอร์เฟซแบบโต้ตอบ",
+					"description": "อินเทอร์เฟซที่สวยงามและตอบสนอง พร้อมรองรับธีมมืด/สว่างและคำแนะนำสำหรับแต่ละออปชัน"
+				},
+				{
+					"title": "การค้นหาอัจฉริยะ",
+					"description": "ค้นหาออปชันได้อย่างรวดเร็วตามชื่อ คำอธิบาย หรือคำหลักด้วยการค้นหาที่รวมไว้"
+				},
+				{
+					"title": "คัดลอกคลิกเดียว",
+					"description": "คัดลอกการตั้งค่าที่สร้างขึ้นไปยังคลิปบอร์ดได้ทันที"
+				},
+				{
+					"title": "ครอบคลุมทุกออปชัน",
+					"description": "ทุกออปชัน Prettier ที่รองรับอย่างเป็นทางการรวมอยู่พร้อมค่าเริ่มต้นและคำอธิบาย"
+				},
+				{
+					"title": "15 ภาษา",
+					"description": "รองรับการแปล 15 ภาษา รวมถึงภาษาอังกฤษ ไทย จีน สเปน ฮินดี และอื่นๆ"
+				}
+			]
+		},
+		"techStack": {
+			"title": "สร้างด้วย",
+			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+		},
+		"openSource": {
+			"title": "โอเพ่นซอร์ส",
+			"description": "เครื่องมือนี้ฟรีและโอเพ่นซอร์สทั้งหมด ยินดีรับการมีส่วนร่วม รายงานข้อผิดพลาด และข้อเสนอแนะ",
+			"button": "ดูบน GitHub"
+		},
+		"creator": {
+			"title": "ผู้สร้าง",
+			"builtBy": "สร้างโดย",
+			"description": "สร้างด้วยความตั้งใจเพื่อชุมชนนักพัฒนา หากคุณพบว่าเครื่องมือนี้มีประโยชน์ กรุณากดดาวที่ repository บน GitHub"
+		}
+	},
 	"Footer": {
 		"brand": {
 			"alt": "ตัวสร้างการตั้งค่า Prettier",
@@ -81,6 +232,7 @@
 			"generator": "ตัวสร้างการตั้งค่า",
 			"docs": "เอกสาร",
 			"faq": "คำถามที่พบบ่อย",
+			"about": "เกี่ยวกับเรา",
 			"whyPrettier": "ทำไมต้อง Prettier?"
 		},
 		"resources": {

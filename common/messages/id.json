@@ -70,6 +70,157 @@
 			"selectOptions": "Pilih opsi untuk membuat konfigurasi Prettier Anda."
 		}
 	},
+	"Faq": {
+		"meta": {
+			"title": "FAQ - Prettier Config",
+			"description": "Jawaban atas pertanyaan umum tentang Prettier, file .prettierrc, dan cara menggunakan Prettier Config Generator."
+		},
+		"hero": {
+			"badge": "Pusat Bantuan",
+			"title": "Pertanyaan yang Sering Diajukan",
+			"description": "Semua yang perlu Anda ketahui tentang Prettier dan generator konfigurasi ini."
+		},
+		"items": [
+			{
+				"question": "Apa itu Prettier Config Generator?",
+				"answer": "Alat web interaktif gratis yang memungkinkan Anda mengonfigurasi setiap opsi Prettier secara visual dan langsung menyalin file .prettierrc yang dihasilkan."
+			},
+			{
+				"question": "Apa itu Prettier dan mengapa harus menggunakannya?",
+				"answer": "Prettier adalah formatter kode yang menerapkan gaya konsisten di seluruh kode, menghilangkan perdebatan tentang gaya dalam ulasan kode."
+			},
+			{
+				"question": "Apa itu file .prettierrc?",
+				"answer": "File konfigurasi di root proyek yang memberi tahu Prettier cara memformat kode."
+			},
+			{
+				"question": "Bagaimana cara menggunakan alat ini untuk menghasilkan konfigurasi?",
+				"answer": "Pilih opsi Prettier di halaman utama. Konfigurasi diperbarui secara real-time. Klik \"Salin Konfigurasi\" dan tempel JSON ke file .prettierrc."
+			},
+			{
+				"question": "Apakah Prettier Config Generator gratis?",
+				"answer": "Ya, sepenuhnya gratis. Tanpa pendaftaran, tanpa akun, tanpa batas penggunaan."
+			},
+			{
+				"question": "Apakah alat ini mencakup semua opsi Prettier?",
+				"answer": "Ya. Mencakup setiap opsi Prettier yang didukung resmi dengan deskripsi dan nilai default."
+			},
+			{
+				"question": "Bagaimana cara menyalin dan menggunakan konfigurasi yang dihasilkan?",
+				"answer": "Klik tombol \"Salin Konfigurasi\" di sidebar (desktop) atau tombol mengambang (mobile)."
+			},
+			{
+				"question": "Apa perbedaan antara .prettierrc, prettier.config.js, dan kunci prettier di package.json?",
+				"answer": "Ketiganya adalah cara yang valid. .prettierrc mendukung JSON/YAML, prettier.config.js adalah modul JavaScript, kunci prettier di package.json menyimpan semuanya dalam satu file."
+			},
+			{
+				"question": "Apakah Prettier bekerja dengan TypeScript, React, dan Vue?",
+				"answer": "Ya. Mendukung TypeScript, JSX/TSX, Vue single-file component, dan banyak format lainnya."
+			},
+			{
+				"question": "Bagaimana cara mengintegrasikan Prettier dengan VS Code?",
+				"answer": "Instal ekstensi \"Prettier - Code formatter\" dan tambahkan formatOnSave: true ke pengaturan VS Code."
+			},
+			{
+				"question": "Bagaimana cara menjalankan Prettier di seluruh proyek?",
+				"answer": "Jalankan npx prettier --write . di root proyek."
+			},
+			{
+				"question": "Bahasa dan tipe file apa yang didukung Prettier?",
+				"answer": "JavaScript, TypeScript, JSX, CSS, HTML, Vue, JSON, YAML, Markdown, dan lainnya."
+			},
+			{
+				"question": "Bagaimana cara mengabaikan file dari pemformatan Prettier?",
+				"answer": "Buat file .prettierignore di root proyek."
+			},
+			{
+				"question": "Bisakah menggunakan Prettier bersama ESLint?",
+				"answer": "Ya. Instal eslint-config-prettier."
+			},
+			{
+				"question": "Apa yang dilakukan opsi printWidth?",
+				"answer": "Memberi tahu panjang baris target. Default 80."
+			},
+			{
+				"question": "Apa perbedaan antara singleQuote dan jsxSingleQuote?",
+				"answer": "singleQuote mengontrol kutipan di JS/TS, jsxSingleQuote mengontrol atribut JSX."
+			},
+			{
+				"question": "Bagaimana cara menggunakan fitur pencarian di situs ini?",
+				"answer": "Gunakan bilah pencarian di bagian atas halaman."
+			},
+			{
+				"question": "Apakah situs ini mendukung mode gelap?",
+				"answer": "Ya. Klik tombol toggle tema di header."
+			},
+			{
+				"question": "Apa konfigurasi default Prettier?",
+				"answer": "printWidth: 80, tabWidth: 2, semi: true, singleQuote: false, trailingComma: \"all\"."
+			},
+			{
+				"question": "Bagaimana cara melaporkan bug atau berkontribusi?",
+				"answer": "Buka issue atau pull request di repositori GitHub."
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "Tentang - Prettier Config",
+			"description": "Pelajari tentang Prettier Config Generator — alat gratis dan open source untuk membuat file .prettierrc dengan mudah."
+		},
+		"hero": {
+			"badge": "Tentang Kami",
+			"title": "Tentang Prettier Config",
+			"description": "Alat gratis dan open source yang dibuat untuk membantu pengembang mengonfigurasi Prettier tanpa kerumitan."
+		},
+		"whatIsThis": {
+			"title": "Apa alat ini?",
+			"description": "Prettier Config Generator adalah aplikasi web interaktif yang membuat konfigurasi Prettier menjadi mudah. Anda dapat menyesuaikan setiap pengaturan secara visual dan melihat file konfigurasi diperbarui secara real-time."
+		},
+		"features": {
+			"title": "Fitur",
+			"items": [
+				{
+					"title": "Real-time Generation",
+					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+				},
+				{
+					"title": "Interactive Interface",
+					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+				},
+				{
+					"title": "Smart Search",
+					"description": "Find options quickly by name, description, or keyword with integrated search."
+				},
+				{
+					"title": "One-Click Copy",
+					"description": "Copy your generated configuration to clipboard instantly."
+				},
+				{
+					"title": "All Options Covered",
+					"description": "Every officially supported Prettier option is included with its default value and description."
+				},
+				{
+					"title": "15 Languages",
+					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+				}
+			]
+		},
+		"techStack": {
+			"title": "Dibangun dengan",
+			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+		},
+		"openSource": {
+			"title": "Open Source",
+			"description": "Alat ini sepenuhnya gratis dan open source. Kontribusi, laporan bug, dan saran selalu disambut.",
+			"button": "Lihat di GitHub"
+		},
+		"creator": {
+			"title": "Pembuat",
+			"builtBy": "Dibuat oleh",
+			"description": "Dibuat dengan penuh perhatian untuk komunitas pengembang. Jika bermanfaat, pertimbangkan untuk memberi bintang pada repositori di GitHub."
+		}
+	},
 	"Footer": {
 		"brand": {
 			"alt": "Prettier Config",
@@ -81,6 +232,7 @@
 			"generator": "Pembuat Konfigurasi",
 			"docs": "Dokumentasi",
 			"faq": "FAQ",
+			"about": "Tentang",
 			"whyPrettier": "Mengapa Prettier?"
 		},
 		"resources": {

@@ -70,6 +70,157 @@
 			"selectOptions": "选择选项以生成您的 Prettier 配置。"
 		}
 	},
+	"Faq": {
+		"meta": {
+			"title": "FAQ - Prettier Config",
+			"description": "关于 Prettier、.prettierrc 文件以及如何使用 Prettier Config Generator 的常见问题解答"
+		},
+		"hero": {
+			"badge": "帮助中心",
+			"title": "常见问题",
+			"description": "关于 Prettier 和这个配置生成器，您需要了解的一切"
+		},
+		"items": [
+			{
+				"question": "什么是 Prettier Config Generator？",
+				"answer": "Prettier Config Generator 是一个免费的交互式网络工具，让您可以直观地配置每个 Prettier 选项，并即时复制生成的 .prettierrc 文件，无需手动编辑。"
+			},
+			{
+				"question": "什么是 Prettier，为什么要使用它？",
+				"answer": "Prettier 是一个固执己见的代码格式化工具，可以在整个代码库中强制执行一致的代码风格，消除代码审查中关于代码风格的争论。"
+			},
+			{
+				"question": "什么是 .prettierrc 文件？",
+				"answer": ".prettierrc 文件是放置在项目根目录的配置文件，告诉 Prettier 如何格式化代码，控制缩进、引号风格和行宽等选项。"
+			},
+			{
+				"question": "如何使用这个工具生成配置？",
+				"answer": "在主页上选择您想要的 Prettier 选项，配置将在侧边栏实时更新。点击「复制配置」将 JSON 复制到剪贴板，然后粘贴到项目根目录的 .prettierrc 文件中。"
+			},
+			{
+				"question": "Prettier Config Generator 免费吗？",
+				"answer": "是的，完全免费。无需注册，无需账户，无使用限制。该工具也在 GitHub 上开源。"
+			},
+			{
+				"question": "此工具涵盖所有 Prettier 选项吗？",
+				"answer": "是的，此工具包含每个官方支持的 Prettier 选项，并为每个选项显示说明和默认值。"
+			},
+			{
+				"question": "如何复制并使用生成的配置？",
+				"answer": "在桌面端点击侧边栏中的「复制配置」按钮，或在移动端点击浮动操作按钮。将复制的 JSON 内容粘贴到项目根目录下名为 .prettierrc 的新文件中。"
+			},
+			{
+				"question": ".prettierrc、prettier.config.js 和 package.json 中的 prettier 键有什么区别？",
+				"answer": "三种都是配置 Prettier 的有效方式。.prettierrc 支持 JSON 或 YAML，prettier.config.js 是 JavaScript 模块，允许动态配置，package.json 中的 prettier 键将所有内容保存在一个文件中。功能相同，取决于个人偏好。"
+			},
+			{
+				"question": "Prettier 支持 TypeScript、React 和 Vue 吗？",
+				"answer": "是的，Prettier 内置支持 TypeScript、JSX/TSX (React)、Vue 单文件组件等多种格式。某些框架可能需要安装额外的插件。"
+			},
+			{
+				"question": "如何将 Prettier 与 VS Code 集成？",
+				"answer": "从 VS Code 市场安装「Prettier - Code formatter」扩展，然后在 VS Code 设置中添加 \"editor.defaultFormatter\": \"esbenp.prettier-vscode\" 和 \"editor.formatOnSave\": true。"
+			},
+			{
+				"question": "如何在整个项目上运行 Prettier？",
+				"answer": "在项目根目录运行 npx prettier --write .，这将格式化所有支持的文件。使用 npm install --save-dev prettier 添加 prettier 作为开发依赖。"
+			},
+			{
+				"question": "Prettier 支持哪些语言和文件类型？",
+				"answer": "Prettier 支持 JavaScript、TypeScript、JSX、TSX、CSS、SCSS、Less、HTML、Vue、Angular、JSON、YAML、Markdown 等。还可以通过插件扩展以支持其他语言。"
+			},
+			{
+				"question": "如何让 Prettier 忽略某些文件？",
+				"answer": "在项目根目录创建 .prettierignore 文件，使用与 .gitignore 相同的语法。列出的文件和目录将被 Prettier 跳过。"
+			},
+			{
+				"question": "可以同时使用 Prettier 和 ESLint 吗？",
+				"answer": "可以，安装 eslint-config-prettier 以禁用与 Prettier 冲突的 ESLint 格式规则。使用 Prettier 进行格式化，ESLint 进行代码质量检查，两者完美互补。"
+			},
+			{
+				"question": "printWidth 选项有什么作用？",
+				"answer": "printWidth 告诉 Prettier 尝试将代码适配到的行长度，默认值为 80。这是一个软目标——如果换行会降低代码可读性，Prettier 可能会超过此限制。"
+			},
+			{
+				"question": "singleQuote 和 jsxSingleQuote 有什么区别？",
+				"answer": "singleQuote 控制 Prettier 是否在 JavaScript/TypeScript 字符串中使用单引号，jsxSingleQuote 专门控制 JSX 属性字符串。您可以独立设置它们。"
+			},
+			{
+				"question": "如何使用此网站的搜索功能？",
+				"answer": "使用页面顶部的搜索栏按名称、描述或关键词过滤 Prettier 选项，结果会在您输入时即时更新。"
+			},
+			{
+				"question": "此网站支持暗色模式吗？",
+				"answer": "是的，点击标题中的主题切换按钮可在浅色模式、暗色模式和系统偏好设置之间切换，您的选择会自动保存。"
+			},
+			{
+				"question": "Prettier 的默认配置是什么？",
+				"answer": "Prettier 默认配置包括：printWidth: 80、tabWidth: 2、useTabs: false、semi: true、singleQuote: false、trailingComma: \"all\"、bracketSpacing: true 和 arrowParens: \"always\"。"
+			},
+			{
+				"question": "如何报告错误或为此项目做贡献？",
+				"answer": "在 GitHub 仓库上开 issue 或 pull request，项目欢迎各种形式的贡献，包括新功能、bug 修复和翻译改进。"
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "关于 - Prettier Config",
+			"description": "了解 Prettier Config Generator——一个免费、开源的交互式工具，帮助开发者轻松创建 .prettierrc 配置文件。"
+		},
+		"hero": {
+			"badge": "关于我们",
+			"title": "关于 Prettier Config",
+			"description": "一个免费、开源的工具，旨在帮助开发者无障碍地配置 Prettier"
+		},
+		"whatIsThis": {
+			"title": "这个工具是什么？",
+			"description": "Prettier Config Generator 是一个交互式网络应用程序，让配置 Prettier 变得轻松无比。您无需手动编写 JSON 或逐个查找文档中的选项，只需直观地切换和调整每个 Prettier 设置，即可看到配置文件实时更新。"
+		},
+		"features": {
+			"title": "功能特点",
+			"items": [
+				{
+					"title": "实时生成",
+					"description": "选择选项时配置即时更新，实时看到 .prettierrc 文件生成。"
+				},
+				{
+					"title": "交互式界面",
+					"description": "美观响应的界面，支持暗色/浅色主题，并为每个选项提供提示。"
+				},
+				{
+					"title": "智能搜索",
+					"description": "通过集成搜索按名称、描述或关键词快速找到选项。"
+				},
+				{
+					"title": "一键复制",
+					"description": "即时将生成的配置复制到剪贴板。"
+				},
+				{
+					"title": "涵盖所有选项",
+					"description": "包含每个官方支持的 Prettier 选项，附带默认值和说明。"
+				},
+				{
+					"title": "15 种语言",
+					"description": "完整支持 15 种语言本地化，包括英语、泰语、中文、西班牙语、印地语等。"
+				}
+			]
+		},
+		"techStack": {
+			"title": "技术栈",
+			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+		},
+		"openSource": {
+			"title": "开源",
+			"description": "此工具完全免费且开源，欢迎贡献、错误报告和建议。",
+			"button": "在 GitHub 上查看"
+		},
+		"creator": {
+			"title": "创作者",
+			"builtBy": "由以下人员构建",
+			"description": "为开发者社区用心打造。如果您觉得此工具有用，请考虑在 GitHub 上为仓库加星。"
+		}
+	},
 	"Footer": {
 		"brand": {
 			"alt": "Prettier Config",
@@ -81,6 +232,7 @@
 			"generator": "配置生成器",
 			"docs": "文档",
 			"faq": "常见问题",
+			"about": "关于我们",
 			"whyPrettier": "为什么选择 Prettier？"
 		},
 		"resources": {

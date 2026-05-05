@@ -70,6 +70,157 @@
 			"selectOptions": "Chọn các tùy chọn để tạo cấu hình Prettier của bạn."
 		}
 	},
+	"Faq": {
+		"meta": {
+			"title": "FAQ - Prettier Config",
+			"description": "Câu trả lời cho các câu hỏi thường gặp về Prettier, tệp .prettierrc và cách sử dụng Prettier Config Generator."
+		},
+		"hero": {
+			"badge": "Trung tâm trợ giúp",
+			"title": "Câu hỏi thường gặp",
+			"description": "Mọi thứ bạn cần biết về Prettier và trình tạo cấu hình này."
+		},
+		"items": [
+			{
+				"question": "Prettier Config Generator là gì?",
+				"answer": "Công cụ web tương tác miễn phí giúp cấu hình trực quan mọi tùy chọn Prettier và sao chép ngay tệp .prettierrc kết quả."
+			},
+			{
+				"question": "Prettier là gì và tại sao nên dùng?",
+				"answer": "Prettier là công cụ định dạng code tự động, đảm bảo phong cách nhất quán trên toàn bộ dự án và loại bỏ tranh luận về style trong code review."
+			},
+			{
+				"question": "Tệp .prettierrc là gì?",
+				"answer": "Tệp cấu hình đặt ở thư mục gốc dự án, cho Prettier biết cách định dạng code."
+			},
+			{
+				"question": "Cách sử dụng công cụ này để tạo cấu hình?",
+				"answer": "Chọn các tùy chọn Prettier trên trang chính. Cấu hình cập nhật theo thời gian thực. Nhấp \"Sao chép cấu hình\" và dán JSON vào tệp .prettierrc."
+			},
+			{
+				"question": "Prettier Config Generator có miễn phí không?",
+				"answer": "Có, hoàn toàn miễn phí. Không cần đăng ký, không giới hạn sử dụng."
+			},
+			{
+				"question": "Công cụ này có bao gồm tất cả tùy chọn Prettier không?",
+				"answer": "Có. Bao gồm mọi tùy chọn được hỗ trợ chính thức với mô tả và giá trị mặc định."
+			},
+			{
+				"question": "Cách sao chép và sử dụng cấu hình đã tạo?",
+				"answer": "Nhấp nút \"Sao chép cấu hình\" trên thanh bên (desktop) hoặc nút nổi (mobile)."
+			},
+			{
+				"question": ".prettierrc, prettier.config.js và key prettier trong package.json khác nhau thế nào?",
+				"answer": "Cả ba đều hợp lệ. .prettierrc hỗ trợ JSON/YAML, prettier.config.js là JavaScript module, key prettier trong package.json giữ mọi thứ trong một file."
+			},
+			{
+				"question": "Prettier có hoạt động với TypeScript, React và Vue không?",
+				"answer": "Có. Hỗ trợ sẵn TypeScript, JSX/TSX, Vue single-file component và nhiều định dạng khác."
+			},
+			{
+				"question": "Cách tích hợp Prettier với VS Code?",
+				"answer": "Cài tiện ích mở rộng \"Prettier - Code formatter\" và thêm formatOnSave: true vào cài đặt VS Code."
+			},
+			{
+				"question": "Cách chạy Prettier cho toàn bộ dự án?",
+				"answer": "Chạy npx prettier --write . tại thư mục gốc dự án."
+			},
+			{
+				"question": "Prettier hỗ trợ những ngôn ngữ và loại file nào?",
+				"answer": "JavaScript, TypeScript, JSX, CSS, HTML, Vue, JSON, YAML, Markdown và nhiều hơn nữa."
+			},
+			{
+				"question": "Cách loại trừ file khỏi định dạng Prettier?",
+				"answer": "Tạo tệp .prettierignore ở thư mục gốc dự án."
+			},
+			{
+				"question": "Có thể dùng Prettier cùng ESLint không?",
+				"answer": "Có. Cài eslint-config-prettier."
+			},
+			{
+				"question": "Tùy chọn printWidth làm gì?",
+				"answer": "Cho biết độ dài dòng mục tiêu. Mặc định là 80."
+			},
+			{
+				"question": "singleQuote và jsxSingleQuote khác nhau thế nào?",
+				"answer": "singleQuote kiểm soát dấu nháy trong JS/TS, jsxSingleQuote kiểm soát thuộc tính JSX."
+			},
+			{
+				"question": "Cách sử dụng tính năng tìm kiếm trên trang?",
+				"answer": "Dùng thanh tìm kiếm ở đầu trang."
+			},
+			{
+				"question": "Trang có hỗ trợ chế độ tối không?",
+				"answer": "Có. Nhấp nút chuyển đổi theme trong header."
+			},
+			{
+				"question": "Cấu hình mặc định của Prettier là gì?",
+				"answer": "printWidth: 80, tabWidth: 2, semi: true, singleQuote: false, trailingComma: \"all\"."
+			},
+			{
+				"question": "Cách báo lỗi hoặc đóng góp cho dự án?",
+				"answer": "Mở issue hoặc pull request trên GitHub repository."
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "Giới thiệu - Prettier Config",
+			"description": "Tìm hiểu về Prettier Config Generator — công cụ miễn phí, mã nguồn mở giúp tạo tệp .prettierrc dễ dàng."
+		},
+		"hero": {
+			"badge": "Giới thiệu",
+			"title": "Giới thiệu Prettier Config",
+			"description": "Công cụ miễn phí, mã nguồn mở giúp các nhà phát triển cấu hình Prettier dễ dàng."
+		},
+		"whatIsThis": {
+			"title": "Công cụ này là gì?",
+			"description": "Prettier Config Generator là ứng dụng web tương tác giúp cấu hình Prettier trở nên đơn giản. Bạn có thể điều chỉnh trực quan từng cài đặt và xem tệp cấu hình cập nhật theo thời gian thực."
+		},
+		"features": {
+			"title": "Tính năng",
+			"items": [
+				{
+					"title": "Real-time Generation",
+					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+				},
+				{
+					"title": "Interactive Interface",
+					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+				},
+				{
+					"title": "Smart Search",
+					"description": "Find options quickly by name, description, or keyword with integrated search."
+				},
+				{
+					"title": "One-Click Copy",
+					"description": "Copy your generated configuration to clipboard instantly."
+				},
+				{
+					"title": "All Options Covered",
+					"description": "Every officially supported Prettier option is included with its default value and description."
+				},
+				{
+					"title": "15 Languages",
+					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+				}
+			]
+		},
+		"techStack": {
+			"title": "Công nghệ sử dụng",
+			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+		},
+		"openSource": {
+			"title": "Mã nguồn mở",
+			"description": "Công cụ này hoàn toàn miễn phí và mã nguồn mở. Đóng góp, báo lỗi và góp ý luôn được chào đón.",
+			"button": "Xem trên GitHub"
+		},
+		"creator": {
+			"title": "Tác giả",
+			"builtBy": "Được tạo bởi",
+			"description": "Được xây dựng với tâm huyết cho cộng đồng nhà phát triển. Nếu thấy hữu ích, hãy star repository trên GitHub."
+		}
+	},
 	"Footer": {
 		"brand": {
 			"alt": "Prettier Config",
@@ -81,6 +232,7 @@
 			"generator": "Trình tạo cấu hình",
 			"docs": "Tài liệu",
 			"faq": "Câu hỏi thường gặp",
+			"about": "Giới thiệu",
 			"whyPrettier": "Tại sao chọn Prettier?"
 		},
 		"resources": {

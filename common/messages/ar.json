@@ -70,6 +70,157 @@
 			"selectOptions": "اختر الخيارات لإنشاء إعدادات Prettier الخاصة بك."
 		}
 	},
+	"Faq": {
+		"meta": {
+			"title": "الأسئلة الشائعة - Prettier Config",
+			"description": "إجابات على الأسئلة الشائعة حول Prettier وملفات .prettierrc وكيفية استخدام Prettier Config Generator."
+		},
+		"hero": {
+			"badge": "مركز المساعدة",
+			"title": "الأسئلة الشائعة",
+			"description": "كل ما تحتاج معرفته حول Prettier ومولّد الإعدادات هذا."
+		},
+		"items": [
+			{
+				"question": "ما هو Prettier Config Generator؟",
+				"answer": "أداة ويب تفاعلية مجانية تتيح لك تهيئة كل خيار في Prettier بصريًا ونسخ ملف .prettierrc الناتج فورًا."
+			},
+			{
+				"question": "ما هو Prettier ولماذا يجب استخدامه؟",
+				"answer": "Prettier هو أداة تنسيق كود تفرض أسلوبًا متسقًا على المشروع بأكمله وتُزيل الجدالات حول أسلوب الكود في مراجعات الكود."
+			},
+			{
+				"question": "ما هو ملف .prettierrc؟",
+				"answer": "ملف إعداد يوضع في الدليل الجذري للمشروع يخبر Prettier بكيفية تنسيق الكود."
+			},
+			{
+				"question": "كيف أستخدم هذه الأداة لتوليد الإعدادات؟",
+				"answer": "اختر خيارات Prettier في الصفحة الرئيسية. يتحدث الإعداد في الوقت الفعلي. انقر على \"نسخ الإعداد\" والصق JSON في ملف .prettierrc."
+			},
+			{
+				"question": "هل Prettier Config Generator مجاني؟",
+				"answer": "نعم، مجاني تمامًا. لا يتطلب تسجيلًا أو حسابًا ولا توجد قيود على الاستخدام."
+			},
+			{
+				"question": "هل تغطي هذه الأداة جميع خيارات Prettier؟",
+				"answer": "نعم. تشمل كل خيار Prettier مدعوم رسميًا مع الأوصاف والقيم الافتراضية."
+			},
+			{
+				"question": "كيف أنسخ وأستخدم الإعداد المُولَّد؟",
+				"answer": "انقر على زر \"نسخ الإعداد\" في الشريط الجانبي على سطح المكتب أو الزر العائم على الجوال."
+			},
+			{
+				"question": "ما الفرق بين .prettierrc وprettier.config.js ومفتاح prettier في package.json؟",
+				"answer": "الثلاثة طرق صالحة. يدعم .prettierrc صيغتي JSON وYAML، و prettier.config.js وحدة JavaScript، ومفتاح prettier في package.json يجمع كل شيء في ملف واحد."
+			},
+			{
+				"question": "هل يعمل Prettier مع TypeScript وReact وVue؟",
+				"answer": "نعم. يدعم TypeScript وJSX/TSX ومكونات Vue ذات الملف الواحد والعديد من الصيغ الأخرى."
+			},
+			{
+				"question": "كيف أدمج Prettier مع VS Code؟",
+				"answer": "ثبّت إضافة \"Prettier - Code formatter\" وأضف formatOnSave: true في إعدادات VS Code."
+			},
+			{
+				"question": "كيف أشغّل Prettier على المشروع بأكمله؟",
+				"answer": "شغّل npx prettier --write . في الدليل الجذري للمشروع."
+			},
+			{
+				"question": "ما اللغات وأنواع الملفات التي يدعمها Prettier؟",
+				"answer": "JavaScript وTypeScript وJSX وCSS وHTML وVue وJSON وYAML وMarkdown والمزيد."
+			},
+			{
+				"question": "كيف أستبعد ملفات من تنسيق Prettier؟",
+				"answer": "أنشئ ملف .prettierignore في الدليل الجذري للمشروع."
+			},
+			{
+				"question": "هل يمكن استخدام Prettier مع ESLint؟",
+				"answer": "نعم. ثبّت eslint-config-prettier."
+			},
+			{
+				"question": "ما وظيفة خيار printWidth؟",
+				"answer": "يحدد طول السطر المستهدف. القيمة الافتراضية 80."
+			},
+			{
+				"question": "ما الفرق بين singleQuote وjsxSingleQuote؟",
+				"answer": "يتحكم singleQuote في علامات الاقتباس في JS/TS، بينما يتحكم jsxSingleQuote في سمات JSX."
+			},
+			{
+				"question": "كيف أستخدم ميزة البحث في الموقع؟",
+				"answer": "استخدم شريط البحث أعلى الصفحة."
+			},
+			{
+				"question": "هل يدعم الموقع الوضع الداكن؟",
+				"answer": "نعم. انقر على زر تبديل السمة في الرأس."
+			},
+			{
+				"question": "ما الإعداد الافتراضي لـ Prettier؟",
+				"answer": "printWidth: 80 وtabWidth: 2 وsemi: true وsingleQuote: false وtrailingComma: \"all\"."
+			},
+			{
+				"question": "كيف أُبلّغ عن خطأ أو أساهم في المشروع؟",
+				"answer": "افتح issue أو pull request في مستودع GitHub."
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "حول - Prettier Config",
+			"description": "تعرّف على Prettier Config Generator — أداة مجانية ومفتوحة المصدر لإنشاء ملفات .prettierrc بسهولة."
+		},
+		"hero": {
+			"badge": "من نحن",
+			"title": "حول Prettier Config",
+			"description": "أداة مجانية ومفتوحة المصدر لمساعدة المطورين على تهيئة Prettier بدون تعقيد."
+		},
+		"whatIsThis": {
+			"title": "ما هي هذه الأداة؟",
+			"description": "Prettier Config Generator هو تطبيق ويب تفاعلي يجعل تهيئة Prettier أمرًا سهلًا. يمكنك ضبط كل إعداد بشكل مرئي ومشاهدة ملف الإعداد يتحدث في الوقت الفعلي."
+		},
+		"features": {
+			"title": "الميزات",
+			"items": [
+				{
+					"title": "Real-time Generation",
+					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+				},
+				{
+					"title": "Interactive Interface",
+					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+				},
+				{
+					"title": "Smart Search",
+					"description": "Find options quickly by name, description, or keyword with integrated search."
+				},
+				{
+					"title": "One-Click Copy",
+					"description": "Copy your generated configuration to clipboard instantly."
+				},
+				{
+					"title": "All Options Covered",
+					"description": "Every officially supported Prettier option is included with its default value and description."
+				},
+				{
+					"title": "15 Languages",
+					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+				}
+			]
+		},
+		"techStack": {
+			"title": "مبني باستخدام",
+			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+		},
+		"openSource": {
+			"title": "مفتوح المصدر",
+			"description": "هذه الأداة مجانية تمامًا ومفتوحة المصدر. المساهمات وتقارير الأخطاء والاقتراحات مرحب بها دائمًا.",
+			"button": "عرض على GitHub"
+		},
+		"creator": {
+			"title": "المطوّر",
+			"builtBy": "بُني بواسطة",
+			"description": "بُني باهتمام لمجتمع المطورين. إذا وجدت هذه الأداة مفيدة، فكر في إضافة نجمة للمستودع على GitHub."
+		}
+	},
 	"Footer": {
 		"brand": {
 			"alt": "Prettier Config",
@@ -81,6 +232,7 @@
 			"generator": "مولد الإعدادات",
 			"docs": "التوثيق",
 			"faq": "الأسئلة الشائعة",
+			"about": "من نحن",
 			"whyPrettier": "لماذا Prettier؟"
 		},
 		"resources": {

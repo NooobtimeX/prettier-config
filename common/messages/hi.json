@@ -70,6 +70,157 @@
 			"selectOptions": "अपना प्रीटियर कॉन्फ़िगरेशन जेनरेट करने के लिए विकल्प चुनें।"
 		}
 	},
+	"Faq": {
+		"meta": {
+			"title": "FAQ - Prettier Config",
+			"description": "Prettier, .prettierrc फ़ाइलों और Prettier Config Generator उपयोग के बारे में सामान्य प्रश्नों के उत्तर।"
+		},
+		"hero": {
+			"badge": "सहायता केंद्र",
+			"title": "सामान्य प्रश्न",
+			"description": "Prettier और इस कॉन्फ़िगरेशन जनरेटर के बारे में वह सब जो आपको जानना चाहिए।"
+		},
+		"items": [
+			{
+				"question": "Prettier Config Generator क्या है?",
+				"answer": "Prettier Config Generator एक मुफ्त, इंटरएक्टिव वेब टूल है जो आपको हर Prettier विकल्प को विज़ुअली कॉन्फ़िगर करने और .prettierrc फ़ाइल को तुरंत कॉपी करने देता है।"
+			},
+			{
+				"question": "Prettier क्या है और इसे क्यों उपयोग करें?",
+				"answer": "Prettier एक कोड फॉर्मेटर है जो पूरे कोडबेस में एक समान स्टाइल लागू करता है और कोड रिव्यू में स्टाइल संबंधी बहस को खत्म करता है।"
+			},
+			{
+				"question": ".prettierrc फ़ाइल क्या है?",
+				"answer": ".prettierrc फ़ाइल आपके प्रोजेक्ट की रूट डायरेक्टरी में रखी जाती है और Prettier को बताती है कि कोड को कैसे फॉर्मेट करना है।"
+			},
+			{
+				"question": "इस टूल का उपयोग करके कॉन्फ़िग कैसे जनरेट करें?",
+				"answer": "मुख्य पृष्ठ पर Prettier विकल्प चुनें, साइडबार में कॉन्फ़िग रियल-टाइम अपडेट होगा। \"कॉन्फ़िग कॉपी करें\" पर क्लिक करें और JSON को .prettierrc फ़ाइल में पेस्ट करें।"
+			},
+			{
+				"question": "क्या Prettier Config Generator मुफ्त है?",
+				"answer": "हां, पूरी तरह से मुफ्त। कोई साइनअप, कोई अकाउंट और कोई उपयोग सीमा नहीं। टूल GitHub पर ओपन सोर्स भी है।"
+			},
+			{
+				"question": "क्या यह टूल सभी Prettier विकल्पों को कवर करता है?",
+				"answer": "हां, इसमें हर आधिकारिक Prettier विकल्प शामिल है, प्रत्येक के लिए विवरण और डिफ़ॉल्ट मान के साथ।"
+			},
+			{
+				"question": "जनरेटेड कॉन्फ़िग को कॉपी और उपयोग कैसे करें?",
+				"answer": "डेस्कटॉप पर साइडबार में \"कॉन्फ़िग कॉपी करें\" बटन पर क्लिक करें या मोबाइल पर फ्लोटिंग बटन पर टैप करें।"
+			},
+			{
+				"question": ".prettierrc, prettier.config.js और package.json में prettier key में क्या अंतर है?",
+				"answer": "तीनों Prettier को कॉन्फ़िगर करने के मान्य तरीके हैं। .prettierrc JSON/YAML सपोर्ट करता है, prettier.config.js JavaScript मॉड्यूल है और package.json सब कुछ एक जगह रखता है।"
+			},
+			{
+				"question": "क्या Prettier TypeScript, React और Vue के साथ काम करता है?",
+				"answer": "हां, Prettier में TypeScript, JSX/TSX, Vue सिंगल-फ़ाइल कंपोनेंट और कई अन्य फॉर्मेट के लिए बिल्ट-इन सपोर्ट है।"
+			},
+			{
+				"question": "Prettier को VS Code के साथ कैसे इंटीग्रेट करें?",
+				"answer": "VS Code मार्केटप्लेस से \"Prettier - Code formatter\" एक्सटेंशन इंस्टॉल करें और सेटिंग में formatOnSave: true जोड़ें।"
+			},
+			{
+				"question": "पूरे प्रोजेक्ट पर Prettier कैसे चलाएं?",
+				"answer": "प्रोजेक्ट रूट में npx prettier --write . चलाएं।"
+			},
+			{
+				"question": "Prettier कौन से भाषाएं और फ़ाइल प्रकार सपोर्ट करता है?",
+				"answer": "JavaScript, TypeScript, JSX, CSS, HTML, Vue, JSON, YAML, Markdown आदि।"
+			},
+			{
+				"question": "Prettier फॉर्मेटिंग से फ़ाइलों को कैसे अनदेखा करें?",
+				"answer": "प्रोजेक्ट रूट में .prettierignore फ़ाइल बनाएं।"
+			},
+			{
+				"question": "क्या Prettier को ESLint के साथ उपयोग कर सकते हैं?",
+				"answer": "हां, eslint-config-prettier इंस्टॉल करें।"
+			},
+			{
+				"question": "printWidth विकल्प क्या करता है?",
+				"answer": "printWidth Prettier को बताता है कि कोड को किस लाइन लंबाई के अंदर रखने की कोशिश करनी है। डिफ़ॉल्ट 80 है।"
+			},
+			{
+				"question": "singleQuote और jsxSingleQuote में क्या अंतर है?",
+				"answer": "singleQuote JS/TS strings में quotes को नियंत्रित करता है। jsxSingleQuote JSX attributes के लिए है।"
+			},
+			{
+				"question": "साइट पर सर्च फीचर का उपयोग कैसे करें?",
+				"answer": "पृष्ठ के शीर्ष पर सर्च बार का उपयोग करें।"
+			},
+			{
+				"question": "क्या साइट डार्क मोड सपोर्ट करती है?",
+				"answer": "हां, हेडर में थीम टॉगल बटन पर क्लिक करें।"
+			},
+			{
+				"question": "Prettier का डिफ़ॉल्ट कॉन्फ़िगरेशन क्या है?",
+				"answer": "printWidth: 80, tabWidth: 2, semi: true, singleQuote: false, trailingComma: \"all\"।"
+			},
+			{
+				"question": "बग रिपोर्ट करने या योगदान देने के लिए क्या करें?",
+				"answer": "GitHub रिपॉजिटरी पर issue या pull request खोलें।"
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "के बारे में - Prettier Config",
+			"description": "Prettier Config Generator के बारे में जानें — .prettierrc फ़ाइलें बनाने में मदद के लिए एक मुफ्त, ओपन-सोर्स टूल।"
+		},
+		"hero": {
+			"badge": "हमारे बारे में",
+			"title": "Prettier Config के बारे में",
+			"description": "बिना परेशानी के Prettier को कॉन्फ़िगर करने में मदद के लिए बनाया गया एक मुफ्त, ओपन-सोर्स टूल।"
+		},
+		"whatIsThis": {
+			"title": "यह टूल क्या है?",
+			"description": "Prettier Config Generator एक इंटरएक्टिव वेब एप्लिकेशन है जो Prettier को कॉन्फ़िगर करना आसान बनाता है। आप हर Prettier सेटिंग को विज़ुअली एडजस्ट कर सकते हैं और कॉन्फ़िगरेशन फ़ाइल को रियल-टाइम में अपडेट होते देख सकते हैं।"
+		},
+		"features": {
+			"title": "विशेषताएं",
+			"items": [
+				{
+					"title": "Real-time Generation",
+					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+				},
+				{
+					"title": "Interactive Interface",
+					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+				},
+				{
+					"title": "Smart Search",
+					"description": "Find options quickly by name, description, or keyword with integrated search."
+				},
+				{
+					"title": "One-Click Copy",
+					"description": "Copy your generated configuration to clipboard instantly."
+				},
+				{
+					"title": "All Options Covered",
+					"description": "Every officially supported Prettier option is included with its default value and description."
+				},
+				{
+					"title": "15 Languages",
+					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+				}
+			]
+		},
+		"techStack": {
+			"title": "इससे बनाया गया",
+			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+		},
+		"openSource": {
+			"title": "ओपन सोर्स",
+			"description": "यह टूल पूरी तरह से मुफ्त और ओपन सोर्स है। योगदान, बग रिपोर्ट और सुझाव हमेशा स्वागत योग्य हैं।",
+			"button": "GitHub पर देखें"
+		},
+		"creator": {
+			"title": "निर्माता",
+			"builtBy": "द्वारा बनाया गया",
+			"description": "डेवलपर समुदाय के लिए प्यार से बनाया गया। यदि आपको यह टूल उपयोगी लगे, तो GitHub पर रिपॉजिटरी को स्टार करें।"
+		}
+	},
 	"Footer": {
 		"brand": {
 			"alt": "प्रीटियर कॉन्फ़िगरेशन",
@@ -81,6 +232,7 @@
 			"generator": "कॉन्फ़िगरेशन जेनरेटर",
 			"docs": "दस्तावेज़",
 			"faq": "सामान्य प्रश्न",
+			"about": "के बारे में",
 			"whyPrettier": "प्रीटियर क्यों?"
 		},
 		"resources": {

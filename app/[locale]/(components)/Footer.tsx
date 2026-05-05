@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ExternalLink } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa6';
 import Image from 'next/image';
@@ -37,7 +37,7 @@ export default function Footer() {
 						<ul className="space-y-2 text-sm">
 							<li>
 								<Link
-									href="#generator"
+									href="/"
 									className="text-muted-foreground hover:text-foreground transition-colors"
 								>
 									{t('quickLinks.generator')}
@@ -45,7 +45,7 @@ export default function Footer() {
 							</li>
 							<li>
 								<Link
-									href="#faq"
+									href="/faq"
 									className="text-muted-foreground hover:text-foreground transition-colors"
 								>
 									{t('quickLinks.faq')}
@@ -53,7 +53,15 @@ export default function Footer() {
 							</li>
 							<li>
 								<Link
-									href="#why-prettier"
+									href="/about"
+									className="text-muted-foreground hover:text-foreground transition-colors"
+								>
+									{t('quickLinks.about')}
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="/#why-prettier"
 									className="text-muted-foreground hover:text-foreground transition-colors"
 								>
 									{t('quickLinks.whyPrettier')}

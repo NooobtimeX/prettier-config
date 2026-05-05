@@ -70,6 +70,157 @@
 			"selectOptions": "Выберите опции для генерации вашего конфига Prettier."
 		}
 	},
+	"Faq": {
+		"meta": {
+			"title": "FAQ - Prettier Config",
+			"description": "Ответы на часто задаваемые вопросы о Prettier, файлах .prettierrc и использовании Prettier Config Generator."
+		},
+		"hero": {
+			"badge": "Центр помощи",
+			"title": "Часто задаваемые вопросы",
+			"description": "Всё, что нужно знать о Prettier и этом генераторе конфигурации."
+		},
+		"items": [
+			{
+				"question": "Что такое Prettier Config Generator?",
+				"answer": "Бесплатный интерактивный веб-инструмент для визуальной настройки каждой опции Prettier и мгновенного копирования файла .prettierrc."
+			},
+			{
+				"question": "Что такое Prettier и зачем его использовать?",
+				"answer": "Prettier — форматтер кода, обеспечивающий единый стиль во всём проекте и устраняющий споры о стиле на код-ревью."
+			},
+			{
+				"question": "Что такое файл .prettierrc?",
+				"answer": "Файл конфигурации в корне проекта, указывающий Prettier как форматировать код."
+			},
+			{
+				"question": "Как использовать этот инструмент для генерации конфигурации?",
+				"answer": "Выберите опции Prettier на главной странице. Конфигурация обновляется в реальном времени. Нажмите \"Копировать конфигурацию\" и вставьте JSON в файл .prettierrc."
+			},
+			{
+				"question": "Prettier Config Generator бесплатен?",
+				"answer": "Да, полностью бесплатен. Без регистрации, без аккаунта, без ограничений."
+			},
+			{
+				"question": "Охватывает ли инструмент все опции Prettier?",
+				"answer": "Да. Включены все официально поддерживаемые опции с описаниями и значениями по умолчанию."
+			},
+			{
+				"question": "Как скопировать и использовать сгенерированную конфигурацию?",
+				"answer": "На десктопе нажмите \"Копировать конфигурацию\" в боковой панели, на мобильном — плавающую кнопку."
+			},
+			{
+				"question": "В чём разница между .prettierrc, prettier.config.js и ключом prettier в package.json?",
+				"answer": "Все три — допустимые способы. .prettierrc поддерживает JSON/YAML, prettier.config.js — JavaScript-модуль, ключ prettier в package.json — всё в одном файле."
+			},
+			{
+				"question": "Работает ли Prettier с TypeScript, React и Vue?",
+				"answer": "Да. Встроенная поддержка TypeScript, JSX/TSX, Vue-компонентов и многого другого."
+			},
+			{
+				"question": "Как интегрировать Prettier с VS Code?",
+				"answer": "Установите расширение \"Prettier - Code formatter\" и добавьте formatOnSave: true в настройки VS Code."
+			},
+			{
+				"question": "Как запустить Prettier на всём проекте?",
+				"answer": "Выполните npx prettier --write . в корне проекта."
+			},
+			{
+				"question": "Какие языки и типы файлов поддерживает Prettier?",
+				"answer": "JavaScript, TypeScript, JSX, CSS, HTML, Vue, JSON, YAML, Markdown и другие."
+			},
+			{
+				"question": "Как исключить файлы из форматирования Prettier?",
+				"answer": "Создайте файл .prettierignore в корне проекта."
+			},
+			{
+				"question": "Можно ли использовать Prettier вместе с ESLint?",
+				"answer": "Да. Установите eslint-config-prettier."
+			},
+			{
+				"question": "Что делает опция printWidth?",
+				"answer": "Задаёт целевую длину строки. По умолчанию 80."
+			},
+			{
+				"question": "В чём разница между singleQuote и jsxSingleQuote?",
+				"answer": "singleQuote управляет кавычками в JS/TS, jsxSingleQuote — атрибутами JSX."
+			},
+			{
+				"question": "Как пользоваться поиском на сайте?",
+				"answer": "Используйте строку поиска вверху страницы."
+			},
+			{
+				"question": "Поддерживает ли сайт тёмную тему?",
+				"answer": "Да. Нажмите кнопку переключения темы в шапке."
+			},
+			{
+				"question": "Какова конфигурация Prettier по умолчанию?",
+				"answer": "printWidth: 80, tabWidth: 2, semi: true, singleQuote: false, trailingComma: \"all\"."
+			},
+			{
+				"question": "Как сообщить об ошибке или внести вклад?",
+				"answer": "Откройте issue или pull request в репозитории GitHub."
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "О нас - Prettier Config",
+			"description": "Узнайте о Prettier Config Generator — бесплатном инструменте с открытым исходным кодом для создания файлов .prettierrc."
+		},
+		"hero": {
+			"badge": "О нас",
+			"title": "О Prettier Config",
+			"description": "Бесплатный инструмент с открытым исходным кодом для настройки Prettier без лишних усилий."
+		},
+		"whatIsThis": {
+			"title": "Что это за инструмент?",
+			"description": "Prettier Config Generator — интерактивное веб-приложение, упрощающее настройку Prettier. Вы можете визуально настроить каждый параметр и видеть, как конфигурационный файл обновляется в реальном времени."
+		},
+		"features": {
+			"title": "Возможности",
+			"items": [
+				{
+					"title": "Real-time Generation",
+					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+				},
+				{
+					"title": "Interactive Interface",
+					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+				},
+				{
+					"title": "Smart Search",
+					"description": "Find options quickly by name, description, or keyword with integrated search."
+				},
+				{
+					"title": "One-Click Copy",
+					"description": "Copy your generated configuration to clipboard instantly."
+				},
+				{
+					"title": "All Options Covered",
+					"description": "Every officially supported Prettier option is included with its default value and description."
+				},
+				{
+					"title": "15 Languages",
+					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+				}
+			]
+		},
+		"techStack": {
+			"title": "Стек технологий",
+			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+		},
+		"openSource": {
+			"title": "Открытый исходный код",
+			"description": "Этот инструмент полностью бесплатен и с открытым исходным кодом. Всегда приветствуются вклады, отчёты об ошибках и предложения.",
+			"button": "Смотреть на GitHub"
+		},
+		"creator": {
+			"title": "Автор",
+			"builtBy": "Создано",
+			"description": "Создано с заботой для сообщества разработчиков. Если инструмент полезен, поставьте звезду репозиторию на GitHub."
+		}
+	},
 	"Footer": {
 		"brand": {
 			"alt": "Prettier Config",
@@ -81,6 +232,7 @@
 			"generator": "Генератор конфига",
 			"docs": "Документация",
 			"faq": "FAQ",
+			"about": "О нас",
 			"whyPrettier": "Почему Prettier?"
 		},
 		"resources": {

@@ -70,6 +70,157 @@
 			"selectOptions": "Selecciona opciones para generar tu configuración de Prettier."
 		}
 	},
+	"Faq": {
+		"meta": {
+			"title": "FAQ - Prettier Config",
+			"description": "Respuestas a preguntas frecuentes sobre Prettier, archivos .prettierrc y cómo usar Prettier Config Generator."
+		},
+		"hero": {
+			"badge": "Centro de ayuda",
+			"title": "Preguntas Frecuentes",
+			"description": "Todo lo que necesitas saber sobre Prettier y este generador de configuración."
+		},
+		"items": [
+			{
+				"question": "¿Qué es Prettier Config Generator?",
+				"answer": "Prettier Config Generator es una herramienta web interactiva gratuita que te permite configurar visualmente cada opción de Prettier y copiar al instante el archivo .prettierrc resultante. No se requiere edición manual."
+			},
+			{
+				"question": "¿Qué es Prettier y por qué debería usarlo?",
+				"answer": "Prettier es un formateador de código obstinado que aplica un estilo consistente en todo tu proyecto, eliminando debates sobre el estilo del código en las revisiones."
+			},
+			{
+				"question": "¿Qué es un archivo .prettierrc?",
+				"answer": "Un archivo .prettierrc es un archivo de configuración en la raíz de tu proyecto que le dice a Prettier cómo formatear el código, controlando opciones como sangría, estilo de comillas y ancho de línea."
+			},
+			{
+				"question": "¿Cómo uso esta herramienta para generar mi configuración?",
+				"answer": "Selecciona las opciones de Prettier en la página principal. La configuración se actualiza en tiempo real en la barra lateral. Haz clic en \"Copiar configuración\" y pega el JSON en un archivo .prettierrc en la raíz de tu proyecto."
+			},
+			{
+				"question": "¿Es gratuito Prettier Config Generator?",
+				"answer": "Sí, completamente gratuito. Sin registro ni cuenta requerida, sin límites de uso. La herramienta también es de código abierto en GitHub."
+			},
+			{
+				"question": "¿Esta herramienta cubre todas las opciones de Prettier?",
+				"answer": "Sí. Incluye cada opción de Prettier con soporte oficial, con descripciones y valores predeterminados para cada una."
+			},
+			{
+				"question": "¿Cómo copio y uso la configuración generada?",
+				"answer": "Haz clic en el botón \"Copiar configuración\" en la barra lateral (escritorio) o en el botón flotante (móvil). Pega el JSON en un nuevo archivo llamado .prettierrc en la raíz del proyecto."
+			},
+			{
+				"question": "¿Cuál es la diferencia entre .prettierrc, prettier.config.js y la clave prettier en package.json?",
+				"answer": "Las tres son formas válidas de configurar Prettier. .prettierrc admite JSON o YAML, prettier.config.js es un módulo JavaScript, y la clave prettier en package.json mantiene todo en un solo archivo. La funcionalidad es idéntica."
+			},
+			{
+				"question": "¿Prettier funciona con TypeScript, React y Vue?",
+				"answer": "Sí. Prettier tiene soporte integrado para TypeScript, JSX/TSX, componentes de archivo único de Vue y muchos otros formatos."
+			},
+			{
+				"question": "¿Cómo integro Prettier con VS Code?",
+				"answer": "Instala la extensión \"Prettier - Code formatter\" y agrega \"editor.defaultFormatter\": \"esbenp.prettier-vscode\" y \"editor.formatOnSave\": true en la configuración de VS Code."
+			},
+			{
+				"question": "¿Cómo ejecuto Prettier en todo mi proyecto?",
+				"answer": "Ejecuta npx prettier --write . en la raíz del proyecto. Esto formatea todos los archivos compatibles."
+			},
+			{
+				"question": "¿Qué lenguajes y tipos de archivo admite Prettier?",
+				"answer": "Prettier admite JavaScript, TypeScript, JSX, CSS, SCSS, HTML, Vue, JSON, YAML, Markdown y más."
+			},
+			{
+				"question": "¿Cómo ignoro archivos del formato de Prettier?",
+				"answer": "Crea un archivo .prettierignore en la raíz del proyecto con la misma sintaxis que .gitignore."
+			},
+			{
+				"question": "¿Puedo usar Prettier junto con ESLint?",
+				"answer": "Sí. Instala eslint-config-prettier para deshabilitar las reglas de formato de ESLint que entran en conflicto con Prettier."
+			},
+			{
+				"question": "¿Qué hace la opción printWidth?",
+				"answer": "printWidth le dice a Prettier el ancho de línea objetivo. Por defecto es 80. Es un objetivo flexible."
+			},
+			{
+				"question": "¿Cuál es la diferencia entre singleQuote y jsxSingleQuote?",
+				"answer": "singleQuote controla las comillas en JavaScript/TypeScript. jsxSingleQuote controla los atributos JSX. Puedes configurarlos de forma independiente."
+			},
+			{
+				"question": "¿Cómo uso la función de búsqueda en este sitio?",
+				"answer": "Usa la barra de búsqueda en la parte superior para filtrar opciones de Prettier por nombre o descripción."
+			},
+			{
+				"question": "¿Este sitio tiene modo oscuro?",
+				"answer": "Sí. Haz clic en el botón de tema en el encabezado para cambiar entre modo claro, oscuro y preferencia del sistema."
+			},
+			{
+				"question": "¿Cuál es la configuración predeterminada de Prettier?",
+				"answer": "Los valores predeterminados incluyen: printWidth: 80, tabWidth: 2, semi: true, singleQuote: false, trailingComma: \"all\"."
+			},
+			{
+				"question": "¿Cómo reporto un error o contribuyo al proyecto?",
+				"answer": "Abre un issue o pull request en el repositorio de GitHub. El proyecto acepta contribuciones de todo tipo."
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "Acerca de - Prettier Config",
+			"description": "Conoce Prettier Config Generator — una herramienta gratuita y de código abierto para crear archivos .prettierrc fácilmente."
+		},
+		"hero": {
+			"badge": "Acerca de nosotros",
+			"title": "Acerca de Prettier Config",
+			"description": "Una herramienta gratuita y de código abierto para configurar Prettier sin complicaciones."
+		},
+		"whatIsThis": {
+			"title": "¿Qué es esta herramienta?",
+			"description": "Prettier Config Generator es una aplicación web interactiva que hace que configurar Prettier sea sencillo. Puedes ajustar visualmente cada opción de Prettier y ver tu archivo de configuración actualizado en tiempo real."
+		},
+		"features": {
+			"title": "Características",
+			"items": [
+				{
+					"title": "Real-time Generation",
+					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+				},
+				{
+					"title": "Interactive Interface",
+					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+				},
+				{
+					"title": "Smart Search",
+					"description": "Find options quickly by name, description, or keyword with integrated search."
+				},
+				{
+					"title": "One-Click Copy",
+					"description": "Copy your generated configuration to clipboard instantly."
+				},
+				{
+					"title": "All Options Covered",
+					"description": "Every officially supported Prettier option is included with its default value and description."
+				},
+				{
+					"title": "15 Languages",
+					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+				}
+			]
+		},
+		"techStack": {
+			"title": "Construido con",
+			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+		},
+		"openSource": {
+			"title": "Código Abierto",
+			"description": "Esta herramienta es completamente gratuita y de código abierto. Se agradecen las contribuciones, informes de errores y sugerencias.",
+			"button": "Ver en GitHub"
+		},
+		"creator": {
+			"title": "Creador",
+			"builtBy": "Creado por",
+			"description": "Construido con cariño para la comunidad de desarrolladores. Si encuentras útil esta herramienta, considera dar una estrella al repositorio en GitHub."
+		}
+	},
 	"Footer": {
 		"brand": {
 			"alt": "Prettier Config",
@@ -81,6 +232,7 @@
 			"generator": "Generador de Config",
 			"docs": "Documentación",
 			"faq": "Preguntas Frecuentes",
+			"about": "Acerca de",
 			"whyPrettier": "¿Por qué Prettier?"
 		},
 		"resources": {

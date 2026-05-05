@@ -1,0 +1,101 @@
+{
+	"Home": {
+		"hero": {
+			"badge": "Miễn phí & Mã nguồn mở",
+			"title": "Tạo cấu hình",
+			"titleSuffix": "Prettier của bạn",
+			"description": "Một ứng dụng web hiện đại, thân thiện với người dùng giúp các nhà phát triển dễ dàng tạo và tùy chỉnh các tệp cấu hình Prettier với giao diện tương tác.",
+			"startButton": "Bắt đầu tạo",
+			"githubButton": "Xem trên GitHub"
+		},
+		"features": {
+			"title": "Tại sao chọn trình tạo của chúng tôi?",
+			"subtitle": "Được xây dựng với các công nghệ web hiện đại cho trải nghiệm phát triển tốt nhất",
+			"realtime": {
+				"title": "Tạo thời gian thực",
+				"description": "Cấu hình cập nhật ngay lập tức khi bạn chọn các tùy chọn. Xem tệp .prettierrc của bạn được tạo trong thời gian thực."
+			},
+			"interactive": {
+				"title": "Giao diện tương tác",
+				"description": "Giao diện đẹp, phản hồi nhanh với hỗ trợ chế độ tối/sáng và các gợi ý chi tiết cho từng tùy chọn."
+			},
+			"search": {
+				"title": "Tìm kiếm thông minh",
+				"description": "Tìm kiếm các tùy chọn nhanh chóng theo tên, mô tả hoặc các thuật ngữ liên quan với chức năng tìm kiếm tích hợp."
+			},
+			"copy": {
+				"title": "Sao chép một lần nhấp",
+				"description": "Sao chép cấu hình đã tạo của bạn vào bộ nhớ tạm ngay lập tức với các thông báo đẹp mắt."
+			},
+			"validation": {
+				"title": "Xác thực định dạng",
+				"description": "Định dạng phía máy chủ đảm bảo cấu hình Prettier của bạn luôn chính xác và được định dạng đúng."
+			},
+			"design": {
+				"title": "Thiết kế hiện đại",
+				"description": "Được xây dựng với Next.js 15, TypeScript, Tailwind CSS và shadcn/ui cho trải nghiệm mượt mà và nhanh chóng."
+			}
+		},
+		"techStack": {
+			"title": "Được xây dựng với các công nghệ hiện đại",
+			"subtitle": "Được hỗ trợ bởi các công cụ và khung phát triển web mới nhất"
+		},
+		"cta": {
+			"title": "Sẵn sàng để tạo cấu hình của bạn?",
+			"description": "Bắt đầu tạo cấu hình Prettier hoàn hảo của bạn trong vài giây. Không cần đăng ký, hoàn toàn miễn phí.",
+			"button": "Tạo cấu hình ngay"
+		}
+	},
+	"Page": {
+		"search": {
+			"found": "Tìm thấy {count} trong số {total} tùy chọn",
+			"noOptions": "Не найдено ни одной опции",
+			"tryOtherTerms": "Thử tìm kiếm các thuật ngữ khác hoặc",
+			"clearSearch": "xóa tìm kiếm của bạn"
+		},
+		"fab": {
+			"generateConfig": "Tạo cấu hình",
+			"resetSelections": "Đặt lại lựa chọn"
+		},
+		"resetDialog": {
+			"title": "Bạn có chắc chắn không?",
+			"description": "Hành động này không thể hoàn tác. Điều này sẽ xóa tất cả các tùy chọn đã chọn của bạn và đặt lại trình tạo về trạng thái ban đầu.",
+			"cancel": "Hủy",
+			"continue": "Tiếp tục"
+		},
+		"ConfigAside": {
+			"copyConfig": "Sao chép cấu hình",
+			"viewConfig": "Xem cấu hình",
+			"noConfig": "Chưa có cấu hình nào được tạo.",
+			"selectOptions": "Chọn các tùy chọn để tạo cấu hình Prettier của bạn."
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Prettier Config",
+			"name": "Prettier Config",
+			"description": "Tạo tệp .prettierrc của bạn một cách dễ dàng với công cụ cấu hình Prettier tương tác này."
+		},
+		"quickLinks": {
+			"title": "Liên kết nhanh",
+			"generator": "Trình tạo cấu hình",
+			"docs": "Tài liệu",
+			"faq": "Câu hỏi thường gặp",
+			"whyPrettier": "Tại sao chọn Prettier?"
+		},
+		"resources": {
+			"title": "Tài nguyên",
+			"docs": "Tài liệu Prettier",
+			"configurationGuide": "Hướng dẫn cấu hình",
+			"playground": "Prettier Playground"
+		},
+		"developer": {
+			"title": "Nhà phát triển",
+			"createdBy": "Được tạo bởi",
+			"viewOnGitHub": "Xem trên GitHub"
+		},
+		"bottom": {
+			"copyright": "Prettier Config"
+		}
+	}
+}

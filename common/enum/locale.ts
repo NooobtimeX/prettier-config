@@ -9,4 +9,9 @@ export enum Locale {
 	PT = 'pt',
 	JA = 'ja',
 	KO = 'ko',
+	RU = 'ru',
+	VI = 'vi',
+	ID = 'id',
+	IT = 'it',
+	AR = 'ar',
 }

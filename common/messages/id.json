@@ -1,0 +1,101 @@
+{
+	"Home": {
+		"hero": {
+			"badge": "Gratis & Sumber Terbuka",
+			"title": "Buat Konfigurasi",
+			"titleSuffix": "Prettier Anda",
+			"description": "Aplikasi web modern dan ramah pengguna yang membantu pengembang dengan mudah membuat dan menyesuaikan file konfigurasi Prettier dengan antarmuka interaktif.",
+			"startButton": "Mulai Membuat",
+			"githubButton": "Lihat di GitHub"
+		},
+		"features": {
+			"title": "Mengapa Memilih Pembuat Kami?",
+			"subtitle": "Dibangun dengan teknologi web modern untuk pengalaman pengembangan terbaik",
+			"realtime": {
+				"title": "Pembuatan Real-time",
+				"description": "Konfigurasi diperbarui secara instan saat Anda memilih opsi. Lihat file .prettierrc Anda dibuat secara real-time."
+			},
+			"interactive": {
+				"title": "Antarmuka Interaktif",
+				"description": "Antarmuka yang indah dan responsif dengan dukungan tema gelap/terang serta tooltip komprehensif untuk setiap opsi."
+			},
+			"search": {
+				"title": "Pencarian Pintar",
+				"description": "Temukan opsi dengan cepat berdasarkan nama, deskripsi, atau istilah terkait dengan fungsi pencarian terintegrasi."
+			},
+			"copy": {
+				"title": "Salin Sekali Klik",
+				"description": "Salin konfigurasi yang dihasilkan ke clipboard secara instan dengan notifikasi toast yang indah."
+			},
+			"validation": {
+				"title": "Validasi Format",
+				"description": "Pemformatan sisi server memastikan konfigurasi Prettier Anda selalu akurat dan diformat dengan benar."
+			},
+			"design": {
+				"title": "Desain Modern",
+				"description": "Dibangun dengan Next.js 15, TypeScript, Tailwind CSS, dan shadcn/ui untuk pengalaman yang cepat dan lancar."
+			}
+		},
+		"techStack": {
+			"title": "Dibangun dengan Teknologi Modern",
+			"subtitle": "Didukung oleh alat dan kerangka kerja pengembangan web terbaru"
+		},
+		"cta": {
+			"title": "Siap untuk Membuat Konfigurasi Anda?",
+			"description": "Mulai buat konfigurasi Prettier yang sempurna dalam hitungan detik. Tanpa perlu mendaftar, sepenuhnya gratis.",
+			"button": "Buat Konfigurasi Sekarang"
+		}
+	},
+	"Page": {
+		"search": {
+			"found": "Ditemukan {count} dari {total} opsi",
+			"noOptions": "Tidak ada opsi yang ditemukan",
+			"tryOtherTerms": "Coba cari istilah lain atau",
+			"clearSearch": "bersihkan pencarian Anda"
+		},
+		"fab": {
+			"generateConfig": "Buat Konfigurasi",
+			"resetSelections": "Atur Ulang Pilihan"
+		},
+		"resetDialog": {
+			"title": "Apakah Anda benar-benar yakin?",
+			"description": "Tindakan ini tidak dapat dibatalkan. Ini akan menghapus semua opsi yang Anda pilih dan mengatur ulang pembuat ke keadaan awal.",
+			"cancel": "Batal",
+			"continue": "Lanjutkan"
+		},
+		"ConfigAside": {
+			"copyConfig": "Salin Konfigurasi",
+			"viewConfig": "Lihat Konfigurasi",
+			"noConfig": "Belum ada konfigurasi yang dibuat.",
+			"selectOptions": "Pilih opsi untuk membuat konfigurasi Prettier Anda."
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Prettier Config",
+			"name": "Prettier Config",
+			"description": "Buat file .prettierrc Anda dengan mudah menggunakan alat konfigurasi Prettier interaktif ini."
+		},
+		"quickLinks": {
+			"title": "Tautan Cepat",
+			"generator": "Pembuat Konfigurasi",
+			"docs": "Dokumentasi",
+			"faq": "FAQ",
+			"whyPrettier": "Mengapa Prettier?"
+		},
+		"resources": {
+			"title": "Sumber Daya",
+			"docs": "Dokumentasi Prettier",
+			"configurationGuide": "Panduan Konfigurasi",
+			"playground": "Prettier Playground"
+		},
+		"developer": {
+			"title": "Pengembang",
+			"createdBy": "Dibuat oleh",
+			"viewOnGitHub": "Lihat di GitHub"
+		},
+		"bottom": {
+			"copyright": "Prettier Config"
+		}
+	}
+}

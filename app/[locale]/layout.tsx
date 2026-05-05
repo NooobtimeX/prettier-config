@@ -106,6 +106,7 @@ export default async function LocaleLayout({
 		<html
 			suppressHydrationWarning
 			lang={locale}
+			dir={locale === 'ar' ? 'rtl' : 'ltr'}
 		>
 			<head>
 				<meta

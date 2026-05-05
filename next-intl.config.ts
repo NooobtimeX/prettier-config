@@ -3,7 +3,23 @@ import { Locale } from './common/enum/locale';
 
 export const routing = defineRouting({
 	// A list of all locales that are supported
-	locales: ['en', 'th', 'zh', 'es', 'hi', 'de', 'fr', 'pt', 'ja', 'ko'],
+	locales: [
+		'en',
+		'th',
+		'zh',
+		'es',
+		'hi',
+		'de',
+		'fr',
+		'pt',
+		'ja',
+		'ko',
+		'ru',
+		'vi',
+		'id',
+		'it',
+		'ar',
+	],
 
 	// Used when no locale matches
 	defaultLocale: Locale.EN,

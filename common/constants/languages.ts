@@ -68,6 +68,36 @@ export const LANGUAGES: Record<Locale, LanguageConfig> = {
 		flag: '🇰🇷',
 		nativeName: '한국어',
 	},
+	[Locale.RU]: {
+		code: Locale.RU,
+		name: 'Russian',
+		flag: '🇷🇺',
+		nativeName: 'Русский',
+	},
+	[Locale.VI]: {
+		code: Locale.VI,
+		name: 'Vietnamese',
+		flag: '🇻🇳',
+		nativeName: 'Tiếng Việt',
+	},
+	[Locale.ID]: {
+		code: Locale.ID,
+		name: 'Indonesian',
+		flag: '🇮🇩',
+		nativeName: 'Bahasa Indonesia',
+	},
+	[Locale.IT]: {
+		code: Locale.IT,
+		name: 'Italian',
+		flag: '🇮🇹',
+		nativeName: 'Italiano',
+	},
+	[Locale.AR]: {
+		code: Locale.AR,
+		name: 'Arabic',
+		flag: '🇸🇦',
+		nativeName: 'العربية',
+	},
 };
 
 export const LANGUAGE_LIST = Object.values(LANGUAGES);

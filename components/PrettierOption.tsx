@@ -194,19 +194,21 @@ export function PrettierOption({ option, value, onChange }: Props) {
 						</DrawerContent>
 					</Drawer>
 				:	<Popover open={open} onOpenChange={setOpen}>
-						<PopoverTrigger asChild>
-							<Button
-								variant="outline"
-								role="combobox"
-								aria-expanded={open}
-								className="w-full justify-between"
-								aria-label={`Select ${option.name}`}
-							>
-								{selectedCount > 0 ?
-									`${selectedCount} selected`
-								:	"Select options"}
-							</Button>
-						</PopoverTrigger>
+						<PopoverTrigger
+							render={
+								<Button
+									variant="outline"
+									role="combobox"
+									aria-expanded={open}
+									className="w-full justify-between"
+									aria-label={`Select ${option.name}`}
+								>
+									{selectedCount > 0 ?
+										`${selectedCount} selected`
+									:	"Select options"}
+								</Button>
+							}
+						/>
 						<PopoverContent className="w-[250px] p-0" align="start">
 							{multiSelectContent}
 						</PopoverContent>

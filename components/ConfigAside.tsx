@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -33,12 +33,10 @@ interface ConfigAsideProps {
  */
 export function ConfigAside({ config, onReset, hasConfig }: ConfigAsideProps) {
 	const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
-	const [displayConfig, setDisplayConfig] = useState(config);
-
-	// Sort the config based on selected order
-	useEffect(() => {
-		setDisplayConfig(sortConfig(config, sortOrder));
-	}, [config, sortOrder]);
+	const displayConfig = useMemo(
+		() => sortConfig(config, sortOrder),
+		[config, sortOrder]
+	);
 
 	const copyToClipboard = async () => {
 		if (displayConfig) {
@@ -70,17 +68,19 @@ export function ConfigAside({ config, onReset, hasConfig }: ConfigAsideProps) {
 								<div className="flex justify-center gap-2">
 									<TooltipProvider>
 										<Tooltip>
-											<TooltipTrigger asChild>
-												<Button
-													size="sm"
-													variant="secondary"
-													onClick={onReset}
-													aria-label="Reset Config"
-												>
-													<RotateCcw className="mr-2 h-4 w-4" />
-													Reset
-												</Button>
-											</TooltipTrigger>
+											<TooltipTrigger
+												render={
+													<Button
+														size="sm"
+														variant="secondary"
+														onClick={onReset}
+														aria-label="Reset Config"
+													>
+														<RotateCcw className="mr-2 h-4 w-4" />
+														Reset
+													</Button>
+												}
+											/>
 											<TooltipContent>Reset Selections</TooltipContent>
 										</Tooltip>
 									</TooltipProvider>

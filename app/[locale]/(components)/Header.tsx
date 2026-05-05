@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Github, Search, X } from "lucide-react";
+import { Search, X } from "lucide-react";
+import { FaGithub } from "react-icons/fa6";
 import ThemeChanger from "@/components/ButtonThemeChanger";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { Button } from "@/components/ui/button";
@@ -55,7 +56,7 @@ export default function Header({
 							className="rounded-full"
 							aria-label="Github Repository"
 						>
-							<Github className="h-4 w-4" />
+							<FaGithub className="h-4 w-4" />
 						</Button>
 					</Link>
 					{/* Theme Changer */}

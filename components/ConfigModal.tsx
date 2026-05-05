@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import {
 	Dialog,
 	DialogContent,
@@ -19,6 +19,7 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Copy, ArrowUpAZ, ArrowDownAZ } from "lucide-react";
 import { toast } from "sonner";
 import { sortConfig, type SortOrder } from "@/lib/sortConfig";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ConfigModalProps {
 	open: boolean;
@@ -27,21 +28,12 @@ interface ConfigModalProps {
 }
 
 export function ConfigModal({ open, config, onClose }: ConfigModalProps) {
-	const [isMobile, setIsMobile] = useState(false);
+	const isMobile = useIsMobile();
 	const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
-	const [displayConfig, setDisplayConfig] = useState(config);
-
-	useEffect(() => {
-		const checkMobile = () => setIsMobile(window.innerWidth < 768);
-		checkMobile();
-		window.addEventListener("resize", checkMobile);
-		return () => window.removeEventListener("resize", checkMobile);
-	}, []);
-
-	// Sort the config based on selected order - using shared utility
-	useEffect(() => {
-		setDisplayConfig(sortConfig(config, sortOrder));
-	}, [config, sortOrder]);
+	const displayConfig = useMemo(
+		() => sortConfig(config, sortOrder),
+		[config, sortOrder]
+	);
 
 	const copyToClipboard = async () => {
 		if (displayConfig) {

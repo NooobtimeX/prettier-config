@@ -21,7 +21,8 @@ export default function LanguageSwitcher() {
 	// Get current locale from params or fallback to useLocale
 	const currentLocale = (params?.locale as Locale) || locale;
 
-	const handleLanguageChange = (newLocale: string) => {
+	const handleLanguageChange = (newLocale: Locale | null) => {
+		if (!newLocale) return;
 		// Remove the current locale from the pathname if it exists
 		const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "");
 		const newPath = `/${newLocale}${pathWithoutLocale}`;

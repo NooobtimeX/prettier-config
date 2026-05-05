@@ -221,34 +221,38 @@ export default function HomePage() {
 							<TooltipProvider>
 								<div className="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3">
 									<Tooltip open={showTooltip}>
-										<TooltipTrigger asChild>
-											<Button
-												size="icon"
-												variant="default"
-												className="h-12 w-12 rounded-full shadow-md"
-												onClick={handleGenerate}
-												aria-label={t("fab.generateConfig")}
-											>
-												<FilePlus className="h-5 w-5" />
-											</Button>
-										</TooltipTrigger>
+										<TooltipTrigger
+											render={
+												<Button
+													size="icon"
+													variant="default"
+													className="h-12 w-12 rounded-full shadow-md"
+													onClick={handleGenerate}
+													aria-label={t("fab.generateConfig")}
+												>
+													<FilePlus className="h-5 w-5" />
+												</Button>
+											}
+										/>
 										<TooltipContent side="left" sideOffset={8}>
 											{t("fab.generateConfig")}
 										</TooltipContent>
 									</Tooltip>
 
 									<Tooltip open={showTooltip}>
-										<TooltipTrigger asChild>
-											<Button
-												size="icon"
-												variant="secondary"
-												className="h-12 w-12 rounded-full shadow-md"
-												onClick={() => setIsResetDialogOpen(true)}
-												aria-label={t("fab.resetSelections")}
-											>
-												<RotateCcw className="h-5 w-5" />
-											</Button>
-										</TooltipTrigger>
+										<TooltipTrigger
+											render={
+												<Button
+													size="icon"
+													variant="secondary"
+													className="h-12 w-12 rounded-full shadow-md"
+													onClick={() => setIsResetDialogOpen(true)}
+													aria-label={t("fab.resetSelections")}
+												>
+													<RotateCcw className="h-5 w-5" />
+												</Button>
+											}
+										/>
 										<TooltipContent side="left" sideOffset={8}>
 											{t("fab.resetSelections")}
 										</TooltipContent>

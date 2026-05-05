@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Github, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa6";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { REPOSITORY, EXTERNAL_LINKS, DEVELOPER } from "@/common/constants";
@@ -127,7 +128,7 @@ export default function Footer() {
 								rel="noopener noreferrer"
 								className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm transition-colors"
 							>
-								<Github className="h-4 w-4" />
+								<FaGithub className="h-4 w-4" />
 								{t("developer.viewOnGitHub")}
 							</Link>
 						</div>

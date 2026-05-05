@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Oswald as OswaldFont } from "next/font/google";
 import "../globals.css";
-import Script from "next/script";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
 import options from "@/lib/options";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { routing } from "@/next-intl.config";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const oswald = OswaldFont({ subsets: ["latin"] });
 
@@ -107,25 +107,12 @@ export default async function LocaleLayout({
 	return (
 		<html suppressHydrationWarning lang={locale}>
 			<head>
-				<Script
-					id="gtm"
-					src={`https://www.googletagmanager.com/gtm.js?id=GTM-N3C2N4G7`}
-					strategy="lazyOnload"
-				/>
-				<Script id="gtm-init" strategy="lazyOnload">
-					{`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'GTM-N3C2N4G7');
-          `}
-				</Script>
 				<meta
 					name="google-adsense-account"
 					content="ca-pub-6034794215506479"
 				></meta>
 			</head>
-			<body className={oswald.className}>
+			<body suppressHydrationWarning className={oswald.className}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
@@ -134,9 +121,10 @@ export default async function LocaleLayout({
 				>
 					<NextIntlClientProvider messages={messages}>
 						{children}
+						<Toaster />
 					</NextIntlClientProvider>
-					<Toaster />
 				</ThemeProvider>
+				<GoogleTagManager gtmId="GTM-N3C2N4G7" />
 			</body>
 		</html>
 	);

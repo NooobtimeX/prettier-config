@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import {
 	Select,
 	SelectContent,
@@ -11,6 +11,7 @@ import {
 import { Globe } from "lucide-react";
 import { LANGUAGES, LANGUAGE_LIST } from "@/common/constants";
 import { Locale } from "@/common/enum/locale";
+import { usePathname, useRouter } from "@/i18n/navigation";
 
 export default function LanguageSwitcher() {
 	const locale = useLocale() as Locale;
@@ -23,10 +24,12 @@ export default function LanguageSwitcher() {
 
 	const handleLanguageChange = (newLocale: Locale | null) => {
 		if (!newLocale) return;
-		// Remove the current locale from the pathname if it exists
-		const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, "");
-		const newPath = `/${newLocale}${pathWithoutLocale}`;
-		router.push(newPath);
+
+		// Safeguard: Ensure the pathname does not start with a locale prefix
+		// next-intl's usePathname should handle this, but we'll be explicit to prevent /ko/pt issues
+		const cleanPathname = pathname.replace(/^\/[a-z]{2}(\/|$)/, "/");
+
+		router.replace(cleanPathname, { locale: newLocale });
 	};
 
 	const currentLanguage = LANGUAGES[currentLocale];

@@ -1,11 +1,11 @@
 {
 	"name": "prettier-config.dev",
 	"version": "1.0.0",
-	"private": true,
+	"private": false,
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next dev -p 2000",
 		"build": "next build",
-		"start": "next start",
+		"start": "next start -p 2000",
 		"lint": "eslint --fix && prettier --write ."
 	},
 	"dependencies": {

@@ -1,28 +1,34 @@
+import { Locale } from "@/common/enum/locale";
 import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://prettier-config.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const routes = [""];
-	const locales = ["en", "th", "zh", "es"];
-	const currentDate = new Date().toISOString();
+	const locales = Object.values(Locale);
+	const currentDate = new Date();
 
 	const sitemap: MetadataRoute.Sitemap = [];
 
-	// Add root URLs for each locale
-	for (const locale of locales) {
-		for (const route of routes) {
-			const url =
-				route === "" ?
-					`${SITE_URL}/${locale}`
-				:	`${SITE_URL}/${locale}${route}`;
-			const priority = route === "" ? 1.0 : 0.9;
+	// Add entries for each locale and route
+	for (const route of routes) {
+		for (const locale of locales) {
+			const path = route === "" ? `/${locale}` : `/${locale}${route}`;
+			const url = `${SITE_URL}${path}`;
 
 			sitemap.push({
 				url,
 				lastModified: currentDate,
 				changeFrequency: "monthly",
-				priority,
+				priority: route === "" ? 1.0 : 0.8,
+				alternates: {
+					languages: Object.fromEntries(
+						locales.map((l) => {
+							const altPath = route === "" ? `/${l}` : `/${l}${route}`;
+							return [l, `${SITE_URL}${altPath}`];
+						})
+					),
+				},
 			});
 		}
 	}

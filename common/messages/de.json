@@ -67,7 +67,16 @@
 			"copyConfig": "Konfiguration kopieren",
 			"viewConfig": "Konfiguration anzeigen",
 			"noConfig": "Noch keine Konfiguration erstellt.",
-			"selectOptions": "Wählen Sie Optionen aus, um Ihre Prettier-Konfiguration zu erstellen."
+			"selectOptions": "Wählen Sie Optionen aus, um Ihre Prettier-Konfiguration zu erstellen.",
+			"configTab": "Konfiguration",
+			"previewTab": "Vorschau",
+			"yourCodeTab": "Ihr Code",
+			"formattedOutput": "Formatierte Ausgabe",
+			"copyFormatted": "Formatiert kopieren",
+			"pastePrompt": "Fügen Sie Ihren JavaScript- oder TypeScript-Code hier ein",
+			"formatting": "Wird formatiert…",
+			"beforeLabel": "Vorher (unformatiert)",
+			"afterLabel": "Nachher (formatiert)"
 		}
 	},
 	"Faq": {

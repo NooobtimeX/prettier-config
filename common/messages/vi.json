@@ -67,7 +67,16 @@
 			"copyConfig": "Sao chép cấu hình",
 			"viewConfig": "Xem cấu hình",
 			"noConfig": "Chưa có cấu hình nào được tạo.",
-			"selectOptions": "Chọn các tùy chọn để tạo cấu hình Prettier của bạn."
+			"selectOptions": "Chọn các tùy chọn để tạo cấu hình Prettier của bạn.",
+			"configTab": "Cấu hình",
+			"previewTab": "Xem trước",
+			"yourCodeTab": "Code của bạn",
+			"formattedOutput": "Kết quả đã định dạng",
+			"copyFormatted": "Sao chép đã định dạng",
+			"pastePrompt": "Dán code JavaScript hoặc TypeScript của bạn vào đây",
+			"formatting": "Đang định dạng…",
+			"beforeLabel": "Trước (chưa định dạng)",
+			"afterLabel": "Sau (đã định dạng)"
 		}
 	},
 	"Faq": {

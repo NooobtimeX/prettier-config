@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import options from '@/lib/options';
 import { Button } from '@/components/ui/button';
 import { PrettierOption } from '@/components/PrettierOption';
-import { ConfigModal } from '@/components/ConfigModal';
-import { ConfigAside } from '@/components/ConfigAside';
+import { PrettierPanelModal } from '@/components/PrettierPanelModal';
+import { PrettierPanel } from '@/components/PrettierPanel';
 import { RotateCcw, FilePlus } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import {
@@ -249,10 +249,11 @@ export default function HomePage() {
 							</TooltipProvider>
 						)}
 
-						<ConfigModal
+						<PrettierPanelModal
 							open={showConfig}
 							config={generatedConfig}
 							onClose={() => setShowConfig(false)}
+							selectedOptions={selected}
 						/>
 
 						{/* ✨ Added: The AlertDialog component for reset confirmation */}
@@ -282,10 +283,11 @@ export default function HomePage() {
 				{/* Aside Panel - Only visible on large screens */}
 				{isLargeScreen && (
 					<aside className="sticky top-0 h-screen w-80 flex-shrink-0 self-start px-2 xl:w-96">
-						<ConfigAside
+						<PrettierPanel
 							config={generatedConfig}
 							onReset={() => setIsResetDialogOpen(true)}
 							hasConfig={hasSelectedOptions}
+							selectedOptions={selected}
 						/>
 					</aside>
 				)}

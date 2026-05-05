@@ -67,7 +67,16 @@
 			"copyConfig": "कॉन्फ़िगरेशन कॉपी करें",
 			"viewConfig": "कॉन्फ़िगरेशन देखें",
 			"noConfig": "अभी तक कोई कॉन्फ़िगरेशन जेनरेट नहीं हुआ है।",
-			"selectOptions": "अपना प्रीटियर कॉन्फ़िगरेशन जेनरेट करने के लिए विकल्प चुनें।"
+			"selectOptions": "अपना प्रीटियर कॉन्फ़िगरेशन जेनरेट करने के लिए विकल्प चुनें।",
+			"configTab": "कॉन्फ़िग",
+			"previewTab": "पूर्वावलोकन",
+			"yourCodeTab": "आपका कोड",
+			"formattedOutput": "स्वरूपित आउटपुट",
+			"copyFormatted": "स्वरूपित कॉपी करें",
+			"pastePrompt": "अपना JavaScript या TypeScript कोड यहाँ पेस्ट करें",
+			"formatting": "स्वरूपित हो रहा है…",
+			"beforeLabel": "पहले (असंरूपित)",
+			"afterLabel": "बाद (स्वरूपित)"
 		}
 	},
 	"Faq": {

@@ -67,7 +67,16 @@
 			"copyConfig": "설정 복사",
 			"viewConfig": "설정 보기",
 			"noConfig": "아직 생성된 설정이 없습니다.",
-			"selectOptions": "옵션을 선택하여 Prettier 설정을 생성하세요."
+			"selectOptions": "옵션을 선택하여 Prettier 설정을 생성하세요.",
+			"configTab": "설정",
+			"previewTab": "미리보기",
+			"yourCodeTab": "내 코드",
+			"formattedOutput": "포맷된 출력",
+			"copyFormatted": "포맷된 내용 복사",
+			"pastePrompt": "JavaScript 또는 TypeScript 코드를 여기에 붙여넣으세요",
+			"formatting": "포맷 중…",
+			"beforeLabel": "이전 (미포맷)",
+			"afterLabel": "이후 (포맷됨)"
 		}
 	},
 	"Faq": {

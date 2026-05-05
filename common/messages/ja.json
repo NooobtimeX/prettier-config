@@ -67,7 +67,16 @@
 			"copyConfig": "設定をコピー",
 			"viewConfig": "設定を表示",
 			"noConfig": "設定はまだ生成されていません。",
-			"selectOptions": "オプションを選択してPrettier設定を生成してください。"
+			"selectOptions": "オプションを選択してPrettier設定を生成してください。",
+			"configTab": "設定",
+			"previewTab": "プレビュー",
+			"yourCodeTab": "あなたのコード",
+			"formattedOutput": "フォーマット済み出力",
+			"copyFormatted": "フォーマット済みをコピー",
+			"pastePrompt": "JavaScriptまたはTypeScriptのコードをここに貼り付けてください",
+			"formatting": "フォーマット中…",
+			"beforeLabel": "フォーマット前",
+			"afterLabel": "フォーマット後"
 		}
 	},
 	"Faq": {

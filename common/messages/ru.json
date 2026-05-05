@@ -67,7 +67,16 @@
 			"copyConfig": "Копировать конфиг",
 			"viewConfig": "Посмотреть конфиг",
 			"noConfig": "Конфигурация еще не создана.",
-			"selectOptions": "Выберите опции для генерации вашего конфига Prettier."
+			"selectOptions": "Выберите опции для генерации вашего конфига Prettier.",
+			"configTab": "Конфигурация",
+			"previewTab": "Предпросмотр",
+			"yourCodeTab": "Ваш код",
+			"formattedOutput": "Отформатированный вывод",
+			"copyFormatted": "Скопировать отформатированное",
+			"pastePrompt": "Вставьте ваш JavaScript или TypeScript код здесь",
+			"formatting": "Форматирование…",
+			"beforeLabel": "До (неотформатировано)",
+			"afterLabel": "После (отформатировано)"
 		}
 	},
 	"Faq": {

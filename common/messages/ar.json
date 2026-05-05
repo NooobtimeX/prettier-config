@@ -67,7 +67,16 @@
 			"copyConfig": "نسخ الإعدادات",
 			"viewConfig": "عرض الإعدادات",
 			"noConfig": "لم يتم إنشاء إعدادات بعد.",
-			"selectOptions": "اختر الخيارات لإنشاء إعدادات Prettier الخاصة بك."
+			"selectOptions": "اختر الخيارات لإنشاء إعدادات Prettier الخاصة بك.",
+			"configTab": "الإعداد",
+			"previewTab": "معاينة",
+			"yourCodeTab": "كودك",
+			"formattedOutput": "المخرجات المنسقة",
+			"copyFormatted": "نسخ المنسق",
+			"pastePrompt": "الصق كود JavaScript أو TypeScript الخاص بك هنا",
+			"formatting": "جارٍ التنسيق…",
+			"beforeLabel": "قبل (غير منسق)",
+			"afterLabel": "بعد (منسق)"
 		}
 	},
 	"Faq": {

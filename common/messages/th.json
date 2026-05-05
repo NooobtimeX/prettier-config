@@ -67,7 +67,16 @@
 			"copyConfig": "คัดลอกการตั้งค่า",
 			"viewConfig": "ดูการตั้งค่า",
 			"noConfig": "ยังไม่มีการสร้างคอนฟิก",
-			"selectOptions": "เลือกตัวเลือกเพื่อสร้างคอนฟิก Prettier ของคุณ"
+			"selectOptions": "เลือกตัวเลือกเพื่อสร้างคอนฟิก Prettier ของคุณ",
+			"configTab": "การตั้งค่า",
+			"previewTab": "ตัวอย่าง",
+			"yourCodeTab": "โค้ดของคุณ",
+			"formattedOutput": "ผลลัพธ์ที่จัดรูปแบบแล้ว",
+			"copyFormatted": "คัดลอกที่จัดรูปแบบแล้ว",
+			"pastePrompt": "วางโค้ด JavaScript หรือ TypeScript ของคุณที่นี่",
+			"formatting": "กำลังจัดรูปแบบ…",
+			"beforeLabel": "ก่อน (ยังไม่จัดรูปแบบ)",
+			"afterLabel": "หลัง (จัดรูปแบบแล้ว)"
 		}
 	},
 	"Faq": {

@@ -67,7 +67,16 @@
 			"copyConfig": "复制配置",
 			"viewConfig": "查看配置",
 			"noConfig": "尚未生成配置。",
-			"selectOptions": "选择选项以生成您的 Prettier 配置。"
+			"selectOptions": "选择选项以生成您的 Prettier 配置。",
+			"configTab": "配置",
+			"previewTab": "预览",
+			"yourCodeTab": "您的代码",
+			"formattedOutput": "格式化输出",
+			"copyFormatted": "复制格式化结果",
+			"pastePrompt": "在此粘贴您的 JavaScript 或 TypeScript 代码",
+			"formatting": "格式化中…",
+			"beforeLabel": "格式化前",
+			"afterLabel": "格式化后"
 		}
 	},
 	"Faq": {

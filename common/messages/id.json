@@ -67,7 +67,16 @@
 			"copyConfig": "Salin Konfigurasi",
 			"viewConfig": "Lihat Konfigurasi",
 			"noConfig": "Belum ada konfigurasi yang dibuat.",
-			"selectOptions": "Pilih opsi untuk membuat konfigurasi Prettier Anda."
+			"selectOptions": "Pilih opsi untuk membuat konfigurasi Prettier Anda.",
+			"configTab": "Konfigurasi",
+			"previewTab": "Pratinjau",
+			"yourCodeTab": "Kode Anda",
+			"formattedOutput": "Output Terformat",
+			"copyFormatted": "Salin Terformat",
+			"pastePrompt": "Tempel kode JavaScript atau TypeScript Anda di sini",
+			"formatting": "Memformat…",
+			"beforeLabel": "Sebelum (belum diformat)",
+			"afterLabel": "Sesudah (sudah diformat)"
 		}
 	},
 	"Faq": {

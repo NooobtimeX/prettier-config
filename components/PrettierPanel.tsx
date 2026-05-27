@@ -18,7 +18,9 @@ import { toast } from 'sonner';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { sortConfig, type SortOrder } from '@/lib/sortConfig';
 import { useTranslations } from 'next-intl';
-import { formatCode, DEFAULT_SAMPLE } from '@/lib/formatCode';
+import { DEFAULT_SAMPLE } from '@/lib/sample';
+import type { FormatFn } from '@/lib/prettierLoader';
+import { VersionPicker } from '@/components/VersionPicker';
 
 type ViewMode = 'config' | 'preview' | 'yourcode';
 
@@ -31,9 +33,26 @@ interface PrettierPanelProps {
 	hasConfig: boolean;
 	/** The current Prettier option selections (used for live preview). */
 	selectedOptions: Record<string, unknown>;
+	/** Version-bound formatter from the active `prettier/standalone` bundle. */
+	format: FormatFn;
+	/** Currently selected Prettier version (drives the picker). */
+	version: string;
+	/** Called when the user picks a different Prettier version. */
+	onVersionChange: (version: string) => void;
+	/** True while the picked version's bundle is still loading. */
+	isFormatLoading: boolean;
 }
 
-export function PrettierPanel({ config, onReset, hasConfig, selectedOptions }: PrettierPanelProps) {
+export function PrettierPanel({
+	config,
+	onReset,
+	hasConfig,
+	selectedOptions,
+	format,
+	version,
+	onVersionChange,
+	isFormatLoading,
+}: PrettierPanelProps) {
 	const t = useTranslations('Page.ConfigAside');
 	const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
 	const [viewMode, setViewMode] = useState<ViewMode>('config');
@@ -45,13 +64,13 @@ export function PrettierPanel({ config, onReset, hasConfig, selectedOptions }: P
 
 	const displayConfig = useMemo(() => sortConfig(config, sortOrder), [config, sortOrder]);
 
-	// Format preview sample whenever options change or preview tab is active
+	// Format preview sample whenever options/version change or preview tab is active.
 	useEffect(() => {
 		let cancelled = false;
 		void (async () => {
 			if (viewMode !== 'preview') return;
 			setIsFormattingPreview(true);
-			const result = await formatCode(DEFAULT_SAMPLE, selectedOptions);
+			const result = await format(DEFAULT_SAMPLE, selectedOptions);
 			if (!cancelled) {
 				setFormattedPreview(result);
 				setIsFormattingPreview(false);
@@ -60,9 +79,9 @@ export function PrettierPanel({ config, onReset, hasConfig, selectedOptions }: P
 		return () => {
 			cancelled = true;
 		};
-	}, [selectedOptions, viewMode]);
+	}, [selectedOptions, viewMode, format]);
 
-	// Format user code whenever user types or options change
+	// Format user code whenever user types or options/version change.
 	useEffect(() => {
 		let cancelled = false;
 		void (async () => {
@@ -71,7 +90,7 @@ export function PrettierPanel({ config, onReset, hasConfig, selectedOptions }: P
 				return;
 			}
 			setIsFormattingUser(true);
-			const result = await formatCode(userCode, selectedOptions);
+			const result = await format(userCode, selectedOptions);
 			if (!cancelled) {
 				setFormattedUser(result);
 				setIsFormattingUser(false);
@@ -80,7 +99,7 @@ export function PrettierPanel({ config, onReset, hasConfig, selectedOptions }: P
 		return () => {
 			cancelled = true;
 		};
-	}, [userCode, selectedOptions, viewMode]);
+	}, [userCode, selectedOptions, viewMode, format]);
 
 	const copyConfig = async () => {
 		if (displayConfig) {
@@ -101,7 +120,14 @@ export function PrettierPanel({ config, onReset, hasConfig, selectedOptions }: P
 			{/* Sticky Header */}
 			<div className="bg-background/95 sticky top-0 z-10 shrink-0 rounded-t-lg border-b backdrop-blur">
 				<div className="p-2">
-					<h2 className="my-2 text-center text-lg font-semibold">Prettier Config</h2>
+					<div className="my-2 flex items-center justify-between gap-2">
+						<h2 className="text-lg font-semibold">Prettier Config</h2>
+						<VersionPicker
+							value={version}
+							onChange={onVersionChange}
+							disabled={isFormatLoading}
+						/>
+					</div>
 					{/* Tab bar */}
 					<div className="flex gap-1">
 						<Button

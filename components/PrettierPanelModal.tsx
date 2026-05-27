@@ -11,7 +11,9 @@ import { toast } from 'sonner';
 import { sortConfig, type SortOrder } from '@/lib/sortConfig';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useTranslations } from 'next-intl';
-import { formatCode, DEFAULT_SAMPLE } from '@/lib/formatCode';
+import { DEFAULT_SAMPLE } from '@/lib/sample';
+import type { FormatFn } from '@/lib/prettierLoader';
+import { VersionPicker } from '@/components/VersionPicker';
 
 type ViewMode = 'config' | 'preview' | 'yourcode';
 
@@ -21,6 +23,14 @@ interface PrettierPanelModalProps {
 	onClose: () => void;
 	/** The current Prettier option selections (used for live preview). */
 	selectedOptions: Record<string, unknown>;
+	/** Version-bound formatter from the active `prettier/standalone` bundle. */
+	format: FormatFn;
+	/** Currently selected Prettier version. */
+	version: string;
+	/** Called when the user picks a different Prettier version. */
+	onVersionChange: (version: string) => void;
+	/** True while the picked version's bundle is still loading. */
+	isFormatLoading: boolean;
 }
 
 export function PrettierPanelModal({
@@ -28,6 +38,10 @@ export function PrettierPanelModal({
 	config,
 	onClose,
 	selectedOptions,
+	format,
+	version,
+	onVersionChange,
+	isFormatLoading,
 }: PrettierPanelModalProps) {
 	const t = useTranslations('Page.ConfigAside');
 	const isMobile = useIsMobile();
@@ -46,7 +60,7 @@ export function PrettierPanelModal({
 		void (async () => {
 			if (viewMode !== 'preview') return;
 			setIsFormattingPreview(true);
-			const result = await formatCode(DEFAULT_SAMPLE, selectedOptions);
+			const result = await format(DEFAULT_SAMPLE, selectedOptions);
 			if (!cancelled) {
 				setFormattedPreview(result);
 				setIsFormattingPreview(false);
@@ -55,7 +69,7 @@ export function PrettierPanelModal({
 		return () => {
 			cancelled = true;
 		};
-	}, [selectedOptions, viewMode]);
+	}, [selectedOptions, viewMode, format]);
 
 	useEffect(() => {
 		let cancelled = false;
@@ -65,7 +79,7 @@ export function PrettierPanelModal({
 				return;
 			}
 			setIsFormattingUser(true);
-			const result = await formatCode(userCode, selectedOptions);
+			const result = await format(userCode, selectedOptions);
 			if (!cancelled) {
 				setFormattedUser(result);
 				setIsFormattingUser(false);
@@ -74,7 +88,7 @@ export function PrettierPanelModal({
 		return () => {
 			cancelled = true;
 		};
-	}, [userCode, selectedOptions, viewMode]);
+	}, [userCode, selectedOptions, viewMode, format]);
 
 	const copyConfig = async () => {
 		if (displayConfig) {
@@ -91,35 +105,44 @@ export function PrettierPanelModal({
 	};
 
 	const tabBar = (
-		<div className="flex gap-1 pt-2">
-			<Button
-				variant={viewMode === 'config' ? 'default' : 'secondary'}
-				size="sm"
-				className="flex-1 text-xs"
-				onClick={() => setViewMode('config')}
-			>
-				<FileJson className="mr-1 h-3 w-3" />
-				{t('configTab')}
-			</Button>
-			<Button
-				variant={viewMode === 'preview' ? 'default' : 'secondary'}
-				size="sm"
-				className="flex-1 text-xs"
-				onClick={() => setViewMode('preview')}
-			>
-				<Play className="mr-1 h-3 w-3" />
-				{t('previewTab')}
-			</Button>
-			<Button
-				variant={viewMode === 'yourcode' ? 'default' : 'secondary'}
-				size="sm"
-				className="flex-1 text-xs"
-				onClick={() => setViewMode('yourcode')}
-			>
-				<Code2 className="mr-1 h-3 w-3" />
-				{t('yourCodeTab')}
-			</Button>
-		</div>
+		<>
+			<div className="flex justify-end pt-2">
+				<VersionPicker
+					value={version}
+					onChange={onVersionChange}
+					disabled={isFormatLoading}
+				/>
+			</div>
+			<div className="flex gap-1 pt-2">
+				<Button
+					variant={viewMode === 'config' ? 'default' : 'secondary'}
+					size="sm"
+					className="flex-1 text-xs"
+					onClick={() => setViewMode('config')}
+				>
+					<FileJson className="mr-1 h-3 w-3" />
+					{t('configTab')}
+				</Button>
+				<Button
+					variant={viewMode === 'preview' ? 'default' : 'secondary'}
+					size="sm"
+					className="flex-1 text-xs"
+					onClick={() => setViewMode('preview')}
+				>
+					<Play className="mr-1 h-3 w-3" />
+					{t('previewTab')}
+				</Button>
+				<Button
+					variant={viewMode === 'yourcode' ? 'default' : 'secondary'}
+					size="sm"
+					className="flex-1 text-xs"
+					onClick={() => setViewMode('yourcode')}
+				>
+					<Code2 className="mr-1 h-3 w-3" />
+					{t('yourCodeTab')}
+				</Button>
+			</div>
+		</>
 	);
 
 	const content = (

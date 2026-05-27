@@ -3,7 +3,6 @@ import { Oswald as OswaldFont } from 'next/font/google';
 import '../globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Toaster } from '@/components/ui/sonner';
-import options from '@/lib/options';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { routing } from '@/next-intl.config';
@@ -11,7 +10,28 @@ import { GoogleTagManager } from '@next/third-parties/google';
 
 const oswald = OswaldFont({ subsets: ['latin'] });
 
-const prettierOptionKeywords = options.map((opt) => `Prettier ${opt.name}`);
+// Static SEO keywords covering the most-searched Prettier options.
+// The UI option list itself is loaded dynamically per Prettier version
+// (see lib/prettierLoader.ts) and isn't available at build time.
+const prettierOptionKeywords = [
+	'Print Width',
+	'Tab Width',
+	'Use Tabs',
+	'Semicolons',
+	'Single Quote',
+	'Quote Props',
+	'JSX Single Quote',
+	'Trailing Comma',
+	'Bracket Spacing',
+	'Bracket Same Line',
+	'Arrow Parens',
+	'Prose Wrap',
+	'HTML Whitespace Sensitivity',
+	'End of Line',
+	'Embedded Language Formatting',
+	'Single Attribute Per Line',
+	'Experimental Ternaries',
+].map((name) => `Prettier ${name}`);
 
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));

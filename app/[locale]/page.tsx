@@ -2,12 +2,13 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
-import options from '@/lib/options';
 import { Button } from '@/components/ui/button';
 import { PrettierOption } from '@/components/PrettierOption';
 import { PrettierPanelModal } from '@/components/PrettierPanelModal';
 import { PrettierPanel } from '@/components/PrettierPanel';
-import { RotateCcw, FilePlus } from 'lucide-react';
+import { DEFAULT_PRETTIER_VERSION } from '@/components/VersionPicker';
+import { usePrettierVersion } from '@/hooks/usePrettierVersion';
+import { RotateCcw, FilePlus, Loader2 } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import {
 	AlertDialog,
@@ -23,60 +24,62 @@ import { cn } from '@/lib/utils';
 import Footer from './(components)/Footer';
 import Header from './(components)/Header';
 
-// Type-safe keys from options
-type OptionKey = (typeof options)[number]['key'];
 type OptionValue = string | number | boolean | string[] | null;
-type SelectedOptions = {
-	[key in OptionKey]: OptionValue;
-};
+type SelectedOptions = Record<string, OptionValue>;
 
-// Generate config function
-function generateConfig(selected: SelectedOptions): string {
-	const config: Partial<SelectedOptions> = {};
-
-	for (const [key, value] of Object.entries(selected) as [OptionKey, OptionValue][]) {
+function generateConfig(selected: SelectedOptions, validKeys: Set<string>): string {
+	const config: SelectedOptions = {};
+	for (const [key, value] of Object.entries(selected)) {
+		if (!validKeys.has(key)) continue;
 		if (value !== null && value !== '' && !(Array.isArray(value) && value.length === 0)) {
 			config[key] = value;
 		}
 	}
-
 	return JSON.stringify(config, null, 2);
 }
 
 export default function HomePage() {
-	// The useTranslations hook will use the correct locale context from the provider
 	const t = useTranslations('Page');
-	const emptyConfig = Object.fromEntries(options.map((opt) => [opt.key, null])) as SelectedOptions;
 
-	const [selected, setSelected] = useState<SelectedOptions>(emptyConfig);
+	const [version, setVersion] = useState<string>(DEFAULT_PRETTIER_VERSION);
+	const { options, format, status, error } = usePrettierVersion(version);
+
+	const [selected, setSelected] = useState<SelectedOptions>({});
 	const [showConfig, setShowConfig] = useState(false);
 	const [generatedConfig, setGeneratedConfig] = useState('');
 	const [searchQuery, setSearchQuery] = useState('');
 	const [openGenerateTooltip, setOpenGenerateTooltip] = useState(false);
 	const [openResetTooltip, setOpenResetTooltip] = useState(false);
-	// ✨ Added: State to manage the visibility of the reset confirmation dialog
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
 
-	const hasSelectedOptions = Object.values(selected).some(
-		(value) => value !== null && value !== '' && !(Array.isArray(value) && value.length === 0),
+	// Keys valid in the currently-loaded Prettier version. Selections for keys
+	// that don't exist in this version (e.g. after switching from 3.5 down to 3.0)
+	// stay in state but are excluded from the generated config and from
+	// `hasSelectedOptions` so they don't surface in the UI.
+	const validKeys = useMemo(() => new Set(options.map((o) => o.key)), [options]);
+
+	const hasSelectedOptions = Object.entries(selected).some(
+		([key, value]) =>
+			validKeys.has(key) &&
+			value !== null &&
+			value !== '' &&
+			!(Array.isArray(value) && value.length === 0),
 	);
 
 	useEffect(() => {
 		const checkScreenSize = () => {
-			const newIsLargeScreen = window.innerWidth >= 1024; // lg breakpoint
+			const newIsLargeScreen = window.innerWidth >= 1024;
 			setIsLargeScreen(newIsLargeScreen);
 
-			// Auto-generate config when switching to large screen if there are selected options
 			if (newIsLargeScreen && !isLargeScreen && hasSelectedOptions) {
-				const config = generateConfig(selected);
-				setGeneratedConfig(config);
+				setGeneratedConfig(generateConfig(selected, validKeys));
 			}
 		};
 		checkScreenSize();
 		window.addEventListener('resize', checkScreenSize);
 		return () => window.removeEventListener('resize', checkScreenSize);
-	}, [isLargeScreen, hasSelectedOptions, selected]);
+	}, [isLargeScreen, hasSelectedOptions, selected, validKeys]);
 
 	useEffect(() => {
 		const showTimer = setTimeout(() => {
@@ -93,56 +96,44 @@ export default function HomePage() {
 		};
 	}, []);
 
-	// Auto-generate config on initial load if large screen and has selections
 	useEffect(() => {
 		if (isLargeScreen && hasSelectedOptions && !generatedConfig) {
 			const timer = setTimeout(() => {
-				const config = generateConfig(selected);
-				setGeneratedConfig(config);
+				setGeneratedConfig(generateConfig(selected, validKeys));
 			}, 0);
 			return () => clearTimeout(timer);
 		}
-	}, [isLargeScreen, hasSelectedOptions, selected, generatedConfig]);
+	}, [isLargeScreen, hasSelectedOptions, selected, generatedConfig, validKeys]);
 
 	const filteredOptions = useMemo(() => {
 		if (!searchQuery.trim()) return options;
-
 		const query = searchQuery.toLowerCase();
-		return options.filter((option) => {
-			if (option.name.toLowerCase().includes(query)) return true;
-			if (option.description.toLowerCase().includes(query)) return true;
-			return false;
-		});
-	}, [searchQuery]);
+		return options.filter(
+			(option) =>
+				option.name.toLowerCase().includes(query) ||
+				option.description.toLowerCase().includes(query),
+		);
+	}, [searchQuery, options]);
 
-	/**
-	 * Handles option changes and updates config in real-time for large screens.
-	 */
-	const handleChange = (key: keyof SelectedOptions, value: OptionValue) => {
+	const handleChange = (key: string, value: OptionValue) => {
 		setSelected((prev) => {
 			const newSelected = { ...prev, [key]: value };
 			if (isLargeScreen) {
-				setGeneratedConfig(generateConfig(newSelected));
+				setGeneratedConfig(generateConfig(newSelected, validKeys));
 			}
 			return newSelected;
 		});
 	};
 
-	/**
-	 * Generates config and shows modal on small screens.
-	 */
 	const handleGenerate = () => {
-		setGeneratedConfig(generateConfig(selected));
+		setGeneratedConfig(generateConfig(selected, validKeys));
 		if (!isLargeScreen) {
 			setShowConfig(true);
 		}
 	};
 
-	/**
-	 * Resets all selections and config to initial state.
-	 */
 	const executeReset = () => {
-		setSelected(emptyConfig);
+		setSelected({});
 		setGeneratedConfig('');
 		setShowConfig(false);
 		setSearchQuery('');
@@ -150,11 +141,8 @@ export default function HomePage() {
 
 	return (
 		<div className="flex min-h-screen flex-col">
-			{/* Main Content Area with Aside */}
 			<div className="flex flex-1">
-				{/* Main content area */}
 				<main className="flex flex-1 flex-col">
-					{/* Header - Sticky at top */}
 					<div className="bg-background border-border/40 sticky top-0 z-40 rounded-b-3xl border-b px-2 py-2">
 						<Header
 							searchQuery={searchQuery}
@@ -162,9 +150,7 @@ export default function HomePage() {
 						/>
 					</div>
 
-					{/* Scrollable content container */}
 					<div className="flex-1 overflow-auto p-2 md:pr-0">
-						{/* Search results indicator */}
 						{searchQuery && (
 							<div className="text-muted-foreground mb-4 text-center text-sm">
 								{t('search.found', {
@@ -174,7 +160,21 @@ export default function HomePage() {
 							</div>
 						)}
 
-						{/* Options Grid */}
+						{status === 'loading' && (
+							<div className="text-muted-foreground flex items-center justify-center gap-2 py-12 text-sm">
+								<Loader2 className="h-4 w-4 animate-spin" />
+								Loading Prettier {version}…
+							</div>
+						)}
+
+						{status === 'error' && (
+							<div className="border-destructive/40 bg-destructive/5 text-destructive mx-auto my-6 max-w-md rounded-md border p-4 text-sm">
+								Failed to load Prettier {version}
+								{error ? `: ${error.message}` : ''}. Check your network connection and try another
+								version.
+							</div>
+						)}
+
 						<div
 							className={cn(
 								'grid grid-cols-1 gap-2 pb-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
@@ -184,13 +184,13 @@ export default function HomePage() {
 								<PrettierOption
 									key={opt.key}
 									option={opt}
-									value={selected[opt.key]}
+									value={selected[opt.key] ?? null}
 									onChange={(val) => handleChange(opt.key, val)}
 								/>
 							))}
 						</div>
 
-						{searchQuery && filteredOptions.length === 0 && (
+						{status === 'ready' && searchQuery && filteredOptions.length === 0 && (
 							<div className="py-12 text-center">
 								<div className="text-muted-foreground mb-2 text-lg">{t('search.noOptions')}</div>
 								<div className="text-muted-foreground text-sm">
@@ -205,7 +205,6 @@ export default function HomePage() {
 							</div>
 						)}
 
-						{/* Floating Action Buttons - Only visible on small screens */}
 						{!isLargeScreen && (
 							<TooltipProvider>
 								<div className="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3">
@@ -267,9 +266,12 @@ export default function HomePage() {
 							config={generatedConfig}
 							onClose={() => setShowConfig(false)}
 							selectedOptions={selected}
+							format={format}
+							version={version}
+							onVersionChange={setVersion}
+							isFormatLoading={status === 'loading'}
 						/>
 
-						{/* ✨ Added: The AlertDialog component for reset confirmation */}
 						<AlertDialog
 							open={isResetDialogOpen}
 							onOpenChange={setIsResetDialogOpen}
@@ -288,12 +290,10 @@ export default function HomePage() {
 							</AlertDialogContent>
 						</AlertDialog>
 
-						{/* Footer - Full Width */}
 						<Footer />
 					</div>
 				</main>
 
-				{/* Aside Panel - Only visible on large screens */}
 				{isLargeScreen && (
 					<aside className="sticky top-0 h-screen w-80 flex-shrink-0 self-start px-2 xl:w-96">
 						<PrettierPanel
@@ -301,6 +301,10 @@ export default function HomePage() {
 							onReset={() => setIsResetDialogOpen(true)}
 							hasConfig={hasSelectedOptions}
 							selectedOptions={selected}
+							format={format}
+							version={version}
+							onVersionChange={setVersion}
+							isFormatLoading={status === 'loading'}
 						/>
 					</aside>
 				)}

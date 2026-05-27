@@ -7,6 +7,7 @@ import { PrettierOption } from '@/components/PrettierOption';
 import { PrettierPanelModal } from '@/components/PrettierPanelModal';
 import { PrettierPanel } from '@/components/PrettierPanel';
 import { DEFAULT_PRETTIER_VERSION, VersionPicker } from '@/components/VersionPicker';
+import { usePersistedConfig } from '@/hooks/usePersistedConfig';
 import { usePrettierVersion } from '@/hooks/usePrettierVersion';
 import { RotateCcw, FilePlus, Loader2 } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -43,10 +44,10 @@ function generateConfig(selected: SelectedOptions, validKeys: Set<string>): stri
 export default function HomePage() {
 	const t = useTranslations('Page');
 
-	const [version, setVersion] = useState<string>(DEFAULT_PRETTIER_VERSION);
+	const { version, setVersion, selected, setSelected } =
+		usePersistedConfig<SelectedOptions>(DEFAULT_PRETTIER_VERSION);
 	const { options, format, status, error } = usePrettierVersion(version);
 
-	const [selected, setSelected] = useState<SelectedOptions>({});
 	const [showConfig, setShowConfig] = useState(false);
 	const [generatedConfig, setGeneratedConfig] = useState('');
 	const [searchQuery, setSearchQuery] = useState('');

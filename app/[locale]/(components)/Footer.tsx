@@ -12,12 +12,12 @@ export default function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className="bg-background/95 supports-[backdrop-filter]:bg-background/60 mt-auto w-full border-t backdrop-blur">
-			<div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+		<footer className="bg-background/95 supports-[backdrop-filter]:bg-background/60 @container mt-auto w-full border-t backdrop-blur">
+			<div className="mx-auto px-4 py-8 @md:px-6 @lg:px-8">
 				{/* Main Footer Content */}
-				<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+				<div className="grid grid-cols-1 gap-6 @md:grid-cols-2 @[60rem]:grid-cols-4">
 					{/* Brand Section */}
-					<div className="space-y-4 md:col-span-2 lg:col-span-1">
+					<div className="space-y-4 @md:col-span-2 @[60rem]:col-span-1">
 						<div className="flex items-center space-x-2">
 							<Image
 								src="/favicon.ico"
@@ -143,8 +143,8 @@ export default function Footer() {
 				<div className="my-8 border-t" />
 
 				{/* Bottom Section */}
-				<div className="flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-8">
-					<div className="text-muted-foreground flex flex-col space-y-2 text-sm sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
+				<div className="flex flex-col items-center space-y-4 @md:flex-row @md:justify-center @md:space-y-0 @md:space-x-8">
+					<div className="text-muted-foreground flex flex-col space-y-2 text-sm @md:flex-row @md:items-center @md:space-y-0 @md:space-x-4">
 						<p>
 							© {currentYear} {t('bottom.copyright')}
 						</p>

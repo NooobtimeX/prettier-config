@@ -4,11 +4,43 @@ import * as ResizablePrimitive from 'react-resizable-panels';
 
 import { cn } from '@/lib/utils';
 
-function ResizablePanelGroup({ className, ...props }: ResizablePrimitive.GroupProps) {
+type ResizablePanelGroupProps = Omit<ResizablePrimitive.GroupProps, 'orientation'> & {
+	/** Alias for v4's `orientation` to keep shadcn-style props. */
+	direction?: 'horizontal' | 'vertical';
+	orientation?: 'horizontal' | 'vertical';
+	/**
+	 * Shim for v2's `autoSaveId` — when provided, layouts are persisted to
+	 * localStorage under this id via v4's `useDefaultLayout` hook.
+	 */
+	autoSaveId?: string;
+};
+
+function ResizablePanelGroup({
+	className,
+	direction,
+	orientation,
+	autoSaveId,
+	...props
+}: ResizablePanelGroupProps) {
+	const persistence = ResizablePrimitive.useDefaultLayout(
+		autoSaveId
+			? { id: autoSaveId, storage: typeof window === 'undefined' ? undefined : window.localStorage }
+			: { id: 'resizable-panel-group-noop' },
+	);
+
+	const persistenceProps = autoSaveId
+		? {
+				defaultLayout: persistence.defaultLayout,
+				onLayoutChanged: persistence.onLayoutChanged,
+			}
+		: {};
+
 	return (
 		<ResizablePrimitive.Group
 			data-slot="resizable-panel-group"
-			className={cn('flex h-full w-full aria-[orientation=vertical]:flex-col', className)}
+			orientation={orientation ?? direction ?? 'horizontal'}
+			className={cn('flex h-full w-full', className)}
+			{...persistenceProps}
 			{...props}
 		/>
 	);

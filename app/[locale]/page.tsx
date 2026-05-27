@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { PrettierOption } from '@/components/PrettierOption';
 import { PrettierPanelModal } from '@/components/PrettierPanelModal';
 import { PrettierPanel } from '@/components/PrettierPanel';
-import { DEFAULT_PRETTIER_VERSION } from '@/components/VersionPicker';
+import { DEFAULT_PRETTIER_VERSION, VersionPicker } from '@/components/VersionPicker';
 import { usePrettierVersion } from '@/hooks/usePrettierVersion';
 import { RotateCcw, FilePlus, Loader2 } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -20,6 +20,8 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
+import { SearchBar } from '@/components/SearchBar';
 import { cn } from '@/lib/utils';
 import Footer from './(components)/Footer';
 import Header from './(components)/Header';
@@ -139,176 +141,195 @@ export default function HomePage() {
 		setSearchQuery('');
 	};
 
-	return (
-		<div className="flex min-h-screen flex-col">
-			<div className="flex flex-1">
-				<main className="flex flex-1 flex-col">
-					<div className="bg-background border-border/40 sticky top-0 z-40 rounded-b-3xl border-b px-2 py-2">
-						<Header
-							searchQuery={searchQuery}
-							onSearchChange={setSearchQuery}
-						/>
+	const optionsSurface = (
+		<div className="flex h-full flex-col">
+			<div className="bg-background/95 sticky top-0 z-20 flex shrink-0 items-center gap-2 border-b p-2 backdrop-blur">
+				<SearchBar
+					value={searchQuery}
+					onChange={setSearchQuery}
+					className="flex-1"
+				/>
+				<VersionPicker
+					value={version}
+					onChange={setVersion}
+					disabled={status === 'loading'}
+				/>
+			</div>
+			<div className="flex-1 overflow-auto p-2">
+				{searchQuery && (
+					<div className="text-muted-foreground mb-4 text-center text-sm">
+						{t('search.found', {
+							count: filteredOptions.length,
+							total: options.length,
+						})}
 					</div>
+				)}
 
-					<div className="flex-1 overflow-auto p-2 md:pr-0">
-						{searchQuery && (
-							<div className="text-muted-foreground mb-4 text-center text-sm">
-								{t('search.found', {
-									count: filteredOptions.length,
-									total: options.length,
-								})}
-							</div>
-						)}
+				{status === 'loading' && (
+					<div className="text-muted-foreground flex items-center justify-center gap-2 py-12 text-sm">
+						<Loader2 className="h-4 w-4 animate-spin" />
+						Loading Prettier {version}…
+					</div>
+				)}
 
-						{status === 'loading' && (
-							<div className="text-muted-foreground flex items-center justify-center gap-2 py-12 text-sm">
-								<Loader2 className="h-4 w-4 animate-spin" />
-								Loading Prettier {version}…
-							</div>
-						)}
+				{status === 'error' && (
+					<div className="border-destructive/40 bg-destructive/5 text-destructive mx-auto my-6 max-w-md rounded-md border p-4 text-sm">
+						Failed to load Prettier {version}
+						{error ? `: ${error.message}` : ''}. Check your network connection and try another
+						version.
+					</div>
+				)}
 
-						{status === 'error' && (
-							<div className="border-destructive/40 bg-destructive/5 text-destructive mx-auto my-6 max-w-md rounded-md border p-4 text-sm">
-								Failed to load Prettier {version}
-								{error ? `: ${error.message}` : ''}. Check your network connection and try another
-								version.
-							</div>
-						)}
+				<div className={cn('grid gap-2 pb-2', 'grid-cols-[repeat(auto-fill,minmax(220px,1fr))]')}>
+					{filteredOptions.map((opt) => (
+						<PrettierOption
+							key={opt.key}
+							option={opt}
+							value={selected[opt.key] ?? null}
+							onChange={(val) => handleChange(opt.key, val)}
+						/>
+					))}
+				</div>
 
-						<div
-							className={cn(
-								'grid grid-cols-1 gap-2 pb-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
-							)}
-						>
-							{filteredOptions.map((opt) => (
-								<PrettierOption
-									key={opt.key}
-									option={opt}
-									value={selected[opt.key] ?? null}
-									onChange={(val) => handleChange(opt.key, val)}
-								/>
-							))}
+				{status === 'ready' && searchQuery && filteredOptions.length === 0 && (
+					<div className="py-12 text-center">
+						<div className="text-muted-foreground mb-2 text-lg">{t('search.noOptions')}</div>
+						<div className="text-muted-foreground text-sm">
+							{t('search.tryOtherTerms')}{' '}
+							<button
+								onClick={() => setSearchQuery('')}
+								className="text-primary hover:underline"
+							>
+								{t('search.clearSearch')}
+							</button>
 						</div>
-
-						{status === 'ready' && searchQuery && filteredOptions.length === 0 && (
-							<div className="py-12 text-center">
-								<div className="text-muted-foreground mb-2 text-lg">{t('search.noOptions')}</div>
-								<div className="text-muted-foreground text-sm">
-									{t('search.tryOtherTerms')}{' '}
-									<button
-										onClick={() => setSearchQuery('')}
-										className="text-primary hover:underline"
-									>
-										{t('search.clearSearch')}
-									</button>
-								</div>
-							</div>
-						)}
-
-						{!isLargeScreen && (
-							<TooltipProvider>
-								<div className="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3">
-									<Tooltip
-										open={openGenerateTooltip}
-										onOpenChange={setOpenGenerateTooltip}
-									>
-										<TooltipTrigger
-											render={
-												<Button
-													size="icon"
-													variant="default"
-													className="h-12 w-12 rounded-full shadow-md"
-													onClick={handleGenerate}
-													aria-label={t('fab.generateConfig')}
-												>
-													<FilePlus className="h-5 w-5" />
-												</Button>
-											}
-										/>
-										<TooltipContent
-											side="left"
-											sideOffset={8}
-										>
-											{t('fab.generateConfig')}
-										</TooltipContent>
-									</Tooltip>
-
-									<Tooltip
-										open={openResetTooltip}
-										onOpenChange={setOpenResetTooltip}
-									>
-										<TooltipTrigger
-											render={
-												<Button
-													size="icon"
-													variant="secondary"
-													className="h-12 w-12 rounded-full shadow-md"
-													onClick={() => setIsResetDialogOpen(true)}
-													aria-label={t('fab.resetSelections')}
-												>
-													<RotateCcw className="h-5 w-5" />
-												</Button>
-											}
-										/>
-										<TooltipContent
-											side="left"
-											sideOffset={8}
-										>
-											{t('fab.resetSelections')}
-										</TooltipContent>
-									</Tooltip>
-								</div>
-							</TooltipProvider>
-						)}
-
-						<PrettierPanelModal
-							open={showConfig}
-							config={generatedConfig}
-							onClose={() => setShowConfig(false)}
-							selectedOptions={selected}
-							format={format}
-							version={version}
-							onVersionChange={setVersion}
-							isFormatLoading={status === 'loading'}
-						/>
-
-						<AlertDialog
-							open={isResetDialogOpen}
-							onOpenChange={setIsResetDialogOpen}
-						>
-							<AlertDialogContent>
-								<AlertDialogHeader>
-									<AlertDialogTitle>{t('resetDialog.title')}</AlertDialogTitle>
-									<AlertDialogDescription>{t('resetDialog.description')}</AlertDialogDescription>
-								</AlertDialogHeader>
-								<AlertDialogFooter>
-									<AlertDialogCancel>{t('resetDialog.cancel')}</AlertDialogCancel>
-									<AlertDialogAction onClick={executeReset}>
-										{t('resetDialog.continue')}
-									</AlertDialogAction>
-								</AlertDialogFooter>
-							</AlertDialogContent>
-						</AlertDialog>
-
-						<Footer />
 					</div>
-				</main>
+				)}
 
-				{isLargeScreen && (
-					<aside className="sticky top-0 h-screen w-80 flex-shrink-0 self-start px-2 xl:w-96">
+				<Footer />
+			</div>
+		</div>
+	);
+
+	return (
+		<div className="flex h-screen flex-col">
+			<div className="bg-background border-border/40 sticky top-0 z-40 shrink-0 rounded-b-3xl border-b px-2 py-2">
+				<Header />
+			</div>
+
+			{isLargeScreen ? (
+				<ResizablePanelGroup
+					direction="horizontal"
+					autoSaveId="prettier-config-layout-v2"
+					className="min-h-0 flex-1"
+				>
+					<ResizablePanel
+						defaultSize="40%"
+						minSize="20%"
+						maxSize="70%"
+					>
+						{optionsSurface}
+					</ResizablePanel>
+					<ResizableHandle withHandle />
+					<ResizablePanel
+						defaultSize="60%"
+						minSize="30%"
+						maxSize="80%"
+					>
 						<PrettierPanel
 							config={generatedConfig}
 							onReset={() => setIsResetDialogOpen(true)}
 							hasConfig={hasSelectedOptions}
 							selectedOptions={selected}
 							format={format}
-							version={version}
-							onVersionChange={setVersion}
-							isFormatLoading={status === 'loading'}
 						/>
-					</aside>
-				)}
-			</div>
+					</ResizablePanel>
+				</ResizablePanelGroup>
+			) : (
+				<main className="flex flex-1 flex-col overflow-hidden">{optionsSurface}</main>
+			)}
+
+			{!isLargeScreen && (
+				<TooltipProvider>
+					<div className="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3">
+						<Tooltip
+							open={openGenerateTooltip}
+							onOpenChange={setOpenGenerateTooltip}
+						>
+							<TooltipTrigger
+								render={
+									<Button
+										size="icon"
+										variant="default"
+										className="h-12 w-12 rounded-full shadow-md"
+										onClick={handleGenerate}
+										aria-label={t('fab.generateConfig')}
+									>
+										<FilePlus className="h-5 w-5" />
+									</Button>
+								}
+							/>
+							<TooltipContent
+								side="left"
+								sideOffset={8}
+							>
+								{t('fab.generateConfig')}
+							</TooltipContent>
+						</Tooltip>
+
+						<Tooltip
+							open={openResetTooltip}
+							onOpenChange={setOpenResetTooltip}
+						>
+							<TooltipTrigger
+								render={
+									<Button
+										size="icon"
+										variant="secondary"
+										className="h-12 w-12 rounded-full shadow-md"
+										onClick={() => setIsResetDialogOpen(true)}
+										aria-label={t('fab.resetSelections')}
+									>
+										<RotateCcw className="h-5 w-5" />
+									</Button>
+								}
+							/>
+							<TooltipContent
+								side="left"
+								sideOffset={8}
+							>
+								{t('fab.resetSelections')}
+							</TooltipContent>
+						</Tooltip>
+					</div>
+				</TooltipProvider>
+			)}
+
+			<PrettierPanelModal
+				open={showConfig}
+				config={generatedConfig}
+				onClose={() => setShowConfig(false)}
+				selectedOptions={selected}
+				format={format}
+			/>
+
+			<AlertDialog
+				open={isResetDialogOpen}
+				onOpenChange={setIsResetDialogOpen}
+			>
+				<AlertDialogContent>
+					<AlertDialogHeader>
+						<AlertDialogTitle>{t('resetDialog.title')}</AlertDialogTitle>
+						<AlertDialogDescription>{t('resetDialog.description')}</AlertDialogDescription>
+					</AlertDialogHeader>
+					<AlertDialogFooter>
+						<AlertDialogCancel>{t('resetDialog.cancel')}</AlertDialogCancel>
+						<AlertDialogAction onClick={executeReset}>
+							{t('resetDialog.continue')}
+						</AlertDialogAction>
+					</AlertDialogFooter>
+				</AlertDialogContent>
+			</AlertDialog>
 		</div>
 	);
 }

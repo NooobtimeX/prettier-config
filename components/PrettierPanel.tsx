@@ -20,7 +20,9 @@ import { sortConfig, type SortOrder } from '@/lib/sortConfig';
 import { useTranslations } from 'next-intl';
 import { DEFAULT_SAMPLE } from '@/lib/sample';
 import type { FormatFn } from '@/lib/prettierLoader';
-import { VersionPicker } from '@/components/VersionPicker';
+import { CodeDiff } from '@/components/CodeDiff';
+import { DiffViewToggle } from '@/components/DiffViewToggle';
+import { useDiffSettings } from '@/hooks/useDiffSettings';
 
 type ViewMode = 'config' | 'preview' | 'yourcode';
 
@@ -35,12 +37,6 @@ interface PrettierPanelProps {
 	selectedOptions: Record<string, unknown>;
 	/** Version-bound formatter from the active `prettier/standalone` bundle. */
 	format: FormatFn;
-	/** Currently selected Prettier version (drives the picker). */
-	version: string;
-	/** Called when the user picks a different Prettier version. */
-	onVersionChange: (version: string) => void;
-	/** True while the picked version's bundle is still loading. */
-	isFormatLoading: boolean;
 }
 
 export function PrettierPanel({
@@ -49,9 +45,6 @@ export function PrettierPanel({
 	hasConfig,
 	selectedOptions,
 	format,
-	version,
-	onVersionChange,
-	isFormatLoading,
 }: PrettierPanelProps) {
 	const t = useTranslations('Page.ConfigAside');
 	const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
@@ -61,6 +54,7 @@ export function PrettierPanel({
 	const [formattedUser, setFormattedUser] = useState('');
 	const [isFormattingPreview, setIsFormattingPreview] = useState(false);
 	const [isFormattingUser, setIsFormattingUser] = useState(false);
+	const [diffSettings, updateDiffSettings] = useDiffSettings();
 
 	const displayConfig = useMemo(() => sortConfig(config, sortOrder), [config, sortOrder]);
 
@@ -119,17 +113,9 @@ export function PrettierPanel({
 		<div className="relative flex h-full flex-col overflow-hidden rounded-lg border-l">
 			{/* Sticky Header */}
 			<div className="bg-background/95 sticky top-0 z-10 shrink-0 rounded-t-lg border-b backdrop-blur">
-				<div className="p-2">
-					<div className="my-2 flex items-center justify-between gap-2">
-						<h2 className="text-lg font-semibold">Prettier Config</h2>
-						<VersionPicker
-							value={version}
-							onChange={onVersionChange}
-							disabled={isFormatLoading}
-						/>
-					</div>
+				<div className="flex items-center gap-2 p-2">
 					{/* Tab bar */}
-					<div className="flex gap-1">
+					<div className="flex flex-1 gap-1">
 						<Button
 							variant={viewMode === 'config' ? 'default' : 'secondary'}
 							size="sm"
@@ -158,6 +144,12 @@ export function PrettierPanel({
 							{t('yourCodeTab')}
 						</Button>
 					</div>
+					{viewMode !== 'config' && (
+						<DiffViewToggle
+							splitView={diffSettings.splitView}
+							onChange={(splitView) => updateDiffSettings({ splitView })}
+						/>
+					)}
 				</div>
 			</div>
 
@@ -259,37 +251,19 @@ export function PrettierPanel({
 			{/* ── PREVIEW TAB ── */}
 			{viewMode === 'preview' && (
 				<div className="flex min-h-0 flex-1 flex-col overflow-auto">
-					<div className="min-h-0 flex-1 space-y-3 overflow-auto p-2">
-						{/* Before */}
-						<div>
-							<p className="text-muted-foreground mb-1 text-xs font-medium">{t('beforeLabel')}</p>
-							<SyntaxHighlighter
-								language="javascript"
-								style={atomDark}
-								customStyle={{ fontSize: '0.75rem', borderRadius: '0.375rem', margin: 0 }}
-							>
-								{DEFAULT_SAMPLE}
-							</SyntaxHighlighter>
-						</div>
-
-						{/* After */}
-						<div>
-							<p className="text-muted-foreground mb-1 text-xs font-medium">{t('afterLabel')}</p>
-							{isFormattingPreview || !formattedPreview ? (
-								<div className="text-muted-foreground flex items-center gap-2 py-4 text-sm">
-									<Loader2 className="h-4 w-4 animate-spin" />
-									{t('formatting')}
-								</div>
-							) : (
-								<SyntaxHighlighter
-									language="javascript"
-									style={atomDark}
-									customStyle={{ fontSize: '0.75rem', borderRadius: '0.375rem', margin: 0 }}
-								>
-									{formattedPreview}
-								</SyntaxHighlighter>
-							)}
-						</div>
+					<div className="min-h-0 flex-1 overflow-auto p-2">
+						{isFormattingPreview || !formattedPreview ? (
+							<div className="text-muted-foreground flex items-center gap-2 py-4 text-sm">
+								<Loader2 className="h-4 w-4 animate-spin" />
+								{t('formatting')}
+							</div>
+						) : (
+							<CodeDiff
+								oldValue={DEFAULT_SAMPLE}
+								newValue={formattedPreview}
+								splitView={diffSettings.splitView}
+							/>
+						)}
 					</div>
 
 					<div className="bg-background/95 sticky bottom-0 z-10 shrink-0 rounded-b-lg border-t p-2 backdrop-blur">
@@ -323,7 +297,7 @@ export function PrettierPanel({
 							/>
 						</div>
 
-						{/* Output */}
+						{/* Diff */}
 						{(userCode.trim() || isFormattingUser) && (
 							<div>
 								<p className="text-muted-foreground mb-1 text-xs font-medium">
@@ -335,13 +309,11 @@ export function PrettierPanel({
 										{t('formatting')}
 									</div>
 								) : formattedUser ? (
-									<SyntaxHighlighter
-										language="javascript"
-										style={atomDark}
-										customStyle={{ fontSize: '0.75rem', borderRadius: '0.375rem', margin: 0 }}
-									>
-										{formattedUser}
-									</SyntaxHighlighter>
+									<CodeDiff
+										oldValue={userCode}
+										newValue={formattedUser}
+										splitView={diffSettings.splitView}
+									/>
 								) : null}
 							</div>
 						)}

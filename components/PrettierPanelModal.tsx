@@ -13,7 +13,9 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { useTranslations } from 'next-intl';
 import { DEFAULT_SAMPLE } from '@/lib/sample';
 import type { FormatFn } from '@/lib/prettierLoader';
-import { VersionPicker } from '@/components/VersionPicker';
+import { CodeDiff } from '@/components/CodeDiff';
+import { DiffViewToggle } from '@/components/DiffViewToggle';
+import { useDiffSettings } from '@/hooks/useDiffSettings';
 
 type ViewMode = 'config' | 'preview' | 'yourcode';
 
@@ -25,12 +27,6 @@ interface PrettierPanelModalProps {
 	selectedOptions: Record<string, unknown>;
 	/** Version-bound formatter from the active `prettier/standalone` bundle. */
 	format: FormatFn;
-	/** Currently selected Prettier version. */
-	version: string;
-	/** Called when the user picks a different Prettier version. */
-	onVersionChange: (version: string) => void;
-	/** True while the picked version's bundle is still loading. */
-	isFormatLoading: boolean;
 }
 
 export function PrettierPanelModal({
@@ -39,9 +35,6 @@ export function PrettierPanelModal({
 	onClose,
 	selectedOptions,
 	format,
-	version,
-	onVersionChange,
-	isFormatLoading,
 }: PrettierPanelModalProps) {
 	const t = useTranslations('Page.ConfigAside');
 	const isMobile = useIsMobile();
@@ -52,6 +45,7 @@ export function PrettierPanelModal({
 	const [formattedUser, setFormattedUser] = useState('');
 	const [isFormattingPreview, setIsFormattingPreview] = useState(false);
 	const [isFormattingUser, setIsFormattingUser] = useState(false);
+	const [diffSettings, updateDiffSettings] = useDiffSettings();
 
 	const displayConfig = useMemo(() => sortConfig(config, sortOrder), [config, sortOrder]);
 
@@ -105,15 +99,8 @@ export function PrettierPanelModal({
 	};
 
 	const tabBar = (
-		<>
-			<div className="flex justify-end pt-2">
-				<VersionPicker
-					value={version}
-					onChange={onVersionChange}
-					disabled={isFormatLoading}
-				/>
-			</div>
-			<div className="flex gap-1 pt-2">
+		<div className="flex items-center gap-2 pt-2">
+			<div className="flex flex-1 gap-1">
 				<Button
 					variant={viewMode === 'config' ? 'default' : 'secondary'}
 					size="sm"
@@ -142,7 +129,13 @@ export function PrettierPanelModal({
 					{t('yourCodeTab')}
 				</Button>
 			</div>
-		</>
+			{viewMode !== 'config' && (
+				<DiffViewToggle
+					splitView={diffSettings.splitView}
+					onChange={(splitView) => updateDiffSettings({ splitView })}
+				/>
+			)}
+		</div>
 	);
 
 	const content = (
@@ -201,36 +194,18 @@ export function PrettierPanelModal({
 			{/* ── PREVIEW TAB ── */}
 			{viewMode === 'preview' && (
 				<>
-					{/* Before */}
-					<div>
-						<p className="text-muted-foreground mb-1 text-xs font-medium">{t('beforeLabel')}</p>
-						<SyntaxHighlighter
-							language="javascript"
-							style={atomDark}
-							customStyle={{ fontSize: '0.75rem', borderRadius: '0.375rem', margin: 0 }}
-						>
-							{DEFAULT_SAMPLE}
-						</SyntaxHighlighter>
-					</div>
-
-					{/* After */}
-					<div>
-						<p className="text-muted-foreground mb-1 text-xs font-medium">{t('afterLabel')}</p>
-						{isFormattingPreview || !formattedPreview ? (
-							<div className="text-muted-foreground flex items-center gap-2 py-4 text-sm">
-								<Loader2 className="h-4 w-4 animate-spin" />
-								{t('formatting')}
-							</div>
-						) : (
-							<SyntaxHighlighter
-								language="javascript"
-								style={atomDark}
-								customStyle={{ fontSize: '0.75rem', borderRadius: '0.375rem', margin: 0 }}
-							>
-								{formattedPreview}
-							</SyntaxHighlighter>
-						)}
-					</div>
+					{isFormattingPreview || !formattedPreview ? (
+						<div className="text-muted-foreground flex items-center gap-2 py-4 text-sm">
+							<Loader2 className="h-4 w-4 animate-spin" />
+							{t('formatting')}
+						</div>
+					) : (
+						<CodeDiff
+							oldValue={DEFAULT_SAMPLE}
+							newValue={formattedPreview}
+							splitView={diffSettings.splitView}
+						/>
+					)}
 
 					<Button
 						variant="outline"
@@ -269,13 +244,11 @@ export function PrettierPanelModal({
 									{t('formatting')}
 								</div>
 							) : formattedUser ? (
-								<SyntaxHighlighter
-									language="javascript"
-									style={atomDark}
-									customStyle={{ fontSize: '0.75rem', borderRadius: '0.375rem', margin: 0 }}
-								>
-									{formattedUser}
-								</SyntaxHighlighter>
+								<CodeDiff
+									oldValue={userCode}
+									newValue={formattedUser}
+									splitView={diffSettings.splitView}
+								/>
 							) : null}
 						</div>
 					)}

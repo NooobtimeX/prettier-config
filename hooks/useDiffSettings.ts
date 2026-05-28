@@ -1,20 +1,25 @@
 'use client';
 
 import { useCallback, useSyncExternalStore } from 'react';
+import { DEFAULT_TOKEN_MODEL, TOKEN_MODELS, type TokenModelId } from '@/lib/tokenizers';
 
 /**
  * Diff settings persisted to localStorage so the user's preferred view sticks
- * across reloads. Currently just unified vs split layout.
+ * across reloads — unified vs split layout, and the chosen AI tokenizer.
  */
 export type DiffSettings = {
 	splitView: boolean;
+	tokenModel: TokenModelId;
 };
 
 const STORAGE_KEY = 'prettier-config-diff-settings';
 
 const DEFAULTS: DiffSettings = {
 	splitView: false,
+	tokenModel: DEFAULT_TOKEN_MODEL,
 };
+
+const VALID_MODELS = new Set<TokenModelId>(TOKEN_MODELS.map((m) => m.id));
 
 // Cache the last parsed value so `getSnapshot` returns a stable reference
 // between unrelated re-renders (required by `useSyncExternalStore`).
@@ -34,6 +39,10 @@ function readFromStorage(): DiffSettings {
 		const parsed = JSON.parse(raw) as Partial<DiffSettings>;
 		cached = {
 			splitView: typeof parsed.splitView === 'boolean' ? parsed.splitView : DEFAULTS.splitView,
+			tokenModel:
+				typeof parsed.tokenModel === 'string' && VALID_MODELS.has(parsed.tokenModel as TokenModelId)
+					? (parsed.tokenModel as TokenModelId)
+					: DEFAULTS.tokenModel,
 		};
 	} catch {
 		cached = DEFAULTS;

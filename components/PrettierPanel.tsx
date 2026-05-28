@@ -262,6 +262,8 @@ export function PrettierPanel({
 								oldValue={DEFAULT_SAMPLE}
 								newValue={formattedPreview}
 								splitView={diffSettings.splitView}
+								tokenModel={diffSettings.tokenModel}
+								onTokenModelChange={(tokenModel) => updateDiffSettings({ tokenModel })}
 							/>
 						)}
 					</div>
@@ -313,6 +315,8 @@ export function PrettierPanel({
 										oldValue={userCode}
 										newValue={formattedUser}
 										splitView={diffSettings.splitView}
+										tokenModel={diffSettings.tokenModel}
+										onTokenModelChange={(tokenModel) => updateDiffSettings({ tokenModel })}
 									/>
 								) : null}
 							</div>

@@ -4,6 +4,10 @@ import { useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { Loader2 } from 'lucide-react';
 import { diffLines } from 'diff';
+import { TokenModelPicker } from '@/components/TokenModelPicker';
+import { useTokenCount } from '@/hooks/useTokenCount';
+import type { TokenModelId } from '@/lib/tokenizers';
+import { cn } from '@/lib/utils';
 
 /**
  * GitHub-Desktop-style diff (unified or split): red lines for removed, green
@@ -31,6 +35,9 @@ interface CodeDiffProps {
 	splitView?: boolean;
 	/** Hide gutter line numbers when horizontal space is tight. */
 	hideLineNumbers?: boolean;
+	/** Tokenizer model for the `N → M tokens` badge in the header. */
+	tokenModel: TokenModelId;
+	onTokenModelChange: (model: TokenModelId) => void;
 }
 
 /** Count added / removed lines so we can render a GitHub-style `+X −Y` header. */
@@ -50,6 +57,8 @@ export function CodeDiff({
 	newValue,
 	splitView = false,
 	hideLineNumbers = false,
+	tokenModel,
+	onTokenModelChange,
 }: CodeDiffProps) {
 	const { added, removed } = useMemo(
 		() => countLineChanges(oldValue, newValue),
@@ -57,18 +66,44 @@ export function CodeDiff({
 	);
 
 	const unchanged = added === 0 && removed === 0;
+	const tokens = useTokenCount(oldValue, newValue, tokenModel);
+
+	const formatCount = (n: number | null) => (n === null ? '…' : n.toLocaleString());
 
 	return (
 		<div className="overflow-hidden rounded-md border text-xs">
 			{/* Header strip with real line counts — GitHub-PR style. */}
-			<div className="bg-muted/40 flex items-center justify-between gap-2 border-b px-3 py-1.5">
+			<div className="bg-muted/40 flex flex-wrap items-center justify-between gap-2 border-b px-3 py-1.5">
 				<span className="text-muted-foreground text-xs">
 					{unchanged ? 'No changes' : 'Prettier changes'}
 				</span>
-				<span className="flex items-center gap-2 text-xs font-medium tabular-nums">
-					<span className="text-emerald-500">+{added}</span>
-					<span className="text-rose-500">−{removed}</span>
-				</span>
+				<div className="flex flex-wrap items-center gap-3">
+					<span className="flex items-center gap-2 text-xs font-medium tabular-nums">
+						<span className="text-emerald-500">+{added}</span>
+						<span className="text-rose-500">−{removed}</span>
+					</span>
+					<span
+						className={cn(
+							'flex items-center gap-1 text-xs tabular-nums',
+							tokens.approximate ? 'text-muted-foreground/70' : 'text-muted-foreground',
+						)}
+						title={
+							tokens.approximate
+								? 'Approximate count — this model has no public offline tokenizer'
+								: 'Exact tokenizer count'
+						}
+					>
+						<span>{tokens.approximate ? '~' : ''}</span>
+						<span>{formatCount(tokens.old)}</span>
+						<span aria-hidden>→</span>
+						<span>{formatCount(tokens.new)}</span>
+						<span className="text-muted-foreground/70">tokens</span>
+					</span>
+					<TokenModelPicker
+						value={tokenModel}
+						onChange={onTokenModelChange}
+					/>
+				</div>
 			</div>
 
 			<div className="overflow-x-auto">

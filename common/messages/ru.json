@@ -124,7 +124,11 @@
 			"dropCheckbox": "Также удалить эти выборы из моего сохранённого состояния",
 			"cancel": "Отмена",
 			"continue": "Всё равно переключить",
-			"loading": "Проверка Prettier {version}…"
+			"loading": "Проверка Prettier {version}…",
+			"switchedToast": "Переключено на Prettier {version}",
+			"switchedStashedToast": "Переключено на Prettier {version}. {count, plural, one {# вариант сохранён} few {# варианта сохранены} many {# вариантов сохранены} other {# варианта сохранены}} на потом.",
+			"switchedDroppedToast": "Переключено на Prettier {version}. Удалено {count, plural, one {# вариант} few {# варианта} many {# вариантов} other {# варианта}}.",
+			"preloadErrorToast": "Не удалось загрузить Prettier {version}: {error}"
 		},
 		"import": {
 			"button": "Импорт",

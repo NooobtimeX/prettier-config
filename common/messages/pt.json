@@ -124,7 +124,11 @@
 			"dropCheckbox": "Também remover essas seleções do meu estado salvo",
 			"cancel": "Cancelar",
 			"continue": "Trocar mesmo assim",
-			"loading": "Verificando Prettier {version}…"
+			"loading": "Verificando Prettier {version}…",
+			"switchedToast": "Alterado para Prettier {version}",
+			"switchedStashedToast": "Alterado para Prettier {version}. {count, plural, one {# seleção mantida} other {# seleções mantidas}} para depois.",
+			"switchedDroppedToast": "Alterado para Prettier {version}. {count, plural, one {# seleção removida} other {# seleções removidas}}.",
+			"preloadErrorToast": "Não foi possível carregar o Prettier {version}: {error}"
 		},
 		"import": {
 			"button": "Importar",

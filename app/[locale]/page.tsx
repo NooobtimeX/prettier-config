@@ -15,6 +15,7 @@ import { RotateCcw, FilePlus, Loader2, FileDown } from 'lucide-react';
 import type { ParserId } from '@/lib/parsers';
 import { ImportConfigDialog } from '@/components/ImportConfigDialog';
 import { VersionSwitchWarningDialog } from '@/components/VersionSwitchWarningDialog';
+import { useOptionSearchHotkey } from '@/hooks/useOptionSearchHotkey';
 import { computeVersionConflicts, type VersionConflict } from '@/lib/versionDiff';
 import { loadPrettier } from '@/lib/prettierLoader';
 import { adaptSupportInfo } from '@/lib/adaptSupportInfo';
@@ -84,6 +85,9 @@ export default function HomePage() {
 	const tConfigAside = useTranslations('Page.ConfigAside');
 	const tErrors = useTranslations('Page.errors');
 	const tImport = useTranslations('Page.import');
+	const tVersionSwitch = useTranslations('Page.versionSwitch');
+
+	useOptionSearchHotkey();
 
 	const handleShare = async () => {
 		const url = await share();
@@ -122,7 +126,7 @@ export default function HomePage() {
 			const conflicts = computeVersionConflicts(selected, validKeys, newOptions);
 			if (conflicts.length === 0) {
 				setVersion(next);
-				toast.success(`Switched to Prettier ${targetLabel}`);
+				toast.success(tVersionSwitch('switchedToast', { version: targetLabel }));
 				return;
 			}
 			setPendingVersion(next);
@@ -132,7 +136,7 @@ export default function HomePage() {
 			// (switch and let usePrettierVersion surface the load error) but
 			// surface the error in a toast so the user knows what happened.
 			const msg = err instanceof Error ? err.message : String(err);
-			toast.error(`Couldn't preload Prettier ${targetLabel}: ${msg}`);
+			toast.error(tVersionSwitch('preloadErrorToast', { version: targetLabel, error: msg }));
 			setVersion(next);
 		}
 	};
@@ -153,8 +157,8 @@ export default function HomePage() {
 		setPendingConflicts([]);
 		toast.success(
 			drop
-				? `Switched to Prettier ${targetLabel} and removed ${droppedCount} selection${droppedCount === 1 ? '' : 's'}.`
-				: `Switched to Prettier ${targetLabel}. ${droppedCount} selection${droppedCount === 1 ? '' : 's'} stashed for later.`,
+				? tVersionSwitch('switchedDroppedToast', { version: targetLabel, count: droppedCount })
+				: tVersionSwitch('switchedStashedToast', { version: targetLabel, count: droppedCount }),
 		);
 	};
 

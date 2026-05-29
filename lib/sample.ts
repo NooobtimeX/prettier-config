@@ -310,6 +310,3 @@ export const SAMPLES: Record<ParserId, string> = {
 export function getSample(parser: ParserId): string {
 	return SAMPLES[parser] ?? TYPESCRIPT_SAMPLE;
 }
-
-/** Back-compat alias for callers that haven't been migrated yet. */
-export const DEFAULT_SAMPLE = TYPESCRIPT_SAMPLE;

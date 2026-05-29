@@ -124,7 +124,11 @@
 			"dropCheckbox": "این انتخاب‌ها را از وضعیت ذخیره‌شده‌ام نیز حذف کن",
 			"cancel": "لغو",
 			"continue": "به هر حال تغییر بده",
-			"loading": "در حال بررسی Prettier {version}…"
+			"loading": "در حال بررسی Prettier {version}…",
+			"switchedToast": "به Prettier {version} تغییر یافت",
+			"switchedStashedToast": "به Prettier {version} تغییر یافت. {count, plural, one {# انتخاب برای بعد نگه داشته شد.} other {# انتخاب برای بعد نگه داشته شد.}}",
+			"switchedDroppedToast": "به Prettier {version} تغییر یافت. {count, plural, one {# انتخاب حذف شد.} other {# انتخاب حذف شد.}}",
+			"preloadErrorToast": "بارگذاری Prettier {version} ممکن نشد: {error}"
 		},
 		"import": {
 			"button": "وارد کردن",

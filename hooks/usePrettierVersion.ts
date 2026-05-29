@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { adaptSupportInfo } from '@/lib/adaptSupportInfo';
 import { loadPrettier, type FormatFn } from '@/lib/prettierLoader';
 import type { PrettierOptionType } from '@/common/interface/PrettierOptionType';
+import { useRequestId } from '@/hooks/useRequestId';
 
 export type PrettierLoadStatus = 'loading' | 'ready' | 'error';
 
@@ -43,13 +44,13 @@ const initialLoaded: Loaded = {
 export function usePrettierVersion(version: string): UsePrettierVersionResult {
 	const [loaded, setLoaded] = useState<Loaded>(initialLoaded);
 	// Guards against out-of-order completions when the user flips versions quickly.
-	const requestId = useRef(0);
+	const { next: nextRequestId, isCurrent: isCurrentRequest } = useRequestId();
 
 	useEffect(() => {
-		const id = ++requestId.current;
+		const id = nextRequestId();
 		loadPrettier(version)
 			.then((res) => {
-				if (id !== requestId.current) return;
+				if (!isCurrentRequest(id)) return;
 				const filterVersion = version === 'latest' ? null : version;
 				setLoaded({
 					version,
@@ -59,7 +60,7 @@ export function usePrettierVersion(version: string): UsePrettierVersionResult {
 				});
 			})
 			.catch((err: unknown) => {
-				if (id !== requestId.current) return;
+				if (!isCurrentRequest(id)) return;
 				setLoaded({
 					version,
 					options: [],
@@ -67,7 +68,7 @@ export function usePrettierVersion(version: string): UsePrettierVersionResult {
 					error: err instanceof Error ? err : new Error(String(err)),
 				});
 			});
-	}, [version]);
+	}, [version, nextRequestId, isCurrentRequest]);
 
 	const isCurrent = loaded.version === version;
 	const status: PrettierLoadStatus = !isCurrent ? 'loading' : loaded.error ? 'error' : 'ready';

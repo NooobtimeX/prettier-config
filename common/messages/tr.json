@@ -124,7 +124,11 @@
 			"dropCheckbox": "Bu seçimleri kayıtlı durumumdan da kaldır",
 			"cancel": "İptal",
 			"continue": "Yine de değiştir",
-			"loading": "Prettier {version} kontrol ediliyor…"
+			"loading": "Prettier {version} kontrol ediliyor…",
+			"switchedToast": "Prettier {version} sürümüne geçildi",
+			"switchedStashedToast": "Prettier {version} sürümüne geçildi. {count, plural, one {# seçim daha sonrası için saklandı.} other {# seçim daha sonrası için saklandı.}}",
+			"switchedDroppedToast": "Prettier {version} sürümüne geçildi. {count, plural, one {# seçim kaldırıldı.} other {# seçim kaldırıldı.}}",
+			"preloadErrorToast": "Prettier {version} yüklenemedi: {error}"
 		},
 		"import": {
 			"button": "İçe Aktar",

@@ -124,7 +124,11 @@
 			"dropCheckbox": "Cũng xóa các lựa chọn này khỏi trạng thái đã lưu",
 			"cancel": "Hủy",
 			"continue": "Vẫn chuyển đổi",
-			"loading": "Đang kiểm tra Prettier {version}…"
+			"loading": "Đang kiểm tra Prettier {version}…",
+			"switchedToast": "Đã chuyển sang Prettier {version}",
+			"switchedStashedToast": "Đã chuyển sang Prettier {version}. {count, plural, other {Đã giữ lại # lựa chọn để dùng sau.}}",
+			"switchedDroppedToast": "Đã chuyển sang Prettier {version}. {count, plural, other {Đã xóa # lựa chọn.}}",
+			"preloadErrorToast": "Không thể tải Prettier {version}: {error}"
 		},
 		"import": {
 			"button": "Nhập",

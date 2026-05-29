@@ -124,7 +124,11 @@
 			"dropCheckbox": "मेरी सहेजी गई स्थिति से भी इन चयनों को हटाएँ",
 			"cancel": "रद्द करें",
 			"continue": "फिर भी बदलें",
-			"loading": "Prettier {version} की जाँच की जा रही है…"
+			"loading": "Prettier {version} की जाँच की जा रही है…",
+			"switchedToast": "Prettier {version} पर स्विच किया गया",
+			"switchedStashedToast": "Prettier {version} पर स्विच किया गया। {count, plural, one {# चयन} other {# चयन}} बाद के लिए रखा गया।",
+			"switchedDroppedToast": "Prettier {version} पर स्विच किया गया। {count, plural, one {# चयन} other {# चयन}} हटाया गया।",
+			"preloadErrorToast": "Prettier {version} लोड नहीं हो सका: {error}"
 		},
 		"import": {
 			"button": "आयात करें",

@@ -124,7 +124,11 @@
 			"dropCheckbox": "保存された状態からもこれらの選択を削除する",
 			"cancel": "キャンセル",
 			"continue": "それでも切り替える",
-			"loading": "Prettier {version} を確認中…"
+			"loading": "Prettier {version} を確認中…",
+			"switchedToast": "Prettier {version} に切り替えました",
+			"switchedStashedToast": "Prettier {version} に切り替えました。{count, plural, other {# 件の選択}}を後で使うために保持しました。",
+			"switchedDroppedToast": "Prettier {version} に切り替えました。{count, plural, other {# 件の選択}}を削除しました。",
+			"preloadErrorToast": "Prettier {version} を読み込めませんでした: {error}"
 		},
 		"import": {
 			"button": "インポート",

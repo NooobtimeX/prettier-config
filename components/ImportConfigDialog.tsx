@@ -98,7 +98,7 @@ export function ImportConfigDialog({
 					{result?.error && <FormatError message={result.error} />}
 
 					{result && result.error === null && (
-						<div className="rounded-md border border-emerald-500/40 bg-emerald-500/10 p-3 text-xs text-emerald-700 dark:text-emerald-300">
+						<div className="border-success/40 bg-success/10 text-success rounded-md border p-3 text-xs">
 							<p className="mb-2 font-medium">
 								{t('success', {
 									applied: Object.keys(result.applied).length,

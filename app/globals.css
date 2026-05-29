@@ -26,6 +26,8 @@
 	--color-input: var(--input);
 	--color-border: var(--border);
 	--color-destructive: var(--destructive);
+	--color-success: var(--success);
+	--color-success-foreground: var(--success-foreground);
 	--color-accent-foreground: var(--accent-foreground);
 	--color-accent: var(--accent);
 	--color-muted-foreground: var(--muted-foreground);
@@ -63,6 +65,8 @@
 	--accent: oklch(0.97 0 0);
 	--accent-foreground: oklch(0.205 0 0);
 	--destructive: oklch(0.577 0.245 27.325);
+	--success: oklch(0.52 0.13 150);
+	--success-foreground: oklch(0.985 0 0);
 	--border: oklch(0.922 0 0);
 	--input: oklch(0.922 0 0);
 	--ring: oklch(0.708 0 0);
@@ -99,6 +103,8 @@
 	--accent: oklch(0.269 0 0);
 	--accent-foreground: oklch(0.985 0 0);
 	--destructive: oklch(0.704 0.191 22.216);
+	--success: oklch(0.7 0.15 150);
+	--success-foreground: oklch(0.205 0 0);
 	--border: oklch(1 0 0 / 10%);
 	--input: oklch(1 0 0 / 15%);
 	--ring: oklch(0.556 0 0);
@@ -128,15 +134,37 @@
 		@apply cursor-pointer;
 	}
 
-	/* Hide scrollbars globally while maintaining scroll functionality */
+	/* Thin, theme-aware scrollbars so users can tell when content scrolls
+	   (the diff, code editor, generated config, and options grid all overflow).
+	   Use the `.no-scrollbar` utility to opt a specific element out. */
 	* {
-		scrollbar-width: none; /* Firefox */
-		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		scrollbar-width: thin; /* Firefox */
+		scrollbar-color: var(--border) transparent;
 	}
 
 	*::-webkit-scrollbar {
-		display: none; /* WebKit browsers (Chrome, Safari, Edge) */
+		width: 8px;
+		height: 8px;
 	}
+	*::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	*::-webkit-scrollbar-thumb {
+		background-color: var(--border);
+		border-radius: 9999px;
+	}
+	*::-webkit-scrollbar-thumb:hover {
+		background-color: var(--muted-foreground);
+	}
+
+	.no-scrollbar {
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none; /* IE 10+ */
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		display: none; /* WebKit */
+	}
+
 	button:not(:disabled),
 	[role='button']:not(:disabled) {
 		cursor: pointer;

@@ -124,7 +124,11 @@
 			"dropCheckbox": "ลบตัวเลือกเหล่านี้ออกจากสถานะที่บันทึกไว้ของฉันด้วย",
 			"cancel": "ยกเลิก",
 			"continue": "สลับต่อไป",
-			"loading": "กำลังตรวจสอบ Prettier {version}…"
+			"loading": "กำลังตรวจสอบ Prettier {version}…",
+			"switchedToast": "สลับไปใช้ Prettier {version} แล้ว",
+			"switchedStashedToast": "สลับไปใช้ Prettier {version} แล้ว เก็บ {count, plural, other {# รายการ}} ไว้ใช้ภายหลัง",
+			"switchedDroppedToast": "สลับไปใช้ Prettier {version} แล้ว นำ {count, plural, other {# รายการ}} ออกแล้ว",
+			"preloadErrorToast": "โหลด Prettier {version} ไม่สำเร็จ: {error}"
 		},
 		"import": {
 			"button": "นำเข้า",

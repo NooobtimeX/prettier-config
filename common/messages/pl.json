@@ -124,7 +124,11 @@
 			"dropCheckbox": "Usuń też te wybory z mojego zapisanego stanu",
 			"cancel": "Anuluj",
 			"continue": "Przełącz mimo to",
-			"loading": "Sprawdzanie Prettier {version}…"
+			"loading": "Sprawdzanie Prettier {version}…",
+			"switchedToast": "Przełączono na Prettier {version}",
+			"switchedStashedToast": "Przełączono na Prettier {version}. {count, plural, one {Zachowano # wybór na później.} few {Zachowano # wybory na później.} many {Zachowano # wyborów na później.} other {Zachowano # wyboru na później.}}",
+			"switchedDroppedToast": "Przełączono na Prettier {version}. {count, plural, one {Usunięto # wybór.} few {Usunięto # wybory.} many {Usunięto # wyborów.} other {Usunięto # wyboru.}}",
+			"preloadErrorToast": "Nie udało się załadować Prettier {version}: {error}"
 		},
 		"import": {
 			"button": "Importuj",

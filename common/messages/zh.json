@@ -124,7 +124,11 @@
 			"dropCheckbox": "同时从我保存的状态中移除这些选择",
 			"cancel": "取消",
 			"continue": "仍然切换",
-			"loading": "正在检查 Prettier {version}…"
+			"loading": "正在检查 Prettier {version}…",
+			"switchedToast": "已切换到 Prettier {version}",
+			"switchedStashedToast": "已切换到 Prettier {version}。已保留 {count, plural, other {# 项选择}}以备后用。",
+			"switchedDroppedToast": "已切换到 Prettier {version}。已移除 {count, plural, other {# 项选择}}。",
+			"preloadErrorToast": "无法加载 Prettier {version}：{error}"
 		},
 		"import": {
 			"button": "导入",

@@ -124,7 +124,11 @@
 			"dropCheckbox": "Juga hapus pilihan ini dari status yang tersimpan",
 			"cancel": "Batal",
 			"continue": "Tetap ganti",
-			"loading": "Memeriksa Prettier {version}…"
+			"loading": "Memeriksa Prettier {version}…",
+			"switchedToast": "Beralih ke Prettier {version}",
+			"switchedStashedToast": "Beralih ke Prettier {version}. {count, plural, other {# pilihan disimpan untuk nanti.}}",
+			"switchedDroppedToast": "Beralih ke Prettier {version}. {count, plural, other {Menghapus # pilihan.}}",
+			"preloadErrorToast": "Tidak dapat memuat Prettier {version}: {error}"
 		},
 		"import": {
 			"button": "Impor",

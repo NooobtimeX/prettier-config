@@ -1,7 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { countTokens, isApproximate, type TokenModelId } from '@/lib/tokenizers';
+import { DEBOUNCE_TOKENS_MS } from '@/lib/timing';
+import { useRequestId } from '@/hooks/useRequestId';
 
 export type TokenCountState = {
 	old: number | null;
@@ -9,8 +11,6 @@ export type TokenCountState = {
 	approximate: boolean;
 	isLoading: boolean;
 };
-
-const DEBOUNCE_MS = 120;
 
 /**
  * Debounced + cancellable token counter for the "before" and "after" sides of
@@ -32,26 +32,26 @@ export function useTokenCount(
 		approximate: isApproximate(modelId),
 		isLoading: true,
 	});
-	const requestId = useRef(0);
+	const { next, isCurrent } = useRequestId();
 
 	useEffect(() => {
-		const id = ++requestId.current;
+		const id = next();
 		const approximate = isApproximate(modelId);
 
 		const timer = setTimeout(() => {
 			Promise.all([countTokens(oldValue, modelId), countTokens(newValue, modelId)])
 				.then(([oldCount, newCount]) => {
-					if (id !== requestId.current) return;
+					if (!isCurrent(id)) return;
 					setState({ old: oldCount, new: newCount, approximate, isLoading: false });
 				})
 				.catch(() => {
-					if (id !== requestId.current) return;
+					if (!isCurrent(id)) return;
 					setState({ old: null, new: null, approximate, isLoading: false });
 				});
-		}, DEBOUNCE_MS);
+		}, DEBOUNCE_TOKENS_MS);
 
 		return () => clearTimeout(timer);
-	}, [oldValue, newValue, modelId]);
+	}, [oldValue, newValue, modelId, next, isCurrent]);
 
 	return state;
 }

@@ -124,7 +124,11 @@
 			"dropCheckbox": "إزالة هذه الاختيارات أيضًا من حالتي المحفوظة",
 			"cancel": "إلغاء",
 			"continue": "التبديل على أي حال",
-			"loading": "جارٍ التحقق من Prettier {version}…"
+			"loading": "جارٍ التحقق من Prettier {version}…",
+			"switchedToast": "تم التبديل إلى Prettier {version}",
+			"switchedStashedToast": "تم التبديل إلى Prettier {version}. {count, plural, zero {لم يُحتفظ بأي تحديد للاحقًا.} one {تم الاحتفاظ بتحديد واحد للاحقًا.} two {تم الاحتفاظ بتحديدين للاحقًا.} few {تم الاحتفاظ بـ # تحديدات للاحقًا.} many {تم الاحتفاظ بـ # تحديدًا للاحقًا.} other {تم الاحتفاظ بـ # تحديد للاحقًا.}}",
+			"switchedDroppedToast": "تم التبديل إلى Prettier {version}. {count, plural, zero {لم تتم إزالة أي تحديد.} one {تمت إزالة تحديد واحد.} two {تمت إزالة تحديدين.} few {تمت إزالة # تحديدات.} many {تمت إزالة # تحديدًا.} other {تمت إزالة # تحديد.}}",
+			"preloadErrorToast": "تعذّر تحميل Prettier {version}: {error}"
 		},
 		"import": {
 			"button": "استيراد",

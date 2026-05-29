@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string';
 import type { ParserId } from '@/lib/parsers';
+import { DEBOUNCE_URL_HASH_MS } from '@/lib/timing';
 
 /**
  * `version` + `selected` + `code` + (optional) `parser` override travel through
@@ -31,7 +32,6 @@ type StoredPayload = {
 };
 
 const HASH_PREFIX = '#s=';
-const WRITE_DEBOUNCE_MS = 400;
 
 function readHash(): StoredPayload | null {
 	if (typeof window === 'undefined') return null;
@@ -107,7 +107,7 @@ export function useShareableUrl(state: SharedState, seeders: ShareableUrlSeeders
 				c: state.code,
 				p: state.parserOverride,
 			});
-		}, WRITE_DEBOUNCE_MS);
+		}, DEBOUNCE_URL_HASH_MS);
 		return () => clearTimeout(t);
 	}, [state.version, state.selected, state.code, state.parserOverride]);
 

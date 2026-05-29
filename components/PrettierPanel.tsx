@@ -20,9 +20,9 @@ import { toast } from 'sonner';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { sortConfig, type SortOrder } from '@/lib/sortConfig';
 import { useTranslations } from 'next-intl';
-import { DEFAULT_SAMPLE } from '@/lib/sample';
+import { getSample } from '@/lib/sample';
 import type { FormatFn } from '@/lib/prettierLoader';
-import { detectParser, DEFAULT_PARSER, type ParserId } from '@/lib/parsers';
+import { detectParser, type ParserId } from '@/lib/parsers';
 import { CodeDiff } from '@/components/CodeDiff';
 import { DiffViewToggle } from '@/components/DiffViewToggle';
 import { FormatError } from '@/components/FormatError';
@@ -99,15 +99,19 @@ export function PrettierPanel({
 
 	const displayConfig = useMemo(() => sortConfig(config, sortOrder), [config, sortOrder]);
 
-	// Format preview sample whenever options/version change or preview tab is active.
-	// The built-in sample is a JS/JSX blob — fix its parser to `typescript` so the
-	// full sample (incl. JSX) formats regardless of the user's Your-Code override.
+	// Format preview sample whenever options/version/parser change or preview tab
+	// is active. The sample switches with the parser dropdown so each language
+	// can showcase its own Prettier options.
+	const previewSample = useMemo(
+		() => getSample(diffSettings.previewParser),
+		[diffSettings.previewParser],
+	);
 	useEffect(() => {
 		let cancelled = false;
 		void (async () => {
 			if (viewMode !== 'preview') return;
 			setIsFormattingPreview(true);
-			const result = await format(DEFAULT_SAMPLE, selectedOptions, DEFAULT_PARSER);
+			const result = await format(previewSample, selectedOptions, diffSettings.previewParser);
 			if (!cancelled) {
 				setFormattedPreview(result.code);
 				setPreviewError(result.error);
@@ -117,7 +121,7 @@ export function PrettierPanel({
 		return () => {
 			cancelled = true;
 		};
-	}, [selectedOptions, viewMode, format]);
+	}, [selectedOptions, viewMode, format, previewSample, diffSettings.previewParser]);
 
 	// Format user code whenever user types or options/version/parser change.
 	useEffect(() => {
@@ -316,7 +320,11 @@ export function PrettierPanel({
 			{/* ── PREVIEW TAB ── */}
 			{viewMode === 'preview' && (
 				<div className="flex min-h-0 flex-1 flex-col overflow-auto">
-					<div className="flex shrink-0 justify-end border-b p-2">
+					<div className="flex shrink-0 items-center justify-end gap-2 border-b p-2">
+						<ParserPicker
+							value={diffSettings.previewParser}
+							onChange={(previewParser) => updateDiffSettings({ previewParser })}
+						/>
 						<DiffViewToggle
 							splitView={diffSettings.splitView}
 							onChange={(splitView) => updateDiffSettings({ splitView })}
@@ -331,7 +339,7 @@ export function PrettierPanel({
 							</div>
 						) : (
 							<CodeDiff
-								oldValue={DEFAULT_SAMPLE}
+								oldValue={previewSample}
 								newValue={formattedPreview}
 								splitView={diffSettings.splitView}
 								tokenModel={diffSettings.tokenModel}

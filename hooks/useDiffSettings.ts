@@ -2,14 +2,17 @@
 
 import { useCallback, useSyncExternalStore } from 'react';
 import { DEFAULT_TOKEN_MODEL, TOKEN_MODELS, type TokenModelId } from '@/lib/tokenizers';
+import { DEFAULT_PARSER, PARSERS, type ParserId } from '@/lib/parsers';
 
 /**
  * Diff settings persisted to localStorage so the user's preferred view sticks
- * across reloads — unified vs split layout, and the chosen AI tokenizer.
+ * across reloads — unified vs split layout, the chosen AI tokenizer, and the
+ * parser used to format the built-in Preview sample.
  */
 export type DiffSettings = {
 	splitView: boolean;
 	tokenModel: TokenModelId;
+	previewParser: ParserId;
 };
 
 const STORAGE_KEY = 'prettier-config-diff-settings';
@@ -17,9 +20,11 @@ const STORAGE_KEY = 'prettier-config-diff-settings';
 const DEFAULTS: DiffSettings = {
 	splitView: false,
 	tokenModel: DEFAULT_TOKEN_MODEL,
+	previewParser: DEFAULT_PARSER,
 };
 
 const VALID_MODELS = new Set<TokenModelId>(TOKEN_MODELS.map((m) => m.id));
+const VALID_PARSERS = new Set<ParserId>(PARSERS.map((p) => p.id));
 
 // Cache the last parsed value so `getSnapshot` returns a stable reference
 // between unrelated re-renders (required by `useSyncExternalStore`).
@@ -43,6 +48,11 @@ function readFromStorage(): DiffSettings {
 				typeof parsed.tokenModel === 'string' && VALID_MODELS.has(parsed.tokenModel as TokenModelId)
 					? (parsed.tokenModel as TokenModelId)
 					: DEFAULTS.tokenModel,
+			previewParser:
+				typeof parsed.previewParser === 'string' &&
+				VALID_PARSERS.has(parsed.previewParser as ParserId)
+					? (parsed.previewParser as ParserId)
+					: DEFAULTS.previewParser,
 		};
 	} catch {
 		cached = DEFAULTS;

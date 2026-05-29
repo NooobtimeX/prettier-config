@@ -13,9 +13,9 @@ import { toast } from 'sonner';
 import { sortConfig, type SortOrder } from '@/lib/sortConfig';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useTranslations } from 'next-intl';
-import { DEFAULT_SAMPLE } from '@/lib/sample';
+import { getSample } from '@/lib/sample';
 import type { FormatFn } from '@/lib/prettierLoader';
-import { detectParser, DEFAULT_PARSER, type ParserId } from '@/lib/parsers';
+import { detectParser, type ParserId } from '@/lib/parsers';
 import { CodeDiff } from '@/components/CodeDiff';
 import { DiffViewToggle } from '@/components/DiffViewToggle';
 import { FormatError } from '@/components/FormatError';
@@ -85,13 +85,17 @@ export function PrettierPanelModal({
 	const [diffSettings, updateDiffSettings] = useDiffSettings();
 
 	const displayConfig = useMemo(() => sortConfig(config, sortOrder), [config, sortOrder]);
+	const previewSample = useMemo(
+		() => getSample(diffSettings.previewParser),
+		[diffSettings.previewParser],
+	);
 
 	useEffect(() => {
 		let cancelled = false;
 		void (async () => {
 			if (viewMode !== 'preview') return;
 			setIsFormattingPreview(true);
-			const result = await format(DEFAULT_SAMPLE, selectedOptions, DEFAULT_PARSER);
+			const result = await format(previewSample, selectedOptions, diffSettings.previewParser);
 			if (!cancelled) {
 				setFormattedPreview(result.code);
 				setPreviewError(result.error);
@@ -101,7 +105,7 @@ export function PrettierPanelModal({
 		return () => {
 			cancelled = true;
 		};
-	}, [selectedOptions, viewMode, format]);
+	}, [selectedOptions, viewMode, format, previewSample, diffSettings.previewParser]);
 
 	useEffect(() => {
 		let cancelled = false;
@@ -251,7 +255,11 @@ export function PrettierPanelModal({
 			{/* ── PREVIEW TAB ── */}
 			{viewMode === 'preview' && (
 				<>
-					<div className="flex justify-end">
+					<div className="flex items-center justify-end gap-2">
+						<ParserPicker
+							value={diffSettings.previewParser}
+							onChange={(previewParser) => updateDiffSettings({ previewParser })}
+						/>
 						<DiffViewToggle
 							splitView={diffSettings.splitView}
 							onChange={(splitView) => updateDiffSettings({ splitView })}
@@ -265,7 +273,7 @@ export function PrettierPanelModal({
 						</div>
 					) : (
 						<CodeDiff
-							oldValue={DEFAULT_SAMPLE}
+							oldValue={previewSample}
 							newValue={formattedPreview}
 							splitView={diffSettings.splitView}
 							tokenModel={diffSettings.tokenModel}

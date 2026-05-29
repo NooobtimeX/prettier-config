@@ -405,7 +405,6 @@ export default function HomePage() {
 				open={isImportOpen}
 				onOpenChange={setIsImportOpen}
 				options={options}
-				format={format}
 				version={version}
 				onApply={handleImportApply}
 			/>

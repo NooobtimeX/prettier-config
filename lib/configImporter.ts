@@ -21,7 +21,6 @@
 
 import { PrettierOptionTypeEnum, PrettierOptionValidateEnum } from '@/common/enum/prettierOption';
 import type { PrettierOptionType } from '@/common/interface/PrettierOptionType';
-import type { FormatFn } from './prettierLoader';
 
 export type IgnoredEntry = { key: string; reason: string };
 
@@ -99,23 +98,112 @@ function looksLikeObjectLiteral(s: string): boolean {
 }
 
 /**
- * Try to parse `text` as JSON5/JSONC by running it through Prettier's `json5`
- * parser (which canonicalises to strict JSON) and then `JSON.parse`. Returns
- * `null` on failure (the format error gets surfaced separately by the caller).
+ * Strip JSONC features — line comments, block comments, and trailing commas
+ * before `}` or `]` — so the result is closer to strict JSON. Tolerates
+ * comment-like sequences inside strings via a one-pass lexer.
  */
-async function parseLoose(
-	text: string,
-	format: FormatFn,
-): Promise<{ value: unknown; error: string | null }> {
+function stripJsoncFeatures(text: string): string {
+	let out = '';
+	let i = 0;
+	const n = text.length;
+	while (i < n) {
+		const c = text[i];
+		const next = text[i + 1];
+		// String literal — copy verbatim, respecting escapes
+		if (c === '"' || c === "'") {
+			const quote = c;
+			out += c;
+			i++;
+			while (i < n) {
+				const ch = text[i];
+				out += ch;
+				i++;
+				if (ch === '\\' && i < n) {
+					out += text[i];
+					i++;
+					continue;
+				}
+				if (ch === quote) break;
+			}
+			continue;
+		}
+		// Line comment
+		if (c === '/' && next === '/') {
+			while (i < n && text[i] !== '\n') i++;
+			continue;
+		}
+		// Block comment
+		if (c === '/' && next === '*') {
+			i += 2;
+			while (i < n && !(text[i] === '*' && text[i + 1] === '/')) i++;
+			i += 2;
+			continue;
+		}
+		// Trailing comma — lookahead past whitespace to } or ]
+		if (c === ',') {
+			let j = i + 1;
+			while (j < n && /\s/.test(text[j])) j++;
+			if (j < n && (text[j] === '}' || text[j] === ']')) {
+				i++;
+				continue;
+			}
+		}
+		out += c;
+		i++;
+	}
+	return out;
+}
+
+/**
+ * Convert JSON5-flavoured input (unquoted keys, single-quoted strings) to
+ * strict JSON. Run AFTER `stripJsoncFeatures` so comments don't interfere.
+ */
+function jsonifyJson5(text: string): string {
+	// Quote bare identifier keys. Anchored to a preceding `{` or `,` so we
+	// don't touch identifiers inside string values (which were preserved
+	// verbatim by stripJsoncFeatures' string-literal copy).
+	let out = text.replace(
+		/([{,]\s*)([A-Za-z_$][\w$]*)(\s*:)/g,
+		(_match, lead, ident, tail) => `${lead}"${ident}"${tail}`,
+	);
+	// Convert single-quoted strings to double-quoted. Preserve any embedded
+	// double quotes by escaping; unescape `\'` inside.
+	out = out.replace(/'((?:\\.|[^'\\])*)'/g, (_match, body: string) => {
+		const inner = body.replace(/\\'/g, "'").replace(/"/g, '\\"');
+		return `"${inner}"`;
+	});
+	return out;
+}
+
+/**
+ * Parse `text` as JSON, then JSONC (comments + trailing commas), then JSON5
+ * (also unquoted keys + single quotes). Returns the first form that succeeds
+ * or the strict-JSON error message if everything fails. No network calls and
+ * no dependency on Prettier's `format()` — we don't trust its `json5` output
+ * to be valid for `JSON.parse` (it isn't — Prettier outputs unquoted keys).
+ */
+function parseLoose(text: string): { value: unknown; error: string | null } {
+	// 1. Strict JSON — covers the most common case
 	try {
-		const formatted = await format(text, {}, 'json5');
-		if (formatted.error) return { value: null, error: formatted.error };
-		// Prettier's json5 output is always strict JSON.
-		const value = JSON.parse(formatted.code);
-		return { value, error: null };
+		return { value: JSON.parse(text), error: null };
+	} catch {
+		// fall through
+	}
+	// 2. JSONC — comments + trailing commas
+	const stripped = stripJsoncFeatures(text);
+	try {
+		return { value: JSON.parse(stripped), error: null };
+	} catch {
+		// fall through
+	}
+	// 3. JSON5 — also unquoted keys + single quotes
+	try {
+		return { value: JSON.parse(jsonifyJson5(stripped)), error: null };
 	} catch (err) {
-		const msg = err instanceof Error ? err.message : String(err);
-		return { value: null, error: msg };
+		return {
+			value: null,
+			error: err instanceof Error ? err.message : String(err),
+		};
 	}
 }
 
@@ -200,12 +288,11 @@ function maybePluckPrettierFromPackageJson(parsed: unknown): unknown {
  * `options` is the same array returned by `usePrettierVersion`, so it
  * already reflects whichever Prettier release is currently loaded.
  */
-export async function importPrettierConfig(
+export function importPrettierConfig(
 	raw: string,
 	options: PrettierOptionType[],
-	format: FormatFn,
 	version: string,
-): Promise<ImportResult> {
+): ImportResult {
 	const trimmed = raw.trim();
 	if (!trimmed) {
 		return { applied: {}, ignored: [], preserved: {}, error: 'empty input' };
@@ -222,7 +309,7 @@ export async function importPrettierConfig(
 		};
 	}
 
-	const parsed = await parseLoose(stripped, format);
+	const parsed = parseLoose(stripped);
 	if (parsed.error || parsed.value === null) {
 		return { applied: {}, ignored: [], preserved: {}, error: parsed.error };
 	}

@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { FormatError } from '@/components/FormatError';
 import type { PrettierOptionType } from '@/common/interface/PrettierOptionType';
-import type { FormatFn } from '@/lib/prettierLoader';
 import { importPrettierConfig, type ImportResult } from '@/lib/configImporter';
 
 const CodeEditor = dynamic(() => import('@/components/CodeEditor'), {
@@ -27,7 +26,6 @@ interface ImportConfigDialogProps {
 	open: boolean;
 	onOpenChange: (open: boolean) => void;
 	options: PrettierOptionType[];
-	format: FormatFn;
 	version: string;
 	/** Called with the merged `applied + preserved` map on Apply click. */
 	onApply: (next: Record<string, unknown>) => void;
@@ -43,7 +41,6 @@ export function ImportConfigDialog({
 	open,
 	onOpenChange,
 	options,
-	format,
 	version,
 	onApply,
 }: ImportConfigDialogProps) {
@@ -63,9 +60,9 @@ export function ImportConfigDialog({
 		onOpenChange(next);
 	};
 
-	const handleParse = async () => {
+	const handleParse = () => {
 		setParsing(true);
-		const r = await importPrettierConfig(pasted, options, format, version);
+		const r = importPrettierConfig(pasted, options, version);
 		setResult(r);
 		setParsing(false);
 	};

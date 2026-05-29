@@ -51,6 +51,7 @@
 			"copyInstructions": "इसे कॉपी करके .prettierrc फ़ाइल में पेस्ट करें।",
 			"loadingEditor": "एडिटर लोड हो रहा है…",
 			"loadingDiff": "diff लोड हो रहा है…",
+			"expandView": "फ़ुलस्क्रीन में विस्तृत करें",
 			"shareButton": "शेयर करने योग्य URL कॉपी करें",
 			"shareCopiedToast": "शेयर करने योग्य URL क्लिपबोर्ड पर कॉपी हो गया",
 			"configCopiedToast": "कॉन्फ़िगरेशन क्लिपबोर्ड पर कॉपी हो गया!",

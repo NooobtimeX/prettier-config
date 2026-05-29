@@ -51,6 +51,7 @@
 			"copyInstructions": "Salin dan tempel ini ke dalam file .prettierrc.",
 			"loadingEditor": "Memuat editor…",
 			"loadingDiff": "Memuat diff…",
+			"expandView": "Perluas ke layar penuh",
 			"shareButton": "Salin URL yang dapat dibagikan",
 			"shareCopiedToast": "URL yang dapat dibagikan disalin ke clipboard",
 			"configCopiedToast": "Konfigurasi disalin ke clipboard!",

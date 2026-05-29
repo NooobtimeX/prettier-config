@@ -51,6 +51,7 @@
 			"copyInstructions": "Скопируйте это и вставьте в файл .prettierrc.",
 			"loadingEditor": "Загрузка редактора…",
 			"loadingDiff": "Загрузка diff…",
+			"expandView": "Развернуть на весь экран",
 			"shareButton": "Скопировать ссылку для шаринга",
 			"shareCopiedToast": "Ссылка для шаринга скопирована в буфер обмена",
 			"configCopiedToast": "Конфиг скопирован в буфер обмена!",

@@ -51,6 +51,7 @@
 			"copyInstructions": "复制并粘贴到 .prettierrc 文件中。",
 			"loadingEditor": "正在加载编辑器…",
 			"loadingDiff": "正在加载 diff…",
+			"expandView": "展开为全屏",
 			"shareButton": "复制可分享链接",
 			"shareCopiedToast": "可分享链接已复制到剪贴板",
 			"configCopiedToast": "配置已复制到剪贴板！",

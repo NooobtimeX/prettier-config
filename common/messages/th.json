@@ -51,6 +51,7 @@
 			"copyInstructions": "คัดลอกและวางลงในไฟล์ .prettierrc",
 			"loadingEditor": "กำลังโหลดเอดิเตอร์…",
 			"loadingDiff": "กำลังโหลด diff…",
+			"expandView": "ขยายเต็มจอ",
 			"shareButton": "คัดลอก URL สำหรับแชร์",
 			"shareCopiedToast": "คัดลอก URL สำหรับแชร์ไปยังคลิปบอร์ดแล้ว",
 			"configCopiedToast": "คัดลอกคอนฟิกไปยังคลิปบอร์ดแล้ว!",

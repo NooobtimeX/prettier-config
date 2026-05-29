@@ -51,6 +51,7 @@
 			"copyInstructions": "Copia e incolla questo in un file .prettierrc.",
 			"loadingEditor": "Caricamento editor…",
 			"loadingDiff": "Caricamento diff…",
+			"expandView": "Espandi a schermo intero",
 			"shareButton": "Copia URL condivisibile",
 			"shareCopiedToast": "URL condivisibile copiato negli appunti",
 			"configCopiedToast": "Configurazione copiata negli appunti!",

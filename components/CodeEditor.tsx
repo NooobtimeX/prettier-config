@@ -1,7 +1,9 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { useTranslations } from 'next-intl';
+import { Maximize2 } from 'lucide-react';
 import { Compartment, EditorState, type Extension } from '@codemirror/state';
 import { EditorView, keymap, lineNumbers, highlightActiveLine } from '@codemirror/view';
 import { defaultKeymap, history, historyKeymap, indentWithTab } from '@codemirror/commands';
@@ -12,6 +14,9 @@ import {
 	syntaxHighlighting,
 } from '@codemirror/language';
 import { oneDark } from '@codemirror/theme-one-dark';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import type { ParserId } from '@/lib/parsers';
 
 /**
@@ -79,12 +84,20 @@ interface CodeEditorProps {
 	parser: ParserId;
 	placeholder?: string;
 	minHeight?: string;
+	/**
+	 * When true, the floating expand-to-fullscreen button is hidden. Set by the
+	 * inner instance that already lives inside the dialog so it doesn't try to
+	 * open a nested dialog.
+	 */
+	disableExpand?: boolean;
 }
 
 /**
  * Client-only CodeMirror 6 wrapper. Persistent `EditorView` instance with
  * `Compartment`-driven language + theme so we never remount on parser/theme
- * changes.
+ * changes. Includes a small expand button (top-right) that opens a near-
+ * fullscreen Dialog containing another CodeEditor instance bound to the same
+ * `value`/`onChange` so edits stay in sync between the two.
  */
 export function CodeEditor({
 	value,
@@ -92,7 +105,10 @@ export function CodeEditor({
 	parser,
 	placeholder = '// Paste your code here…',
 	minHeight = '12rem',
+	disableExpand = false,
 }: CodeEditorProps) {
+	const t = useTranslations('Page.ConfigAside');
+	const [expanded, setExpanded] = useState(false);
 	const hostRef = useRef<HTMLDivElement | null>(null);
 	const viewRef = useRef<EditorView | null>(null);
 	const langCompartment = useRef(new Compartment());
@@ -186,12 +202,59 @@ export function CodeEditor({
 	}, [isDark]);
 
 	return (
-		<div
-			ref={hostRef}
-			role="textbox"
-			aria-label={placeholder}
-			className="bg-background focus-within:ring-ring overflow-hidden rounded-md border focus-within:ring-1"
-		/>
+		<>
+			<div className="relative">
+				<div
+					ref={hostRef}
+					role="textbox"
+					aria-label={placeholder}
+					className="bg-background focus-within:ring-ring overflow-hidden rounded-md border focus-within:ring-1"
+				/>
+				{!disableExpand && (
+					<TooltipProvider>
+						<Tooltip>
+							<TooltipTrigger
+								render={
+									<Button
+										variant="secondary"
+										size="icon"
+										className="absolute top-1.5 right-1.5 h-6 w-6 opacity-80 hover:opacity-100"
+										onClick={() => setExpanded(true)}
+										aria-label={t('expandView')}
+									>
+										<Maximize2 className="h-3.5 w-3.5" />
+									</Button>
+								}
+							/>
+							<TooltipContent>{t('expandView')}</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
+				)}
+			</div>
+
+			{!disableExpand && (
+				<Dialog
+					open={expanded}
+					onOpenChange={setExpanded}
+				>
+					<DialogContent className="flex h-[95vh] max-h-[95vh] w-[95vw] max-w-[95vw] flex-col overflow-hidden p-0">
+						<DialogHeader className="shrink-0 border-b p-3">
+							<DialogTitle className="text-sm">{t('expandView')}</DialogTitle>
+						</DialogHeader>
+						<div className="min-h-0 flex-1 overflow-auto p-2">
+							<CodeEditor
+								value={value}
+								onChange={onChange}
+								parser={parser}
+								placeholder={placeholder}
+								minHeight="80vh"
+								disableExpand
+							/>
+						</div>
+					</DialogContent>
+				</Dialog>
+			)}
+		</>
 	);
 }
 

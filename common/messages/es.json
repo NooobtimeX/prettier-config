@@ -51,6 +51,7 @@
 			"copyInstructions": "Copia y pega esto en un archivo .prettierrc.",
 			"loadingEditor": "Cargando editor…",
 			"loadingDiff": "Cargando diff…",
+			"expandView": "Expandir a pantalla completa",
 			"shareButton": "Copiar URL para compartir",
 			"shareCopiedToast": "URL para compartir copiada al portapapeles",
 			"configCopiedToast": "¡Configuración copiada al portapapeles!",

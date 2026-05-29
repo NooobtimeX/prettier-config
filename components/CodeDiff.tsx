@@ -1,10 +1,13 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Maximize2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { diffLines } from 'diff';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { TokenModelPicker } from '@/components/TokenModelPicker';
 import { useTokenCount } from '@/hooks/useTokenCount';
 import type { TokenModelId } from '@/lib/tokenizers';
@@ -55,6 +58,35 @@ function countLineChanges(oldValue: string, newValue: string) {
 	return { added, removed };
 }
 
+const DIFF_VIEWER_STYLES = {
+	codeFold: { display: 'none' },
+	codeFoldGutter: { display: 'none' },
+	variables: {
+		dark: {
+			diffViewerBackground: '#1d1f21',
+			diffViewerColor: '#fafafa',
+			addedBackground: '#0e3c2a',
+			addedColor: '#e6ffe6',
+			removedBackground: '#451b1f',
+			removedColor: '#ffe6e6',
+			wordAddedBackground: '#1b6e3e',
+			wordRemovedBackground: '#7a2329',
+			gutterBackground: '#161819',
+			gutterBackgroundDark: '#161819',
+			gutterColor: '#7c7f87',
+			emptyLineBackground: '#1a1a1c',
+			codeFoldGutterBackground: '#161819',
+			codeFoldBackground: '#161819',
+			codeFoldContentColor: '#7c7f87',
+		},
+	},
+	contentText: {
+		fontSize: '0.75rem',
+		fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+	},
+	lineNumber: { fontSize: '0.6875rem' },
+};
+
 export function CodeDiff({
 	oldValue,
 	newValue,
@@ -64,6 +96,8 @@ export function CodeDiff({
 	onTokenModelChange,
 }: CodeDiffProps) {
 	const t = useTranslations('Page.tokens');
+	const tConfigAside = useTranslations('Page.ConfigAside');
+	const [expanded, setExpanded] = useState(false);
 	const { added, removed } = useMemo(
 		() => countLineChanges(oldValue, newValue),
 		[oldValue, newValue],
@@ -74,78 +108,90 @@ export function CodeDiff({
 
 	const formatCount = (n: number | null) => (n === null ? '…' : n.toLocaleString());
 
-	return (
-		<div className="overflow-hidden rounded-md border text-xs">
-			{/* Header strip with real line counts — GitHub-PR style. */}
-			<div className="bg-muted/40 flex flex-wrap items-center justify-between gap-2 border-b px-3 py-1.5">
-				<span className="text-muted-foreground text-xs">
-					{unchanged ? t('noChanges') : t('prettierChanges')}
+	const renderHeader = (inDialog: boolean) => (
+		<div className="bg-muted/40 flex flex-wrap items-center justify-between gap-2 border-b px-3 py-1.5">
+			<span className="text-muted-foreground text-xs">
+				{unchanged ? t('noChanges') : t('prettierChanges')}
+			</span>
+			<div className="flex flex-wrap items-center gap-3">
+				<span className="flex items-center gap-2 text-xs font-medium tabular-nums">
+					<span className="text-emerald-500">+{added}</span>
+					<span className="text-rose-500">−{removed}</span>
 				</span>
-				<div className="flex flex-wrap items-center gap-3">
-					<span className="flex items-center gap-2 text-xs font-medium tabular-nums">
-						<span className="text-emerald-500">+{added}</span>
-						<span className="text-rose-500">−{removed}</span>
-					</span>
-					<span
-						className={cn(
-							'flex items-center gap-1 text-xs tabular-nums',
-							tokens.approximate ? 'text-muted-foreground/70' : 'text-muted-foreground',
-						)}
-						title={tokens.approximate ? t('approximateTitle') : t('exactTitle')}
-					>
-						<span>{tokens.approximate ? '~' : ''}</span>
-						<span>{formatCount(tokens.old)}</span>
-						<span aria-hidden>→</span>
-						<span>{formatCount(tokens.new)}</span>
-						<span className="text-muted-foreground/70">{t('tokensLabel')}</span>
-					</span>
-					<TokenModelPicker
-						value={tokenModel}
-						onChange={onTokenModelChange}
-					/>
-				</div>
-			</div>
-
-			<div className="overflow-x-auto">
-				<ReactDiffViewer
-					oldValue={oldValue}
-					newValue={newValue}
-					splitView={splitView}
-					useDarkTheme
-					hideLineNumbers={hideLineNumbers}
-					hideSummary
-					extraLinesSurroundingDiff={0}
-					codeFoldMessageRenderer={() => <></>}
-					styles={{
-						codeFold: { display: 'none' },
-						codeFoldGutter: { display: 'none' },
-						variables: {
-							dark: {
-								diffViewerBackground: '#1d1f21',
-								diffViewerColor: '#fafafa',
-								addedBackground: '#0e3c2a',
-								addedColor: '#e6ffe6',
-								removedBackground: '#451b1f',
-								removedColor: '#ffe6e6',
-								wordAddedBackground: '#1b6e3e',
-								wordRemovedBackground: '#7a2329',
-								gutterBackground: '#161819',
-								gutterBackgroundDark: '#161819',
-								gutterColor: '#7c7f87',
-								emptyLineBackground: '#1a1a1c',
-								codeFoldGutterBackground: '#161819',
-								codeFoldBackground: '#161819',
-								codeFoldContentColor: '#7c7f87',
-							},
-						},
-						contentText: {
-							fontSize: '0.75rem',
-							fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
-						},
-						lineNumber: { fontSize: '0.6875rem' },
-					}}
+				<span
+					className={cn(
+						'flex items-center gap-1 text-xs tabular-nums',
+						tokens.approximate ? 'text-muted-foreground/70' : 'text-muted-foreground',
+					)}
+					title={tokens.approximate ? t('approximateTitle') : t('exactTitle')}
+				>
+					<span>{tokens.approximate ? '~' : ''}</span>
+					<span>{formatCount(tokens.old)}</span>
+					<span aria-hidden>→</span>
+					<span>{formatCount(tokens.new)}</span>
+					<span className="text-muted-foreground/70">{t('tokensLabel')}</span>
+				</span>
+				<TokenModelPicker
+					value={tokenModel}
+					onChange={onTokenModelChange}
 				/>
+				{!inDialog && (
+					<TooltipProvider>
+						<Tooltip>
+							<TooltipTrigger
+								render={
+									<Button
+										variant="ghost"
+										size="icon"
+										className="h-6 w-6"
+										onClick={() => setExpanded(true)}
+										aria-label={tConfigAside('expandView')}
+									>
+										<Maximize2 className="h-3.5 w-3.5" />
+									</Button>
+								}
+							/>
+							<TooltipContent>{tConfigAside('expandView')}</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
+				)}
 			</div>
 		</div>
+	);
+
+	const renderViewer = (hideLines: boolean) => (
+		<ReactDiffViewer
+			oldValue={oldValue}
+			newValue={newValue}
+			splitView={splitView}
+			useDarkTheme
+			hideLineNumbers={hideLines}
+			hideSummary
+			extraLinesSurroundingDiff={0}
+			codeFoldMessageRenderer={() => <></>}
+			styles={DIFF_VIEWER_STYLES}
+		/>
+	);
+
+	return (
+		<>
+			<div className="overflow-hidden rounded-md border text-xs">
+				{renderHeader(false)}
+				<div className="overflow-x-auto">{renderViewer(hideLineNumbers)}</div>
+			</div>
+
+			<Dialog
+				open={expanded}
+				onOpenChange={setExpanded}
+			>
+				<DialogContent className="flex h-[95vh] max-h-[95vh] w-[95vw] max-w-[95vw] flex-col overflow-hidden p-0">
+					<DialogHeader className="shrink-0 border-b p-0">
+						<DialogTitle className="sr-only">{tConfigAside('expandView')}</DialogTitle>
+						{renderHeader(true)}
+					</DialogHeader>
+					<div className="min-h-0 flex-1 overflow-auto text-xs">{renderViewer(false)}</div>
+				</DialogContent>
+			</Dialog>
+		</>
 	);
 }

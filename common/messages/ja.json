@@ -51,6 +51,7 @@
 			"copyInstructions": "コピーして.prettierrcファイルに貼り付けてください。",
 			"loadingEditor": "エディタを読み込み中…",
 			"loadingDiff": "diffを読み込み中…",
+			"expandView": "全画面に展開",
 			"shareButton": "共有用URLをコピー",
 			"shareCopiedToast": "共有用URLをクリップボードにコピーしました",
 			"configCopiedToast": "設定をクリップボードにコピーしました！",

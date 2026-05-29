@@ -51,6 +51,7 @@
 			"copyInstructions": "Copy and paste this into a .prettierrc file.",
 			"loadingEditor": "Loading editor…",
 			"loadingDiff": "Loading diff…",
+			"expandView": "Expand to fullscreen",
 			"shareButton": "Copy shareable URL",
 			"shareCopiedToast": "Shareable URL copied to clipboard",
 			"configCopiedToast": "Config copied to clipboard!",

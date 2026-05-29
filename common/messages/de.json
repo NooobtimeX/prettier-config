@@ -51,6 +51,7 @@
 			"copyInstructions": "Kopieren Sie dies und fügen Sie es in eine .prettierrc-Datei ein.",
 			"loadingEditor": "Editor wird geladen…",
 			"loadingDiff": "Diff wird geladen…",
+			"expandView": "Auf Vollbild erweitern",
 			"shareButton": "Teilbare URL kopieren",
 			"shareCopiedToast": "Teilbare URL in die Zwischenablage kopiert",
 			"configCopiedToast": "Konfiguration in die Zwischenablage kopiert!",

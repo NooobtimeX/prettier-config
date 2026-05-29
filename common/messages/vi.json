@@ -51,6 +51,7 @@
 			"copyInstructions": "Sao chép và dán cái này vào tệp .prettierrc.",
 			"loadingEditor": "Đang tải trình soạn thảo…",
 			"loadingDiff": "Đang tải diff…",
+			"expandView": "Mở rộng toàn màn hình",
 			"shareButton": "Sao chép URL chia sẻ",
 			"shareCopiedToast": "Đã sao chép URL chia sẻ vào bộ nhớ tạm",
 			"configCopiedToast": "Đã sao chép cấu hình vào bộ nhớ tạm!",

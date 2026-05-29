@@ -51,6 +51,7 @@
 			"copyInstructions": "انسخ هذا والصقه في ملف .prettierrc.",
 			"loadingEditor": "جارٍ تحميل المحرر…",
 			"loadingDiff": "جارٍ تحميل الفروق…",
+			"expandView": "توسيع إلى ملء الشاشة",
 			"shareButton": "نسخ رابط قابل للمشاركة",
 			"shareCopiedToast": "تم نسخ الرابط القابل للمشاركة إلى الحافظة",
 			"configCopiedToast": "تم نسخ الإعدادات إلى الحافظة!",

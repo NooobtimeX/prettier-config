@@ -97,7 +97,7 @@
 			"models": {
 				"gpt-4o": "GPT-4o / o-series",
 				"gpt-4": "GPT-4 / GPT-4.1",
-				"gpt-3.5": "GPT-3.5",
+				"gpt-3-5": "GPT-3.5",
 				"claude": "Claude (概算)",
 				"gemini": "Gemini (概算)",
 				"llama-3": "Llama 3 (概算)",

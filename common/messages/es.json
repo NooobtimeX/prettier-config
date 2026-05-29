@@ -97,7 +97,7 @@
 			"models": {
 				"gpt-4o": "GPT-4o / serie o",
 				"gpt-4": "GPT-4 / GPT-4.1",
-				"gpt-3.5": "GPT-3.5",
+				"gpt-3-5": "GPT-3.5",
 				"claude": "Claude (aprox.)",
 				"gemini": "Gemini (aprox.)",
 				"llama-3": "Llama 3 (aprox.)",

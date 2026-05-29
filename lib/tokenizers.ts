@@ -15,7 +15,7 @@
 export type TokenModelId =
 	| 'gpt-4o'
 	| 'gpt-4'
-	| 'gpt-3.5'
+	| 'gpt-3-5'
 	| 'claude'
 	| 'gemini'
 	| 'llama-3'
@@ -31,7 +31,7 @@ export type TokenModel = {
 export const TOKEN_MODELS: readonly TokenModel[] = [
 	{ id: 'gpt-4o', label: 'GPT-4o / o-series', approximate: false },
 	{ id: 'gpt-4', label: 'GPT-4 / GPT-4.1', approximate: false },
-	{ id: 'gpt-3.5', label: 'GPT-3.5', approximate: false },
+	{ id: 'gpt-3-5', label: 'GPT-3.5', approximate: false },
 	{ id: 'claude', label: 'Claude (approx)', approximate: true },
 	{ id: 'gemini', label: 'Gemini (approx)', approximate: true },
 	{ id: 'llama-3', label: 'Llama 3 (approx)', approximate: true },
@@ -62,7 +62,7 @@ const SPECS: Record<TokenModelId, ExactSpec | ApproxSpec> = {
 				countTokens: (s: string) => m.countTokens(s),
 			})),
 	},
-	'gpt-3.5': {
+	'gpt-3-5': {
 		kind: 'exact',
 		load: () =>
 			import('gpt-tokenizer/encoding/cl100k_base').then((m) => ({

@@ -80,7 +80,7 @@ export function ImportConfigDialog({
 			open={open}
 			onOpenChange={handleOpenChange}
 		>
-			<DialogContent className="flex max-h-[85vh] w-[95vw] max-w-3xl flex-col overflow-hidden p-0">
+			<DialogContent className="flex max-h-[85vh] w-[95vw] max-w-3xl flex-col overflow-hidden p-0 sm:max-w-3xl">
 				<DialogHeader className="shrink-0 border-b p-4">
 					<DialogTitle className="text-base">{t('dialogTitle')}</DialogTitle>
 					<p className="text-muted-foreground mt-1 text-xs">{t('intro')}</p>

@@ -237,7 +237,7 @@ export function CodeEditor({
 					open={expanded}
 					onOpenChange={setExpanded}
 				>
-					<DialogContent className="flex h-[95vh] max-h-[95vh] w-[95vw] max-w-[95vw] flex-col overflow-hidden p-0">
+					<DialogContent className="flex h-[95vh] max-h-[95vh] w-[95vw] max-w-[95vw] flex-col overflow-hidden p-0 sm:max-w-[95vw]">
 						<DialogHeader className="shrink-0 border-b p-3">
 							<DialogTitle className="text-sm">{t('expandView')}</DialogTitle>
 						</DialogHeader>

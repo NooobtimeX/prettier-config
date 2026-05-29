@@ -165,7 +165,7 @@ export function PrettierPanelModal({
 			open={open}
 			onOpenChange={onClose}
 		>
-			<DialogContent className="max-h-[80vh] max-w-2xl overflow-hidden">
+			<DialogContent className="max-h-[80vh] max-w-2xl overflow-hidden sm:max-w-2xl">
 				<DialogHeader>
 					<DialogTitle>{t('modalTitle')}</DialogTitle>
 					{tabBar}

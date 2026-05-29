@@ -63,7 +63,7 @@ export function VersionSwitchWarningDialog({
 			open={open}
 			onOpenChange={handleOpenChange}
 		>
-			<AlertDialogContent className="max-w-xl">
+			<AlertDialogContent className="max-w-[95vw] data-[size=default]:sm:max-w-xl">
 				<AlertDialogHeader>
 					<AlertDialogTitle>{t('title', { version: targetVersion })}</AlertDialogTitle>
 					<AlertDialogDescription>

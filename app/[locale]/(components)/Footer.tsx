@@ -59,14 +59,6 @@ export default function Footer() {
 									{t('quickLinks.about')}
 								</Link>
 							</li>
-							<li>
-								<Link
-									href="/#why-prettier"
-									className="text-muted-foreground hover:text-foreground transition-colors"
-								>
-									{t('quickLinks.whyPrettier')}
-								</Link>
-							</li>
 						</ul>
 					</div>
 

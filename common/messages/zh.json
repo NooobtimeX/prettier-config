@@ -1,51 +1,4 @@
 {
-	"Home": {
-		"hero": {
-			"badge": "免费且开源",
-			"title": "生成您的",
-			"titleSuffix": "配置",
-			"description": "一个现代化的、用户友好的 Web 应用程序，帮助开发人员通过交互式界面轻松创建和自定义 Prettier 配置文件。",
-			"startButton": "开始生成",
-			"githubButton": "在 GitHub 上查看"
-		},
-		"features": {
-			"title": "为什么选择我们的生成器？",
-			"subtitle": "采用现代 Web 技术构建，旨在提供最佳的开发体验",
-			"realtime": {
-				"title": "实时生成",
-				"description": "配置会在您选择选项时立即更新。实时查看生成的 .prettierrc 文件。"
-			},
-			"interactive": {
-				"title": "交互式界面",
-				"description": "美观、响应式的界面，支持深色/浅色主题，并为每个选项提供全面的工具提示。"
-			},
-			"search": {
-				"title": "智能搜索",
-				"description": "通过名称、描述或相关术语快速查找选项。"
-			},
-			"copy": {
-				"title": "一键复制",
-				"description": "通过漂亮的 toast 通知瞬间将生成的配置复制到剪贴板。"
-			},
-			"validation": {
-				"title": "格式验证",
-				"description": "服务端格式化确保您的 Prettier 配置始终准确且格式正确。"
-			},
-			"design": {
-				"title": "现代设计",
-				"description": "基于 Next.js 15、TypeScript、Tailwind CSS 和 shadcn/ui 构建，提供美观、快速的体验。"
-			}
-		},
-		"techStack": {
-			"title": "采用现代技术构建",
-			"subtitle": "由最新的 Web 开发工具和框架驱动"
-		},
-		"cta": {
-			"title": "准备好生成您的配置了吗？",
-			"description": "几秒钟内开始创建您完美的 Prettier 配置。无需注册，完全免费使用。",
-			"button": "立即生成配置"
-		}
-	},
 	"Header": {
 		"brand": {
 			"name": "Prettier Config",
@@ -371,8 +324,7 @@
 			"generator": "配置生成器",
 			"docs": "文档",
 			"faq": "常见问题",
-			"about": "关于我们",
-			"whyPrettier": "为什么选择 Prettier？"
+			"about": "关于我们"
 		},
 		"resources": {
 			"title": "资源",

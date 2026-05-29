@@ -1,51 +1,4 @@
 {
-	"Home": {
-		"hero": {
-			"badge": "Gratuito e Código Aberto",
-			"title": "Gere a sua",
-			"titleSuffix": "Configuração",
-			"description": "Uma aplicação web moderna e intuitiva que ajuda desenvolvedores a criar e personalizar facilmente seus arquivos de configuração do Prettier com uma interface interativa.",
-			"startButton": "Começar a Gerar",
-			"githubButton": "Ver no GitHub"
-		},
-		"features": {
-			"title": "Por que escolher nosso gerador?",
-			"subtitle": "Construído com tecnologias web modernas e projetado para a melhor experiência do desenvolvedor",
-			"realtime": {
-				"title": "Geração em Tempo Real",
-				"description": "As atualizações de configuração ocorrem instantaneamente conforme você seleciona as opções. Veja seu arquivo .prettierrc ser gerado em tempo real."
-			},
-			"interactive": {
-				"title": "Interface Interativa",
-				"description": "Interface bonita e responsiva com suporte a temas escuro/claro e dicas abrangentes para cada opção."
-			},
-			"search": {
-				"title": "Busca Inteligente",
-				"description": "Encontre opções rapidamente por nome, descrição ou termos relacionados com nossa funcionalidade de busca integrada."
-			},
-			"copy": {
-				"title": "Cópia com um Clique",
-				"description": "Copie sua configuração gerada para a área de transferência instantaneamente com belas notificações."
-			},
-			"validation": {
-				"title": "Validação de Formato",
-				"description": "A formatação no servidor garante que sua configuração do Prettier esteja sempre precisa e formatada corretamente."
-			},
-			"design": {
-				"title": "Design Moderno",
-				"description": "Construído com Next.js 15, TypeScript, Tailwind CSS e shadcn/ui para uma experiência rápida e bonita."
-			}
-		},
-		"techStack": {
-			"title": "Construído com Tecnologias Modernas",
-			"subtitle": "Alimentado pelas mais recentes ferramentas e frameworks de desenvolvimento web"
-		},
-		"cta": {
-			"title": "Pronto para gerar sua configuração?",
-			"description": "Comece a criar sua configuração perfeita do Prettier em segundos. Nenhum registro necessário, totalmente gratuito para usar.",
-			"button": "Gerar Configuração Agora"
-		}
-	},
 	"Header": {
 		"brand": {
 			"name": "Prettier Config",
@@ -371,8 +324,7 @@
 			"generator": "Gerador de Configuração",
 			"docs": "Documentação",
 			"faq": "Perguntas Frequentes",
-			"about": "Sobre",
-			"whyPrettier": "Por que Prettier?"
+			"about": "Sobre"
 		},
 		"resources": {
 			"title": "Recursos",

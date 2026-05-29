@@ -1,51 +1,4 @@
 {
-	"Home": {
-		"hero": {
-			"badge": "무료 및 오픈 소스",
-			"title": "나만의",
-			"titleSuffix": "설정 생성하기",
-			"description": "개발자가 대화형 인터페이스를 통해 Prettier 설정 파일을 쉽게 만들고 사용자 정의할 수 있도록 도와주는 현대적이고 사용자 친화적인 웹 애플리케이션입니다.",
-			"startButton": "생성 시작하기",
-			"githubButton": "GitHub에서 보기"
-		},
-		"features": {
-			"title": "왜 우리의 생성기를 선택해야 할까요?",
-			"subtitle": "현대적인 웹 기술로 구축되었으며 최상의 개발자 경험을 위해 설계되었습니다",
-			"realtime": {
-				"title": "실시간 생성",
-				"description": "옵션을 선택함에 따라 설정이 즉시 업데이트됩니다. .prettierrc 파일이 실시간으로 생성되는 것을 확인하세요."
-			},
-			"interactive": {
-				"title": "대화형 인터페이스",
-				"description": "다크/라이트 테마 지원과 각 옵션에 대한 상세한 툴팁을 갖춘 아름답고 반응이 빠른 인터페이스."
-			},
-			"search": {
-				"title": "스마트 검색",
-				"description": "통합 검색 기능을 통해 이름, 설명 또는 관련 용어로 옵션을 빠르게 찾을 수 있습니다."
-			},
-			"copy": {
-				"title": "원클릭 복사",
-				"description": "생성된 설정을 아름다운 토스트 알림과 함께 즉시 클립보드에 복사하세요."
-			},
-			"validation": {
-				"title": "형식 유효성 검사",
-				"description": "서버 측 포맷팅을 통해 Prettier 설정이 항상 정확하고 적절하게 포맷되었음을 보장합니다."
-			},
-			"design": {
-				"title": "현대적인 디자인",
-				"description": "Next.js 15, TypeScript, Tailwind CSS 및 shadcn/ui로 구축되어 아름답고 빠른 경험을 제공합니다."
-			}
-		},
-		"techStack": {
-			"title": "현대적인 기술로 구축",
-			"subtitle": "최신 웹 개발 도구 및 프레임워크로 구동됩니다"
-		},
-		"cta": {
-			"title": "설정을 생성할 준비가 되셨나요?",
-			"description": "몇 초 만에 완벽한 Prettier 설정을 만들기 시작하세요. 가입이 필요 없으며 완전히 무료로 사용할 수 있습니다.",
-			"button": "지금 설정 생성하기"
-		}
-	},
 	"Header": {
 		"brand": {
 			"name": "Prettier Config",
@@ -371,8 +324,7 @@
 			"generator": "설정 생성기",
 			"docs": "문서",
 			"faq": "자주 묻는 질문",
-			"about": "소개",
-			"whyPrettier": "왜 Prettier인가요?"
+			"about": "소개"
 		},
 		"resources": {
 			"title": "리소스",

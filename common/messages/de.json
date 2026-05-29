@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "Prettier {version} konnte nicht geladen werden",
 			"networkTip": "Überprüfen Sie Ihre Netzwerkverbindung und probieren Sie eine andere Version."
 		},
+		"versionSwitch": {
+			"title": "Einige Ihrer Auswahlen gelten nicht für Prettier {version}",
+			"description": "Beim Wechseln der Version werden diese Option(en) aus der generierten Konfiguration ausgeblendet. Sie bleiben in Ihrem lokalen Zustand erhalten, falls Sie zurückwechseln. Die kopierte Konfiguration wird stets auf die aktive Version gefiltert und enthält daher nur Optionen, die Prettier {version} versteht.",
+			"missingReason": "Nicht verfügbar in Prettier {version}",
+			"invalidValueReason": "Wert in Prettier {version} nicht gültig. Optionen: {choices}",
+			"dropCheckbox": "Diese Auswahlen auch aus meinem gespeicherten Zustand entfernen",
+			"cancel": "Abbrechen",
+			"continue": "Trotzdem wechseln",
+			"loading": "Prettier {version} wird geprüft…"
+		},
 		"import": {
 			"button": "Importieren",
 			"ariaLabel": "Bestehende Prettier-Konfiguration importieren",

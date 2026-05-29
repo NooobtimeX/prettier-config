@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "Gagal memuat Prettier {version}",
 			"networkTip": "Periksa koneksi jaringan Anda dan coba versi lain."
 		},
+		"versionSwitch": {
+			"title": "Beberapa pilihan Anda tidak akan diterapkan ke Prettier {version}",
+			"description": "Mengganti versi akan menyembunyikan opsi ini dari konfigurasi yang dihasilkan. Pilihan tetap tersimpan di status lokal Anda untuk berjaga-jaga jika Anda kembali. Konfigurasi yang disalin selalu difilter ke versi aktif, jadi hanya berisi opsi yang dipahami Prettier {version}.",
+			"missingReason": "Tidak tersedia di Prettier {version}",
+			"invalidValueReason": "Nilai tidak valid di Prettier {version}. Pilihan: {choices}",
+			"dropCheckbox": "Juga hapus pilihan ini dari status yang tersimpan",
+			"cancel": "Batal",
+			"continue": "Tetap ganti",
+			"loading": "Memeriksa Prettier {version}…"
+		},
 		"import": {
 			"button": "Impor",
 			"ariaLabel": "Impor konfigurasi Prettier yang sudah ada",

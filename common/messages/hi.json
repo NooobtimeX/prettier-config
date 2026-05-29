@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "Prettier {version} लोड करने में विफल",
 			"networkTip": "अपना नेटवर्क कनेक्शन जाँचें और कोई अन्य संस्करण आज़माएँ।"
 		},
+		"versionSwitch": {
+			"title": "आपके कुछ चयन Prettier {version} पर लागू नहीं होंगे",
+			"description": "संस्करण बदलने पर ये विकल्प जनरेट किए गए कॉन्फ़िग से छिप जाएँगे। ये आपकी स्थानीय स्थिति में बने रहेंगे ताकि आप वापस स्विच कर सकें। कॉपी किया गया कॉन्फ़िग हमेशा सक्रिय संस्करण के अनुसार फ़िल्टर किया जाता है, इसलिए इसमें केवल वे विकल्प होते हैं जिन्हें Prettier {version} समझता है।",
+			"missingReason": "Prettier {version} में उपलब्ध नहीं है",
+			"invalidValueReason": "Prettier {version} में मान मान्य नहीं है। विकल्प: {choices}",
+			"dropCheckbox": "मेरी सहेजी गई स्थिति से भी इन चयनों को हटाएँ",
+			"cancel": "रद्द करें",
+			"continue": "फिर भी बदलें",
+			"loading": "Prettier {version} की जाँच की जा रही है…"
+		},
 		"import": {
 			"button": "आयात करें",
 			"ariaLabel": "मौजूदा Prettier कॉन्फ़िग आयात करें",

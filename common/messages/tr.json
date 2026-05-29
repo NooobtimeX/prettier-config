@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "Prettier {version} yüklenemedi",
 			"networkTip": "Ağ bağlantınızı kontrol edin ve başka bir sürüm deneyin."
 		},
+		"versionSwitch": {
+			"title": "Bazı seçimleriniz Prettier {version} sürümünde uygulanmayacak",
+			"description": "Sürümü değiştirmek bu seçenekleri oluşturulan yapılandırmadan gizler. Geri dönmeniz ihtimaline karşı yerel durumunuzda saklı kalır. Kopyalanan yapılandırma her zaman etkin sürüme göre filtrelenir, böylece yalnızca Prettier {version} tarafından anlaşılan seçenekler bulunur.",
+			"missingReason": "Prettier {version} sürümünde mevcut değil",
+			"invalidValueReason": "Prettier {version} sürümünde değer geçerli değil. Seçenekler: {choices}",
+			"dropCheckbox": "Bu seçimleri kayıtlı durumumdan da kaldır",
+			"cancel": "İptal",
+			"continue": "Yine de değiştir",
+			"loading": "Prettier {version} kontrol ediliyor…"
+		},
 		"import": {
 			"button": "İçe Aktar",
 			"ariaLabel": "Mevcut Prettier yapılandırmasını içe aktar",

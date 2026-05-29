@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "فشل تحميل Prettier {version}",
 			"networkTip": "تحقق من اتصال الشبكة وجرب إصدارًا آخر."
 		},
+		"versionSwitch": {
+			"title": "بعض اختياراتك لن تنطبق على Prettier {version}",
+			"description": "تبديل الإصدار سيُخفي هذه الخيارات من التكوين المُولَّد. تظل محفوظة في حالتك المحلية في حال أردت العودة. يتم دائمًا تصفية التكوين المنسوخ وفقًا للإصدار النشط، لذا يحتوي فقط على الخيارات التي يفهمها Prettier {version}.",
+			"missingReason": "غير متاح في Prettier {version}",
+			"invalidValueReason": "القيمة غير صالحة في Prettier {version}. الخيارات: {choices}",
+			"dropCheckbox": "إزالة هذه الاختيارات أيضًا من حالتي المحفوظة",
+			"cancel": "إلغاء",
+			"continue": "التبديل على أي حال",
+			"loading": "جارٍ التحقق من Prettier {version}…"
+		},
 		"import": {
 			"button": "استيراد",
 			"ariaLabel": "استيراد إعدادات Prettier موجودة",

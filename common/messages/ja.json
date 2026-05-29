@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "Prettier {version}の読み込みに失敗しました",
 			"networkTip": "ネットワーク接続を確認して、別のバージョンを試してください。"
 		},
+		"versionSwitch": {
+			"title": "一部の選択は Prettier {version} には適用されません",
+			"description": "バージョンを切り替えると、これらのオプションは生成された設定から非表示になります。戻した場合に備えてローカルの状態には残ります。コピーされる設定は常にアクティブなバージョンに合わせてフィルタリングされるため、Prettier {version} が理解できるオプションのみが含まれます。",
+			"missingReason": "Prettier {version} では利用できません",
+			"invalidValueReason": "Prettier {version} では値が無効です。選択肢: {choices}",
+			"dropCheckbox": "保存された状態からもこれらの選択を削除する",
+			"cancel": "キャンセル",
+			"continue": "それでも切り替える",
+			"loading": "Prettier {version} を確認中…"
+		},
 		"import": {
 			"button": "インポート",
 			"ariaLabel": "既存の Prettier 設定をインポート",

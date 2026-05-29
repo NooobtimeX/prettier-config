@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "Prettier {version} লোড করতে ব্যর্থ",
 			"networkTip": "আপনার নেটওয়ার্ক কানেকশন চেক করুন এবং অন্য একটি সংস্করণ চেষ্টা করুন।"
 		},
+		"versionSwitch": {
+			"title": "আপনার কিছু পছন্দ Prettier {version}-এ প্রযোজ্য হবে না",
+			"description": "সংস্করণ পরিবর্তন করলে এই অপশনগুলো জেনারেট করা কনফিগ থেকে লুকিয়ে যাবে। আপনি যদি ফিরে আসেন সে জন্য সেগুলো আপনার লোকাল স্টেটে রয়ে যায়। কপি করা কনফিগ সবসময় সক্রিয় সংস্করণ অনুযায়ী ফিল্টার করা হয়, তাই এতে শুধু সেই অপশনগুলো থাকে যা Prettier {version} বোঝে।",
+			"missingReason": "Prettier {version}-এ উপলব্ধ নয়",
+			"invalidValueReason": "Prettier {version}-এ মান বৈধ নয়। বিকল্পসমূহ: {choices}",
+			"dropCheckbox": "আমার সংরক্ষিত স্টেট থেকেও এই পছন্দগুলো সরিয়ে দিন",
+			"cancel": "বাতিল",
+			"continue": "তবুও পরিবর্তন করুন",
+			"loading": "Prettier {version} যাচাই করা হচ্ছে…"
+		},
 		"import": {
 			"button": "ইম্পোর্ট",
 			"ariaLabel": "বিদ্যমান Prettier কনফিগ ইম্পোর্ট করুন",

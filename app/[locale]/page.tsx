@@ -14,6 +14,10 @@ import { toast } from 'sonner';
 import { RotateCcw, FilePlus, Loader2, FileDown } from 'lucide-react';
 import type { ParserId } from '@/lib/parsers';
 import { ImportConfigDialog } from '@/components/ImportConfigDialog';
+import { VersionSwitchWarningDialog } from '@/components/VersionSwitchWarningDialog';
+import { computeVersionConflicts, type VersionConflict } from '@/lib/versionDiff';
+import { loadPrettier } from '@/lib/prettierLoader';
+import { adaptSupportInfo } from '@/lib/adaptSupportInfo';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import {
 	AlertDialog,
@@ -60,6 +64,8 @@ export default function HomePage() {
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
 	const [isImportOpen, setIsImportOpen] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
+	const [pendingVersion, setPendingVersion] = useState<string | null>(null);
+	const [pendingConflicts, setPendingConflicts] = useState<VersionConflict[]>([]);
 	const [userCode, setUserCode] = useState('');
 	const [parserOverride, setParserOverride] = useState<ParserId | null>(null);
 
@@ -96,6 +102,46 @@ export default function HomePage() {
 		if (isLargeScreen) {
 			setGeneratedConfig(generateConfig(next as SelectedOptions, validKeys));
 		}
+	};
+
+	/**
+	 * Intercept version-picker selections — before actually swapping, preload
+	 * the target version's option schema and check whether any active
+	 * selections would silently disappear. If conflicts exist, open the
+	 * warning dialog and let the user decide; otherwise switch immediately.
+	 */
+	const handleVersionRequest = async (next: string) => {
+		if (next === version) return;
+		try {
+			const loaded = await loadPrettier(next);
+			const filterVersion = next === 'latest' ? null : next;
+			const newOptions = adaptSupportInfo(loaded.supportInfo, filterVersion);
+			const conflicts = computeVersionConflicts(selected, validKeys, newOptions);
+			if (conflicts.length === 0) {
+				setVersion(next);
+				return;
+			}
+			setPendingVersion(next);
+			setPendingConflicts(conflicts);
+		} catch {
+			// Network failure or invalid version — fall back to the old behaviour
+			// (switch and let usePrettierVersion surface the load error).
+			setVersion(next);
+		}
+	};
+
+	const handleVersionConfirm = (drop: boolean) => {
+		if (!pendingVersion) return;
+		if (drop) {
+			setSelected((prev) => {
+				const next = { ...prev };
+				for (const c of pendingConflicts) delete next[c.key];
+				return next;
+			});
+		}
+		setVersion(pendingVersion);
+		setPendingVersion(null);
+		setPendingConflicts([]);
 	};
 
 	const hasSelectedOptions = Object.entries(selected).some(
@@ -188,7 +234,7 @@ export default function HomePage() {
 				/>
 				<VersionPicker
 					value={version}
-					onChange={setVersion}
+					onChange={handleVersionRequest}
 					disabled={status === 'loading'}
 				/>
 				<TooltipProvider>
@@ -407,6 +453,19 @@ export default function HomePage() {
 				options={options}
 				version={version}
 				onApply={handleImportApply}
+			/>
+
+			<VersionSwitchWarningDialog
+				open={pendingVersion !== null}
+				onOpenChange={(o) => {
+					if (!o) {
+						setPendingVersion(null);
+						setPendingConflicts([]);
+					}
+				}}
+				targetVersion={pendingVersion ?? ''}
+				conflicts={pendingConflicts}
+				onConfirm={handleVersionConfirm}
 			/>
 
 			<AlertDialog

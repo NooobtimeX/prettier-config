@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "加载 Prettier {version} 失败",
 			"networkTip": "请检查您的网络连接并尝试其他版本。"
 		},
+		"versionSwitch": {
+			"title": "您的部分选择将不适用于 Prettier {version}",
+			"description": "切换版本会将这些选项从生成的配置中隐藏。它们仍保留在您的本地状态中，以便您切换回来。复制的配置始终会根据当前活动版本进行过滤，因此只包含 Prettier {version} 能识别的选项。",
+			"missingReason": "在 Prettier {version} 中不可用",
+			"invalidValueReason": "该值在 Prettier {version} 中无效。可选值：{choices}",
+			"dropCheckbox": "同时从我保存的状态中移除这些选择",
+			"cancel": "取消",
+			"continue": "仍然切换",
+			"loading": "正在检查 Prettier {version}…"
+		},
 		"import": {
 			"button": "导入",
 			"ariaLabel": "导入现有的 Prettier 配置",

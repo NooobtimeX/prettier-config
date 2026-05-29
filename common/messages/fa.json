@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "بارگذاری Prettier {version} ناموفق بود",
 			"networkTip": "اتصال شبکه خود را بررسی و نسخه دیگری را امتحان کنید."
 		},
+		"versionSwitch": {
+			"title": "برخی از انتخاب‌های شما در Prettier {version} اعمال نمی‌شوند",
+			"description": "تغییر نسخه این گزینه‌ها را از پیکربندی تولیدشده پنهان می‌کند. آن‌ها در وضعیت محلی شما باقی می‌مانند تا اگر بازگشتید در دسترس باشند. پیکربندی کپی‌شده همیشه بر اساس نسخه فعال فیلتر می‌شود، بنابراین فقط شامل گزینه‌هایی است که Prettier {version} درک می‌کند.",
+			"missingReason": "در Prettier {version} موجود نیست",
+			"invalidValueReason": "مقدار در Prettier {version} معتبر نیست. گزینه‌ها: {choices}",
+			"dropCheckbox": "این انتخاب‌ها را از وضعیت ذخیره‌شده‌ام نیز حذف کن",
+			"cancel": "لغو",
+			"continue": "به هر حال تغییر بده",
+			"loading": "در حال بررسی Prettier {version}…"
+		},
 		"import": {
 			"button": "وارد کردن",
 			"ariaLabel": "وارد کردن پیکربندی موجود Prettier",

@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "Không thể tải Prettier {version}",
 			"networkTip": "Kiểm tra kết nối mạng và thử một phiên bản khác."
 		},
+		"versionSwitch": {
+			"title": "Một số lựa chọn của bạn sẽ không áp dụng cho Prettier {version}",
+			"description": "Việc chuyển phiên bản sẽ ẩn các tùy chọn này khỏi cấu hình được tạo. Chúng vẫn được lưu trong trạng thái cục bộ của bạn để dùng khi quay lại. Cấu hình sao chép luôn được lọc theo phiên bản đang dùng, nên chỉ chứa các tùy chọn mà Prettier {version} hiểu được.",
+			"missingReason": "Không có sẵn trong Prettier {version}",
+			"invalidValueReason": "Giá trị không hợp lệ trong Prettier {version}. Các lựa chọn: {choices}",
+			"dropCheckbox": "Cũng xóa các lựa chọn này khỏi trạng thái đã lưu",
+			"cancel": "Hủy",
+			"continue": "Vẫn chuyển đổi",
+			"loading": "Đang kiểm tra Prettier {version}…"
+		},
 		"import": {
 			"button": "Nhập",
 			"ariaLabel": "Nhập cấu hình Prettier hiện có",

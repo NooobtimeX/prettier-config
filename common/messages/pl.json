@@ -116,6 +116,16 @@
 			"prettierLoadFailed": "Nie udało się załadować Prettier {version}",
 			"networkTip": "Sprawdź połączenie sieciowe i spróbuj innej wersji."
 		},
+		"versionSwitch": {
+			"title": "Część Twoich wyborów nie zadziała w Prettier {version}",
+			"description": "Zmiana wersji ukryje te opcje w wygenerowanej konfiguracji. Pozostaną one w lokalnym stanie na wypadek powrotu do poprzedniej wersji. Skopiowana konfiguracja jest zawsze filtrowana pod aktywną wersję, więc zawiera tylko opcje rozumiane przez Prettier {version}.",
+			"missingReason": "Niedostępne w Prettier {version}",
+			"invalidValueReason": "Wartość niepoprawna w Prettier {version}. Możliwe opcje: {choices}",
+			"dropCheckbox": "Usuń też te wybory z mojego zapisanego stanu",
+			"cancel": "Anuluj",
+			"continue": "Przełącz mimo to",
+			"loading": "Sprawdzanie Prettier {version}…"
+		},
 		"import": {
 			"button": "Importuj",
 			"ariaLabel": "Importuj istniejącą konfigurację Prettier",

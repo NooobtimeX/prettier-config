@@ -1,0 +1,349 @@
+{
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "تولیدکننده تعاملی پیکربندی Prettier"
+		},
+		"aria": {
+			"repository": "مخزن GitHub",
+			"themeToggle": "تغییر تم رنگی",
+			"languageSwitcher": "تغییر زبان"
+		}
+	},
+	"Page": {
+		"search": {
+			"found": "{count} از {total} گزینه پیدا شد",
+			"noOptions": "هیچ گزینه‌ای پیدا نشد",
+			"tryOtherTerms": "عبارت‌های دیگری را جست‌وجو کنید یا",
+			"clearSearch": "جست‌وجو را پاک کنید",
+			"placeholder": "جست‌وجوی گزینه‌ها…"
+		},
+		"fab": {
+			"generateConfig": "تولید پیکربندی",
+			"resetSelections": "بازنشانی انتخاب‌ها"
+		},
+		"resetDialog": {
+			"title": "آیا کاملاً مطمئن هستید؟",
+			"description": "این عمل قابل بازگشت نیست. تمام گزینه‌های انتخاب‌شده پاک می‌شوند و تولیدکننده به حالت اولیه بازمی‌گردد.",
+			"cancel": "انصراف",
+			"continue": "ادامه"
+		},
+		"ConfigAside": {
+			"modalTitle": "پیکربندی Prettier",
+			"copyConfig": "کپی پیکربندی",
+			"viewConfig": "نمایش پیکربندی",
+			"noConfig": "هنوز پیکربندی‌ای تولید نشده است.",
+			"selectOptions": "برای تولید پیکربندی Prettier خود گزینه‌ها را انتخاب کنید.",
+			"configTab": "پیکربندی",
+			"previewTab": "پیش‌نمایش",
+			"yourCodeTab": "کد شما",
+			"formattedOutput": "خروجی قالب‌بندی‌شده",
+			"copyFormatted": "کپی نسخه قالب‌بندی‌شده",
+			"pastePrompt": "کد خود را اینجا بچسبانید",
+			"formatting": "در حال قالب‌بندی…",
+			"beforeLabel": "قبل (بدون قالب‌بندی)",
+			"afterLabel": "بعد (قالب‌بندی‌شده)",
+			"resetButton": "بازنشانی",
+			"resetTooltip": "بازنشانی انتخاب‌ها",
+			"sortLabel": "مرتب‌سازی:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "این را کپی کرده و در یک فایل .prettierrc بچسبانید.",
+			"loadingEditor": "در حال بارگذاری ویرایشگر…",
+			"loadingDiff": "در حال بارگذاری تفاوت‌ها…",
+			"expandView": "نمایش تمام‌صفحه",
+			"shareButton": "کپی نشانی قابل اشتراک",
+			"shareCopiedToast": "نشانی قابل اشتراک در کلیپ‌بورد کپی شد",
+			"configCopiedToast": "پیکربندی در کلیپ‌بورد کپی شد!",
+			"formattedCopiedToast": "در کلیپ‌بورد کپی شد!",
+			"loadingPrettier": "در حال بارگذاری Prettier {version}…",
+			"editorPlaceholder": "// کد خود را اینجا بچسبانید…"
+		},
+		"versionPicker": {
+			"ariaLabel": "نسخه Prettier",
+			"latest": "Prettier آخرین نسخه",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "تجزیه‌گر Prettier",
+			"placeholder": "parser",
+			"autoHint": "خودکار",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "قالب Angular",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "JSON با کامنت",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "بدون تغییر",
+			"prettierChanges": "تغییرات Prettier",
+			"tokensLabel": "توکن",
+			"tokenizerAriaLabel": "مدل توکن‌سازی",
+			"tokenizerPlaceholder": "توکن‌ساز",
+			"exactTitle": "شمارش دقیق توکن‌ساز",
+			"approximateTitle": "شمارش تقریبی — این مدل توکن‌ساز آفلاین عمومی ندارد",
+			"models": {
+				"gpt-4o": "GPT-4o / سری o",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3-5": "GPT-3.5",
+				"claude": "Claude (تقریبی)",
+				"gemini": "Gemini (تقریبی)",
+				"llama-3": "Llama 3 (تقریبی)",
+				"mistral": "Mistral (تقریبی)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "نمایش تفاوت یکپارچه",
+			"splitAria": "نمایش تفاوت دوستونی",
+			"unifiedTooltip": "یکپارچه",
+			"splitTooltip": "دوستونی"
+		},
+		"errors": {
+			"title": "خطای قالب‌بندی",
+			"prettierLoadFailed": "بارگذاری Prettier {version} ناموفق بود",
+			"networkTip": "اتصال شبکه خود را بررسی و نسخه دیگری را امتحان کنید."
+		}
+	},
+	"Faq": {
+		"meta": {
+			"title": "پرسش‌های متداول - Prettier Config",
+			"description": "پاسخ به پرسش‌های رایج درباره Prettier، فایل‌های .prettierrc و نحوه استفاده از تولیدکننده Prettier Config."
+		},
+		"hero": {
+			"badge": "مرکز راهنمایی",
+			"title": "پرسش‌های متداول",
+			"description": "هر آنچه باید درباره Prettier و این تولیدکننده پیکربندی بدانید."
+		},
+		"items": [
+			{
+				"question": "Prettier Config Generator چیست؟",
+				"answer": "Prettier Config Generator یک ابزار وب تعاملی و رایگان است که به شما اجازه می‌دهد به‌صورت بصری هر گزینه Prettier را پیکربندی کنید و بلافاصله فایل .prettierrc حاصل را کپی کنید. هیچ ویرایش دستی لازم نیست."
+			},
+			{
+				"question": "Prettier چیست و چرا باید از آن استفاده کنم؟",
+				"answer": "Prettier یک قالب‌بند کد دارای نظر است که سبک یکنواختی را در کل کدبیس شما اعمال می‌کند. تمام سبک‌های اصلی را حذف کرده و کد شما را با قالبی یکدست بازنویسی می‌کند و بحث‌های سلیقه‌ای در بازبینی کد را از بین می‌برد."
+			},
+			{
+				"question": "فایل .prettierrc چیست؟",
+				"answer": "فایل .prettierrc یک فایل پیکربندی است که در ریشه پروژه قرار می‌گیرد و به Prettier می‌گوید چگونه کد شما را قالب‌بندی کند. این فایل گزینه‌هایی مانند تورفتگی، سبک نقل‌قول و عرض خط را کنترل می‌کند."
+			},
+			{
+				"question": "چگونه با این ابزار پیکربندی خود را تولید کنم؟",
+				"answer": "گزینه‌های Prettier موردنظر خود را در صفحه اصلی انتخاب کنید. پیکربندی شما در نوار کناری به‌صورت بلادرنگ به‌روزرسانی می‌شود. روی «Copy Config» کلیک کنید تا JSON در کلیپ‌بورد کپی شود، سپس آن را در فایل .prettierrc در ریشه پروژه خود بچسبانید."
+			},
+			{
+				"question": "آیا Prettier Config Generator رایگان است؟",
+				"answer": "بله، کاملاً رایگان. نه ثبت‌نام لازم است، نه حسابی نیاز است و نه محدودیتی در استفاده وجود دارد. این ابزار همچنین در GitHub منبع‌باز است."
+			},
+			{
+				"question": "آیا این ابزار همه گزینه‌های Prettier را پوشش می‌دهد؟",
+				"answer": "بله. این ابزار شامل تمام گزینه‌های رسمی پشتیبانی‌شده Prettier است، با توضیحات و مقادیر پیش‌فرض برای هرکدام، تا بتوانید انتخاب‌های آگاهانه‌ای داشته باشید."
+			},
+			{
+				"question": "چگونه پیکربندی تولیدشده را کپی و استفاده کنم؟",
+				"answer": "روی دکمه «Copy Config» در نوار کناری دسکتاپ کلیک کنید یا روی دکمه شناور در موبایل ضربه بزنید. محتوای JSON کپی‌شده را در فایلی جدید با نام .prettierrc در ریشه دایرکتوری پروژه خود بچسبانید."
+			},
+			{
+				"question": "تفاوت بین .prettierrc، prettier.config.js و کلید prettier در package.json چیست؟",
+				"answer": "هر سه روش معتبری برای پیکربندی Prettier هستند. .prettierrc از JSON یا YAML پشتیبانی می‌کند. prettier.config.js یک ماژول JavaScript است و امکان پیکربندی پویا را می‌دهد. کلید prettier در package.json همه چیز را در یک فایل نگه می‌دارد. عملکرد یکسان است — مسئله سلیقه‌ای است."
+			},
+			{
+				"question": "آیا Prettier با TypeScript، React و Vue کار می‌کند؟",
+				"answer": "بله. Prettier از TypeScript، JSX/TSX (React)، کامپوننت‌های تک‌فایلی Vue و بسیاری قالب‌های دیگر پشتیبانی داخلی دارد. برای برخی فریم‌ورک‌ها ممکن است نیاز به نصب افزونه‌های اضافی داشته باشید."
+			},
+			{
+				"question": "چگونه Prettier را با VS Code یکپارچه کنم؟",
+				"answer": "افزونه «Prettier - Code formatter» را از فروشگاه VS Code نصب کنید. سپس \"editor.defaultFormatter\": \"esbenp.prettier-vscode\" و \"editor.formatOnSave\": true را به تنظیمات VS Code خود اضافه کنید."
+			},
+			{
+				"question": "چگونه Prettier را روی کل پروژه اجرا کنم؟",
+				"answer": "در ریشه پروژه خود npx prettier --write . را اجرا کنید. این کار همه فایل‌های پشتیبانی‌شده را قالب‌بندی می‌کند. برای نتایج یکسان در تیم، Prettier را به عنوان وابستگی توسعه با npm install --save-dev prettier اضافه کنید."
+			},
+			{
+				"question": "Prettier از چه زبان‌ها و انواع فایلی پشتیبانی می‌کند؟",
+				"answer": "Prettier از JavaScript، TypeScript، JSX، TSX، CSS، SCSS، Less، HTML، Vue، Angular، JSON، YAML، Markdown و بیشتر پشتیبانی می‌کند. همچنین می‌توان آن را با افزونه‌ها برای زبان‌های اضافی توسعه داد."
+			},
+			{
+				"question": "چگونه فایل‌ها را از قالب‌بندی Prettier نادیده بگیرم؟",
+				"answer": "یک فایل .prettierignore در ریشه پروژه خود بسازید با همان نحو .gitignore. فایل‌ها و دایرکتوری‌های فهرست‌شده در آنجا توسط Prettier نادیده گرفته می‌شوند."
+			},
+			{
+				"question": "آیا می‌توانم Prettier را همراه با ESLint استفاده کنم؟",
+				"answer": "بله. eslint-config-prettier را نصب کنید تا قوانین قالب‌بندی ESLint که با Prettier تداخل دارند غیرفعال شوند. Prettier را برای قالب‌بندی و ESLint را برای قوانین کیفیت کد اجرا کنید — این دو به‌خوبی مکمل یکدیگرند."
+			},
+			{
+				"question": "گزینه printWidth چه می‌کند؟",
+				"answer": "printWidth به Prettier می‌گوید چه طول خطی را برای جا دادن کد در آن هدف بگیرد. مقدار پیش‌فرض ۸۰ است. این یک هدف نرم است — اگر شکستن خط کد را خواناناتر کند، Prettier از آن فراتر می‌رود."
+			},
+			{
+				"question": "تفاوت بین singleQuote و jsxSingleQuote چیست؟",
+				"answer": "singleQuote کنترل می‌کند که آیا Prettier در رشته‌های JavaScript/TypeScript از نقل‌قول تکی استفاده کند یا خیر. jsxSingleQuote به‌طور خاص رشته‌های ویژگی JSX را کنترل می‌کند. می‌توانید آن‌ها را مستقل تنظیم کنید."
+			},
+			{
+				"question": "چگونه از قابلیت جست‌وجو در این سایت استفاده کنم؟",
+				"answer": "از نوار جست‌وجو در بالای صفحه برای فیلتر کردن گزینه‌های Prettier بر اساس نام، توضیحات یا کلیدواژه استفاده کنید. نتایج به‌محض تایپ به‌روزرسانی می‌شوند."
+			},
+			{
+				"question": "آیا این سایت از حالت تیره پشتیبانی می‌کند؟",
+				"answer": "بله. روی دکمه تغییر تم در هدر کلیک کنید تا بین حالت روشن، تیره و ترجیح سیستم جابه‌جا شوید. انتخاب شما به‌صورت خودکار ذخیره می‌شود."
+			},
+			{
+				"question": "پیکربندی پیش‌فرض Prettier چیست؟",
+				"answer": "پیش‌فرض‌های Prettier شامل: printWidth: 80، tabWidth: 2، useTabs: false، semi: true، singleQuote: false، trailingComma: \"all\"، bracketSpacing: true و arrowParens: \"always\" است."
+			},
+			{
+				"question": "چگونه یک اشکال را گزارش یا در این پروژه مشارکت کنم؟",
+				"answer": "یک issue یا pull request در مخزن GitHub باز کنید. این پروژه از مشارکت‌های هر نوع، از جمله ویژگی‌های جدید، رفع اشکال و بهبود ترجمه استقبال می‌کند."
+			},
+			{
+				"question": "این ابزار از چه نسخه‌های Prettier پشتیبانی می‌کند؟",
+				"answer": "می‌توانید هر نسخه Prettier 3.x را از فهرست نسخه‌ها انتخاب کنید — از 3.0 تا 3.6 به اضافه «latest». بسته نسخه انتخاب‌شده به‌صورت درخواستی از jsDelivr بارگذاری می‌شود، بنابراین فهرست گزینه‌ها همیشه با شِمای واقعی آن نسخه مطابقت دارد."
+			},
+			{
+				"question": "در زبانه Your Code چه زبان‌هایی را می‌توانم قالب‌بندی کنم؟",
+				"answer": "TypeScript، JavaScript، Flow، CSS، SCSS، Less، HTML، Vue، قالب‌های Angular، JSON، JSON5، JSON با کامنت، Markdown، MDX، YAML و GraphQL. parser به‌صورت خودکار از ورودی تشخیص داده می‌شود، اما می‌توانید آن را با فهرست بازشدنی بازنویسی کنید."
+			},
+			{
+				"question": "نشانی قابل اشتراک چگونه کار می‌کند؟",
+				"answer": "روی دکمه اشتراک‌گذاری کلیک کنید و نسخه فعلی Prettier، گزینه‌های انتخاب‌شده، کد و parser سفارشی با lz-string فشرده‌سازی شده و به هش URL اضافه می‌شوند، سپس در کلیپ‌بورد شما کپی می‌شوند. باز کردن آن لینک پیکربندی دقیقاً مشابه را بازیابی می‌کند. هیچ‌چیز به سرور ارسال نمی‌شود — همه چیز در مرورگر باقی می‌ماند."
+			},
+			{
+				"question": "شمارش توکن کنار diff چه معنایی دارد؟",
+				"answer": "این نشان می‌دهد که ورودی و خروجی شما در مدل انتخاب‌شده چند توکن هوش مصنوعی هزینه دارد. GPT-4o / GPT-4 / GPT-3.5 از توکن‌سازهای رسمی BPE برای شمارش دقیق استفاده می‌کنند؛ Claude، Gemini، Llama و Mistral از تقریب مبتنی بر کاراکتر استفاده می‌کنند که با «~» پیشوند دارد."
+			},
+			{
+				"question": "آیا کار من با بارگذاری مجدد صفحه باقی می‌ماند؟",
+				"answer": "بله. نسخه Prettier، انتخاب گزینه‌ها و تنظیمات نمای دوستونی / توکن‌ساز شما در localStorage ذخیره می‌شود، بنابراین بارگذاری مجدد همه چیز را بازیابی می‌کند. اگر هنگام باز کردن صفحه هش URL قابل اشتراک موجود باشد، اولویت با آن است."
+			},
+			{
+				"question": "چرا گاهی نوار خطای قالب‌بندی ظاهر می‌شود؟",
+				"answer": "وقتی parser در Prettier نتواند ورودی شما را تجزیه کند — معمولاً به این دلیل که parser انتخاب‌شده با کد مطابقت ندارد (مثلاً CSS انتخاب شده ولی JSX چسبانده‌اید) — پیام خطا در نواری قرمز بالای diff ظاهر می‌شود. parser را با کد خود مطابقت دهید تا خطا پاک شود."
+			},
+			{
+				"question": "آیا می‌توانم پیکربندی خود را روی زبان‌هایی غیر از JavaScript پیش‌نمایش کنم؟",
+				"answer": "بله. زبانه Preview فهرست بازشدنی parser مخصوص خود را در کنار سوئیچ diff دارد و هر parser با یک نمونه ساخته‌شده برای همان زبان همراه است — CSS، SCSS، Less، HTML، Vue، Angular، JSON / JSON5 / JSONC، Markdown، MDX، YAML، GraphQL و همچنین TypeScript / JS. تغییر parser نمونه مربوطه را با گزینه‌های فعلی شما دوباره قالب‌بندی می‌کند، بنابراین گزینه‌های مخصوص زبان مانند proseWrap، htmlWhitespaceSensitivity و vueIndentScriptAndStyle جایی برای نشان دادن اثر خود دارند. انتخاب شما در بارگذاری‌های مجدد باقی می‌ماند."
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "درباره - Prettier Config",
+			"description": "درباره Prettier Config Generator بیاموزید — ابزاری تعاملی، رایگان و منبع‌باز که برای کمک به توسعه‌دهندگان در ساخت بدون دردسر فایل‌های پیکربندی .prettierrc ساخته شده است."
+		},
+		"hero": {
+			"badge": "درباره ما",
+			"title": "درباره Prettier Config",
+			"description": "ابزاری رایگان و منبع‌باز که برای کمک به توسعه‌دهندگان در پیکربندی Prettier بدون دردسر خواندن مستندات برای هر گزینه ساخته شده است."
+		},
+		"whatIsThis": {
+			"title": "این ابزار چیست؟",
+			"description": "Prettier Config Generator یک برنامه وب تعاملی است که پیکربندی Prettier را بی‌دردسر می‌کند. به‌جای نوشتن دستی JSON و جست‌وجوی هر گزینه در مستندات، می‌توانید هر تنظیم Prettier را به‌صورت بصری تغییر دهید، کد واقعی را در ۱۶ زبان با پیکربندی خود قالب‌بندی کنید و نتیجه را با یک لینک واحد به اشتراک بگذارید. این ابزار برای توسعه‌دهندگانی ساخته شده که می‌خواهند زمان خود را صرف نوشتن کد کنند، نه پیکربندی ابزارها."
+		},
+		"features": {
+			"title": "ویژگی‌ها",
+			"items": [
+				{
+					"title": "همه نسخه‌های Prettier",
+					"description": "هر نسخه Prettier 3.x را انتخاب کنید (3.0 – 3.6 و latest). گزینه‌های دقیق آن نسخه به‌صورت درخواستی از jsDelivr بارگذاری می‌شوند."
+				},
+				{
+					"title": "همه زبان‌ها، هر دو زبانه",
+					"description": "Preview برای هر parser یک نمونه اختصاصی ارائه می‌دهد (TS، CSS، HTML، JSON/JSON5/JSONC، Markdown، YAML، Vue، GraphQL و بیشتر) تا هر گزینه Prettier جایی برای نشان دادن اثر خود داشته باشد. Your Code به‌صورت خودکار parser را از متن چسبانده‌شده تشخیص می‌دهد، با امکان بازنویسی دستی."
+				},
+				{
+					"title": "ویرایشگر کد واقعی",
+					"description": "CodeMirror 6 پانل ورودی را با هایلایت نحوی، شماره خط، تورفتگی tab و تمی که از حالت روشن/تیره تبعیت می‌کند، نیرو می‌دهد."
+				},
+				{
+					"title": "پیکربندی‌های قابل اشتراک",
+					"description": "روی Share کلیک کنید و نسخه، گزینه‌ها، کد و parser شما در هش URL بسته‌بندی می‌شوند. آن را به هرجا بفرستید؛ همه چیز در مرورگر باقی می‌ماند."
+				},
+				{
+					"title": "diff به سبک GitHub",
+					"description": "با diff یکپارچه یا دوستونی به‌علاوه سرصفحه خلاصه +X / −Y درست مانند یک pull request، دقیقاً ببینید Prettier چه تغییری می‌دهد."
+				},
+				{
+					"title": "شمارش‌گر توکن هوش مصنوعی",
+					"description": "شمارش زنده توکن برای ورودی و خروجی در GPT-4o، GPT-4، GPT-3.5، Claude، Gemini، Llama 3 و Mistral — مفید برای تخمین هزینه خط لوله‌های هوش مصنوعی."
+				},
+				{
+					"title": "نمایش خطاهای تجزیه",
+					"description": "وقتی Prettier ورودی شما را رد می‌کند، SyntaxError دقیق و line:column آن به‌جای آنکه بی‌صدا بلعیده شود، بالای diff ظاهر می‌شود."
+				},
+				{
+					"title": "انتخاب‌های پایدار",
+					"description": "نسخه Prettier و انتخاب گزینه‌های شما در localStorage ذخیره می‌شوند، بنابراین بارگذاری مجدد — یا بازگشت در روز بعد — همه چیز را دست‌نخورده نگه می‌دارد."
+				},
+				{
+					"title": "۲۰ زبان",
+					"description": "به‌طور کامل بومی‌سازی شده در زبان‌های انگلیسی، تایلندی، چینی، اسپانیایی، هندی، آلمانی، فرانسوی، پرتغالی، ژاپنی، کره‌ای، روسی، ویتنامی، اندونزیایی، ایتالیایی، لهستانی، ترکی، اوکراینی، بنگالی، و همچنین عربی و فارسی (RTL)."
+				}
+			]
+		},
+		"techStack": {
+			"title": "ساخته شده با",
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
+		},
+		"openSource": {
+			"title": "منبع‌باز",
+			"description": "این ابزار کاملاً رایگان و منبع‌باز است. مشارکت‌ها، گزارش اشکالات و پیشنهادها همیشه پذیرفته می‌شوند.",
+			"button": "مشاهده در GitHub"
+		},
+		"creator": {
+			"title": "سازنده",
+			"builtBy": "ساخته‌شده توسط",
+			"description": "با دقت برای جامعه توسعه‌دهندگان ساخته شده است. اگر این ابزار را مفید می‌یابید، ستاره‌دار کردن مخزن در GitHub را در نظر بگیرید."
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Prettier Config",
+			"name": "Prettier Config",
+			"description": "فایل .prettierrc خود را به‌راحتی با این ابزار تعاملی پیکربندی Prettier تولید کنید."
+		},
+		"quickLinks": {
+			"title": "لینک‌های سریع",
+			"generator": "تولیدکننده پیکربندی",
+			"docs": "مستندات",
+			"faq": "پرسش‌های متداول",
+			"about": "درباره"
+		},
+		"resources": {
+			"title": "منابع",
+			"docs": "مستندات Prettier",
+			"configurationGuide": "راهنمای پیکربندی",
+			"playground": "Playground Prettier"
+		},
+		"developer": {
+			"title": "توسعه‌دهنده",
+			"createdBy": "ساخته‌شده توسط",
+			"viewOnGitHub": "مشاهده در GitHub"
+		},
+		"bottom": {
+			"copyright": "Prettier Config"
+		}
+	}
+}

@@ -288,8 +288,8 @@
 					"description": "Phiên bản Prettier và các lựa chọn tùy chọn được lưu vào localStorage, nên tải lại — hoặc quay lại ngày mai — vẫn giữ nguyên mọi thứ."
 				},
 				{
-					"title": "15 ngôn ngữ",
-					"description": "Được bản địa hóa đầy đủ ở tiếng Anh, Thái, Trung, Tây Ban Nha, Hindi, Đức, Pháp, Bồ Đào Nha, Nhật, Hàn, Nga, Việt, Indonesia, Ý và Ả Rập (RTL)."
+					"title": "20 ngôn ngữ",
+					"description": "Được bản địa hóa đầy đủ ở tiếng Anh, Thái, Trung, Tây Ban Nha, Hindi, Đức, Pháp, Bồ Đào Nha, Nhật, Hàn, Nga, Việt, Indonesia, Ý, Ba Lan, Thổ Nhĩ Kỳ, Ukraina, Bengal, cùng với Ả Rập và Ba Tư (RTL)."
 				}
 			]
 		},

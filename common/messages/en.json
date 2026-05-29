@@ -288,8 +288,8 @@
 					"description": "Your Prettier version and option picks are saved to localStorage, so a refresh — or coming back tomorrow — keeps everything intact."
 				},
 				{
-					"title": "15 Languages",
-					"description": "Fully localised across English, Thai, Chinese, Spanish, Hindi, German, French, Portuguese, Japanese, Korean, Russian, Vietnamese, Indonesian, Italian, and Arabic (RTL)."
+					"title": "20 Languages",
+					"description": "Fully localised across English, Thai, Chinese, Spanish, Hindi, German, French, Portuguese, Japanese, Korean, Russian, Vietnamese, Indonesian, Italian, Polish, Turkish, Ukrainian, Bengali, plus Arabic and Persian (RTL)."
 				}
 			]
 		},

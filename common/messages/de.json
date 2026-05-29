@@ -288,8 +288,8 @@
 					"description": "Ihre Prettier-Version und Optionsauswahlen werden in localStorage gespeichert, sodass ein Refresh — oder ein Wiederkommen morgen — alles intakt hält."
 				},
 				{
-					"title": "15 Sprachen",
-					"description": "Vollständig lokalisiert in Englisch, Thai, Chinesisch, Spanisch, Hindi, Deutsch, Französisch, Portugiesisch, Japanisch, Koreanisch, Russisch, Vietnamesisch, Indonesisch, Italienisch und Arabisch (RTL)."
+					"title": "20 Sprachen",
+					"description": "Vollständig lokalisiert in Englisch, Thai, Chinesisch, Spanisch, Hindi, Deutsch, Französisch, Portugiesisch, Japanisch, Koreanisch, Russisch, Vietnamesisch, Indonesisch, Italienisch, Polnisch, Türkisch, Ukrainisch, Bengalisch sowie Arabisch und Persisch (RTL)."
 				}
 			]
 		},

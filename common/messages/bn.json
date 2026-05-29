@@ -1,0 +1,349 @@
+{
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "ইন্টারঅ্যাকটিভ Prettier কনফিগারেশন জেনারেটর"
+		},
+		"aria": {
+			"repository": "GitHub রিপোজিটরি",
+			"themeToggle": "কালার থিম পরিবর্তন",
+			"languageSwitcher": "ভাষা পরিবর্তন"
+		}
+	},
+	"Page": {
+		"search": {
+			"found": "{total}টির মধ্যে {count}টি অপশন পাওয়া গেছে",
+			"noOptions": "কোনো অপশন পাওয়া যায়নি",
+			"tryOtherTerms": "অন্য কীওয়ার্ড দিয়ে খুঁজুন অথবা",
+			"clearSearch": "সার্চ ক্লিয়ার করুন",
+			"placeholder": "অপশন খুঁজুন…"
+		},
+		"fab": {
+			"generateConfig": "কনফিগ জেনারেট করুন",
+			"resetSelections": "সিলেকশন রিসেট করুন"
+		},
+		"resetDialog": {
+			"title": "আপনি কি একদম নিশ্চিত?",
+			"description": "এই অ্যাকশন বাতিল করা যাবে না। এটি আপনার সমস্ত নির্বাচিত অপশন মুছে ফেলবে এবং জেনারেটরকে প্রাথমিক অবস্থায় ফিরিয়ে আনবে।",
+			"cancel": "বাতিল",
+			"continue": "চালিয়ে যান"
+		},
+		"ConfigAside": {
+			"modalTitle": "Prettier কনফিগারেশন",
+			"copyConfig": "কনফিগ কপি করুন",
+			"viewConfig": "কনফিগ দেখুন",
+			"noConfig": "এখনো কোনো কনফিগ তৈরি হয়নি।",
+			"selectOptions": "আপনার Prettier কনফিগ তৈরি করতে অপশন নির্বাচন করুন।",
+			"configTab": "কনফিগ",
+			"previewTab": "প্রিভিউ",
+			"yourCodeTab": "আপনার কোড",
+			"formattedOutput": "ফরম্যাট করা আউটপুট",
+			"copyFormatted": "ফরম্যাট করা কপি করুন",
+			"pastePrompt": "এখানে আপনার কোড পেস্ট করুন",
+			"formatting": "ফরম্যাট করা হচ্ছে…",
+			"beforeLabel": "আগে (ফরম্যাট ছাড়া)",
+			"afterLabel": "পরে (ফরম্যাট করা)",
+			"resetButton": "রিসেট",
+			"resetTooltip": "সিলেকশন রিসেট করুন",
+			"sortLabel": "সাজান:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "এটি কপি করে একটি .prettierrc ফাইলে পেস্ট করুন।",
+			"loadingEditor": "এডিটর লোড হচ্ছে…",
+			"loadingDiff": "diff লোড হচ্ছে…",
+			"expandView": "ফুলস্ক্রিনে দেখুন",
+			"shareButton": "শেয়ারযোগ্য URL কপি করুন",
+			"shareCopiedToast": "শেয়ারযোগ্য URL ক্লিপবোর্ডে কপি হয়েছে",
+			"configCopiedToast": "কনফিগ ক্লিপবোর্ডে কপি হয়েছে!",
+			"formattedCopiedToast": "ক্লিপবোর্ডে কপি হয়েছে!",
+			"loadingPrettier": "Prettier {version} লোড হচ্ছে…",
+			"editorPlaceholder": "// এখানে আপনার কোড পেস্ট করুন…"
+		},
+		"versionPicker": {
+			"ariaLabel": "Prettier সংস্করণ",
+			"latest": "Prettier latest",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "Prettier parser",
+			"placeholder": "Parser",
+			"autoHint": "অটো",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Angular টেমপ্লেট",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "কমেন্টসহ JSON",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "কোনো পরিবর্তন নেই",
+			"prettierChanges": "Prettier পরিবর্তন",
+			"tokensLabel": "টোকেন",
+			"tokenizerAriaLabel": "টোকেনাইজার মডেল",
+			"tokenizerPlaceholder": "টোকেনাইজার",
+			"exactTitle": "সঠিক টোকেনাইজার কাউন্ট",
+			"approximateTitle": "আনুমানিক কাউন্ট — এই মডেলের কোনো পাবলিক অফলাইন টোকেনাইজার নেই",
+			"models": {
+				"gpt-4o": "GPT-4o / o-সিরিজ",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3-5": "GPT-3.5",
+				"claude": "Claude (আনুমানিক)",
+				"gemini": "Gemini (আনুমানিক)",
+				"llama-3": "Llama 3 (আনুমানিক)",
+				"mistral": "Mistral (আনুমানিক)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "ইউনিফাইড diff ভিউ",
+			"splitAria": "স্প্লিট diff ভিউ",
+			"unifiedTooltip": "ইউনিফাইড",
+			"splitTooltip": "স্প্লিট"
+		},
+		"errors": {
+			"title": "ফরম্যাট এরর",
+			"prettierLoadFailed": "Prettier {version} লোড করতে ব্যর্থ",
+			"networkTip": "আপনার নেটওয়ার্ক কানেকশন চেক করুন এবং অন্য একটি সংস্করণ চেষ্টা করুন।"
+		}
+	},
+	"Faq": {
+		"meta": {
+			"title": "FAQ - Prettier Config",
+			"description": "Prettier, .prettierrc ফাইল এবং Prettier Config Generator ব্যবহার সম্পর্কিত সাধারণ প্রশ্নের উত্তর।"
+		},
+		"hero": {
+			"badge": "হেল্প সেন্টার",
+			"title": "প্রায়শই জিজ্ঞাসিত প্রশ্নাবলি",
+			"description": "Prettier এবং এই কনফিগারেশন জেনারেটর সম্পর্কে আপনার যা জানা প্রয়োজন তার সবকিছু।"
+		},
+		"items": [
+			{
+				"question": "Prettier Config Generator কী?",
+				"answer": "Prettier Config Generator হলো একটি ফ্রি, ইন্টারঅ্যাকটিভ ওয়েব টুল যা আপনাকে ভিজ্যুয়ালি প্রতিটি Prettier অপশন কনফিগার করতে এবং ফলাফলস্বরূপ .prettierrc ফাইল তাৎক্ষণিকভাবে কপি করতে দেয়। কোনো ম্যানুয়াল এডিটিং প্রয়োজন নেই।"
+			},
+			{
+				"question": "Prettier কী এবং আমি কেন এটি ব্যবহার করব?",
+				"answer": "Prettier হলো একটি অপিনিয়নেটেড কোড ফরম্যাটার যা আপনার কোডবেসে একটি সামঞ্জস্যপূর্ণ স্টাইল প্রয়োগ করে। এটি সমস্ত মূল স্টাইল সরিয়ে ফেলে এবং অভিন্ন ফরম্যাটে আপনার কোড পুনরায় প্রিন্ট করে, কোড রিভিউতে স্টাইল নিয়ে বিতর্ক দূর করে।"
+			},
+			{
+				"question": ".prettierrc ফাইল কী?",
+				"answer": ".prettierrc হলো একটি কনফিগারেশন ফাইল যা আপনার প্রজেক্টের রুটে রাখা হয় এবং Prettier-কে বলে কীভাবে আপনার কোড ফরম্যাট করতে হবে। এটি ইনডেন্টেশন, কোট স্টাইল এবং লাইন উইথের মতো অপশন নিয়ন্ত্রণ করে।"
+			},
+			{
+				"question": "আমার কনফিগ তৈরি করতে এই টুলটি কীভাবে ব্যবহার করব?",
+				"answer": "মেইন পেজে আপনার পছন্দের Prettier অপশনগুলো নির্বাচন করুন। আপনার কনফিগারেশন সাইডবারে রিয়েল-টাইমে আপডেট হয়। JSON ক্লিপবোর্ডে কপি করতে \"Copy Config\"-এ ক্লিক করুন, তারপর এটি আপনার প্রজেক্টের রুটে একটি .prettierrc ফাইলে পেস্ট করুন।"
+			},
+			{
+				"question": "Prettier Config Generator কি ফ্রি?",
+				"answer": "হ্যাঁ, সম্পূর্ণ ফ্রি। কোনো সাইনআপ নেই, কোনো অ্যাকাউন্ট প্রয়োজন নেই এবং কোনো ব্যবহারের সীমা নেই। টুলটি GitHub-এ ওপেন সোর্সও বটে।"
+			},
+			{
+				"question": "এই টুলটি কি সমস্ত Prettier অপশন কভার করে?",
+				"answer": "হ্যাঁ। এই টুলে প্রতিটি অফিসিয়ালি সাপোর্টেড Prettier অপশন অন্তর্ভুক্ত রয়েছে, প্রতিটির জন্য বর্ণনা এবং ডিফল্ট মান দেখানো হয়েছে যাতে আপনি সচেতন সিদ্ধান্ত নিতে পারেন।"
+			},
+			{
+				"question": "তৈরি করা কনফিগ কীভাবে কপি ও ব্যবহার করব?",
+				"answer": "ডেস্কটপে সাইডবারে \"Copy Config\" বোতামে ক্লিক করুন, অথবা মোবাইলে ফ্লোটিং অ্যাকশন বোতামে ট্যাপ করুন। কপি করা JSON কন্টেন্ট আপনার প্রজেক্ট ডিরেক্টরির রুটে .prettierrc নামের একটি নতুন ফাইলে পেস্ট করুন।"
+			},
+			{
+				"question": ".prettierrc, prettier.config.js এবং package.json-এর prettier কী-এর মধ্যে পার্থক্য কী?",
+				"answer": "তিনটিই Prettier কনফিগার করার বৈধ পদ্ধতি। .prettierrc JSON বা YAML সাপোর্ট করে। prettier.config.js একটি JavaScript মডিউল এবং ডাইনামিক কনফিগারেশনের সুযোগ দেয়। package.json-এর prettier কী সবকিছু এক ফাইলে রাখে। কার্যকারিতা অভিন্ন — এটি পছন্দের বিষয়।"
+			},
+			{
+				"question": "Prettier কি TypeScript, React এবং Vue-এর সাথে কাজ করে?",
+				"answer": "হ্যাঁ। Prettier-এ TypeScript, JSX/TSX (React), Vue সিঙ্গেল-ফাইল কম্পোনেন্ট এবং আরও অনেক ফরম্যাটের জন্য বিল্ট-ইন সাপোর্ট রয়েছে। কিছু ফ্রেমওয়ার্কের জন্য আপনাকে অতিরিক্ত প্লাগইন ইনস্টল করতে হতে পারে।"
+			},
+			{
+				"question": "VS Code-এর সাথে Prettier কীভাবে ইন্টিগ্রেট করব?",
+				"answer": "VS Code মার্কেটপ্লেস থেকে \"Prettier - Code formatter\" এক্সটেনশন ইনস্টল করুন। তারপর আপনার VS Code সেটিংসে \"editor.defaultFormatter\": \"esbenp.prettier-vscode\" এবং \"editor.formatOnSave\": true যোগ করুন।"
+			},
+			{
+				"question": "আমার পুরো প্রজেক্টে Prettier কীভাবে রান করব?",
+				"answer": "আপনার প্রজেক্ট রুটে npx prettier --write . রান করুন। এটি সমস্ত সাপোর্টেড ফাইল ফরম্যাট করে। আপনার টিমে সামঞ্জস্যপূর্ণ ফলাফলের জন্য npm install --save-dev prettier দিয়ে prettier-কে ডেভ ডিপেন্ডেন্সি হিসেবে যোগ করুন।"
+			},
+			{
+				"question": "Prettier কোন কোন ভাষা এবং ফাইল টাইপ সাপোর্ট করে?",
+				"answer": "Prettier JavaScript, TypeScript, JSX, TSX, CSS, SCSS, Less, HTML, Vue, Angular, JSON, YAML, Markdown এবং আরও অনেক কিছু সাপোর্ট করে। অতিরিক্ত ভাষার জন্য এটি প্লাগইন দিয়ে এক্সটেন্ড করা যায়।"
+			},
+			{
+				"question": "Prettier ফরম্যাটিং থেকে ফাইল কীভাবে ইগনোর করব?",
+				"answer": "আপনার প্রজেক্টের রুটে .prettierignore ফাইল তৈরি করুন, .gitignore-এর মতো একই সিনট্যাক্স ব্যবহার করে। সেখানে তালিকাভুক্ত ফাইল ও ডিরেক্টরি Prettier দ্বারা স্কিপ করা হবে।"
+			},
+			{
+				"question": "আমি কি Prettier এবং ESLint একসাথে ব্যবহার করতে পারি?",
+				"answer": "হ্যাঁ। Prettier-এর সাথে কনফ্লিক্টিং ESLint ফরম্যাটিং নিয়ম নিষ্ক্রিয় করতে eslint-config-prettier ইনস্টল করুন। ফরম্যাটিংয়ের জন্য Prettier এবং কোড কোয়ালিটি নিয়মের জন্য ESLint রান করুন — তারা একে অপরের সম্পূরক হিসেবে নিখুঁতভাবে কাজ করে।"
+			},
+			{
+				"question": "printWidth অপশনটি কী করে?",
+				"answer": "printWidth Prettier-কে জানায় কোডকে কত লাইন লেংথের মধ্যে ফিট করার চেষ্টা করতে হবে। এটি ডিফল্ট ৮০। এটি একটি সফট টার্গেট — যদি লাইন ভাঙা কোডকে কম পঠনযোগ্য করে, Prettier এটি অতিক্রম করবে।"
+			},
+			{
+				"question": "singleQuote এবং jsxSingleQuote-এর মধ্যে পার্থক্য কী?",
+				"answer": "singleQuote নিয়ন্ত্রণ করে Prettier JavaScript/TypeScript স্ট্রিংয়ে সিঙ্গেল কোট ব্যবহার করবে কিনা। jsxSingleQuote বিশেষভাবে JSX অ্যাট্রিবিউট স্ট্রিং নিয়ন্ত্রণ করে। আপনি সেগুলো স্বাধীনভাবে সেট করতে পারেন।"
+			},
+			{
+				"question": "এই সাইটে সার্চ ফিচার কীভাবে ব্যবহার করব?",
+				"answer": "নাম, বর্ণনা বা কীওয়ার্ড দিয়ে Prettier অপশন ফিল্টার করতে পেজের শীর্ষে থাকা সার্চ বার ব্যবহার করুন। আপনি টাইপ করার সাথে সাথে ফলাফল তাৎক্ষণিক আপডেট হয়।"
+			},
+			{
+				"question": "এই সাইটটি কি ডার্ক মোড সাপোর্ট করে?",
+				"answer": "হ্যাঁ। লাইট মোড, ডার্ক মোড এবং সিস্টেম প্রেফারেন্সের মধ্যে স্যুইচ করতে হেডারের থিম টগল বোতামে ক্লিক করুন। আপনার পছন্দ স্বয়ংক্রিয়ভাবে সংরক্ষিত হয়।"
+			},
+			{
+				"question": "ডিফল্ট Prettier কনফিগারেশন কী?",
+				"answer": "Prettier ডিফল্টগুলো অন্তর্ভুক্ত: printWidth: 80, tabWidth: 2, useTabs: false, semi: true, singleQuote: false, trailingComma: \"all\", bracketSpacing: true এবং arrowParens: \"always\"।"
+			},
+			{
+				"question": "আমি কীভাবে বাগ রিপোর্ট করব বা এই প্রজেক্টে কন্ট্রিবিউট করব?",
+				"answer": "GitHub রিপোজিটরিতে একটি issue বা pull request খুলুন। প্রজেক্টটি নতুন ফিচার, বাগ ফিক্স এবং অনুবাদ উন্নতিসহ সব ধরনের কন্ট্রিবিউশনকে স্বাগত জানায়।"
+			},
+			{
+				"question": "এই টুলটি কোন কোন Prettier সংস্করণ সাপোর্ট করে?",
+				"answer": "আপনি ভার্সন ড্রপডাউন থেকে যেকোনো Prettier 3.x রিলিজ বাছাই করতে পারেন — 3.0 থেকে 3.6 এবং \"latest\"। নির্বাচিত সংস্করণের বান্ডল jsDelivr থেকে অন-ডিমান্ড লোড হয়, তাই অপশন লিস্ট সবসময় সেই রিলিজের প্রকৃত স্কিমার সাথে মেলে।"
+			},
+			{
+				"question": "Your Code ট্যাবে আমি কোন কোন ভাষা ফরম্যাট করতে পারি?",
+				"answer": "TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, Angular টেমপ্লেট, JSON, JSON5, কমেন্টসহ JSON, Markdown, MDX, YAML এবং GraphQL। parser ইনপুট থেকে স্বয়ংক্রিয়ভাবে শনাক্ত হয়, তবে আপনি ড্রপডাউন দিয়ে এটি ওভাররাইড করতে পারেন।"
+			},
+			{
+				"question": "শেয়ারযোগ্য URL কীভাবে কাজ করে?",
+				"answer": "শেয়ার বোতামে ক্লিক করুন এবং বর্তমান Prettier সংস্করণ, নির্বাচিত অপশন, কোড এবং parser ওভাররাইড lz-string দিয়ে কম্প্রেস করে URL হ্যাশে রাখা হয়, তারপর আপনার ক্লিপবোর্ডে কপি হয়। সেই লিংকটি খুললে ঠিক একই কনফিগারেশন পুনরুদ্ধার হয়। কিছুই সার্ভারে পাঠানো হয় না — সব ব্রাউজারে থাকে।"
+			},
+			{
+				"question": "diff-এর পাশে টোকেন কাউন্ট মানে কী?",
+				"answer": "এটি দেখায় নির্বাচিত মডেলের অধীনে আপনার ইনপুট ও আউটপুট কত AI টোকেন খরচ করবে। GPT-4o / GPT-4 / GPT-3.5 সঠিক কাউন্টের জন্য অফিসিয়াল BPE টোকেনাইজার ব্যবহার করে; Claude, Gemini, Llama এবং Mistral \"~\" উপসর্গযুক্ত ক্যারেক্টার-ভিত্তিক আনুমানিক হিসাব ব্যবহার করে।"
+			},
+			{
+				"question": "পেজ রিফ্রেশের পরও কি আমার কাজ থাকবে?",
+				"answer": "হ্যাঁ। আপনার Prettier সংস্করণ, অপশন সিলেকশন এবং স্প্লিট-ভিউ / টোকেনাইজার প্রেফারেন্স localStorage-এ সংরক্ষিত হয়, তাই রিলোড করলে সব পুনরুদ্ধার হয়। পেজ খোলার সময় শেয়ারযোগ্য URL হ্যাশ থাকলে তা অগ্রাধিকার পায়।"
+			},
+			{
+				"question": "ফরম্যাট এরর স্ট্রিপ কেন কখনো কখনো দেখা যায়?",
+				"answer": "যখন Prettier-এর parser আপনার ইনপুট পার্স করতে পারে না — সাধারণত কারণ নির্বাচিত parser কোডের সাথে মেলে না (যেমন CSS বাছাই করেছেন কিন্তু JSX পেস্ট করেছেন) — এরর মেসেজ diff-এর উপরে একটি লাল স্ট্রিপে দেখা যায়। আপনার কোডের সাথে মেলাতে parser স্যুইচ করুন এবং এরর পরিষ্কার হবে।"
+			},
+			{
+				"question": "আমি কি JavaScript ছাড়া অন্য ভাষাগুলির বিপরীতে আমার কনফিগ প্রিভিউ করতে পারি?",
+				"answer": "হ্যাঁ। Preview ট্যাবের diff টগলের পাশে নিজস্ব parser ড্রপডাউন রয়েছে এবং প্রতিটি parser-এর সাথে উদ্দেশ্য-নির্মিত একটি স্যাম্পল রয়েছে — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL এবং TypeScript / JS। parser পরিবর্তন করলে আপনার বর্তমান অপশনের অধীনে মিলে যাওয়া স্যাম্পল পুনরায় ফরম্যাট হয়, ফলে proseWrap, htmlWhitespaceSensitivity এবং vueIndentScriptAndStyle-এর মতো ভাষা-নির্দিষ্ট অপশনের প্রভাব দেখানোর জায়গা পায়। আপনার পছন্দ রিলোডের পরও বজায় থাকে।"
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "আমাদের সম্পর্কে - Prettier Config",
+			"description": "Prettier Config Generator সম্পর্কে জানুন — একটি ফ্রি, ওপেন-সোর্স ইন্টারঅ্যাকটিভ টুল যা ডেভেলপারদের সহজে .prettierrc কনফিগারেশন ফাইল তৈরিতে সাহায্য করে।"
+		},
+		"hero": {
+			"badge": "আমাদের সম্পর্কে",
+			"title": "Prettier Config সম্পর্কে",
+			"description": "প্রতিটি অপশনের জন্য ডকুমেন্টেশন পড়ার ঝামেলা ছাড়াই ডেভেলপারদের Prettier কনফিগার করতে সাহায্যের জন্য তৈরি একটি ফ্রি, ওপেন-সোর্স টুল।"
+		},
+		"whatIsThis": {
+			"title": "এই টুলটি কী?",
+			"description": "Prettier Config Generator একটি ইন্টারঅ্যাকটিভ ওয়েব অ্যাপ্লিকেশন যা Prettier কনফিগার করাকে সহজ করে তোলে। ম্যানুয়ালি JSON লেখার এবং ডকুমেন্টেশনে প্রতিটি অপশন খোঁজার পরিবর্তে, আপনি ভিজ্যুয়ালি প্রতিটি Prettier সেটিং টগল ও অ্যাডজাস্ট করতে পারেন, ১৬টি ভাষায় আপনার কনফিগের বিপরীতে আসল কোড ফরম্যাট করতে পারেন এবং একটি লিংক দিয়ে ফলাফল শেয়ার করতে পারেন। এটি সেই ডেভেলপারদের জন্য তৈরি যারা টুল কনফিগার করার পরিবর্তে কোড লেখায় সময় দিতে চান।"
+		},
+		"features": {
+			"title": "ফিচারসমূহ",
+			"items": [
+				{
+					"title": "প্রতিটি Prettier সংস্করণ",
+					"description": "যেকোনো Prettier 3.x রিলিজ বাছাই করুন (3.0 – 3.6 এবং latest)। সেই সংস্করণের সঠিক অপশন jsDelivr থেকে অন-ডিমান্ড লোড হয়।"
+				},
+				{
+					"title": "সব ভাষা, দুটি ট্যাবেই",
+					"description": "Preview প্রতি parser-এর জন্য একটি উদ্দেশ্য-নির্মিত স্যাম্পল প্রদান করে (TS, CSS, HTML, JSON/JSON5/JSONC, Markdown, YAML, Vue, GraphQL এবং আরও) যাতে প্রতিটি Prettier অপশনের প্রভাব দেখানোর জায়গা থাকে। Your Code আপনার পেস্ট থেকে স্বয়ংক্রিয়ভাবে parser শনাক্ত করে, ম্যানুয়াল ওভাররাইড সহ।"
+				},
+				{
+					"title": "প্রকৃত কোড এডিটর",
+					"description": "CodeMirror 6 ইনপুট প্যানেলকে সিনট্যাক্স হাইলাইটিং, লাইন নম্বর, ট্যাব ইনডেন্ট এবং একটি থিম দিয়ে চালায় যা লাইট/ডার্ক মোড অনুসরণ করে।"
+				},
+				{
+					"title": "শেয়ারযোগ্য কনফিগারেশন",
+					"description": "Share-এ ক্লিক করুন এবং আপনার সংস্করণ, অপশন, কোড ও parser URL হ্যাশে প্যাক করা হয়। যেকোনো জায়গায় পাঠান; সবকিছু ব্রাউজারেই থাকে।"
+				},
+				{
+					"title": "GitHub-স্টাইল diff",
+					"description": "ইউনিফাইড বা স্প্লিট diff-এর সাথে একটি pull request-এর মতো +X / −Y সারাংশ হেডার দিয়ে দেখুন Prettier ঠিক কী পরিবর্তন করে।"
+				},
+				{
+					"title": "AI টোকেন কাউন্টার",
+					"description": "GPT-4o, GPT-4, GPT-3.5, Claude, Gemini, Llama 3 এবং Mistral জুড়ে ইনপুট ও আউটপুটের লাইভ টোকেন কাউন্ট — AI-পাইপলাইন খরচ অনুমানের জন্য কাজে দেয়।"
+				},
+				{
+					"title": "প্রকাশিত পার্স এরর",
+					"description": "যখন Prettier আপনার ইনপুট প্রত্যাখ্যান করে, সঠিক SyntaxError এবং তার line:column নীরবে গিলে ফেলা না হয়ে diff-এর উপরে দেখা যায়।"
+				},
+				{
+					"title": "স্থায়ী সিলেকশন",
+					"description": "আপনার Prettier সংস্করণ এবং অপশন পছন্দ localStorage-এ সংরক্ষিত হয়, তাই রিফ্রেশ — বা আগামীকাল ফিরে আসা — সবকিছু অক্ষুণ্ণ রাখে।"
+				},
+				{
+					"title": "২০টি ভাষা",
+					"description": "ইংরেজি, থাই, চীনা, স্প্যানিশ, হিন্দি, জার্মান, ফরাসি, পর্তুগিজ, জাপানি, কোরিয়ান, রুশ, ভিয়েতনামী, ইন্দোনেশীয়, ইতালীয়, পোলিশ, তুর্কি, ইউক্রেনীয়, বাংলা, পাশাপাশি আরবি ও ফার্সি (RTL) ভাষায় সম্পূর্ণ লোকালাইজড।"
+				}
+			]
+		},
+		"techStack": {
+			"title": "যা দিয়ে তৈরি",
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
+		},
+		"openSource": {
+			"title": "ওপেন সোর্স",
+			"description": "এই টুলটি সম্পূর্ণ ফ্রি এবং ওপেন সোর্স। কন্ট্রিবিউশন, বাগ রিপোর্ট এবং সাজেশন সর্বদা স্বাগত।",
+			"button": "GitHub-এ দেখুন"
+		},
+		"creator": {
+			"title": "নির্মাতা",
+			"builtBy": "নির্মাণে",
+			"description": "ডেভেলপার কমিউনিটির জন্য যত্ন সহকারে তৈরি। যদি আপনি এই টুলটি দরকারী মনে করেন, GitHub-এ রিপোজিটরিকে স্টার দেওয়ার কথা বিবেচনা করুন।"
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Prettier Config",
+			"name": "Prettier Config",
+			"description": "এই ইন্টারঅ্যাকটিভ Prettier কনফিগারেশন টুল দিয়ে সহজেই আপনার .prettierrc ফাইল তৈরি করুন।"
+		},
+		"quickLinks": {
+			"title": "কুইক লিংক",
+			"generator": "কনফিগ জেনারেটর",
+			"docs": "ডকুমেন্টেশন",
+			"faq": "FAQ",
+			"about": "আমাদের সম্পর্কে"
+		},
+		"resources": {
+			"title": "রিসোর্স",
+			"docs": "Prettier ডকস",
+			"configurationGuide": "কনফিগারেশন গাইড",
+			"playground": "Prettier Playground"
+		},
+		"developer": {
+			"title": "ডেভেলপার",
+			"createdBy": "নির্মাণে",
+			"viewOnGitHub": "GitHub-এ দেখুন"
+		},
+		"bottom": {
+			"copyright": "Prettier Config"
+		}
+	}
+}

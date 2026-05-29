@@ -19,6 +19,11 @@ export const routing = defineRouting({
 		'id',
 		'it',
 		'ar',
+		'pl',
+		'tr',
+		'uk',
+		'fa',
+		'bn',
 	],
 
 	// Used when no locale matches

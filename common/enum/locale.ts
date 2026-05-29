@@ -14,4 +14,9 @@ export enum Locale {
 	ID = 'id',
 	IT = 'it',
 	AR = 'ar',
+	PL = 'pl',
+	TR = 'tr',
+	UK = 'uk',
+	FA = 'fa',
+	BN = 'bn',
 }

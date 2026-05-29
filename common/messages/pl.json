@@ -1,0 +1,349 @@
+{
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "Interaktywny generator konfiguracji Prettier"
+		},
+		"aria": {
+			"repository": "Repozytorium GitHub",
+			"themeToggle": "Przełącz motyw kolorystyczny",
+			"languageSwitcher": "Zmień język"
+		}
+	},
+	"Page": {
+		"search": {
+			"found": "Znaleziono {count} z {total} opcji",
+			"noOptions": "Nie znaleziono opcji",
+			"tryOtherTerms": "Spróbuj wyszukać inne hasła lub",
+			"clearSearch": "wyczyść wyszukiwanie",
+			"placeholder": "Szukaj opcji…"
+		},
+		"fab": {
+			"generateConfig": "Wygeneruj konfigurację",
+			"resetSelections": "Resetuj wybory"
+		},
+		"resetDialog": {
+			"title": "Czy na pewno chcesz to zrobić?",
+			"description": "Tej akcji nie można cofnąć. Spowoduje to usunięcie wszystkich wybranych opcji i przywrócenie generatora do stanu początkowego.",
+			"cancel": "Anuluj",
+			"continue": "Kontynuuj"
+		},
+		"ConfigAside": {
+			"modalTitle": "Konfiguracja Prettier",
+			"copyConfig": "Kopiuj konfigurację",
+			"viewConfig": "Pokaż konfigurację",
+			"noConfig": "Nie wygenerowano jeszcze żadnej konfiguracji.",
+			"selectOptions": "Wybierz opcje, aby wygenerować konfigurację Prettier.",
+			"configTab": "Konfiguracja",
+			"previewTab": "Podgląd",
+			"yourCodeTab": "Twój kod",
+			"formattedOutput": "Sformatowany wynik",
+			"copyFormatted": "Kopiuj sformatowany",
+			"pastePrompt": "Wklej tutaj swój kod",
+			"formatting": "Formatowanie…",
+			"beforeLabel": "Przed (niesformatowany)",
+			"afterLabel": "Po (sformatowany)",
+			"resetButton": "Resetuj",
+			"resetTooltip": "Resetuj wybory",
+			"sortLabel": "Sortuj:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "Skopiuj i wklej to do pliku .prettierrc.",
+			"loadingEditor": "Ładowanie edytora…",
+			"loadingDiff": "Ładowanie porównania…",
+			"expandView": "Rozwiń do pełnego ekranu",
+			"shareButton": "Skopiuj udostępniany URL",
+			"shareCopiedToast": "Udostępniany URL skopiowany do schowka",
+			"configCopiedToast": "Konfiguracja skopiowana do schowka!",
+			"formattedCopiedToast": "Skopiowano do schowka!",
+			"loadingPrettier": "Ładowanie Prettier {version}…",
+			"editorPlaceholder": "// Wklej tutaj swój kod…"
+		},
+		"versionPicker": {
+			"ariaLabel": "Wersja Prettier",
+			"latest": "Prettier najnowszy",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "Parser Prettier",
+			"placeholder": "Parser",
+			"autoHint": "auto",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Szablon Angular",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "JSON z komentarzami",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "Brak zmian",
+			"prettierChanges": "Zmiany Prettier",
+			"tokensLabel": "tokeny",
+			"tokenizerAriaLabel": "Model tokenizera",
+			"tokenizerPlaceholder": "Tokenizer",
+			"exactTitle": "Dokładna liczba tokenów",
+			"approximateTitle": "Przybliżona liczba — ten model nie ma publicznego tokenizera offline",
+			"models": {
+				"gpt-4o": "GPT-4o / seria o",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3-5": "GPT-3.5",
+				"claude": "Claude (przybl.)",
+				"gemini": "Gemini (przybl.)",
+				"llama-3": "Llama 3 (przybl.)",
+				"mistral": "Mistral (przybl.)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "Widok ujednoliconych różnic",
+			"splitAria": "Widok podzielonych różnic",
+			"unifiedTooltip": "Ujednolicony",
+			"splitTooltip": "Podzielony"
+		},
+		"errors": {
+			"title": "Błąd formatowania",
+			"prettierLoadFailed": "Nie udało się załadować Prettier {version}",
+			"networkTip": "Sprawdź połączenie sieciowe i spróbuj innej wersji."
+		}
+	},
+	"Faq": {
+		"meta": {
+			"title": "FAQ - Prettier Config",
+			"description": "Odpowiedzi na często zadawane pytania o Prettier, pliki .prettierrc i sposób korzystania z generatora Prettier Config."
+		},
+		"hero": {
+			"badge": "Centrum pomocy",
+			"title": "Często zadawane pytania",
+			"description": "Wszystko, co musisz wiedzieć o Prettier i tym generatorze konfiguracji."
+		},
+		"items": [
+			{
+				"question": "Czym jest Prettier Config Generator?",
+				"answer": "Prettier Config Generator to bezpłatne, interaktywne narzędzie internetowe, które pozwala wizualnie skonfigurować każdą opcję Prettier i natychmiast skopiować wynikowy plik .prettierrc. Nie jest wymagana żadna ręczna edycja."
+			},
+			{
+				"question": "Czym jest Prettier i dlaczego powinienem go używać?",
+				"answer": "Prettier to narzucający styl formatter kodu, który wymusza spójny styl w całej bazie kodu. Usuwa cały oryginalny styl i przepisuje kod w jednolitym formacie, eliminując dyskusje o stylu podczas code review."
+			},
+			{
+				"question": "Czym jest plik .prettierrc?",
+				"answer": "Plik .prettierrc to plik konfiguracyjny umieszczony w katalogu głównym projektu, który mówi Prettier, jak formatować kod. Kontroluje opcje takie jak wcięcia, styl cudzysłowów i szerokość wiersza."
+			},
+			{
+				"question": "Jak używać tego narzędzia do wygenerowania konfiguracji?",
+				"answer": "Wybierz opcje Prettier na stronie głównej. Twoja konfiguracja aktualizuje się w czasie rzeczywistym w panelu bocznym. Kliknij „Kopiuj konfigurację”, aby skopiować JSON do schowka, a następnie wklej go do pliku .prettierrc w katalogu głównym projektu."
+			},
+			{
+				"question": "Czy Prettier Config Generator jest darmowy?",
+				"answer": "Tak, całkowicie darmowy. Bez rejestracji, bez konta i bez limitów użycia. Narzędzie jest również open source na GitHub."
+			},
+			{
+				"question": "Czy to narzędzie obejmuje wszystkie opcje Prettier?",
+				"answer": "Tak. Narzędzie zawiera każdą oficjalnie wspieraną opcję Prettier, wraz z opisami i wartościami domyślnymi, aby umożliwić świadome wybory."
+			},
+			{
+				"question": "Jak skopiować i użyć wygenerowanej konfiguracji?",
+				"answer": "Kliknij przycisk „Kopiuj konfigurację” w panelu bocznym na komputerze lub dotknij pływającego przycisku na urządzeniu mobilnym. Wklej skopiowaną zawartość JSON do nowego pliku o nazwie .prettierrc w katalogu głównym projektu."
+			},
+			{
+				"question": "Jaka jest różnica między .prettierrc, prettier.config.js i kluczem prettier w package.json?",
+				"answer": "Wszystkie trzy są poprawnymi sposobami konfiguracji Prettier. .prettierrc obsługuje JSON lub YAML. prettier.config.js to moduł JavaScript i pozwala na dynamiczną konfigurację. Klucz prettier w package.json trzyma wszystko w jednym pliku. Funkcjonalność jest identyczna — to kwestia preferencji."
+			},
+			{
+				"question": "Czy Prettier działa z TypeScript, React i Vue?",
+				"answer": "Tak. Prettier ma wbudowane wsparcie dla TypeScript, JSX/TSX (React), komponentów single-file Vue i wielu innych formatów. W przypadku niektórych frameworków może być potrzebne zainstalowanie dodatkowych pluginów."
+			},
+			{
+				"question": "Jak zintegrować Prettier z VS Code?",
+				"answer": "Zainstaluj rozszerzenie „Prettier - Code formatter” z marketplace VS Code. Następnie dodaj \"editor.defaultFormatter\": \"esbenp.prettier-vscode\" oraz \"editor.formatOnSave\": true do swoich ustawień VS Code."
+			},
+			{
+				"question": "Jak uruchomić Prettier na całym projekcie?",
+				"answer": "Uruchom npx prettier --write . w katalogu głównym projektu. Sformatuje to wszystkie obsługiwane pliki. Dodaj prettier jako dev dependency za pomocą npm install --save-dev prettier dla spójnych wyników w całym zespole."
+			},
+			{
+				"question": "Jakie języki i typy plików obsługuje Prettier?",
+				"answer": "Prettier obsługuje JavaScript, TypeScript, JSX, TSX, CSS, SCSS, Less, HTML, Vue, Angular, JSON, YAML, Markdown i więcej. Można go też rozszerzyć pluginami o dodatkowe języki."
+			},
+			{
+				"question": "Jak wykluczyć pliki z formatowania Prettier?",
+				"answer": "Utwórz plik .prettierignore w katalogu głównym projektu, używając tej samej składni co .gitignore. Pliki i katalogi tam wymienione będą pomijane przez Prettier."
+			},
+			{
+				"question": "Czy mogę używać Prettier razem z ESLint?",
+				"answer": "Tak. Zainstaluj eslint-config-prettier, aby wyłączyć reguły formatowania ESLint kolidujące z Prettier. Uruchom Prettier do formatowania, a ESLint do reguł jakości kodu — uzupełniają się idealnie."
+			},
+			{
+				"question": "Co robi opcja printWidth?",
+				"answer": "printWidth mówi Prettier, w jakiej długości wiersza powinien starać się zmieścić kod. Domyślnie 80. To miękki cel — Prettier przekroczy go, jeśli złamanie wiersza zmniejszyłoby czytelność kodu."
+			},
+			{
+				"question": "Jaka jest różnica między singleQuote a jsxSingleQuote?",
+				"answer": "singleQuote kontroluje, czy Prettier używa pojedynczych cudzysłowów w ciągach JavaScript/TypeScript. jsxSingleQuote kontroluje konkretnie ciągi atrybutów JSX. Można je ustawiać niezależnie."
+			},
+			{
+				"question": "Jak korzystać z funkcji wyszukiwania na tej stronie?",
+				"answer": "Użyj paska wyszukiwania u góry strony, aby filtrować opcje Prettier według nazwy, opisu lub słowa kluczowego. Wyniki aktualizują się natychmiast podczas pisania."
+			},
+			{
+				"question": "Czy ta strona obsługuje tryb ciemny?",
+				"answer": "Tak. Kliknij przycisk zmiany motywu w nagłówku, aby przełączać między trybem jasnym, ciemnym i preferencjami systemowymi. Twój wybór jest zapisywany automatycznie."
+			},
+			{
+				"question": "Jaka jest domyślna konfiguracja Prettier?",
+				"answer": "Wartości domyślne Prettier to: printWidth: 80, tabWidth: 2, useTabs: false, semi: true, singleQuote: false, trailingComma: \"all\", bracketSpacing: true i arrowParens: \"always\"."
+			},
+			{
+				"question": "Jak zgłosić błąd lub przyczynić się do tego projektu?",
+				"answer": "Otwórz issue lub pull request w repozytorium GitHub. Projekt mile widzi wszelkie wkłady, w tym nowe funkcje, poprawki błędów i ulepszenia tłumaczeń."
+			},
+			{
+				"question": "Które wersje Prettier obsługuje to narzędzie?",
+				"answer": "Możesz wybrać dowolne wydanie Prettier 3.x z listy wersji — od 3.0 do 3.6 oraz „latest”. Pakiet wybranej wersji jest ładowany na żądanie z jsDelivr, więc lista opcji zawsze odpowiada rzeczywistemu schematowi danego wydania."
+			},
+			{
+				"question": "Jakie języki mogę formatować w zakładce Twój kod?",
+				"answer": "TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, szablony Angular, JSON, JSON5, JSON z komentarzami, Markdown, MDX, YAML i GraphQL. Parser jest automatycznie wykrywany na podstawie wejścia, ale można go nadpisać z listy rozwijanej."
+			},
+			{
+				"question": "Jak działa udostępniany URL?",
+				"answer": "Kliknij przycisk udostępniania, a bieżąca wersja Prettier, wybrane opcje, kod i nadpisanie parsera zostają skompresowane LZ do hasha URL i skopiowane do schowka. Otwarcie tego linku przywraca dokładnie tę samą konfigurację. Nic nie jest wysyłane na serwer — wszystko zostaje w przeglądarce."
+			},
+			{
+				"question": "Co oznacza liczba tokenów obok porównania?",
+				"answer": "Pokazuje, ile tokenów AI kosztowałoby Twoje wejście i wyjście w wybranym modelu. GPT-4o / GPT-4 / GPT-3.5 używają oficjalnych tokenizerów BPE dla dokładnego wyniku; Claude, Gemini, Llama i Mistral używają przybliżenia opartego na znakach z prefiksem „~”."
+			},
+			{
+				"question": "Czy moja praca przetrwa odświeżenie strony?",
+				"answer": "Tak. Twoja wersja Prettier, wybrane opcje oraz preferencje widoku podzielonego / tokenizera są zapisywane w localStorage, więc przeładowanie przywraca wszystko. Hash udostępnianego URL ma pierwszeństwo, jeśli jest obecny przy otwarciu strony."
+			},
+			{
+				"question": "Dlaczego czasem pojawia się pasek błędu formatowania?",
+				"answer": "Gdy parser Prettier nie może sparsować Twojego wejścia — zwykle dlatego, że wybrany parser nie pasuje do kodu (np. wybrano CSS, ale wklejono JSX) — komunikat o błędzie pojawia się w czerwonym pasku nad porównaniem. Zmień parser na pasujący do kodu, a błąd zniknie."
+			},
+			{
+				"question": "Czy mogę podejrzeć konfigurację względem języków innych niż JavaScript?",
+				"answer": "Tak. Zakładka Podgląd ma własną listę parserów obok przełącznika porównania, a każdy parser ma dedykowaną próbkę — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL plus TypeScript / JS. Przełączanie parserów ponownie formatuje pasującą próbkę przy bieżących opcjach, więc opcje specyficzne dla języka, takie jak proseWrap, htmlWhitespaceSensitivity i vueIndentScriptAndStyle, mają miejsce do zademonstrowania swojego efektu. Twój wybór jest zachowywany między przeładowaniami."
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "O nas - Prettier Config",
+			"description": "Dowiedz się więcej o Prettier Config Generator — bezpłatnym, open source interaktywnym narzędziu zbudowanym, aby pomóc deweloperom bez wysiłku tworzyć pliki konfiguracyjne .prettierrc."
+		},
+		"hero": {
+			"badge": "O nas",
+			"title": "O Prettier Config",
+			"description": "Bezpłatne, open source narzędzie zbudowane, aby pomóc deweloperom skonfigurować Prettier bez konieczności czytania dokumentacji każdej opcji."
+		},
+		"whatIsThis": {
+			"title": "Czym jest to narzędzie?",
+			"description": "Prettier Config Generator to interaktywna aplikacja webowa, która sprawia, że konfiguracja Prettier staje się bezproblemowa. Zamiast ręcznie pisać JSON i szukać każdej opcji w dokumentacji, możesz wizualnie przełączać i dostosowywać każde ustawienie Prettier, formatować prawdziwy kod względem swojej konfiguracji w 16 językach i udostępnić wynik jednym linkiem. Powstało dla deweloperów, którzy chcą spędzać czas na pisaniu kodu, a nie konfigurowaniu narzędzi."
+		},
+		"features": {
+			"title": "Funkcje",
+			"items": [
+				{
+					"title": "Każda wersja Prettier",
+					"description": "Wybierz dowolne wydanie Prettier 3.x (3.0 – 3.6 i latest). Dokładne opcje danej wersji ładują się na żądanie z jsDelivr."
+				},
+				{
+					"title": "Wszystkie języki, obie zakładki",
+					"description": "Podgląd dostarcza dedykowaną próbkę dla każdego parsera (TS, CSS, HTML, JSON/JSON5/JSONC, Markdown, YAML, Vue, GraphQL i więcej), więc każda opcja Prettier ma gdzie pokazać swój efekt. Twój kod automatycznie wykrywa parser z wklejonej zawartości, z możliwością ręcznego nadpisania."
+				},
+				{
+					"title": "Prawdziwy edytor kodu",
+					"description": "CodeMirror 6 napędza panel wejściowy z podświetlaniem składni, numerami wierszy, wcięciami tabulatorem i motywem dopasowanym do trybu jasnego/ciemnego."
+				},
+				{
+					"title": "Udostępniane konfiguracje",
+					"description": "Kliknij Udostępnij, a Twoja wersja, opcje, kod i parser zostają spakowane w hash URL. Wyślij gdziekolwiek; wszystko pozostaje w przeglądarce."
+				},
+				{
+					"title": "Porównanie w stylu GitHub",
+					"description": "Zobacz dokładnie, co Prettier zmienia, dzięki ujednoliconemu lub podzielonemu widokowi różnic oraz nagłówkowi z podsumowaniem +X / −Y jak w pull request."
+				},
+				{
+					"title": "Licznik tokenów AI",
+					"description": "Na żywo liczba tokenów dla wejścia i wyjścia w GPT-4o, GPT-4, GPT-3.5, Claude, Gemini, Llama 3 i Mistral — przydatne do szacowania kosztów potoków AI."
+				},
+				{
+					"title": "Widoczne błędy parsowania",
+					"description": "Gdy Prettier odrzuca Twoje wejście, dokładny SyntaxError i jego wiersz:kolumna pojawiają się nad porównaniem zamiast być po cichu połknięte."
+				},
+				{
+					"title": "Trwałe wybory",
+					"description": "Twoja wersja Prettier i wybrane opcje są zapisywane w localStorage, więc odświeżenie — lub powrót jutro — zachowuje wszystko w nienaruszonym stanie."
+				},
+				{
+					"title": "20 języków",
+					"description": "W pełni zlokalizowane w angielskim, tajskim, chińskim, hiszpańskim, hindi, niemieckim, francuskim, portugalskim, japońskim, koreańskim, rosyjskim, wietnamskim, indonezyjskim, włoskim, polskim, tureckim, ukraińskim, bengalskim, a także arabskim i perskim (RTL)."
+				}
+			]
+		},
+		"techStack": {
+			"title": "Zbudowane z",
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
+		},
+		"openSource": {
+			"title": "Open Source",
+			"description": "To narzędzie jest całkowicie darmowe i open source. Wkład, zgłoszenia błędów i sugestie są zawsze mile widziane.",
+			"button": "Zobacz na GitHub"
+		},
+		"creator": {
+			"title": "Twórca",
+			"builtBy": "Stworzone przez",
+			"description": "Zbudowane z troską o społeczność deweloperów. Jeśli uważasz to narzędzie za przydatne, rozważ oznaczenie repozytorium gwiazdką na GitHub."
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Prettier Config",
+			"name": "Prettier Config",
+			"description": "Generuj swój plik .prettierrc bez wysiłku dzięki temu interaktywnemu narzędziu konfiguracji Prettier."
+		},
+		"quickLinks": {
+			"title": "Szybkie linki",
+			"generator": "Generator konfiguracji",
+			"docs": "Dokumentacja",
+			"faq": "FAQ",
+			"about": "O nas"
+		},
+		"resources": {
+			"title": "Zasoby",
+			"docs": "Dokumentacja Prettier",
+			"configurationGuide": "Przewodnik konfiguracji",
+			"playground": "Prettier Playground"
+		},
+		"developer": {
+			"title": "Deweloper",
+			"createdBy": "Stworzone przez",
+			"viewOnGitHub": "Zobacz na GitHub"
+		},
+		"bottom": {
+			"copyright": "Prettier Config"
+		}
+	}
+}

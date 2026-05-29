@@ -288,8 +288,8 @@
 					"description": "Versi Prettier dan pilihan opsi Anda disimpan ke localStorage, sehingga pemuatan ulang — atau kembali besok — menjaga semuanya tetap utuh."
 				},
 				{
-					"title": "15 Bahasa",
-					"description": "Sepenuhnya dilokalkan dalam bahasa Inggris, Thailand, China, Spanyol, Hindi, Jerman, Prancis, Portugis, Jepang, Korea, Rusia, Vietnam, Indonesia, Italia, dan Arab (RTL)."
+					"title": "20 Bahasa",
+					"description": "Sepenuhnya dilokalkan dalam bahasa Inggris, Thailand, China, Spanyol, Hindi, Jerman, Prancis, Portugis, Jepang, Korea, Rusia, Vietnam, Indonesia, Italia, Polandia, Turki, Ukraina, Bengali, serta Arab dan Persia (RTL)."
 				}
 			]
 		},

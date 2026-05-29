@@ -1,0 +1,349 @@
+{
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "Etkileşimli Prettier yapılandırma oluşturucu"
+		},
+		"aria": {
+			"repository": "GitHub deposu",
+			"themeToggle": "Renk temasını değiştir",
+			"languageSwitcher": "Dili değiştir"
+		}
+	},
+	"Page": {
+		"search": {
+			"found": "{total} seçenekten {count} tanesi bulundu",
+			"noOptions": "Seçenek bulunamadı",
+			"tryOtherTerms": "Farklı terimler aramayı deneyin veya",
+			"clearSearch": "aramanızı temizleyin",
+			"placeholder": "Seçeneklerde ara…"
+		},
+		"fab": {
+			"generateConfig": "Yapılandırma Oluştur",
+			"resetSelections": "Seçimleri Sıfırla"
+		},
+		"resetDialog": {
+			"title": "Kesinlikle emin misiniz?",
+			"description": "Bu işlem geri alınamaz. Seçili tüm seçeneklerinizi temizleyecek ve oluşturucuyu başlangıç durumuna sıfırlayacaktır.",
+			"cancel": "İptal",
+			"continue": "Devam Et"
+		},
+		"ConfigAside": {
+			"modalTitle": "Prettier Yapılandırması",
+			"copyConfig": "Yapılandırmayı Kopyala",
+			"viewConfig": "Yapılandırmayı Görüntüle",
+			"noConfig": "Henüz bir yapılandırma oluşturulmadı.",
+			"selectOptions": "Prettier yapılandırmanızı oluşturmak için seçenekleri seçin.",
+			"configTab": "Yapılandırma",
+			"previewTab": "Önizleme",
+			"yourCodeTab": "Kodunuz",
+			"formattedOutput": "Biçimlendirilmiş Çıktı",
+			"copyFormatted": "Biçimlendirilmişi Kopyala",
+			"pastePrompt": "Kodunuzu buraya yapıştırın",
+			"formatting": "Biçimlendiriliyor…",
+			"beforeLabel": "Öncesi (biçimlendirilmemiş)",
+			"afterLabel": "Sonrası (biçimlendirilmiş)",
+			"resetButton": "Sıfırla",
+			"resetTooltip": "Seçimleri Sıfırla",
+			"sortLabel": "Sırala:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "Bunu kopyalayıp bir .prettierrc dosyasına yapıştırın.",
+			"loadingEditor": "Editör yükleniyor…",
+			"loadingDiff": "Karşılaştırma yükleniyor…",
+			"expandView": "Tam ekrana genişlet",
+			"shareButton": "Paylaşılabilir URL'yi kopyala",
+			"shareCopiedToast": "Paylaşılabilir URL panoya kopyalandı",
+			"configCopiedToast": "Yapılandırma panoya kopyalandı!",
+			"formattedCopiedToast": "Panoya kopyalandı!",
+			"loadingPrettier": "Prettier {version} yükleniyor…",
+			"editorPlaceholder": "// Kodunuzu buraya yapıştırın…"
+		},
+		"versionPicker": {
+			"ariaLabel": "Prettier sürümü",
+			"latest": "Prettier en son",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "Prettier ayrıştırıcısı",
+			"placeholder": "Ayrıştırıcı",
+			"autoHint": "otomatik",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Angular şablonu",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "Yorumlu JSON",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "Değişiklik yok",
+			"prettierChanges": "Prettier değişiklikleri",
+			"tokensLabel": "token",
+			"tokenizerAriaLabel": "Tokenleştirici modeli",
+			"tokenizerPlaceholder": "Tokenleştirici",
+			"exactTitle": "Tam token sayısı",
+			"approximateTitle": "Yaklaşık sayı — bu modelin herkese açık çevrimdışı tokenleştiricisi yok",
+			"models": {
+				"gpt-4o": "GPT-4o / o-serisi",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3-5": "GPT-3.5",
+				"claude": "Claude (yaklaşık)",
+				"gemini": "Gemini (yaklaşık)",
+				"llama-3": "Llama 3 (yaklaşık)",
+				"mistral": "Mistral (yaklaşık)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "Birleşik karşılaştırma görünümü",
+			"splitAria": "Bölünmüş karşılaştırma görünümü",
+			"unifiedTooltip": "Birleşik",
+			"splitTooltip": "Bölünmüş"
+		},
+		"errors": {
+			"title": "Biçimlendirme hatası",
+			"prettierLoadFailed": "Prettier {version} yüklenemedi",
+			"networkTip": "Ağ bağlantınızı kontrol edin ve başka bir sürüm deneyin."
+		}
+	},
+	"Faq": {
+		"meta": {
+			"title": "SSS - Prettier Config",
+			"description": "Prettier, .prettierrc dosyaları ve Prettier Config Generator'ün nasıl kullanılacağı hakkında sık sorulan soruların yanıtları."
+		},
+		"hero": {
+			"badge": "Yardım Merkezi",
+			"title": "Sık Sorulan Sorular",
+			"description": "Prettier ve bu yapılandırma oluşturucu hakkında bilmeniz gereken her şey."
+		},
+		"items": [
+			{
+				"question": "Prettier Config Generator nedir?",
+				"answer": "Prettier Config Generator, her Prettier seçeneğini görsel olarak yapılandırmanıza ve elde edilen .prettierrc dosyasını anında kopyalamanıza olanak tanıyan ücretsiz, etkileşimli bir web aracıdır. Manuel düzenleme gerekmez."
+			},
+			{
+				"question": "Prettier nedir ve neden kullanmalıyım?",
+				"answer": "Prettier, kod tabanınızda tutarlı bir stili zorunlu kılan, görüş bildiren bir kod biçimlendiricisidir. Tüm orijinal stili kaldırır ve kodunuzu tek tip bir biçimde yeniden yazar, kod incelemelerindeki stil tartışmalarını ortadan kaldırır."
+			},
+			{
+				"question": ".prettierrc dosyası nedir?",
+				"answer": ".prettierrc dosyası, projenizin kök dizinine yerleştirilen ve Prettier'a kodunuzu nasıl biçimlendireceğini söyleyen bir yapılandırma dosyasıdır. Girinti, tırnak stili ve satır genişliği gibi seçenekleri kontrol eder."
+			},
+			{
+				"question": "Yapılandırmamı oluşturmak için bu aracı nasıl kullanırım?",
+				"answer": "Ana sayfada istediğiniz Prettier seçeneklerini seçin. Yapılandırmanız kenar çubuğunda gerçek zamanlı olarak güncellenir. JSON'u panonuza kopyalamak için \"Yapılandırmayı Kopyala\" düğmesine tıklayın, ardından projenizin kök dizinindeki bir .prettierrc dosyasına yapıştırın."
+			},
+			{
+				"question": "Prettier Config Generator ücretsiz mi?",
+				"answer": "Evet, tamamen ücretsiz. Kayıt yok, hesap gerekmez ve kullanım sınırı yoktur. Araç ayrıca GitHub'da açık kaynaktır."
+			},
+			{
+				"question": "Bu araç tüm Prettier seçeneklerini kapsıyor mu?",
+				"answer": "Evet. Bu araç, resmi olarak desteklenen her Prettier seçeneğini içerir; her biri için açıklamalar ve varsayılan değerler gösterilir, böylece bilinçli seçimler yapabilirsiniz."
+			},
+			{
+				"question": "Oluşturulan yapılandırmayı nasıl kopyalayıp kullanırım?",
+				"answer": "Masaüstünde kenar çubuğundaki \"Yapılandırmayı Kopyala\" düğmesine tıklayın veya mobilde yüzen eylem düğmesine dokunun. Kopyalanan JSON içeriğini projenizin kök dizinindeki .prettierrc adlı yeni bir dosyaya yapıştırın."
+			},
+			{
+				"question": ".prettierrc, prettier.config.js ve package.json içindeki prettier anahtarı arasındaki fark nedir?",
+				"answer": "Üçü de Prettier'ı yapılandırmanın geçerli yollarıdır. .prettierrc, JSON veya YAML'i destekler. prettier.config.js bir JavaScript modülüdür ve dinamik yapılandırmaya izin verir. package.json içindeki prettier anahtarı her şeyi tek dosyada tutar. İşlevsellik aynıdır — bu bir tercih meselesidir."
+			},
+			{
+				"question": "Prettier; TypeScript, React ve Vue ile çalışıyor mu?",
+				"answer": "Evet. Prettier; TypeScript, JSX/TSX (React), Vue tek dosyalı bileşenler ve diğer birçok format için yerleşik desteğe sahiptir. Bazı framework'ler için ek eklentiler yüklemeniz gerekebilir."
+			},
+			{
+				"question": "Prettier'ı VS Code ile nasıl entegre ederim?",
+				"answer": "VS Code marketplace'ten \"Prettier - Code formatter\" uzantısını yükleyin. Ardından VS Code ayarlarınıza \"editor.defaultFormatter\": \"esbenp.prettier-vscode\" ve \"editor.formatOnSave\": true ekleyin."
+			},
+			{
+				"question": "Prettier'ı projemin tamamı üzerinde nasıl çalıştırırım?",
+				"answer": "Proje kökünüzde npx prettier --write . komutunu çalıştırın. Bu, tüm desteklenen dosyaları biçimlendirir. Ekibiniz genelinde tutarlı sonuçlar için npm install --save-dev prettier ile prettier'ı dev bağımlılık olarak ekleyin."
+			},
+			{
+				"question": "Prettier hangi dilleri ve dosya türlerini destekler?",
+				"answer": "Prettier; JavaScript, TypeScript, JSX, TSX, CSS, SCSS, Less, HTML, Vue, Angular, JSON, YAML, Markdown ve daha fazlasını destekler. Ayrıca eklentilerle ek dillere genişletilebilir."
+			},
+			{
+				"question": "Dosyaları Prettier biçimlendirmesinden nasıl hariç tutarım?",
+				"answer": "Proje kökünüzde .prettierignore dosyası oluşturun ve .gitignore ile aynı söz dizimini kullanın. Orada listelenen dosyalar ve dizinler Prettier tarafından atlanır."
+			},
+			{
+				"question": "Prettier'ı ESLint ile birlikte kullanabilir miyim?",
+				"answer": "Evet. Prettier ile çakışan ESLint biçimlendirme kurallarını devre dışı bırakmak için eslint-config-prettier yükleyin. Biçimlendirme için Prettier'ı ve kod kalitesi kuralları için ESLint'i çalıştırın — birbirlerini mükemmel şekilde tamamlarlar."
+			},
+			{
+				"question": "printWidth seçeneği ne işe yarar?",
+				"answer": "printWidth, Prettier'a kodu sığdırmaya çalışması gereken satır uzunluğunu söyler. Varsayılan 80'dir. Bu, esnek bir hedeftir — Prettier, satırı kırmak kodu daha az okunabilir hale getirecekse bu sınırı aşar."
+			},
+			{
+				"question": "singleQuote ile jsxSingleQuote arasındaki fark nedir?",
+				"answer": "singleQuote, Prettier'ın JavaScript/TypeScript dizelerinde tek tırnak kullanıp kullanmayacağını kontrol eder. jsxSingleQuote, özellikle JSX nitelik dizelerini kontrol eder. Bunları bağımsız olarak ayarlayabilirsiniz."
+			},
+			{
+				"question": "Bu sitedeki arama özelliğini nasıl kullanırım?",
+				"answer": "Prettier seçeneklerini ada, açıklamaya veya anahtar kelimeye göre filtrelemek için sayfanın üst kısmındaki arama çubuğunu kullanın. Sonuçlar yazdıkça anında güncellenir."
+			},
+			{
+				"question": "Bu site karanlık modu destekliyor mu?",
+				"answer": "Evet. Açık mod, karanlık mod ve sistem tercihi arasında geçiş yapmak için başlıktaki tema değiştirme düğmesine tıklayın. Seçiminiz otomatik olarak kaydedilir."
+			},
+			{
+				"question": "Prettier'ın varsayılan yapılandırması nedir?",
+				"answer": "Prettier varsayılanları şunları içerir: printWidth: 80, tabWidth: 2, useTabs: false, semi: true, singleQuote: false, trailingComma: \"all\", bracketSpacing: true ve arrowParens: \"always\"."
+			},
+			{
+				"question": "Bir hata nasıl bildirilir veya bu projeye nasıl katkıda bulunulur?",
+				"answer": "GitHub deposunda bir issue veya pull request açın. Proje; yeni özellikler, hata düzeltmeleri ve çeviri iyileştirmeleri dahil her türlü katkıyı memnuniyetle karşılar."
+			},
+			{
+				"question": "Bu araç hangi Prettier sürümlerini destekler?",
+				"answer": "Sürüm açılır menüsünden herhangi bir Prettier 3.x sürümünü seçebilirsiniz — 3.0'dan 3.6'ya ve \"latest\" dahil. Seçilen sürümün paketi jsDelivr'dan talep üzerine yüklenir, böylece seçenek listesi her zaman o sürümün gerçek şemasıyla eşleşir."
+			},
+			{
+				"question": "Kodunuz sekmesinde hangi dilleri biçimlendirebilirim?",
+				"answer": "TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, Angular şablonları, JSON, JSON5, yorumlu JSON, Markdown, MDX, YAML ve GraphQL. Ayrıştırıcı, girişten otomatik olarak algılanır, ancak açılır menüden geçersiz kılabilirsiniz."
+			},
+			{
+				"question": "Paylaşılabilir URL nasıl çalışır?",
+				"answer": "Paylaş düğmesine tıklayın; geçerli Prettier sürümü, seçili seçenekler, kod ve ayrıştırıcı geçersiz kılması LZ ile sıkıştırılarak URL hash'ine paketlenir ve panonuza kopyalanır. Bu bağlantıyı açmak tam olarak aynı yapılandırmayı geri yükler. Sunucuya hiçbir şey gönderilmez — her şey tarayıcıda kalır."
+			},
+			{
+				"question": "Karşılaştırmanın yanındaki token sayısı ne anlama gelir?",
+				"answer": "Girdiniz ve çıktınızın seçili modelde kaç AI tokeni tutacağını gösterir. GPT-4o / GPT-4 / GPT-3.5, tam sayım için resmi BPE tokenleştiricilerini kullanır; Claude, Gemini, Llama ve Mistral, \"~\" ön ekiyle karakter tabanlı bir yaklaşım kullanır."
+			},
+			{
+				"question": "Sayfa yenilemesinden sonra çalışmam korunur mu?",
+				"answer": "Evet. Prettier sürümünüz, seçenek tercihleriniz ve bölünmüş görünüm / tokenleştirici tercihleriniz localStorage'a kaydedilir, böylece yeniden yükleme her şeyi geri yükler. Sayfayı açtığınızda paylaşılabilir bir URL hash'i mevcutsa, o öncelik kazanır."
+			},
+			{
+				"question": "Biçimlendirme hatası şeridi neden bazen görünür?",
+				"answer": "Prettier'ın ayrıştırıcısı girdinizi ayrıştıramadığında — genellikle seçilen ayrıştırıcı koda uymadığı için (örn. CSS seçildi ama JSX yapıştırıldı) — hata mesajı karşılaştırmanın üzerindeki kırmızı şeritte görünür. Ayrıştırıcıyı kodunuza uyacak şekilde değiştirin, hata kaybolur."
+			},
+			{
+				"question": "Yapılandırmamı JavaScript dışındaki dillere karşı önizleyebilir miyim?",
+				"answer": "Evet. Önizleme sekmesinin karşılaştırma anahtarının yanında kendi ayrıştırıcı açılır menüsü vardır ve her ayrıştırıcı amaca yönelik bir örnekle gelir — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL artı TypeScript / JS. Ayrıştırıcıları değiştirmek, eşleşen örneği geçerli seçeneklerinizle yeniden biçimlendirir, böylece proseWrap, htmlWhitespaceSensitivity ve vueIndentScriptAndStyle gibi dile özgü seçeneklerin etkilerini göstermek için bir yeri olur. Seçiminiz yeniden yüklemeler arasında korunur."
+			}
+		]
+	},
+	"About": {
+		"meta": {
+			"title": "Hakkında - Prettier Config",
+			"description": "Prettier Config Generator hakkında bilgi edinin — geliştiricilerin .prettierrc yapılandırma dosyalarını zahmetsizce oluşturmasına yardımcı olmak için tasarlanmış ücretsiz, açık kaynaklı etkileşimli bir araç."
+		},
+		"hero": {
+			"badge": "Hakkımızda",
+			"title": "Prettier Config Hakkında",
+			"description": "Geliştiricilerin her bir seçenek için belgeleri okuma zahmetine girmeden Prettier'ı yapılandırmasına yardımcı olmak için tasarlanmış ücretsiz, açık kaynaklı bir araç."
+		},
+		"whatIsThis": {
+			"title": "Bu araç nedir?",
+			"description": "Prettier Config Generator, Prettier'ı yapılandırmayı zahmetsiz hale getiren etkileşimli bir web uygulamasıdır. JSON'u manuel olarak yazmak ve belgelerde her seçeneği aramak yerine, her Prettier ayarını görsel olarak değiştirebilir ve ayarlayabilir, 16 dilde yapılandırmanıza göre gerçek kod biçimlendirebilir ve sonucu tek bir bağlantıyla paylaşabilirsiniz. Kod yazmaya zaman ayırmak isteyen, araçları yapılandırmakla uğraşmak istemeyen geliştiriciler için tasarlandı."
+		},
+		"features": {
+			"title": "Özellikler",
+			"items": [
+				{
+					"title": "Her Prettier Sürümü",
+					"description": "Herhangi bir Prettier 3.x sürümünü seçin (3.0 – 3.6 ve latest). Bu sürüm için tam seçenekler jsDelivr'dan talep üzerine yüklenir."
+				},
+				{
+					"title": "Tüm Diller, Her İki Sekme",
+					"description": "Önizleme, her ayrıştırıcı için amaca yönelik bir örnek sunar (TS, CSS, HTML, JSON/JSON5/JSONC, Markdown, YAML, Vue, GraphQL ve daha fazlası), böylece her Prettier seçeneğinin etkisini göstereceği bir yer vardır. Kodunuz, manuel geçersiz kılma ile birlikte yapıştırmanızdan ayrıştırıcıyı otomatik olarak algılar."
+				},
+				{
+					"title": "Gerçek Kod Editörü",
+					"description": "CodeMirror 6, sözdizimi vurgulama, satır numaraları, sekme girintisi ve aydınlık/karanlık modu takip eden bir temayla giriş panelini destekler."
+				},
+				{
+					"title": "Paylaşılabilir Yapılandırmalar",
+					"description": "Paylaş'a tıklayın ve sürümünüz, seçenekleriniz, kodunuz ve ayrıştırıcınız URL hash'ine paketlensin. Her yere gönderin; her şey tarayıcıda kalır."
+				},
+				{
+					"title": "GitHub Tarzı Karşılaştırma",
+					"description": "Prettier'ın tam olarak ne değiştirdiğini birleşik veya bölünmüş bir karşılaştırma ile görün, ayrıca pull request gibi +X / −Y özet başlığı."
+				},
+				{
+					"title": "AI Token Sayacı",
+					"description": "GPT-4o, GPT-4, GPT-3.5, Claude, Gemini, Llama 3 ve Mistral genelinde girdi ve çıktı için canlı token sayısı — AI işlem hattı maliyet tahminleri için kullanışlı."
+				},
+				{
+					"title": "Görünür Ayrıştırma Hataları",
+					"description": "Prettier girdinizi reddettiğinde, tam SyntaxError ve satır:sütun bilgisi sessizce yutulmak yerine karşılaştırmanın üzerinde görünür."
+				},
+				{
+					"title": "Kalıcı Seçimler",
+					"description": "Prettier sürümünüz ve seçenek tercihleriniz localStorage'a kaydedilir, böylece bir yenileme — veya yarın geri dönüş — her şeyi olduğu gibi korur."
+				},
+				{
+					"title": "20 Dil",
+					"description": "İngilizce, Tayca, Çince, İspanyolca, Hintçe, Almanca, Fransızca, Portekizce, Japonca, Korece, Rusça, Vietnamca, Endonezce, İtalyanca, Lehçe, Türkçe, Ukraynaca, Bengalce ile birlikte Arapça ve Farsça (RTL) dillerinde tam olarak yerelleştirildi."
+				}
+			]
+		},
+		"techStack": {
+			"title": "Şununla Oluşturuldu",
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
+		},
+		"openSource": {
+			"title": "Açık Kaynak",
+			"description": "Bu araç tamamen ücretsiz ve açık kaynaktır. Katkılar, hata raporları ve öneriler her zaman memnuniyetle karşılanır.",
+			"button": "GitHub'da Görüntüle"
+		},
+		"creator": {
+			"title": "Yaratıcı",
+			"builtBy": "Tarafından oluşturuldu",
+			"description": "Geliştirici topluluğu için özenle oluşturuldu. Bu aracı faydalı bulursanız, depoyu GitHub'da yıldızlamayı düşünün."
+		}
+	},
+	"Footer": {
+		"brand": {
+			"alt": "Prettier Config",
+			"name": "Prettier Config",
+			"description": "Bu etkileşimli Prettier yapılandırma aracıyla .prettierrc dosyanızı zahmetsizce oluşturun."
+		},
+		"quickLinks": {
+			"title": "Hızlı Bağlantılar",
+			"generator": "Yapılandırma Oluşturucu",
+			"docs": "Dokümantasyon",
+			"faq": "SSS",
+			"about": "Hakkında"
+		},
+		"resources": {
+			"title": "Kaynaklar",
+			"docs": "Prettier Dokümanları",
+			"configurationGuide": "Yapılandırma Kılavuzu",
+			"playground": "Prettier Playground"
+		},
+		"developer": {
+			"title": "Geliştirici",
+			"createdBy": "Oluşturan",
+			"viewOnGitHub": "GitHub'da Görüntüle"
+		},
+		"bottom": {
+			"copyright": "Prettier Config"
+		}
+	}
+}

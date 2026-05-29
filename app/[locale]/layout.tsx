@@ -13,6 +13,8 @@ const oswald = OswaldFont({ subsets: ['latin'] });
 // Static SEO keywords covering the most-searched Prettier options.
 // The UI option list itself is loaded dynamically per Prettier version
 // (see lib/prettierLoader.ts) and isn't available at build time.
+const SITE_URL = 'https://prettier-config.dev';
+
 const prettierOptionKeywords = [
 	'Print Width',
 	'Tab Width',
@@ -33,6 +35,20 @@ const prettierOptionKeywords = [
 	'Experimental Ternaries',
 ].map((name) => `Prettier ${name}`);
 
+/**
+ * hreflang map covering every supported locale plus `x-default` so Google
+ * can pick a fallback for unmatched languages. Generated from
+ * `routing.locales` so adding a locale to next-intl.config automatically
+ * registers it for SEO.
+ */
+const hreflangLanguages: Record<string, string> = {
+	...Object.fromEntries(routing.locales.map((l) => [l, `${SITE_URL}/${l}`])),
+	'x-default': `${SITE_URL}/en`,
+};
+
+/** Locales that need `<html dir="rtl">`. */
+const RTL_LOCALES = new Set(['ar', 'fa', 'he', 'ur']);
+
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));
 }
@@ -50,13 +66,8 @@ export const metadata: Metadata = {
 		'Prettier Config - The ultimate interactive tool to generate your .prettierrc file effortlessly. Customize and optimize your code formatting with ease.',
 	metadataBase: new URL('https://prettier-config.dev/'),
 	alternates: {
-		canonical: 'https://prettier-config.dev',
-		languages: {
-			en: 'https://prettier-config.dev/en',
-			th: 'https://prettier-config.dev/th',
-			zh: 'https://prettier-config.dev/zh',
-			es: 'https://prettier-config.dev/es',
-		},
+		canonical: SITE_URL,
+		languages: hreflangLanguages,
 	},
 	keywords: [
 		'Prettier Config',
@@ -126,7 +137,7 @@ export default async function LocaleLayout({
 		<html
 			suppressHydrationWarning
 			lang={locale}
-			dir={locale === 'ar' ? 'rtl' : 'ltr'}
+			dir={RTL_LOCALES.has(locale) ? 'rtl' : 'ltr'}
 		>
 			<head>
 				<meta

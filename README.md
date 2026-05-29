@@ -62,7 +62,7 @@ The differentiators that put this ahead of the official Prettier playground:
 | **AI token counter**         | Live `N → M tokens` badge next to every diff, with a model picker covering GPT-4o, GPT-4, GPT-3.5 (exact BPE), and Claude / Gemini / Llama 3 / Mistral (approximate).            |
 | **Surfaced parse errors**    | When Prettier rejects the input, a red strip above the diff shows the exact `SyntaxError (line:column)` instead of silently keeping the unformatted text.                        |
 | **Persistent selections**    | Your version + option picks are saved to `localStorage`. A refresh restores everything; the URL hash takes precedence if one is present.                                         |
-| **15-language UI**           | Fully localized in English, Thai, Chinese, Spanish, Hindi, German, French, Portuguese, Japanese, Korean, Russian, Vietnamese, Indonesian, Italian, and Arabic (RTL).             |
+| **20-language UI**           | Fully localized in English, Thai, Chinese, Spanish, Hindi, German, French, Portuguese, Japanese, Korean, Russian, Vietnamese, Indonesian, Italian, Polish, Turkish, Ukrainian, Bengali, plus Arabic and Persian (both RTL).             |
 | **All options covered**      | Every officially supported Prettier option appears with its default value and description, auto-generated from the loaded version's `getSupportInfo()`.                          |
 | **Per-language Preview**     | Switch the Preview parser to TypeScript, CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, or GraphQL and the right mis-formatted sample re-formats under your current config. `proseWrap`, `htmlWhitespaceSensitivity`, `vueIndentScriptAndStyle`, and friends finally have a place to demo. |
 

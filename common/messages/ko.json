@@ -46,12 +46,24 @@
 			"button": "지금 설정 생성하기"
 		}
 	},
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "대화형 Prettier 설정 생성기"
+		},
+		"aria": {
+			"repository": "GitHub 저장소",
+			"themeToggle": "색상 테마 전환",
+			"languageSwitcher": "언어 변경"
+		}
+	},
 	"Page": {
 		"search": {
 			"found": "{total}개 중 {count}개의 옵션을 찾았습니다",
 			"noOptions": "옵션을 찾을 수 없습니다",
 			"tryOtherTerms": "다른 용어로 검색하거나",
-			"clearSearch": "검색을 지워보세요"
+			"clearSearch": "검색을 지워보세요",
+			"placeholder": "옵션 검색…"
 		},
 		"fab": {
 			"generateConfig": "설정 생성",
@@ -64,6 +76,7 @@
 			"continue": "계속"
 		},
 		"ConfigAside": {
+			"modalTitle": "Prettier 설정",
 			"copyConfig": "설정 복사",
 			"viewConfig": "설정 보기",
 			"noConfig": "아직 생성된 설정이 없습니다.",
@@ -76,7 +89,78 @@
 			"pastePrompt": "JavaScript 또는 TypeScript 코드를 여기에 붙여넣으세요",
 			"formatting": "포맷 중…",
 			"beforeLabel": "이전 (미포맷)",
-			"afterLabel": "이후 (포맷됨)"
+			"afterLabel": "이후 (포맷됨)",
+			"resetButton": "초기화",
+			"resetTooltip": "선택 초기화",
+			"sortLabel": "정렬:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "복사한 뒤 .prettierrc 파일에 붙여넣으세요.",
+			"loadingEditor": "에디터를 로드하는 중…",
+			"loadingDiff": "diff를 로드하는 중…",
+			"shareButton": "공유 가능한 URL 복사",
+			"shareCopiedToast": "공유 가능한 URL을 클립보드에 복사했습니다",
+			"configCopiedToast": "설정을 클립보드에 복사했습니다!",
+			"formattedCopiedToast": "클립보드에 복사했습니다!",
+			"loadingPrettier": "Prettier {version}을(를) 로드하는 중…",
+			"editorPlaceholder": "// 여기에 코드를 붙여넣으세요…"
+		},
+		"versionPicker": {
+			"ariaLabel": "Prettier 버전",
+			"latest": "Prettier 최신",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "Prettier 파서",
+			"placeholder": "파서",
+			"autoHint": "자동",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Angular template",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "주석이 있는 JSON",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "변경 없음",
+			"prettierChanges": "Prettier 변경 사항",
+			"tokensLabel": "tokens",
+			"tokenizerAriaLabel": "Tokenizer 모델",
+			"tokenizerPlaceholder": "Tokenizer",
+			"exactTitle": "정확한 tokenizer 카운트",
+			"approximateTitle": "근사 카운트 — 이 모델은 공개된 오프라인 tokenizer가 없습니다",
+			"models": {
+				"gpt-4o": "GPT-4o / o-series",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3.5": "GPT-3.5",
+				"claude": "Claude (근사)",
+				"gemini": "Gemini (근사)",
+				"llama-3": "Llama 3 (근사)",
+				"mistral": "Mistral (근사)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "통합 diff 보기",
+			"splitAria": "분할 diff 보기",
+			"unifiedTooltip": "통합",
+			"splitTooltip": "분할"
+		},
+		"errors": {
+			"title": "포맷 오류",
+			"prettierLoadFailed": "Prettier {version} 로드 실패",
+			"networkTip": "네트워크 연결을 확인한 후 다른 버전을 시도해 보세요."
 		}
 	},
 	"Faq": {
@@ -169,6 +253,30 @@
 			{
 				"question": "버그 보고나 프로젝트 기여 방법은?",
 				"answer": "GitHub 저장소에서 이슈 또는 풀 리퀘스트 열기."
+			},
+			{
+				"question": "이 도구는 어떤 Prettier 버전을 지원하나요?",
+				"answer": "버전 드롭다운에서 Prettier 3.x 릴리스를 모두 선택할 수 있습니다 — 3.0부터 3.6까지와 \"latest\"입니다. 선택한 버전의 번들은 jsDelivr에서 필요할 때 로드되므로 옵션 목록은 항상 해당 릴리스의 실제 스키마와 일치합니다."
+			},
+			{
+				"question": "Your Code 탭에서는 어떤 언어를 포맷할 수 있나요?",
+				"answer": "TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, Angular 템플릿, JSON, JSON5, 주석이 있는 JSON, Markdown, MDX, YAML, GraphQL입니다. 파서는 입력으로부터 자동 감지되지만 드롭다운으로 재정의할 수 있습니다."
+			},
+			{
+				"question": "공유 가능한 URL은 어떻게 작동하나요?",
+				"answer": "공유 버튼을 클릭하면 현재 Prettier 버전, 선택한 옵션, 코드, 파서 재정의가 LZ로 압축되어 URL 해시에 들어가고 클립보드에 복사됩니다. 그 링크를 열면 정확히 같은 설정이 복원됩니다. 어떤 것도 서버로 전송되지 않으며 모두 브라우저 내에서 처리됩니다."
+			},
+			{
+				"question": "diff 옆의 토큰 수는 무엇을 의미하나요?",
+				"answer": "선택한 모델에서 입력과 출력이 얼마나 많은 AI 토큰을 소비하는지를 보여줍니다. GPT-4o / GPT-4 / GPT-3.5는 공식 BPE tokenizer를 사용해 정확하게 계산하고, Claude, Gemini, Llama, Mistral은 문자 기반의 근사값을 사용하며 \"~\" 접두사가 붙습니다."
+			},
+			{
+				"question": "페이지 새로고침 후에도 작업이 유지되나요?",
+				"answer": "예. Prettier 버전, 옵션 선택, 분할 보기 / tokenizer 환경설정이 localStorage에 저장되어 새로고침해도 모두 복원됩니다. 페이지를 열 때 공유 가능한 URL 해시가 있으면 해당 해시가 우선합니다."
+			},
+			{
+				"question": "포맷 오류 바가 가끔 나타나는 이유는 무엇인가요?",
+				"answer": "Prettier의 파서가 입력을 파싱할 수 없을 때 — 보통 선택한 파서가 코드와 일치하지 않을 때(예: CSS를 선택했는데 JSX를 붙여넣음) — 오류 메시지가 diff 위 빨간 바에 표시됩니다. 파서를 코드에 맞게 전환하면 오류가 사라집니다."
 			}
 		]
 	},
@@ -184,40 +292,62 @@
 		},
 		"whatIsThis": {
 			"title": "이 도구는 무엇인가요?",
-			"description": "Prettier Config Generator는 Prettier 구성을 쉽게 만들어주는 인터랙티브 웹 애플리케이션입니다. 모든 Prettier 설정을 시각적으로 조정하고 구성 파일이 실시간으로 업데이트되는 것을 확인할 수 있습니다."
+			"description": "Prettier Config Generator는 Prettier 구성을 손쉽게 만들어주는 인터랙티브 웹 애플리케이션입니다. JSON을 수동으로 작성하고 모든 옵션을 문서에서 찾아보는 대신, 모든 Prettier 설정을 시각적으로 켜고 조정하고, 16가지 언어로 실제 코드를 구성에 맞춰 포맷하고, 결과를 단일 링크로 공유할 수 있습니다. 도구 설정이 아닌 코드 작성에 시간을 쓰고 싶은 개발자를 위해 만들어졌습니다."
 		},
 		"features": {
 			"title": "기능",
 			"items": [
 				{
-					"title": "Real-time Generation",
-					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+					"title": "모든 Prettier 버전",
+					"description": "Prettier 3.x 릴리스를 모두 선택할 수 있습니다(3.0 – 3.6 및 latest). 해당 버전의 정확한 옵션이 jsDelivr에서 필요할 때 로드됩니다."
 				},
 				{
-					"title": "Interactive Interface",
-					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+					"title": "멀티 파서 자동 감지",
+					"description": "TypeScript, CSS, HTML, JSON, Markdown, YAML 등을 붙여넣으면 알맞은 파서가 자동 감지되며, 필요하면 드롭다운으로 재정의할 수 있습니다."
 				},
 				{
-					"title": "Smart Search",
-					"description": "Find options quickly by name, description, or keyword with integrated search."
+					"title": "실제 코드 에디터",
+					"description": "CodeMirror 6가 입력 패널을 구동하며 구문 강조, 줄 번호, 탭 들여쓰기, 라이트/다크 모드와 연동되는 테마를 제공합니다."
 				},
 				{
-					"title": "One-Click Copy",
-					"description": "Copy your generated configuration to clipboard instantly."
+					"title": "공유 가능한 구성",
+					"description": "공유를 클릭하면 버전, 옵션, 코드, 파서가 URL 해시에 묶입니다. 어디로든 전송할 수 있으며 모든 것은 브라우저에 남습니다."
 				},
 				{
-					"title": "All Options Covered",
-					"description": "Every officially supported Prettier option is included with its default value and description."
+					"title": "GitHub 스타일 Diff",
+					"description": "Prettier가 무엇을 변경했는지 통합 또는 분할 diff로 정확히 확인할 수 있으며, pull request처럼 +X / −Y 요약 헤더도 함께 표시됩니다."
 				},
 				{
-					"title": "15 Languages",
-					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+					"title": "AI 토큰 카운터",
+					"description": "GPT-4o, GPT-4, GPT-3.5, Claude, Gemini, Llama 3, Mistral에 대해 입력과 출력의 토큰 수를 실시간으로 표시 — AI 파이프라인 비용 추정에 유용합니다."
+				},
+				{
+					"title": "파싱 오류 노출",
+					"description": "Prettier가 입력을 거부할 때 정확한 SyntaxError와 그 줄:열이 조용히 무시되지 않고 diff 위에 표시됩니다."
+				},
+				{
+					"title": "선택의 지속성",
+					"description": "Prettier 버전과 옵션 선택이 localStorage에 저장되므로 새로고침해도 — 내일 다시 와도 — 모든 것이 그대로 유지됩니다."
+				},
+				{
+					"title": "15개 언어",
+					"description": "영어, 태국어, 중국어, 스페인어, 힌디어, 독일어, 프랑스어, 포르투갈어, 일본어, 한국어, 러시아어, 베트남어, 인도네시아어, 이탈리아어, 아랍어(RTL)로 완전 현지화."
 				}
 			]
 		},
 		"techStack": {
 			"title": "사용 기술",
-			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
 		},
 		"openSource": {
 			"title": "오픈소스",

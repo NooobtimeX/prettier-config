@@ -46,12 +46,24 @@
 			"button": "立即生成配置"
 		}
 	},
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "交互式 Prettier 配置生成器"
+		},
+		"aria": {
+			"repository": "GitHub 仓库",
+			"themeToggle": "切换颜色主题",
+			"languageSwitcher": "切换语言"
+		}
+	},
 	"Page": {
 		"search": {
 			"found": "找到 {count} 个选项（共 {total} 个）",
 			"noOptions": "未找到选项",
 			"tryOtherTerms": "尝试搜索不同的术语或",
-			"clearSearch": "清除搜索"
+			"clearSearch": "清除搜索",
+			"placeholder": "搜索选项…"
 		},
 		"fab": {
 			"generateConfig": "生成配置",
@@ -64,6 +76,7 @@
 			"continue": "继续"
 		},
 		"ConfigAside": {
+			"modalTitle": "Prettier 配置",
 			"copyConfig": "复制配置",
 			"viewConfig": "查看配置",
 			"noConfig": "尚未生成配置。",
@@ -76,7 +89,78 @@
 			"pastePrompt": "在此粘贴您的 JavaScript 或 TypeScript 代码",
 			"formatting": "格式化中…",
 			"beforeLabel": "格式化前",
-			"afterLabel": "格式化后"
+			"afterLabel": "格式化后",
+			"resetButton": "重置",
+			"resetTooltip": "重置选择",
+			"sortLabel": "排序：",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "复制并粘贴到 .prettierrc 文件中。",
+			"loadingEditor": "正在加载编辑器…",
+			"loadingDiff": "正在加载 diff…",
+			"shareButton": "复制可分享链接",
+			"shareCopiedToast": "可分享链接已复制到剪贴板",
+			"configCopiedToast": "配置已复制到剪贴板！",
+			"formattedCopiedToast": "已复制到剪贴板！",
+			"loadingPrettier": "正在加载 Prettier {version}…",
+			"editorPlaceholder": "// 在此粘贴您的代码…"
+		},
+		"versionPicker": {
+			"ariaLabel": "Prettier 版本",
+			"latest": "Prettier 最新版",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "Prettier 解析器",
+			"placeholder": "解析器",
+			"autoHint": "自动",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Angular template",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "带注释的 JSON",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "无变化",
+			"prettierChanges": "Prettier 变更",
+			"tokensLabel": "tokens",
+			"tokenizerAriaLabel": "Tokenizer 模型",
+			"tokenizerPlaceholder": "Tokenizer",
+			"exactTitle": "精确 tokenizer 计数",
+			"approximateTitle": "近似计数 — 此模型没有公开的离线 tokenizer",
+			"models": {
+				"gpt-4o": "GPT-4o / o-series",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3.5": "GPT-3.5",
+				"claude": "Claude (近似)",
+				"gemini": "Gemini (近似)",
+				"llama-3": "Llama 3 (近似)",
+				"mistral": "Mistral (近似)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "统一 diff 视图",
+			"splitAria": "拆分 diff 视图",
+			"unifiedTooltip": "统一",
+			"splitTooltip": "拆分"
+		},
+		"errors": {
+			"title": "格式化错误",
+			"prettierLoadFailed": "加载 Prettier {version} 失败",
+			"networkTip": "请检查您的网络连接并尝试其他版本。"
 		}
 	},
 	"Faq": {
@@ -169,6 +253,30 @@
 			{
 				"question": "如何报告错误或为此项目做贡献？",
 				"answer": "在 GitHub 仓库上开 issue 或 pull request，项目欢迎各种形式的贡献，包括新功能、bug 修复和翻译改进。"
+			},
+			{
+				"question": "此工具支持哪些 Prettier 版本？",
+				"answer": "您可以从版本下拉菜单中选择任何 Prettier 3.x 版本——3.0 到 3.6 以及「latest」。所选版本的 bundle 会按需从 jsDelivr 加载，因此选项列表始终与该版本的实际 schema 匹配。"
+			},
+			{
+				"question": "在「您的代码」标签页中我可以格式化哪些语言？",
+				"answer": "TypeScript、JavaScript、Flow、CSS、SCSS、Less、HTML、Vue、Angular 模板、JSON、JSON5、带注释的 JSON、Markdown、MDX、YAML 和 GraphQL。解析器会根据输入自动检测，但您可以通过下拉菜单覆盖。"
+			},
+			{
+				"question": "可分享链接是如何工作的？",
+				"answer": "点击分享按钮，当前的 Prettier 版本、所选选项、代码和解析器覆盖会被 LZ 压缩后写入 URL hash，然后复制到您的剪贴板。打开该链接会恢复完全相同的配置。没有任何数据发送到服务器——一切都留在浏览器中。"
+			},
+			{
+				"question": "diff 旁边的 token 数表示什么？",
+				"answer": "它显示在所选模型下，您的输入和输出会消耗多少 AI tokens。GPT-4o / GPT-4 / GPT-3.5 使用官方 BPE tokenizer 进行精确计数；Claude、Gemini、Llama 和 Mistral 使用基于字符的近似值，前缀为「~」。"
+			},
+			{
+				"question": "我的工作在页面刷新后会保留吗？",
+				"answer": "会的。您的 Prettier 版本、选项选择以及拆分视图/tokenizer 偏好都会保存到 localStorage，所以刷新后一切都会恢复。如果打开页面时存在可分享的 URL hash，它优先生效。"
+			},
+			{
+				"question": "为什么格式化错误条有时会出现？",
+				"answer": "当 Prettier 的解析器无法解析您的输入时——通常是因为所选解析器与代码不匹配（例如选了 CSS 却粘贴了 JSX）——错误消息会显示在 diff 上方的红色条中。把解析器切换到与您的代码匹配，错误就会消失。"
 			}
 		]
 	},
@@ -184,40 +292,62 @@
 		},
 		"whatIsThis": {
 			"title": "这个工具是什么？",
-			"description": "Prettier Config Generator 是一个交互式网络应用程序，让配置 Prettier 变得轻松无比。您无需手动编写 JSON 或逐个查找文档中的选项，只需直观地切换和调整每个 Prettier 设置，即可看到配置文件实时更新。"
+			"description": "Prettier Config Generator 是一个交互式网络应用程序，让配置 Prettier 变得轻松无比。您无需手动编写 JSON 或逐个查找文档中的选项，而是可以直观地切换和调整每个 Prettier 设置，用您的配置在 16 种语言中格式化真实代码，并通过单个链接分享结果。它是为那些更愿意把时间花在写代码而不是配置工具上的开发者打造的。"
 		},
 		"features": {
 			"title": "功能特点",
 			"items": [
 				{
-					"title": "实时生成",
-					"description": "选择选项时配置即时更新，实时看到 .prettierrc 文件生成。"
+					"title": "全部 Prettier 版本",
+					"description": "可选择任何 Prettier 3.x 版本（3.0 – 3.6 及 latest）。该版本的精确选项会按需从 jsDelivr 加载。"
 				},
 				{
-					"title": "交互式界面",
-					"description": "美观响应的界面，支持暗色/浅色主题，并为每个选项提供提示。"
+					"title": "多解析器自动识别",
+					"description": "粘贴 TypeScript、CSS、HTML、JSON、Markdown、YAML 等——系统会自动检测合适的解析器，需要时也可通过下拉菜单覆盖。"
 				},
 				{
-					"title": "智能搜索",
-					"description": "通过集成搜索按名称、描述或关键词快速找到选项。"
+					"title": "真实代码编辑器",
+					"description": "CodeMirror 6 为输入面板提供语法高亮、行号、Tab 缩进，以及随浅色/深色模式切换的主题。"
 				},
 				{
-					"title": "一键复制",
-					"description": "即时将生成的配置复制到剪贴板。"
+					"title": "可分享的配置",
+					"description": "点击分享，您的版本、选项、代码和解析器会被打包到 URL hash 中。可发送到任何地方；所有内容都保留在浏览器中。"
 				},
 				{
-					"title": "涵盖所有选项",
-					"description": "包含每个官方支持的 Prettier 选项，附带默认值和说明。"
+					"title": "GitHub 风格的 Diff",
+					"description": "通过统一或拆分的 diff 准确查看 Prettier 的修改，并配有像 pull request 一样的 +X / −Y 摘要标题。"
+				},
+				{
+					"title": "AI Token 计数器",
+					"description": "针对 GPT-4o、GPT-4、GPT-3.5、Claude、Gemini、Llama 3 和 Mistral 实时计算输入与输出的 token 数——便于 AI pipeline 的成本估算。"
+				},
+				{
+					"title": "暴露解析错误",
+					"description": "当 Prettier 拒绝您的输入时，确切的 SyntaxError 及其行:列位置会显示在 diff 上方，而不是被静默吞掉。"
+				},
+				{
+					"title": "持久化选择",
+					"description": "您的 Prettier 版本和选项选择会保存到 localStorage，所以刷新——或者明天再回来——一切依然完好。"
 				},
 				{
 					"title": "15 种语言",
-					"description": "完整支持 15 种语言本地化，包括英语、泰语、中文、西班牙语、印地语等。"
+					"description": "完整本地化为英语、泰语、中文、西班牙语、印地语、德语、法语、葡萄牙语、日语、韩语、俄语、越南语、印尼语、意大利语和阿拉伯语（RTL）。"
 				}
 			]
 		},
 		"techStack": {
 			"title": "技术栈",
-			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
 		},
 		"openSource": {
 			"title": "开源",

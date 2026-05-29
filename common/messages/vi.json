@@ -46,12 +46,24 @@
 			"button": "Tạo cấu hình ngay"
 		}
 	},
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "Trình tạo cấu hình Prettier tương tác"
+		},
+		"aria": {
+			"repository": "Kho lưu trữ GitHub",
+			"themeToggle": "Chuyển đổi giao diện màu",
+			"languageSwitcher": "Đổi ngôn ngữ"
+		}
+	},
 	"Page": {
 		"search": {
 			"found": "Tìm thấy {count} trong số {total} tùy chọn",
-			"noOptions": "Не найдено ни одной опции",
+			"noOptions": "Không tìm thấy tùy chọn nào",
 			"tryOtherTerms": "Thử tìm kiếm các thuật ngữ khác hoặc",
-			"clearSearch": "xóa tìm kiếm của bạn"
+			"clearSearch": "xóa tìm kiếm của bạn",
+			"placeholder": "Tìm tùy chọn…"
 		},
 		"fab": {
 			"generateConfig": "Tạo cấu hình",
@@ -64,6 +76,7 @@
 			"continue": "Tiếp tục"
 		},
 		"ConfigAside": {
+			"modalTitle": "Cấu hình Prettier",
 			"copyConfig": "Sao chép cấu hình",
 			"viewConfig": "Xem cấu hình",
 			"noConfig": "Chưa có cấu hình nào được tạo.",
@@ -73,10 +86,81 @@
 			"yourCodeTab": "Code của bạn",
 			"formattedOutput": "Kết quả đã định dạng",
 			"copyFormatted": "Sao chép đã định dạng",
-			"pastePrompt": "Dán code JavaScript hoặc TypeScript của bạn vào đây",
+			"pastePrompt": "Dán code của bạn vào đây",
 			"formatting": "Đang định dạng…",
 			"beforeLabel": "Trước (chưa định dạng)",
-			"afterLabel": "Sau (đã định dạng)"
+			"afterLabel": "Sau (đã định dạng)",
+			"resetButton": "Đặt lại",
+			"resetTooltip": "Đặt lại lựa chọn",
+			"sortLabel": "Sắp xếp:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "Sao chép và dán cái này vào tệp .prettierrc.",
+			"loadingEditor": "Đang tải trình soạn thảo…",
+			"loadingDiff": "Đang tải diff…",
+			"shareButton": "Sao chép URL chia sẻ",
+			"shareCopiedToast": "Đã sao chép URL chia sẻ vào bộ nhớ tạm",
+			"configCopiedToast": "Đã sao chép cấu hình vào bộ nhớ tạm!",
+			"formattedCopiedToast": "Đã sao chép vào bộ nhớ tạm!",
+			"loadingPrettier": "Đang tải Prettier {version}…",
+			"editorPlaceholder": "// Dán code của bạn vào đây…"
+		},
+		"versionPicker": {
+			"ariaLabel": "Phiên bản Prettier",
+			"latest": "Prettier mới nhất",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "Parser Prettier",
+			"placeholder": "Parser",
+			"autoHint": "tự động",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Template Angular",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "JSON kèm chú thích",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "Không có thay đổi",
+			"prettierChanges": "Thay đổi của Prettier",
+			"tokensLabel": "token",
+			"tokenizerAriaLabel": "Mô hình tokenizer",
+			"tokenizerPlaceholder": "Tokenizer",
+			"exactTitle": "Số token chính xác từ tokenizer",
+			"approximateTitle": "Số token gần đúng — mô hình này không có tokenizer offline công khai",
+			"models": {
+				"gpt-4o": "GPT-4o / dòng o",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3.5": "GPT-3.5",
+				"claude": "Claude (xấp xỉ)",
+				"gemini": "Gemini (xấp xỉ)",
+				"llama-3": "Llama 3 (xấp xỉ)",
+				"mistral": "Mistral (xấp xỉ)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "Chế độ xem diff hợp nhất",
+			"splitAria": "Chế độ xem diff chia đôi",
+			"unifiedTooltip": "Hợp nhất",
+			"splitTooltip": "Chia đôi"
+		},
+		"errors": {
+			"title": "Lỗi định dạng",
+			"prettierLoadFailed": "Không thể tải Prettier {version}",
+			"networkTip": "Kiểm tra kết nối mạng và thử một phiên bản khác."
 		}
 	},
 	"Faq": {
@@ -169,6 +253,30 @@
 			{
 				"question": "Cách báo lỗi hoặc đóng góp cho dự án?",
 				"answer": "Mở issue hoặc pull request trên GitHub repository."
+			},
+			{
+				"question": "Công cụ này hỗ trợ những phiên bản Prettier nào?",
+				"answer": "Bạn có thể chọn bất kỳ bản phát hành Prettier 3.x nào trong danh sách phiên bản — từ 3.0 đến 3.6 cùng với \"latest\". Bundle của phiên bản được chọn sẽ tải theo yêu cầu từ jsDelivr, nên danh sách tùy chọn luôn khớp với schema thực tế của bản phát hành đó."
+			},
+			{
+				"question": "Tôi có thể định dạng những ngôn ngữ nào trong tab Your Code?",
+				"answer": "TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, template Angular, JSON, JSON5, JSON kèm chú thích, Markdown, MDX, YAML và GraphQL. Parser được tự động phát hiện từ nội dung nhập, nhưng bạn có thể ghi đè bằng dropdown."
+			},
+			{
+				"question": "URL chia sẻ hoạt động như thế nào?",
+				"answer": "Nhấp nút chia sẻ và phiên bản Prettier hiện tại, các tùy chọn đã chọn, code và parser ghi đè được nén LZ vào hash URL, sau đó sao chép vào bộ nhớ tạm. Mở liên kết đó sẽ khôi phục đúng cấu hình ấy. Không gì được gửi lên máy chủ — tất cả nằm trong trình duyệt."
+			},
+			{
+				"question": "Số token bên cạnh diff có nghĩa là gì?",
+				"answer": "Nó cho biết phần nhập và xuất của bạn sẽ tốn bao nhiêu token AI dưới mô hình đã chọn. GPT-4o / GPT-4 / GPT-3.5 sử dụng tokenizer BPE chính thức để đếm chính xác; Claude, Gemini, Llama và Mistral dùng ước lượng dựa trên ký tự với tiền tố \"~\"."
+			},
+			{
+				"question": "Công việc của tôi có còn sau khi tải lại trang không?",
+				"answer": "Có. Phiên bản Prettier, các tùy chọn đã chọn và cài đặt chế độ xem chia đôi / tokenizer đều được lưu vào localStorage, nên tải lại sẽ khôi phục mọi thứ. Hash URL chia sẻ sẽ được ưu tiên nếu nó có mặt khi bạn mở trang."
+			},
+			{
+				"question": "Tại sao đôi khi xuất hiện dải lỗi định dạng?",
+				"answer": "Khi parser của Prettier không thể phân tích nội dung của bạn — thường vì parser được chọn không khớp với code (ví dụ chọn CSS nhưng bạn dán JSX) — thông báo lỗi sẽ hiện trong dải đỏ phía trên diff. Đổi parser cho khớp với code và lỗi sẽ biến mất."
 			}
 		]
 	},
@@ -184,40 +292,62 @@
 		},
 		"whatIsThis": {
 			"title": "Công cụ này là gì?",
-			"description": "Prettier Config Generator là ứng dụng web tương tác giúp cấu hình Prettier trở nên đơn giản. Bạn có thể điều chỉnh trực quan từng cài đặt và xem tệp cấu hình cập nhật theo thời gian thực."
+			"description": "Prettier Config Generator là ứng dụng web tương tác giúp cấu hình Prettier trở nên đơn giản. Thay vì viết JSON thủ công và tra từng tùy chọn trong tài liệu, bạn có thể bật/tắt và điều chỉnh trực quan mọi cài đặt Prettier, định dạng code thực với cấu hình của bạn trên 16 ngôn ngữ, và chia sẻ kết quả chỉ bằng một liên kết. Nó được tạo cho những lập trình viên muốn dành thời gian để viết code, chứ không phải cấu hình công cụ."
 		},
 		"features": {
 			"title": "Tính năng",
 			"items": [
 				{
-					"title": "Real-time Generation",
-					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+					"title": "Mọi phiên bản Prettier",
+					"description": "Chọn bất kỳ bản phát hành Prettier 3.x nào (3.0 – 3.6 và latest). Các tùy chọn chính xác cho phiên bản đó được tải theo yêu cầu từ jsDelivr."
 				},
 				{
-					"title": "Interactive Interface",
-					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+					"title": "Tự động phát hiện parser",
+					"description": "Dán TypeScript, CSS, HTML, JSON, Markdown, YAML và nhiều hơn nữa — parser phù hợp sẽ được phát hiện tự động, kèm dropdown để ghi đè khi cần."
 				},
 				{
-					"title": "Smart Search",
-					"description": "Find options quickly by name, description, or keyword with integrated search."
+					"title": "Trình soạn thảo code thực sự",
+					"description": "CodeMirror 6 vận hành khung nhập với tô sáng cú pháp, số dòng, thụt lề bằng tab và giao diện chạy theo chế độ sáng/tối."
 				},
 				{
-					"title": "One-Click Copy",
-					"description": "Copy your generated configuration to clipboard instantly."
+					"title": "Cấu hình chia sẻ được",
+					"description": "Nhấp Share và phiên bản, tùy chọn, code cùng parser của bạn được đóng gói vào hash URL. Gửi đi đâu cũng được; mọi thứ vẫn nằm trong trình duyệt."
 				},
 				{
-					"title": "All Options Covered",
-					"description": "Every officially supported Prettier option is included with its default value and description."
+					"title": "Diff kiểu GitHub",
+					"description": "Xem chính xác Prettier đã thay đổi những gì với diff hợp nhất hoặc chia đôi, kèm tiêu đề tóm tắt +X / −Y giống y như pull request."
 				},
 				{
-					"title": "15 Languages",
-					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+					"title": "Bộ đếm token AI",
+					"description": "Đếm token trực tiếp cho phần nhập và xuất với GPT-4o, GPT-4, GPT-3.5, Claude, Gemini, Llama 3 và Mistral — tiện cho việc ước tính chi phí pipeline AI."
+				},
+				{
+					"title": "Hiển thị lỗi phân tích",
+					"description": "Khi Prettier từ chối nội dung của bạn, đúng SyntaxError và line:column hiện ngay phía trên diff thay vì bị âm thầm bỏ qua."
+				},
+				{
+					"title": "Lựa chọn được lưu lại",
+					"description": "Phiên bản Prettier và các lựa chọn tùy chọn được lưu vào localStorage, nên tải lại — hoặc quay lại ngày mai — vẫn giữ nguyên mọi thứ."
+				},
+				{
+					"title": "15 ngôn ngữ",
+					"description": "Được bản địa hóa đầy đủ ở tiếng Anh, Thái, Trung, Tây Ban Nha, Hindi, Đức, Pháp, Bồ Đào Nha, Nhật, Hàn, Nga, Việt, Indonesia, Ý và Ả Rập (RTL)."
 				}
 			]
 		},
 		"techStack": {
 			"title": "Công nghệ sử dụng",
-			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
 		},
 		"openSource": {
 			"title": "Mã nguồn mở",

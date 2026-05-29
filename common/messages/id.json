@@ -46,12 +46,24 @@
 			"button": "Buat Konfigurasi Sekarang"
 		}
 	},
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "Pembuat konfigurasi Prettier interaktif"
+		},
+		"aria": {
+			"repository": "Repositori GitHub",
+			"themeToggle": "Ganti tema warna",
+			"languageSwitcher": "Ubah bahasa"
+		}
+	},
 	"Page": {
 		"search": {
 			"found": "Ditemukan {count} dari {total} opsi",
 			"noOptions": "Tidak ada opsi yang ditemukan",
 			"tryOtherTerms": "Coba cari istilah lain atau",
-			"clearSearch": "bersihkan pencarian Anda"
+			"clearSearch": "bersihkan pencarian Anda",
+			"placeholder": "Cari opsi…"
 		},
 		"fab": {
 			"generateConfig": "Buat Konfigurasi",
@@ -64,6 +76,7 @@
 			"continue": "Lanjutkan"
 		},
 		"ConfigAside": {
+			"modalTitle": "Konfigurasi Prettier",
 			"copyConfig": "Salin Konfigurasi",
 			"viewConfig": "Lihat Konfigurasi",
 			"noConfig": "Belum ada konfigurasi yang dibuat.",
@@ -73,10 +86,81 @@
 			"yourCodeTab": "Kode Anda",
 			"formattedOutput": "Output Terformat",
 			"copyFormatted": "Salin Terformat",
-			"pastePrompt": "Tempel kode JavaScript atau TypeScript Anda di sini",
+			"pastePrompt": "Tempel kode Anda di sini",
 			"formatting": "Memformat…",
 			"beforeLabel": "Sebelum (belum diformat)",
-			"afterLabel": "Sesudah (sudah diformat)"
+			"afterLabel": "Sesudah (sudah diformat)",
+			"resetButton": "Atur Ulang",
+			"resetTooltip": "Atur Ulang Pilihan",
+			"sortLabel": "Urutkan:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "Salin dan tempel ini ke dalam file .prettierrc.",
+			"loadingEditor": "Memuat editor…",
+			"loadingDiff": "Memuat diff…",
+			"shareButton": "Salin URL yang dapat dibagikan",
+			"shareCopiedToast": "URL yang dapat dibagikan disalin ke clipboard",
+			"configCopiedToast": "Konfigurasi disalin ke clipboard!",
+			"formattedCopiedToast": "Disalin ke clipboard!",
+			"loadingPrettier": "Memuat Prettier {version}…",
+			"editorPlaceholder": "// Tempel kode Anda di sini…"
+		},
+		"versionPicker": {
+			"ariaLabel": "Versi Prettier",
+			"latest": "Prettier terbaru",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "Parser Prettier",
+			"placeholder": "Parser",
+			"autoHint": "otomatis",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Template Angular",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "JSON dengan komentar",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "Tidak ada perubahan",
+			"prettierChanges": "Perubahan Prettier",
+			"tokensLabel": "token",
+			"tokenizerAriaLabel": "Model tokenizer",
+			"tokenizerPlaceholder": "Tokenizer",
+			"exactTitle": "Hitungan tokenizer yang tepat",
+			"approximateTitle": "Perkiraan hitungan — model ini tidak memiliki tokenizer offline publik",
+			"models": {
+				"gpt-4o": "GPT-4o / seri-o",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3.5": "GPT-3.5",
+				"claude": "Claude (perkiraan)",
+				"gemini": "Gemini (perkiraan)",
+				"llama-3": "Llama 3 (perkiraan)",
+				"mistral": "Mistral (perkiraan)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "Tampilan diff terpadu",
+			"splitAria": "Tampilan diff terpisah",
+			"unifiedTooltip": "Terpadu",
+			"splitTooltip": "Terpisah"
+		},
+		"errors": {
+			"title": "Kesalahan format",
+			"prettierLoadFailed": "Gagal memuat Prettier {version}",
+			"networkTip": "Periksa koneksi jaringan Anda dan coba versi lain."
 		}
 	},
 	"Faq": {
@@ -169,6 +253,30 @@
 			{
 				"question": "Bagaimana cara melaporkan bug atau berkontribusi?",
 				"answer": "Buka issue atau pull request di repositori GitHub."
+			},
+			{
+				"question": "Versi Prettier mana yang didukung alat ini?",
+				"answer": "Anda dapat memilih rilis Prettier 3.x apa pun dari dropdown versi — 3.0 hingga 3.6 ditambah \"latest\". Bundel versi yang dipilih dimuat sesuai permintaan dari jsDelivr, sehingga daftar opsi selalu sesuai dengan skema rilis tersebut."
+			},
+			{
+				"question": "Bahasa apa saja yang dapat saya format di tab Kode Anda?",
+				"answer": "TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, template Angular, JSON, JSON5, JSON dengan komentar, Markdown, MDX, YAML, dan GraphQL. Parser dideteksi secara otomatis dari input, tetapi Anda dapat menggantinya dengan dropdown."
+			},
+			{
+				"question": "Bagaimana cara kerja URL yang dapat dibagikan?",
+				"answer": "Klik tombol bagikan dan versi Prettier saat ini, opsi yang dipilih, kode, serta penggantian parser dikompres dengan LZ ke dalam hash URL, lalu disalin ke clipboard. Membuka tautan tersebut akan memulihkan konfigurasi yang sama persis. Tidak ada yang dikirim ke server — semuanya tetap di browser."
+			},
+			{
+				"question": "Apa arti hitungan token di samping diff?",
+				"answer": "Itu menunjukkan berapa banyak token AI yang akan dikenakan untuk input dan output Anda di bawah model yang dipilih. GPT-4o / GPT-4 / GPT-3.5 menggunakan tokenizer BPE resmi untuk hitungan tepat; Claude, Gemini, Llama, dan Mistral menggunakan perkiraan berbasis karakter dengan awalan \"~\"."
+			},
+			{
+				"question": "Apakah pekerjaan saya bertahan setelah halaman dimuat ulang?",
+				"answer": "Ya. Versi Prettier, pilihan opsi, dan preferensi split-view / tokenizer Anda disimpan ke localStorage, sehingga pemuatan ulang memulihkan semuanya. Hash URL yang dapat dibagikan akan diutamakan jika ada saat Anda membuka halaman."
+			},
+			{
+				"question": "Mengapa strip kesalahan format terkadang muncul?",
+				"answer": "Ketika parser Prettier tidak dapat memparsing input Anda — biasanya karena parser yang dipilih tidak cocok dengan kode (misalnya CSS dipilih tetapi Anda menempelkan JSX) — pesan kesalahan muncul di strip merah di atas diff. Ganti parser agar sesuai dengan kode Anda dan kesalahan akan hilang."
 			}
 		]
 	},
@@ -184,40 +292,62 @@
 		},
 		"whatIsThis": {
 			"title": "Apa alat ini?",
-			"description": "Prettier Config Generator adalah aplikasi web interaktif yang membuat konfigurasi Prettier menjadi mudah. Anda dapat menyesuaikan setiap pengaturan secara visual dan melihat file konfigurasi diperbarui secara real-time."
+			"description": "Prettier Config Generator adalah aplikasi web interaktif yang membuat konfigurasi Prettier menjadi mudah. Alih-alih menulis JSON secara manual dan mencari setiap opsi di dokumentasi, Anda dapat secara visual mengaktifkan dan menyesuaikan setiap pengaturan Prettier, memformat kode nyata terhadap konfigurasi Anda dalam 16 bahasa, dan membagikan hasilnya hanya dengan satu tautan. Dibuat untuk pengembang yang ingin menghabiskan waktu menulis kode, bukan mengonfigurasi alat."
 		},
 		"features": {
 			"title": "Fitur",
 			"items": [
 				{
-					"title": "Real-time Generation",
-					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+					"title": "Setiap Versi Prettier",
+					"description": "Pilih rilis Prettier 3.x apa pun (3.0 – 3.6 dan terbaru). Opsi yang tepat untuk versi itu dimuat sesuai permintaan dari jsDelivr."
 				},
 				{
-					"title": "Interactive Interface",
-					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+					"title": "Deteksi Otomatis Multi-Parser",
+					"description": "Tempel TypeScript, CSS, HTML, JSON, Markdown, YAML, dan lainnya — parser yang tepat dideteksi secara otomatis, dengan dropdown pengganti jika Anda membutuhkannya."
 				},
 				{
-					"title": "Smart Search",
-					"description": "Find options quickly by name, description, or keyword with integrated search."
+					"title": "Editor Kode Asli",
+					"description": "CodeMirror 6 menggerakkan panel input dengan penyorotan sintaks, nomor baris, indentasi tab, dan tema yang mengikuti mode terang/gelap."
 				},
 				{
-					"title": "One-Click Copy",
-					"description": "Copy your generated configuration to clipboard instantly."
+					"title": "Konfigurasi yang Dapat Dibagikan",
+					"description": "Klik Bagikan dan versi, opsi, kode, serta parser Anda dikemas ke dalam hash URL. Kirim ke mana saja; semuanya tetap di browser."
 				},
 				{
-					"title": "All Options Covered",
-					"description": "Every officially supported Prettier option is included with its default value and description."
+					"title": "Diff Gaya GitHub",
+					"description": "Lihat persis apa yang diubah Prettier dengan diff terpadu atau terpisah, ditambah header ringkasan +X / −Y seperti pull request."
 				},
 				{
-					"title": "15 Languages",
-					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+					"title": "Penghitung Token AI",
+					"description": "Hitungan token langsung untuk input dan output di GPT-4o, GPT-4, GPT-3.5, Claude, Gemini, Llama 3, dan Mistral — berguna untuk estimasi biaya pipeline AI."
+				},
+				{
+					"title": "Kesalahan Parse yang Ditampilkan",
+					"description": "Saat Prettier menolak input Anda, SyntaxError yang tepat dan baris:kolomnya muncul di atas diff alih-alih ditelan diam-diam."
+				},
+				{
+					"title": "Pilihan Persisten",
+					"description": "Versi Prettier dan pilihan opsi Anda disimpan ke localStorage, sehingga pemuatan ulang — atau kembali besok — menjaga semuanya tetap utuh."
+				},
+				{
+					"title": "15 Bahasa",
+					"description": "Sepenuhnya dilokalkan dalam bahasa Inggris, Thailand, China, Spanyol, Hindi, Jerman, Prancis, Portugis, Jepang, Korea, Rusia, Vietnam, Indonesia, Italia, dan Arab (RTL)."
 				}
 			]
 		},
 		"techStack": {
 			"title": "Dibangun dengan",
-			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
 		},
 		"openSource": {
 			"title": "Open Source",

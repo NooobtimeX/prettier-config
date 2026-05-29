@@ -26,8 +26,10 @@ const CodeEditor = dynamic(() => import('@/components/CodeEditor'), {
 	ssr: false,
 	loading: () => (
 		<div className="bg-muted/30 text-muted-foreground flex h-40 items-center justify-center rounded-md border text-xs">
-			<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-			Loading editor…
+			<Loader2
+				className="h-4 w-4 animate-spin"
+				aria-hidden
+			/>
 		</div>
 	),
 });
@@ -127,14 +129,14 @@ export function PrettierPanelModal({
 	const copyConfig = async () => {
 		if (displayConfig) {
 			await navigator.clipboard.writeText(displayConfig);
-			toast.success('Config copied to clipboard!');
+			toast.success(t('configCopiedToast'));
 		}
 	};
 
 	const copyFormatted = async (text: string) => {
 		if (text) {
 			await navigator.clipboard.writeText(text);
-			toast.success('Copied to clipboard!');
+			toast.success(t('formattedCopiedToast'));
 		}
 	};
 
@@ -192,13 +194,13 @@ export function PrettierPanelModal({
 									size="icon"
 									className="h-7 w-7"
 									onClick={onShare}
-									aria-label="Copy shareable URL"
+									aria-label={t('shareButton')}
 								>
 									<Share2 className="h-3.5 w-3.5" />
 								</Button>
 							}
 						/>
-						<TooltipContent>Copy shareable URL</TooltipContent>
+						<TooltipContent>{t('shareButton')}</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
 			)}
@@ -212,7 +214,7 @@ export function PrettierPanelModal({
 				<>
 					<div className="flex items-center justify-between">
 						<div className="flex items-center gap-2">
-							<span className="text-muted-foreground text-sm font-medium">Sort:</span>
+							<span className="text-muted-foreground text-sm font-medium">{t('sortLabel')}</span>
 							<Button
 								variant={sortOrder === 'asc' ? 'default' : 'outline'}
 								size="sm"
@@ -220,7 +222,7 @@ export function PrettierPanelModal({
 								className="text-xs"
 							>
 								<ArrowDownAZ className="mr-1 h-3 w-3" />
-								A-Z
+								{t('sortAsc')}
 							</Button>
 							<Button
 								variant={sortOrder === 'desc' ? 'default' : 'outline'}
@@ -229,7 +231,7 @@ export function PrettierPanelModal({
 								className="text-xs"
 							>
 								<ArrowUpAZ className="mr-1 h-3 w-3" />
-								Z-A
+								{t('sortDesc')}
 							</Button>
 						</div>
 						<Button
@@ -252,9 +254,7 @@ export function PrettierPanelModal({
 						</SyntaxHighlighter>
 					)}
 
-					<p className="text-muted-foreground text-center text-xs">
-						Copy and paste this into .prettierrc file.
-					</p>
+					<p className="text-muted-foreground text-center text-xs">{t('copyInstructions')}</p>
 				</>
 			)}
 
@@ -298,7 +298,7 @@ export function PrettierPanelModal({
 							value={userCode}
 							onChange={setUserCode}
 							parser={activeParser}
-							placeholder="// Paste your code here…"
+							placeholder={t('editorPlaceholder')}
 							minHeight="9rem"
 						/>
 					</div>
@@ -349,7 +349,7 @@ export function PrettierPanelModal({
 			>
 				<DrawerContent>
 					<DrawerHeader>
-						<DrawerTitle>Prettier Configuration</DrawerTitle>
+						<DrawerTitle>{t('modalTitle')}</DrawerTitle>
 						{tabBar}
 					</DrawerHeader>
 					<div className="overflow-auto p-4">{content}</div>
@@ -365,7 +365,7 @@ export function PrettierPanelModal({
 		>
 			<DialogContent className="max-h-[80vh] max-w-2xl overflow-hidden">
 				<DialogHeader>
-					<DialogTitle>Prettier Configuration</DialogTitle>
+					<DialogTitle>{t('modalTitle')}</DialogTitle>
 					{tabBar}
 				</DialogHeader>
 				<div className="overflow-auto">{content}</div>

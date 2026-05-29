@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import {
 	Select,
 	SelectContent,
@@ -18,9 +19,12 @@ interface ParserPickerProps {
 
 /**
  * Compact dropdown matching `VersionPicker`/`TokenModelPicker` — picks the
- * Prettier parser used to format the input in the Your Code tab.
+ * Prettier parser used to format the input in the Your Code tab. Labels come
+ * from `Page.parserPicker.parsers.{id}` so the parser names follow the user's
+ * locale (technical names like "TypeScript" stay un-translated by convention).
  */
 export function ParserPicker({ value, onChange, autoDetected }: ParserPickerProps) {
+	const t = useTranslations('Page.parserPicker');
 	return (
 		<Select
 			value={value}
@@ -28,10 +32,12 @@ export function ParserPicker({ value, onChange, autoDetected }: ParserPickerProp
 		>
 			<SelectTrigger
 				className="h-7 w-[150px] text-xs"
-				aria-label="Prettier parser"
+				aria-label={t('ariaLabel')}
 			>
-				<SelectValue placeholder="Parser" />
-				{autoDetected && <span className="text-muted-foreground/70 ml-1 text-[10px]">auto</span>}
+				<SelectValue placeholder={t('placeholder')} />
+				{autoDetected && (
+					<span className="text-muted-foreground/70 ml-1 text-[10px]">{t('autoHint')}</span>
+				)}
 			</SelectTrigger>
 			<SelectContent>
 				{PARSERS.map((p) => (
@@ -40,7 +46,7 @@ export function ParserPicker({ value, onChange, autoDetected }: ParserPickerProp
 						value={p.id}
 						className="text-xs"
 					>
-						{p.label}
+						{t(`parsers.${p.id}`)}
 					</SelectItem>
 				))}
 			</SelectContent>

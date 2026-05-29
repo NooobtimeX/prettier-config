@@ -46,12 +46,24 @@
 			"button": "Создать конфиг сейчас"
 		}
 	},
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "Интерактивный генератор конфигурации Prettier"
+		},
+		"aria": {
+			"repository": "Репозиторий GitHub",
+			"themeToggle": "Переключить цветовую тему",
+			"languageSwitcher": "Сменить язык"
+		}
+	},
 	"Page": {
 		"search": {
 			"found": "Найдено {count} из {total} опций",
 			"noOptions": "Опции не найдены",
 			"tryOtherTerms": "Попробуйте поискать другие термины или",
-			"clearSearch": "сбросьте поиск"
+			"clearSearch": "сбросьте поиск",
+			"placeholder": "Поиск опций…"
 		},
 		"fab": {
 			"generateConfig": "Создать конфиг",
@@ -64,6 +76,7 @@
 			"continue": "Продолжить"
 		},
 		"ConfigAside": {
+			"modalTitle": "Конфигурация Prettier",
 			"copyConfig": "Копировать конфиг",
 			"viewConfig": "Посмотреть конфиг",
 			"noConfig": "Конфигурация еще не создана.",
@@ -73,10 +86,81 @@
 			"yourCodeTab": "Ваш код",
 			"formattedOutput": "Отформатированный вывод",
 			"copyFormatted": "Скопировать отформатированное",
-			"pastePrompt": "Вставьте ваш JavaScript или TypeScript код здесь",
+			"pastePrompt": "Вставьте ваш код сюда",
 			"formatting": "Форматирование…",
 			"beforeLabel": "До (неотформатировано)",
-			"afterLabel": "После (отформатировано)"
+			"afterLabel": "После (отформатировано)",
+			"resetButton": "Сбросить",
+			"resetTooltip": "Сбросить выбор",
+			"sortLabel": "Сортировка:",
+			"sortAsc": "А-Я",
+			"sortDesc": "Я-А",
+			"copyInstructions": "Скопируйте это и вставьте в файл .prettierrc.",
+			"loadingEditor": "Загрузка редактора…",
+			"loadingDiff": "Загрузка diff…",
+			"shareButton": "Скопировать ссылку для шаринга",
+			"shareCopiedToast": "Ссылка для шаринга скопирована в буфер обмена",
+			"configCopiedToast": "Конфиг скопирован в буфер обмена!",
+			"formattedCopiedToast": "Скопировано в буфер обмена!",
+			"loadingPrettier": "Загрузка Prettier {version}…",
+			"editorPlaceholder": "// Вставьте ваш код сюда…"
+		},
+		"versionPicker": {
+			"ariaLabel": "Версия Prettier",
+			"latest": "Prettier последняя",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "Парсер Prettier",
+			"placeholder": "Парсер",
+			"autoHint": "авто",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Шаблон Angular",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "JSON с комментариями",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "Без изменений",
+			"prettierChanges": "Изменения Prettier",
+			"tokensLabel": "токенов",
+			"tokenizerAriaLabel": "Модель токенизатора",
+			"tokenizerPlaceholder": "Токенизатор",
+			"exactTitle": "Точный подсчёт токенизатора",
+			"approximateTitle": "Приблизительный подсчёт — для этой модели нет публичного офлайн-токенизатора",
+			"models": {
+				"gpt-4o": "GPT-4o / серия o",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3.5": "GPT-3.5",
+				"claude": "Claude (приблиз.)",
+				"gemini": "Gemini (приблиз.)",
+				"llama-3": "Llama 3 (приблиз.)",
+				"mistral": "Mistral (приблиз.)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "Единый вид diff",
+			"splitAria": "Разделённый вид diff",
+			"unifiedTooltip": "Единый",
+			"splitTooltip": "Разделённый"
+		},
+		"errors": {
+			"title": "Ошибка форматирования",
+			"prettierLoadFailed": "Не удалось загрузить Prettier {version}",
+			"networkTip": "Проверьте подключение к сети и попробуйте другую версию."
 		}
 	},
 	"Faq": {
@@ -169,6 +253,30 @@
 			{
 				"question": "Как сообщить об ошибке или внести вклад?",
 				"answer": "Откройте issue или pull request в репозитории GitHub."
+			},
+			{
+				"question": "Какие версии Prettier поддерживает этот инструмент?",
+				"answer": "Вы можете выбрать любой релиз Prettier 3.x из выпадающего списка версий — от 3.0 до 3.6 плюс \"latest\". Бандл выбранной версии загружается по требованию из jsDelivr, поэтому список опций всегда соответствует реальной схеме этого релиза."
+			},
+			{
+				"question": "Какие языки можно форматировать на вкладке «Ваш код»?",
+				"answer": "TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, шаблоны Angular, JSON, JSON5, JSON с комментариями, Markdown, MDX, YAML и GraphQL. Парсер определяется автоматически по вводу, но вы можете переопределить его в выпадающем списке."
+			},
+			{
+				"question": "Как работает ссылка для шаринга?",
+				"answer": "Нажмите кнопку шаринга, и текущая версия Prettier, выбранные опции, код и переопределение парсера сжимаются LZ в хеш URL и копируются в буфер обмена. Открытие этой ссылки восстанавливает точно такую же конфигурацию. Ничего не отправляется на сервер — всё остаётся в браузере."
+			},
+			{
+				"question": "Что означает счётчик токенов рядом с diff?",
+				"answer": "Он показывает, сколько токенов ИИ обойдутся ваш ввод и вывод в выбранной модели. GPT-4o / GPT-4 / GPT-3.5 используют официальные BPE-токенизаторы для точного подсчёта; Claude, Gemini, Llama и Mistral используют посимвольное приближение с префиксом \"~\"."
+			},
+			{
+				"question": "Сохраняется ли работа после перезагрузки страницы?",
+				"answer": "Да. Ваша версия Prettier, выбор опций и настройки разделённого вида / токенизатора сохраняются в localStorage, поэтому перезагрузка всё восстанавливает. Хеш ссылки для шаринга имеет приоритет, если он присутствует при открытии страницы."
+			},
+			{
+				"question": "Почему иногда появляется полоса ошибки форматирования?",
+				"answer": "Когда парсер Prettier не может разобрать ваш ввод — обычно потому, что выбранный парсер не соответствует коду (например, выбран CSS, а вы вставили JSX) — сообщение об ошибке появляется красной полосой над diff. Смените парсер на соответствующий коду — и ошибка исчезнет."
 			}
 		]
 	},
@@ -184,40 +292,62 @@
 		},
 		"whatIsThis": {
 			"title": "Что это за инструмент?",
-			"description": "Prettier Config Generator — интерактивное веб-приложение, упрощающее настройку Prettier. Вы можете визуально настроить каждый параметр и видеть, как конфигурационный файл обновляется в реальном времени."
+			"description": "Prettier Config Generator — интерактивное веб-приложение, упрощающее настройку Prettier. Вместо ручного написания JSON и поиска каждой опции в документации вы можете визуально переключать и настраивать каждый параметр Prettier, форматировать реальный код против своей конфигурации на 16 языках и делиться результатом одной ссылкой. Создано для разработчиков, которые хотят тратить время на написание кода, а не на настройку инструментов."
 		},
 		"features": {
 			"title": "Возможности",
 			"items": [
 				{
-					"title": "Real-time Generation",
-					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+					"title": "Любая версия Prettier",
+					"description": "Выберите любой релиз Prettier 3.x (3.0 – 3.6 и latest). Точные опции для этой версии загружаются по требованию с jsDelivr."
 				},
 				{
-					"title": "Interactive Interface",
-					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+					"title": "Автоопределение парсера",
+					"description": "Вставьте TypeScript, CSS, HTML, JSON, Markdown, YAML и другое — нужный парсер определяется автоматически, с возможностью переопределить его через выпадающий список."
 				},
 				{
-					"title": "Smart Search",
-					"description": "Find options quickly by name, description, or keyword with integrated search."
+					"title": "Настоящий редактор кода",
+					"description": "Панель ввода работает на CodeMirror 6 с подсветкой синтаксиса, нумерацией строк, отступом табом и темой, следующей за светлым/тёмным режимом."
 				},
 				{
-					"title": "One-Click Copy",
-					"description": "Copy your generated configuration to clipboard instantly."
+					"title": "Конфигурации с возможностью шаринга",
+					"description": "Нажмите «Поделиться», и ваша версия, опции, код и парсер упаковываются в хеш URL. Отправьте его куда угодно; всё остаётся в браузере."
 				},
 				{
-					"title": "All Options Covered",
-					"description": "Every officially supported Prettier option is included with its default value and description."
+					"title": "Diff в стиле GitHub",
+					"description": "Смотрите, что именно меняет Prettier, в едином или разделённом diff, плюс заголовок-сводка +X / −Y, как у pull request."
 				},
 				{
-					"title": "15 Languages",
-					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+					"title": "Счётчик токенов ИИ",
+					"description": "Живой подсчёт токенов для ввода и вывода в GPT-4o, GPT-4, GPT-3.5, Claude, Gemini, Llama 3 и Mistral — удобно для оценки стоимости ИИ-пайплайнов."
+				},
+				{
+					"title": "Видимые ошибки парсинга",
+					"description": "Когда Prettier отклоняет ваш ввод, точный SyntaxError и его строка:колонка появляются над diff, а не проглатываются молча."
+				},
+				{
+					"title": "Сохраняемый выбор",
+					"description": "Ваша версия Prettier и выбор опций сохраняются в localStorage, поэтому перезагрузка — или возвращение завтра — оставляет всё нетронутым."
+				},
+				{
+					"title": "15 языков",
+					"description": "Полностью локализовано на английском, тайском, китайском, испанском, хинди, немецком, французском, португальском, японском, корейском, русском, вьетнамском, индонезийском, итальянском и арабском (RTL)."
 				}
 			]
 		},
 		"techStack": {
 			"title": "Стек технологий",
-			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
 		},
 		"openSource": {
 			"title": "Открытый исходный код",

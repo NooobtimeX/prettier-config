@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import {
 	Select,
 	SelectContent,
@@ -17,9 +18,10 @@ interface TokenModelPickerProps {
 /**
  * Compact dropdown for picking which tokenizer drives the `N → M tokens`
  * badge in the diff header. Same h-8 height as `VersionPicker` so the strip
- * stays aligned.
+ * stays aligned. Labels come from `Page.tokens.models.{id}` for i18n.
  */
 export function TokenModelPicker({ value, onChange }: TokenModelPickerProps) {
+	const t = useTranslations('Page.tokens');
 	return (
 		<Select
 			value={value}
@@ -27,9 +29,9 @@ export function TokenModelPicker({ value, onChange }: TokenModelPickerProps) {
 		>
 			<SelectTrigger
 				className="h-7 w-[150px] text-xs"
-				aria-label="Tokenizer model"
+				aria-label={t('tokenizerAriaLabel')}
 			>
-				<SelectValue placeholder="Tokenizer" />
+				<SelectValue placeholder={t('tokenizerPlaceholder')} />
 			</SelectTrigger>
 			<SelectContent>
 				{TOKEN_MODELS.map((m) => (
@@ -38,7 +40,7 @@ export function TokenModelPicker({ value, onChange }: TokenModelPickerProps) {
 						value={m.id}
 						className="text-xs"
 					>
-						{m.label}
+						{t(`models.${m.id}`)}
 					</SelectItem>
 				))}
 			</SelectContent>

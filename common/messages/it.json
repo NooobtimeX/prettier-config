@@ -46,12 +46,24 @@
 			"button": "Genera configurazione ora"
 		}
 	},
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "Generatore interattivo di configurazione Prettier"
+		},
+		"aria": {
+			"repository": "Repository GitHub",
+			"themeToggle": "Cambia tema colore",
+			"languageSwitcher": "Cambia lingua"
+		}
+	},
 	"Page": {
 		"search": {
 			"found": "Trovate {count} opzioni su {total}",
 			"noOptions": "Nessuna opzione trovata",
 			"tryOtherTerms": "Prova a cercare termini diversi o",
-			"clearSearch": "pulisci la ricerca"
+			"clearSearch": "pulisci la ricerca",
+			"placeholder": "Cerca opzioni…"
 		},
 		"fab": {
 			"generateConfig": "Genera Config",
@@ -64,6 +76,7 @@
 			"continue": "Continua"
 		},
 		"ConfigAside": {
+			"modalTitle": "Configurazione Prettier",
 			"copyConfig": "Copia Config",
 			"viewConfig": "Visualizza Config",
 			"noConfig": "Nessuna configurazione ancora generata.",
@@ -73,10 +86,81 @@
 			"yourCodeTab": "Il tuo codice",
 			"formattedOutput": "Output formattato",
 			"copyFormatted": "Copia formattato",
-			"pastePrompt": "Incolla qui il tuo codice JavaScript o TypeScript",
+			"pastePrompt": "Incolla qui il tuo codice",
 			"formatting": "Formattazione in corso…",
 			"beforeLabel": "Prima (non formattato)",
-			"afterLabel": "Dopo (formattato)"
+			"afterLabel": "Dopo (formattato)",
+			"resetButton": "Resetta",
+			"resetTooltip": "Resetta selezioni",
+			"sortLabel": "Ordina:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "Copia e incolla questo in un file .prettierrc.",
+			"loadingEditor": "Caricamento editor…",
+			"loadingDiff": "Caricamento diff…",
+			"shareButton": "Copia URL condivisibile",
+			"shareCopiedToast": "URL condivisibile copiato negli appunti",
+			"configCopiedToast": "Configurazione copiata negli appunti!",
+			"formattedCopiedToast": "Copiato negli appunti!",
+			"loadingPrettier": "Caricamento Prettier {version}…",
+			"editorPlaceholder": "// Incolla qui il tuo codice…"
+		},
+		"versionPicker": {
+			"ariaLabel": "Versione Prettier",
+			"latest": "Prettier ultima versione",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "Parser Prettier",
+			"placeholder": "Parser",
+			"autoHint": "auto",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Template Angular",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "JSON con commenti",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "Nessuna modifica",
+			"prettierChanges": "Modifiche di Prettier",
+			"tokensLabel": "token",
+			"tokenizerAriaLabel": "Modello tokenizzatore",
+			"tokenizerPlaceholder": "Tokenizzatore",
+			"exactTitle": "Conteggio esatto del tokenizzatore",
+			"approximateTitle": "Conteggio approssimativo — questo modello non ha un tokenizzatore offline pubblico",
+			"models": {
+				"gpt-4o": "GPT-4o / serie o",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3.5": "GPT-3.5",
+				"claude": "Claude (approx.)",
+				"gemini": "Gemini (approx.)",
+				"llama-3": "Llama 3 (approx.)",
+				"mistral": "Mistral (approx.)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "Vista diff unificata",
+			"splitAria": "Vista diff divisa",
+			"unifiedTooltip": "Unificata",
+			"splitTooltip": "Divisa"
+		},
+		"errors": {
+			"title": "Errore di formato",
+			"prettierLoadFailed": "Impossibile caricare Prettier {version}",
+			"networkTip": "Controlla la tua connessione di rete e prova un'altra versione."
 		}
 	},
 	"Faq": {
@@ -169,6 +253,30 @@
 			{
 				"question": "Come segnalare un bug o contribuire?",
 				"answer": "Apri una issue o una pull request nel repository GitHub."
+			},
+			{
+				"question": "Quali versioni di Prettier supporta questo strumento?",
+				"answer": "Puoi scegliere qualsiasi versione 3.x di Prettier dal menu a tendina — da 3.0 a 3.6 più \"latest\". Il bundle della versione selezionata viene caricato a richiesta da jsDelivr, quindi l'elenco delle opzioni corrisponde sempre allo schema reale di quella versione."
+			},
+			{
+				"question": "Quali linguaggi posso formattare nella scheda Il tuo codice?",
+				"answer": "TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, template Angular, JSON, JSON5, JSON con commenti, Markdown, MDX, YAML e GraphQL. Il parser viene rilevato automaticamente dall'input, ma puoi sovrascriverlo con il menu a tendina."
+			},
+			{
+				"question": "Come funziona l'URL condivisibile?",
+				"answer": "Clicca il pulsante di condivisione e la versione corrente di Prettier, le opzioni selezionate, il codice e l'override del parser vengono compressi con LZ nell'hash dell'URL, quindi copiati negli appunti. Aprire quel link ripristina esattamente la stessa configurazione. Nulla viene inviato a un server — tutto resta nel browser."
+			},
+			{
+				"question": "Cosa significa il conteggio dei token accanto al diff?",
+				"answer": "Mostra quanti token IA costerebbero il tuo input e output con il modello selezionato. GPT-4o / GPT-4 / GPT-3.5 usano i tokenizzatori BPE ufficiali per un conteggio esatto; Claude, Gemini, Llama e Mistral usano un'approssimazione basata sui caratteri con il prefisso \"~\"."
+			},
+			{
+				"question": "Il mio lavoro sopravvive a un aggiornamento della pagina?",
+				"answer": "Sì. La tua versione di Prettier, le selezioni delle opzioni e le preferenze di vista divisa / tokenizzatore vengono salvate in localStorage, quindi un ricaricamento ripristina tutto. Un hash URL condivisibile ha la precedenza se è presente quando apri la pagina."
+			},
+			{
+				"question": "Perché a volte appare la striscia di errore di formato?",
+				"answer": "Quando il parser di Prettier non riesce ad analizzare il tuo input — di solito perché il parser scelto non corrisponde al codice (ad esempio CSS scelto ma hai incollato JSX) — il messaggio di errore appare in una striscia rossa sopra il diff. Cambia il parser per farlo corrispondere al tuo codice e l'errore scompare."
 			}
 		]
 	},
@@ -184,40 +292,62 @@
 		},
 		"whatIsThis": {
 			"title": "Cos'è questo strumento?",
-			"description": "Prettier Config Generator è un'applicazione web interattiva che semplifica la configurazione di Prettier. Puoi regolare visivamente ogni impostazione e vedere il file di configurazione aggiornarsi in tempo reale."
+			"description": "Prettier Config Generator è un'applicazione web interattiva che rende la configurazione di Prettier semplice. Invece di scrivere manualmente JSON e cercare ogni opzione nella documentazione, puoi attivare e regolare visivamente ogni impostazione di Prettier, formattare codice reale con la tua config in 16 linguaggi e condividere il risultato con un singolo link. È stato costruito per sviluppatori che vogliono dedicare tempo a scrivere codice, non a configurare strumenti."
 		},
 		"features": {
 			"title": "Funzionalità",
 			"items": [
 				{
-					"title": "Real-time Generation",
-					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+					"title": "Tutte le versioni di Prettier",
+					"description": "Scegli qualsiasi versione 3.x di Prettier (3.0 – 3.6 e latest). Le opzioni esatte per quella versione vengono caricate a richiesta da jsDelivr."
 				},
 				{
-					"title": "Interactive Interface",
-					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+					"title": "Rilevamento automatico multi-parser",
+					"description": "Incolla TypeScript, CSS, HTML, JSON, Markdown, YAML e altro — il parser corretto viene rilevato automaticamente, con un menu a tendina di override se ne hai bisogno."
 				},
 				{
-					"title": "Smart Search",
-					"description": "Find options quickly by name, description, or keyword with integrated search."
+					"title": "Vero editor di codice",
+					"description": "CodeMirror 6 alimenta il pannello di input con evidenziazione della sintassi, numeri di riga, indentazione con tab e un tema che segue la modalità chiara/scura."
 				},
 				{
-					"title": "One-Click Copy",
-					"description": "Copy your generated configuration to clipboard instantly."
+					"title": "Configurazioni condivisibili",
+					"description": "Clicca Condividi e la tua versione, opzioni, codice e parser vengono impacchettati nell'hash dell'URL. Invialo ovunque; tutto resta nel browser."
 				},
 				{
-					"title": "All Options Covered",
-					"description": "Every officially supported Prettier option is included with its default value and description."
+					"title": "Diff in stile GitHub",
+					"description": "Vedi esattamente cosa cambia Prettier con un diff unificato o diviso, più un'intestazione riepilogativa +X / −Y proprio come una pull request."
 				},
 				{
-					"title": "15 Languages",
-					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+					"title": "Contatore token IA",
+					"description": "Conteggio token in tempo reale per input e output su GPT-4o, GPT-4, GPT-3.5, Claude, Gemini, Llama 3 e Mistral — utile per stimare i costi delle pipeline IA."
+				},
+				{
+					"title": "Errori di parsing visibili",
+					"description": "Quando Prettier rifiuta il tuo input, l'esatto SyntaxError e la sua riga:colonna appaiono sopra il diff invece di essere silenziosamente ingoiati."
+				},
+				{
+					"title": "Selezioni persistenti",
+					"description": "La tua versione di Prettier e le tue scelte di opzioni vengono salvate in localStorage, quindi un refresh — o tornare domani — mantiene tutto intatto."
+				},
+				{
+					"title": "15 lingue",
+					"description": "Completamente localizzato in inglese, thai, cinese, spagnolo, hindi, tedesco, francese, portoghese, giapponese, coreano, russo, vietnamita, indonesiano, italiano e arabo (RTL)."
 				}
 			]
 		},
 		"techStack": {
 			"title": "Creato con",
-			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
 		},
 		"openSource": {
 			"title": "Open Source",

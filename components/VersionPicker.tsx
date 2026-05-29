@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import {
 	Select,
 	SelectContent,
@@ -32,6 +33,7 @@ interface VersionPickerProps {
 }
 
 export function VersionPicker({ value, onChange, disabled }: VersionPickerProps) {
+	const t = useTranslations('Page.versionPicker');
 	return (
 		<Select
 			value={value}
@@ -40,9 +42,9 @@ export function VersionPicker({ value, onChange, disabled }: VersionPickerProps)
 		>
 			<SelectTrigger
 				className="h-8 w-[130px] text-xs"
-				aria-label="Prettier version"
+				aria-label={t('ariaLabel')}
 			>
-				<SelectValue placeholder="Prettier" />
+				<SelectValue />
 			</SelectTrigger>
 			<SelectContent>
 				{PRETTIER_VERSIONS.map((v) => (
@@ -51,7 +53,7 @@ export function VersionPicker({ value, onChange, disabled }: VersionPickerProps)
 						value={v}
 						className="text-xs"
 					>
-						{v === 'latest' ? 'Prettier latest' : `Prettier ${v}`}
+						{v === 'latest' ? t('latest') : t('versionLabel', { version: v })}
 					</SelectItem>
 				))}
 			</SelectContent>

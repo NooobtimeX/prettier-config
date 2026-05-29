@@ -46,12 +46,24 @@
 			"button": "สร้างคอนฟิกตอนนี้"
 		}
 	},
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "ตัวสร้างคอนฟิก Prettier แบบโต้ตอบ"
+		},
+		"aria": {
+			"repository": "คลัง GitHub",
+			"themeToggle": "สลับธีมสี",
+			"languageSwitcher": "เปลี่ยนภาษา"
+		}
+	},
 	"Page": {
 		"search": {
 			"found": "พบ {count} จากทั้งหมด {total} ตัวเลือก",
 			"noOptions": "ไม่พบตัวเลือก",
 			"tryOtherTerms": "ลองค้นหาด้วยคำอื่น หรือ",
-			"clearSearch": "ล้างการค้นหา"
+			"clearSearch": "ล้างการค้นหา",
+			"placeholder": "ค้นหาตัวเลือก…"
 		},
 		"fab": {
 			"generateConfig": "สร้างคอนฟิก",
@@ -64,6 +76,7 @@
 			"continue": "ดำเนินการต่อ"
 		},
 		"ConfigAside": {
+			"modalTitle": "คอนฟิก Prettier",
 			"copyConfig": "คัดลอกการตั้งค่า",
 			"viewConfig": "ดูการตั้งค่า",
 			"noConfig": "ยังไม่มีการสร้างคอนฟิก",
@@ -76,7 +89,78 @@
 			"pastePrompt": "วางโค้ด JavaScript หรือ TypeScript ของคุณที่นี่",
 			"formatting": "กำลังจัดรูปแบบ…",
 			"beforeLabel": "ก่อน (ยังไม่จัดรูปแบบ)",
-			"afterLabel": "หลัง (จัดรูปแบบแล้ว)"
+			"afterLabel": "หลัง (จัดรูปแบบแล้ว)",
+			"resetButton": "รีเซ็ต",
+			"resetTooltip": "รีเซ็ตตัวเลือก",
+			"sortLabel": "เรียง:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "คัดลอกและวางลงในไฟล์ .prettierrc",
+			"loadingEditor": "กำลังโหลดเอดิเตอร์…",
+			"loadingDiff": "กำลังโหลด diff…",
+			"shareButton": "คัดลอก URL สำหรับแชร์",
+			"shareCopiedToast": "คัดลอก URL สำหรับแชร์ไปยังคลิปบอร์ดแล้ว",
+			"configCopiedToast": "คัดลอกคอนฟิกไปยังคลิปบอร์ดแล้ว!",
+			"formattedCopiedToast": "คัดลอกไปยังคลิปบอร์ดแล้ว!",
+			"loadingPrettier": "กำลังโหลด Prettier {version}…",
+			"editorPlaceholder": "// วางโค้ดของคุณที่นี่…"
+		},
+		"versionPicker": {
+			"ariaLabel": "เวอร์ชัน Prettier",
+			"latest": "Prettier ล่าสุด",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "พาร์เซอร์ Prettier",
+			"placeholder": "พาร์เซอร์",
+			"autoHint": "อัตโนมัติ",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Angular template",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "JSON พร้อมคอมเมนต์",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "ไม่มีการเปลี่ยนแปลง",
+			"prettierChanges": "การเปลี่ยนแปลงของ Prettier",
+			"tokensLabel": "โทเค็น",
+			"tokenizerAriaLabel": "โมเดล tokenizer",
+			"tokenizerPlaceholder": "Tokenizer",
+			"exactTitle": "จำนวนโทเค็นที่แม่นยำ",
+			"approximateTitle": "จำนวนโดยประมาณ — โมเดลนี้ไม่มี tokenizer แบบออฟไลน์สาธารณะ",
+			"models": {
+				"gpt-4o": "GPT-4o / o-series",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3.5": "GPT-3.5",
+				"claude": "Claude (โดยประมาณ)",
+				"gemini": "Gemini (โดยประมาณ)",
+				"llama-3": "Llama 3 (โดยประมาณ)",
+				"mistral": "Mistral (โดยประมาณ)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "มุมมอง diff แบบรวม",
+			"splitAria": "มุมมอง diff แบบแยก",
+			"unifiedTooltip": "รวม",
+			"splitTooltip": "แยก"
+		},
+		"errors": {
+			"title": "ข้อผิดพลาดในการจัดรูปแบบ",
+			"prettierLoadFailed": "โหลด Prettier {version} ไม่สำเร็จ",
+			"networkTip": "ตรวจสอบการเชื่อมต่อเครือข่ายของคุณและลองเวอร์ชันอื่น"
 		}
 	},
 	"Faq": {
@@ -169,6 +253,30 @@
 			{
 				"question": "รายงานข้อผิดพลาดหรือมีส่วนร่วมในโปรเจกต์นี้อย่างไร?",
 				"answer": "เปิด issue หรือ pull request บน GitHub repository โปรเจกต์ยินดีรับการมีส่วนร่วมทุกประเภท รวมถึงฟีเจอร์ใหม่ การแก้ไขข้อผิดพลาด และการปรับปรุงการแปล"
+			},
+			{
+				"question": "เครื่องมือนี้รองรับ Prettier เวอร์ชันใดบ้าง?",
+				"answer": "คุณสามารถเลือก Prettier 3.x รุ่นใดก็ได้จากเมนูเวอร์ชัน — 3.0 ถึง 3.6 พร้อม \"latest\" บันเดิลของเวอร์ชันที่เลือกจะถูกโหลดตามต้องการจาก jsDelivr ดังนั้นรายการออปชันจะตรงกับสคีมาจริงของรุ่นนั้นเสมอ"
+			},
+			{
+				"question": "ในแท็บ Your Code ฉันสามารถจัดรูปแบบภาษาอะไรได้บ้าง?",
+				"answer": "TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, Angular templates, JSON, JSON5, JSON พร้อมคอมเมนต์, Markdown, MDX, YAML และ GraphQL พาร์เซอร์จะถูกตรวจจับโดยอัตโนมัติจากอินพุต แต่คุณสามารถแทนที่ได้ด้วยเมนู"
+			},
+			{
+				"question": "URL สำหรับแชร์ทำงานอย่างไร?",
+				"answer": "คลิกปุ่มแชร์ แล้วเวอร์ชัน Prettier ปัจจุบัน ตัวเลือกที่เลือก โค้ด และการแทนที่พาร์เซอร์จะถูกบีบอัดด้วย LZ ใส่ใน URL hash จากนั้นคัดลอกไปยังคลิปบอร์ดของคุณ การเปิดลิงก์นั้นจะคืนค่าคอนฟิกเดิมทุกอย่าง ไม่มีอะไรถูกส่งไปยังเซิร์ฟเวอร์ — ทุกอย่างอยู่ในเบราว์เซอร์"
+			},
+			{
+				"question": "จำนวนโทเค็นข้าง diff หมายถึงอะไร?",
+				"answer": "แสดงจำนวนโทเค็น AI ที่อินพุตและเอาต์พุตของคุณจะใช้ตามโมเดลที่เลือก GPT-4o / GPT-4 / GPT-3.5 ใช้ BPE tokenizer อย่างเป็นทางการเพื่อนับให้แม่นยำ ส่วน Claude, Gemini, Llama และ Mistral ใช้การประมาณตามจำนวนตัวอักษรนำหน้าด้วย \"~\""
+			},
+			{
+				"question": "งานของฉันคงอยู่หลังการรีเฟรชหน้าหรือไม่?",
+				"answer": "ใช่ เวอร์ชัน Prettier ของคุณ ตัวเลือกออปชัน และค่าที่ต้องการสำหรับ split-view / tokenizer จะถูกบันทึกใน localStorage ดังนั้นการรีโหลดจะคืนค่าทุกอย่าง URL hash สำหรับแชร์จะมีความสำคัญกว่าถ้ามีอยู่เมื่อคุณเปิดหน้านี้"
+			},
+			{
+				"question": "ทำไมแถบข้อผิดพลาดในการจัดรูปแบบบางครั้งจึงปรากฏ?",
+				"answer": "เมื่อพาร์เซอร์ของ Prettier ไม่สามารถพาร์ซอินพุตของคุณได้ — ปกติเพราะพาร์เซอร์ที่เลือกไม่ตรงกับโค้ด (เช่นเลือก CSS แต่วาง JSX) — ข้อความข้อผิดพลาดจะปรากฏในแถบสีแดงเหนือ diff สลับพาร์เซอร์ให้ตรงกับโค้ดของคุณแล้วข้อผิดพลาดจะหายไป"
 			}
 		]
 	},
@@ -184,40 +292,62 @@
 		},
 		"whatIsThis": {
 			"title": "เครื่องมือนี้คืออะไร?",
-			"description": "Prettier Config Generator เป็นเว็บแอปพลิเคชันแบบโต้ตอบที่ทำให้การตั้งค่า Prettier เป็นเรื่องง่าย แทนที่จะเขียน JSON ด้วยตนเองและค้นหาแต่ละออปชันในเอกสาร คุณสามารถสลับและปรับทุกการตั้งค่า Prettier ได้อย่างสะดวกและเห็นไฟล์คอนฟิกอัปเดตแบบเรียลไทม์"
+			"description": "Prettier Config Generator เป็นเว็บแอปพลิเคชันแบบโต้ตอบที่ทำให้การตั้งค่า Prettier เป็นเรื่องง่าย แทนที่จะเขียน JSON ด้วยตนเองและค้นหาแต่ละออปชันในเอกสาร คุณสามารถสลับและปรับทุกการตั้งค่า Prettier แบบเห็นภาพ จัดรูปแบบโค้ดจริงตามคอนฟิกของคุณใน 16 ภาษา และแชร์ผลลัพธ์ด้วยลิงก์เดียว สร้างขึ้นเพื่อนักพัฒนาที่ต้องการใช้เวลาเขียนโค้ดมากกว่าตั้งค่าเครื่องมือ"
 		},
 		"features": {
 			"title": "ฟีเจอร์",
 			"items": [
 				{
-					"title": "สร้างแบบเรียลไทม์",
-					"description": "การตั้งค่าอัปเดตทันทีเมื่อคุณเลือกออปชัน เห็นไฟล์ .prettierrc สร้างสดๆ"
+					"title": "ทุกเวอร์ชันของ Prettier",
+					"description": "เลือก Prettier 3.x รุ่นใดก็ได้ (3.0 – 3.6 และ latest) ตัวเลือกที่ตรงกับเวอร์ชันนั้นจะถูกโหลดตามต้องการจาก jsDelivr"
 				},
 				{
-					"title": "อินเทอร์เฟซแบบโต้ตอบ",
-					"description": "อินเทอร์เฟซที่สวยงามและตอบสนอง พร้อมรองรับธีมมืด/สว่างและคำแนะนำสำหรับแต่ละออปชัน"
+					"title": "ตรวจจับพาร์เซอร์อัตโนมัติหลายชนิด",
+					"description": "วาง TypeScript, CSS, HTML, JSON, Markdown, YAML และอื่นๆ — พาร์เซอร์ที่ถูกต้องจะถูกตรวจจับโดยอัตโนมัติ พร้อมเมนูแทนที่หากต้องการ"
 				},
 				{
-					"title": "การค้นหาอัจฉริยะ",
-					"description": "ค้นหาออปชันได้อย่างรวดเร็วตามชื่อ คำอธิบาย หรือคำหลักด้วยการค้นหาที่รวมไว้"
+					"title": "เอดิเตอร์โค้ดจริง",
+					"description": "CodeMirror 6 ขับเคลื่อนพาเนลอินพุตด้วย syntax highlighting หมายเลขบรรทัด การเยื้องด้วย tab และธีมที่เข้ากับโหมดสว่าง/มืด"
 				},
 				{
-					"title": "คัดลอกคลิกเดียว",
-					"description": "คัดลอกการตั้งค่าที่สร้างขึ้นไปยังคลิปบอร์ดได้ทันที"
+					"title": "คอนฟิกที่แชร์ได้",
+					"description": "คลิกแชร์แล้วเวอร์ชัน ตัวเลือก โค้ด และพาร์เซอร์ของคุณจะถูกแพ็คใส่ URL hash ส่งไปที่ไหนก็ได้ ทุกอย่างยังอยู่ในเบราว์เซอร์"
 				},
 				{
-					"title": "ครอบคลุมทุกออปชัน",
-					"description": "ทุกออปชัน Prettier ที่รองรับอย่างเป็นทางการรวมอยู่พร้อมค่าเริ่มต้นและคำอธิบาย"
+					"title": "Diff สไตล์ GitHub",
+					"description": "เห็นชัดเจนว่า Prettier เปลี่ยนอะไรด้วย diff แบบรวมหรือแยก พร้อมส่วนหัวสรุป +X / −Y เหมือน pull request"
+				},
+				{
+					"title": "ตัวนับโทเค็น AI",
+					"description": "นับโทเค็นสำหรับอินพุตและเอาต์พุตแบบเรียลไทม์ใน GPT-4o, GPT-4, GPT-3.5, Claude, Gemini, Llama 3 และ Mistral — มีประโยชน์สำหรับประเมินต้นทุนของ AI pipeline"
+				},
+				{
+					"title": "แสดงข้อผิดพลาดในการพาร์ซ",
+					"description": "เมื่อ Prettier ปฏิเสธอินพุตของคุณ SyntaxError จริงและตำแหน่งบรรทัด:คอลัมน์จะปรากฏเหนือ diff แทนที่จะถูกซ่อนไว้เงียบๆ"
+				},
+				{
+					"title": "ตัวเลือกที่จดจำได้",
+					"description": "เวอร์ชัน Prettier และตัวเลือกออปชันของคุณจะถูกบันทึกใน localStorage ดังนั้นการรีเฟรช — หรือกลับมาในวันรุ่งขึ้น — ทุกอย่างยังคงอยู่"
 				},
 				{
 					"title": "15 ภาษา",
-					"description": "รองรับการแปล 15 ภาษา รวมถึงภาษาอังกฤษ ไทย จีน สเปน ฮินดี และอื่นๆ"
+					"description": "รองรับการแปลครบทั้งภาษาอังกฤษ ไทย จีน สเปน ฮินดี เยอรมัน ฝรั่งเศส โปรตุเกส ญี่ปุ่น เกาหลี รัสเซีย เวียดนาม อินโดนีเซีย อิตาลี และอาหรับ (RTL)"
 				}
 			]
 		},
 		"techStack": {
 			"title": "สร้างด้วย",
-			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
 		},
 		"openSource": {
 			"title": "โอเพ่นซอร์ส",

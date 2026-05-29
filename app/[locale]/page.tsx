@@ -73,9 +73,12 @@ export default function HomePage() {
 		},
 	);
 
+	const tConfigAside = useTranslations('Page.ConfigAside');
+	const tErrors = useTranslations('Page.errors');
+
 	const handleShare = async () => {
 		const url = await share();
-		if (url) toast.success('Shareable URL copied to clipboard');
+		if (url) toast.success(tConfigAside('shareCopiedToast'));
 	};
 
 	// Keys valid in the currently-loaded Prettier version. Selections for keys
@@ -191,15 +194,14 @@ export default function HomePage() {
 				{status === 'loading' && (
 					<div className="text-muted-foreground flex items-center justify-center gap-2 py-12 text-sm">
 						<Loader2 className="h-4 w-4 animate-spin" />
-						Loading Prettier {version}…
+						{tConfigAside('loadingPrettier', { version })}
 					</div>
 				)}
 
 				{status === 'error' && (
 					<div className="border-destructive/40 bg-destructive/5 text-destructive mx-auto my-6 max-w-md rounded-md border p-4 text-sm">
-						Failed to load Prettier {version}
-						{error ? `: ${error.message}` : ''}. Check your network connection and try another
-						version.
+						{tErrors('prettierLoadFailed', { version })}
+						{error ? `: ${error.message}` : ''}. {tErrors('networkTip')}
 					</div>
 				)}
 

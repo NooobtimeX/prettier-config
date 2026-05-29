@@ -46,12 +46,24 @@
 			"button": "अभी कॉन्फ़िगरेशन जेनरेट करें"
 		}
 	},
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "इंटरैक्टिव Prettier कॉन्फ़िगरेशन जेनरेटर"
+		},
+		"aria": {
+			"repository": "GitHub रिपॉजिटरी",
+			"themeToggle": "रंग थीम बदलें",
+			"languageSwitcher": "भाषा बदलें"
+		}
+	},
 	"Page": {
 		"search": {
 			"found": "{total} में से {count} विकल्प मिले",
 			"noOptions": "कोई विकल्प नहीं मिला",
 			"tryOtherTerms": "विभिन्न शब्दों को खोजने का प्रयास करें या",
-			"clearSearch": "अपनी खोज साफ़ करें"
+			"clearSearch": "अपनी खोज साफ़ करें",
+			"placeholder": "विकल्प खोजें…"
 		},
 		"fab": {
 			"generateConfig": "कॉन्फ़िगरेशन जेनरेट करें",
@@ -64,6 +76,7 @@
 			"continue": "जारी रखें"
 		},
 		"ConfigAside": {
+			"modalTitle": "Prettier कॉन्फ़िगरेशन",
 			"copyConfig": "कॉन्फ़िगरेशन कॉपी करें",
 			"viewConfig": "कॉन्फ़िगरेशन देखें",
 			"noConfig": "अभी तक कोई कॉन्फ़िगरेशन जेनरेट नहीं हुआ है।",
@@ -73,10 +86,81 @@
 			"yourCodeTab": "आपका कोड",
 			"formattedOutput": "स्वरूपित आउटपुट",
 			"copyFormatted": "स्वरूपित कॉपी करें",
-			"pastePrompt": "अपना JavaScript या TypeScript कोड यहाँ पेस्ट करें",
+			"pastePrompt": "अपना कोड यहाँ पेस्ट करें",
 			"formatting": "स्वरूपित हो रहा है…",
 			"beforeLabel": "पहले (असंरूपित)",
-			"afterLabel": "बाद (स्वरूपित)"
+			"afterLabel": "बाद (स्वरूपित)",
+			"resetButton": "रीसेट करें",
+			"resetTooltip": "चयन रीसेट करें",
+			"sortLabel": "क्रमबद्ध करें:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "इसे कॉपी करके .prettierrc फ़ाइल में पेस्ट करें।",
+			"loadingEditor": "एडिटर लोड हो रहा है…",
+			"loadingDiff": "diff लोड हो रहा है…",
+			"shareButton": "शेयर करने योग्य URL कॉपी करें",
+			"shareCopiedToast": "शेयर करने योग्य URL क्लिपबोर्ड पर कॉपी हो गया",
+			"configCopiedToast": "कॉन्फ़िगरेशन क्लिपबोर्ड पर कॉपी हो गया!",
+			"formattedCopiedToast": "क्लिपबोर्ड पर कॉपी हो गया!",
+			"loadingPrettier": "Prettier {version} लोड हो रहा है…",
+			"editorPlaceholder": "// अपना कोड यहाँ पेस्ट करें…"
+		},
+		"versionPicker": {
+			"ariaLabel": "Prettier संस्करण",
+			"latest": "Prettier नवीनतम",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "Prettier पार्सर",
+			"placeholder": "पार्सर",
+			"autoHint": "स्वतः",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "Angular टेम्पलेट",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "टिप्पणियों के साथ JSON",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "कोई परिवर्तन नहीं",
+			"prettierChanges": "Prettier परिवर्तन",
+			"tokensLabel": "टोकन",
+			"tokenizerAriaLabel": "टोकनाइज़र मॉडल",
+			"tokenizerPlaceholder": "टोकनाइज़र",
+			"exactTitle": "सटीक टोकनाइज़र गणना",
+			"approximateTitle": "अनुमानित गणना — इस मॉडल के लिए कोई सार्वजनिक ऑफ़लाइन टोकनाइज़र नहीं है",
+			"models": {
+				"gpt-4o": "GPT-4o / o-सीरीज़",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3.5": "GPT-3.5",
+				"claude": "Claude (अनुमानित)",
+				"gemini": "Gemini (अनुमानित)",
+				"llama-3": "Llama 3 (अनुमानित)",
+				"mistral": "Mistral (अनुमानित)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "एकीकृत diff दृश्य",
+			"splitAria": "विभाजित diff दृश्य",
+			"unifiedTooltip": "एकीकृत",
+			"splitTooltip": "विभाजित"
+		},
+		"errors": {
+			"title": "फ़ॉर्मेट त्रुटि",
+			"prettierLoadFailed": "Prettier {version} लोड करने में विफल",
+			"networkTip": "अपना नेटवर्क कनेक्शन जाँचें और कोई अन्य संस्करण आज़माएँ।"
 		}
 	},
 	"Faq": {
@@ -169,6 +253,30 @@
 			{
 				"question": "बग रिपोर्ट करने या योगदान देने के लिए क्या करें?",
 				"answer": "GitHub रिपॉजिटरी पर issue या pull request खोलें।"
+			},
+			{
+				"question": "यह टूल Prettier के कौन-से संस्करण सपोर्ट करता है?",
+				"answer": "आप वर्शन ड्रॉपडाउन से कोई भी Prettier 3.x रिलीज़ चुन सकते हैं — 3.0 से 3.6 और \"latest\" तक। चयनित संस्करण का बंडल मांग पर jsDelivr से लोड होता है, इसलिए विकल्पों की सूची हमेशा उस रिलीज़ के असली स्कीमा से मेल खाती है।"
+			},
+			{
+				"question": "Your Code टैब में मैं कौन-सी भाषाओं को फ़ॉर्मेट कर सकता हूँ?",
+				"answer": "TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, Angular टेम्पलेट, JSON, JSON5, टिप्पणियों के साथ JSON, Markdown, MDX, YAML और GraphQL। पार्सर इनपुट से स्वतः पहचाना जाता है, लेकिन आप ड्रॉपडाउन से इसे बदल सकते हैं।"
+			},
+			{
+				"question": "शेयर करने योग्य URL कैसे काम करता है?",
+				"answer": "शेयर बटन दबाएँ और मौजूदा Prettier संस्करण, चुने गए विकल्प, कोड और पार्सर ओवरराइड LZ-कंप्रेस होकर URL हैश में चले जाते हैं और क्लिपबोर्ड पर कॉपी हो जाते हैं। उस लिंक को खोलने पर वही कॉन्फ़िगरेशन फिर से बहाल हो जाती है। कुछ भी सर्वर पर नहीं भेजा जाता — सब कुछ ब्राउज़र में रहता है।"
+			},
+			{
+				"question": "diff के बगल में टोकन काउंट का क्या मतलब है?",
+				"answer": "यह दिखाता है कि चुने हुए मॉडल के तहत आपके इनपुट और आउटपुट की लागत कितने AI टोकन होगी। GPT-4o / GPT-4 / GPT-3.5 सटीक गणना के लिए आधिकारिक BPE टोकनाइज़र का उपयोग करते हैं; Claude, Gemini, Llama और Mistral \"~\" उपसर्ग के साथ कैरेक्टर-आधारित अनुमान का उपयोग करते हैं।"
+			},
+			{
+				"question": "क्या पेज रीफ्रेश के बाद भी मेरा काम बचा रहता है?",
+				"answer": "हाँ। आपका Prettier संस्करण, विकल्प चयन और स्प्लिट-व्यू / टोकनाइज़र प्राथमिकताएँ localStorage में सहेजी जाती हैं, इसलिए रीलोड सब कुछ बहाल कर देता है। यदि पेज खोलते समय शेयर करने योग्य URL हैश मौजूद है, तो उसे प्राथमिकता मिलती है।"
+			},
+			{
+				"question": "फ़ॉर्मेट एरर पट्टी कभी-कभी क्यों दिखाई देती है?",
+				"answer": "जब Prettier का पार्सर आपके इनपुट को पार्स नहीं कर पाता — आमतौर पर इसलिए कि चुना गया पार्सर कोड से मेल नहीं खाता (जैसे CSS चुना है लेकिन आपने JSX पेस्ट किया) — एरर मैसेज diff के ऊपर एक लाल पट्टी में दिखता है। पार्सर को अपने कोड के अनुसार बदलें और एरर हट जाएगा।"
 			}
 		]
 	},
@@ -184,40 +292,62 @@
 		},
 		"whatIsThis": {
 			"title": "यह टूल क्या है?",
-			"description": "Prettier Config Generator एक इंटरएक्टिव वेब एप्लिकेशन है जो Prettier को कॉन्फ़िगर करना आसान बनाता है। आप हर Prettier सेटिंग को विज़ुअली एडजस्ट कर सकते हैं और कॉन्फ़िगरेशन फ़ाइल को रियल-टाइम में अपडेट होते देख सकते हैं।"
+			"description": "Prettier Config Generator एक इंटरएक्टिव वेब एप्लिकेशन है जो Prettier को कॉन्फ़िगर करना आसान बनाता है। मैन्युअली JSON लिखने और दस्तावेज़ों में हर विकल्प ढूँढने के बजाय आप हर Prettier सेटिंग को विज़ुअली टॉगल और एडजस्ट कर सकते हैं, अपने कॉन्फ़िग के विरुद्ध 16 भाषाओं में असली कोड फ़ॉर्मेट कर सकते हैं, और परिणाम को एक ही लिंक से साझा कर सकते हैं। यह उन डेवलपर्स के लिए बनाया गया है जो टूल कॉन्फ़िगर करने के बजाय कोड लिखने में समय बिताना चाहते हैं।"
 		},
 		"features": {
 			"title": "विशेषताएं",
 			"items": [
 				{
-					"title": "Real-time Generation",
-					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+					"title": "हर Prettier संस्करण",
+					"description": "कोई भी Prettier 3.x रिलीज़ चुनें (3.0 – 3.6 और latest)। उस संस्करण के सटीक विकल्प मांग पर jsDelivr से लोड होते हैं।"
 				},
 				{
-					"title": "Interactive Interface",
-					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+					"title": "मल्टी-पार्सर ऑटो-डिटेक्ट",
+					"description": "TypeScript, CSS, HTML, JSON, Markdown, YAML और बहुत कुछ पेस्ट करें — सही पार्सर अपने आप पहचाना जाता है, और ज़रूरत पड़ने पर ड्रॉपडाउन से ओवरराइड कर सकते हैं।"
 				},
 				{
-					"title": "Smart Search",
-					"description": "Find options quickly by name, description, or keyword with integrated search."
+					"title": "असली कोड एडिटर",
+					"description": "इनपुट पैनल CodeMirror 6 पर चलता है — सिंटैक्स हाइलाइटिंग, लाइन नंबर, टैब इंडेंट और लाइट/डार्क मोड के अनुसार चलने वाली थीम के साथ।"
 				},
 				{
-					"title": "One-Click Copy",
-					"description": "Copy your generated configuration to clipboard instantly."
+					"title": "शेयर करने योग्य कॉन्फ़िगरेशन",
+					"description": "Share पर क्लिक करें और आपका संस्करण, विकल्प, कोड और पार्सर URL हैश में पैक हो जाते हैं। कहीं भी भेजें; सब कुछ ब्राउज़र में रहता है।"
 				},
 				{
-					"title": "All Options Covered",
-					"description": "Every officially supported Prettier option is included with its default value and description."
+					"title": "GitHub-स्टाइल diff",
+					"description": "देखें कि Prettier ने वास्तव में क्या बदला, एकीकृत या विभाजित diff के साथ, और साथ में pull request जैसा +X / −Y सारांश हेडर।"
 				},
 				{
-					"title": "15 Languages",
-					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+					"title": "AI टोकन काउंटर",
+					"description": "GPT-4o, GPT-4, GPT-3.5, Claude, Gemini, Llama 3 और Mistral में इनपुट और आउटपुट के लिए लाइव टोकन काउंट — AI-पाइपलाइन लागत के अनुमान के लिए उपयोगी।"
+				},
+				{
+					"title": "स्पष्ट पार्स एरर",
+					"description": "जब Prettier आपका इनपुट अस्वीकार करता है, तो सटीक SyntaxError और उसका line:column चुपचाप निगले जाने के बजाय diff के ऊपर दिखाई देता है।"
+				},
+				{
+					"title": "स्थायी चयन",
+					"description": "आपका Prettier संस्करण और विकल्प चयन localStorage में सहेजे जाते हैं, इसलिए रीफ़्रेश — या कल वापस आने पर — सब कुछ वैसा ही रहता है।"
+				},
+				{
+					"title": "15 भाषाएँ",
+					"description": "अंग्रेज़ी, थाई, चीनी, स्पेनिश, हिंदी, जर्मन, फ्रेंच, पुर्तगाली, जापानी, कोरियाई, रूसी, वियतनामी, इंडोनेशियाई, इटैलियन और अरबी (RTL) में पूरी तरह स्थानीयकृत।"
 				}
 			]
 		},
 		"techStack": {
 			"title": "इससे बनाया गया",
-			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
 		},
 		"openSource": {
 			"title": "ओपन सोर्स",

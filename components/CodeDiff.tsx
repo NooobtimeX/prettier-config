@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { Loader2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { diffLines } from 'diff';
 import { TokenModelPicker } from '@/components/TokenModelPicker';
 import { useTokenCount } from '@/hooks/useTokenCount';
@@ -22,8 +23,10 @@ const ReactDiffViewer = dynamic(() => import('react-diff-viewer-continued'), {
 	ssr: false,
 	loading: () => (
 		<div className="text-muted-foreground flex items-center gap-2 py-4 text-sm">
-			<Loader2 className="h-4 w-4 animate-spin" />
-			Loading diff…
+			<Loader2
+				className="h-4 w-4 animate-spin"
+				aria-hidden
+			/>
 		</div>
 	),
 });
@@ -60,6 +63,7 @@ export function CodeDiff({
 	tokenModel,
 	onTokenModelChange,
 }: CodeDiffProps) {
+	const t = useTranslations('Page.tokens');
 	const { added, removed } = useMemo(
 		() => countLineChanges(oldValue, newValue),
 		[oldValue, newValue],
@@ -75,7 +79,7 @@ export function CodeDiff({
 			{/* Header strip with real line counts — GitHub-PR style. */}
 			<div className="bg-muted/40 flex flex-wrap items-center justify-between gap-2 border-b px-3 py-1.5">
 				<span className="text-muted-foreground text-xs">
-					{unchanged ? 'No changes' : 'Prettier changes'}
+					{unchanged ? t('noChanges') : t('prettierChanges')}
 				</span>
 				<div className="flex flex-wrap items-center gap-3">
 					<span className="flex items-center gap-2 text-xs font-medium tabular-nums">
@@ -87,17 +91,13 @@ export function CodeDiff({
 							'flex items-center gap-1 text-xs tabular-nums',
 							tokens.approximate ? 'text-muted-foreground/70' : 'text-muted-foreground',
 						)}
-						title={
-							tokens.approximate
-								? 'Approximate count — this model has no public offline tokenizer'
-								: 'Exact tokenizer count'
-						}
+						title={tokens.approximate ? t('approximateTitle') : t('exactTitle')}
 					>
 						<span>{tokens.approximate ? '~' : ''}</span>
 						<span>{formatCount(tokens.old)}</span>
 						<span aria-hidden>→</span>
 						<span>{formatCount(tokens.new)}</span>
-						<span className="text-muted-foreground/70">tokens</span>
+						<span className="text-muted-foreground/70">{t('tokensLabel')}</span>
 					</span>
 					<TokenModelPicker
 						value={tokenModel}

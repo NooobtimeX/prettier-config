@@ -1,6 +1,7 @@
 'use client';
 
 import { FaGithub } from 'react-icons/fa6';
+import { useTranslations } from 'next-intl';
 import ThemeChanger from '@/components/ButtonThemeChanger';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,8 @@ import { Link } from '@/i18n/navigation';
 import { REPOSITORY } from '@/common/constants';
 
 export default function Header() {
+	const t = useTranslations('Header');
+	const brandName = t('brand.name');
 	return (
 		<header>
 			<div className="container mx-auto flex items-center justify-between px-4 py-3 sm:px-6">
@@ -19,12 +22,12 @@ export default function Header() {
 				>
 					<Image
 						src="/favicon.ico"
-						alt="Prettier Config Logo"
+						alt={brandName}
 						width={32}
 						height={32}
 						className="h-8 w-8 rounded-md"
 					/>
-					<h1 className="text-xl font-semibold tracking-tight">Prettier Config</h1>
+					<h1 className="text-xl font-semibold tracking-tight">{brandName}</h1>
 				</Link>
 
 				{/* Right-side Actions */}
@@ -35,7 +38,7 @@ export default function Header() {
 							variant="outline"
 							size="icon"
 							className="rounded-full"
-							aria-label="Github Repository"
+							aria-label={t('aria.repository')}
 						>
 							<FaGithub className="h-4 w-4" />
 						</Button>

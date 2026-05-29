@@ -46,12 +46,24 @@
 			"button": "أنشئ الإعدادات الآن"
 		}
 	},
+	"Header": {
+		"brand": {
+			"name": "Prettier Config",
+			"tagline": "مُنشئ إعدادات Prettier التفاعلي"
+		},
+		"aria": {
+			"repository": "مستودع GitHub",
+			"themeToggle": "تبديل سمة الألوان",
+			"languageSwitcher": "تغيير اللغة"
+		}
+	},
 	"Page": {
 		"search": {
 			"found": "تم العثور على {count} من أصل {total} خيار",
 			"noOptions": "لم يتم العثور على خيارات",
 			"tryOtherTerms": "حاول البحث عن مصطلحات مختلفة أو",
-			"clearSearch": "امسح البحث"
+			"clearSearch": "امسح البحث",
+			"placeholder": "ابحث في الخيارات…"
 		},
 		"fab": {
 			"generateConfig": "إنشاء الإعدادات",
@@ -64,6 +76,7 @@
 			"continue": "متابعة"
 		},
 		"ConfigAside": {
+			"modalTitle": "إعدادات Prettier",
 			"copyConfig": "نسخ الإعدادات",
 			"viewConfig": "عرض الإعدادات",
 			"noConfig": "لم يتم إنشاء إعدادات بعد.",
@@ -73,10 +86,81 @@
 			"yourCodeTab": "كودك",
 			"formattedOutput": "المخرجات المنسقة",
 			"copyFormatted": "نسخ المنسق",
-			"pastePrompt": "الصق كود JavaScript أو TypeScript الخاص بك هنا",
+			"pastePrompt": "الصق الكود الخاص بك هنا",
 			"formatting": "جارٍ التنسيق…",
 			"beforeLabel": "قبل (غير منسق)",
-			"afterLabel": "بعد (منسق)"
+			"afterLabel": "بعد (منسق)",
+			"resetButton": "إعادة تعيين",
+			"resetTooltip": "إعادة تعيين الاختيارات",
+			"sortLabel": "ترتيب:",
+			"sortAsc": "A-Z",
+			"sortDesc": "Z-A",
+			"copyInstructions": "انسخ هذا والصقه في ملف .prettierrc.",
+			"loadingEditor": "جارٍ تحميل المحرر…",
+			"loadingDiff": "جارٍ تحميل الفروق…",
+			"shareButton": "نسخ رابط قابل للمشاركة",
+			"shareCopiedToast": "تم نسخ الرابط القابل للمشاركة إلى الحافظة",
+			"configCopiedToast": "تم نسخ الإعدادات إلى الحافظة!",
+			"formattedCopiedToast": "تم النسخ إلى الحافظة!",
+			"loadingPrettier": "جارٍ تحميل Prettier {version}…",
+			"editorPlaceholder": "// الصق الكود الخاص بك هنا…"
+		},
+		"versionPicker": {
+			"ariaLabel": "إصدار Prettier",
+			"latest": "أحدث إصدار من Prettier",
+			"versionLabel": "Prettier {version}"
+		},
+		"parserPicker": {
+			"ariaLabel": "محلل Prettier",
+			"placeholder": "المحلل",
+			"autoHint": "تلقائي",
+			"parsers": {
+				"babel": "Babel (JS)",
+				"typescript": "TypeScript / JS",
+				"flow": "Flow",
+				"css": "CSS",
+				"scss": "SCSS",
+				"less": "Less",
+				"html": "HTML",
+				"vue": "Vue",
+				"angular": "قالب Angular",
+				"json": "JSON",
+				"json5": "JSON5",
+				"jsonc": "JSON مع تعليقات",
+				"markdown": "Markdown",
+				"mdx": "MDX",
+				"yaml": "YAML",
+				"graphql": "GraphQL"
+			}
+		},
+		"tokens": {
+			"noChanges": "لا توجد تغييرات",
+			"prettierChanges": "تغييرات Prettier",
+			"tokensLabel": "رمز",
+			"tokenizerAriaLabel": "نموذج المُجزّئ",
+			"tokenizerPlaceholder": "المُجزّئ",
+			"exactTitle": "عدد دقيق من المُجزّئ",
+			"approximateTitle": "عدد تقريبي — لا يتوفر لهذا النموذج مُجزّئ عام دون اتصال",
+			"models": {
+				"gpt-4o": "GPT-4o / سلسلة o",
+				"gpt-4": "GPT-4 / GPT-4.1",
+				"gpt-3.5": "GPT-3.5",
+				"claude": "Claude (تقريبي)",
+				"gemini": "Gemini (تقريبي)",
+				"llama-3": "Llama 3 (تقريبي)",
+				"mistral": "Mistral (تقريبي)"
+			}
+		},
+		"diff": {
+			"unifiedAria": "عرض الفروق الموحد",
+			"splitAria": "عرض الفروق المنقسم",
+			"unifiedTooltip": "موحد",
+			"splitTooltip": "منقسم"
+		},
+		"errors": {
+			"title": "خطأ في التنسيق",
+			"prettierLoadFailed": "فشل تحميل Prettier {version}",
+			"networkTip": "تحقق من اتصال الشبكة وجرب إصدارًا آخر."
 		}
 	},
 	"Faq": {
@@ -169,6 +253,30 @@
 			{
 				"question": "كيف أُبلّغ عن خطأ أو أساهم في المشروع؟",
 				"answer": "افتح issue أو pull request في مستودع GitHub."
+			},
+			{
+				"question": "ما إصدارات Prettier التي تدعمها هذه الأداة؟",
+				"answer": "يمكنك اختيار أي إصدار من Prettier 3.x من قائمة الإصدارات — من 3.0 حتى 3.6 بالإضافة إلى \"latest\". يتم تحميل حزمة الإصدار المحدد عند الطلب من jsDelivr، لذا فإن قائمة الخيارات تتطابق دائمًا مع المخطط الفعلي لذلك الإصدار."
+			},
+			{
+				"question": "ما اللغات التي يمكنني تنسيقها في تبويب \"كودك\"؟",
+				"answer": "TypeScript وJavaScript وFlow وCSS وSCSS وLess وHTML وVue وقوالب Angular وJSON وJSON5 وJSON مع تعليقات وMarkdown وMDX وYAML وGraphQL. يتم اكتشاف المحلل تلقائيًا من المُدخل، ولكن يمكنك تجاوزه من القائمة المنسدلة."
+			},
+			{
+				"question": "كيف يعمل الرابط القابل للمشاركة؟",
+				"answer": "انقر على زر المشاركة وسيتم ضغط إصدار Prettier الحالي والخيارات المختارة والكود وتجاوز المحلل باستخدام LZ في تجزئة الرابط، ثم يتم نسخها إلى الحافظة. فتح ذلك الرابط يستعيد نفس الإعداد بالضبط. لا يتم إرسال أي شيء إلى خادم — كل شيء يبقى في المتصفح."
+			},
+			{
+				"question": "ماذا يعني عدد الرموز بجانب الفروق؟",
+				"answer": "يوضح عدد رموز الذكاء الاصطناعي التي ستكلفها مدخلاتك ومخرجاتك ضمن النموذج المحدد. تستخدم GPT-4o و GPT-4 و GPT-3.5 المُجزّئات الرسمية BPE للحصول على عدد دقيق؛ بينما تستخدم Claude وGemini وLlama وMistral تقديرًا قائمًا على الأحرف مع البادئة \"~\"."
+			},
+			{
+				"question": "هل يبقى عملي بعد تحديث الصفحة؟",
+				"answer": "نعم. يتم حفظ إصدار Prettier واختياراتك للخيارات وتفضيلات العرض المنقسم / المُجزّئ في localStorage، لذا تستعيد إعادة التحميل كل شيء. تكون لتجزئة الرابط القابل للمشاركة الأسبقية إن وُجدت عند فتح الصفحة."
+			},
+			{
+				"question": "لماذا يظهر شريط خطأ التنسيق أحيانًا؟",
+				"answer": "عندما لا يستطيع محلل Prettier تحليل المُدخل — عادةً لأن المحلل المختار لا يطابق الكود (مثلاً اختيار CSS ولكنك لصقت JSX) — تظهر رسالة الخطأ في شريط أحمر فوق الفروق. غيّر المحلل ليتطابق مع كودك وسيختفي الخطأ."
 			}
 		]
 	},
@@ -184,40 +292,62 @@
 		},
 		"whatIsThis": {
 			"title": "ما هي هذه الأداة؟",
-			"description": "Prettier Config Generator هو تطبيق ويب تفاعلي يجعل تهيئة Prettier أمرًا سهلًا. يمكنك ضبط كل إعداد بشكل مرئي ومشاهدة ملف الإعداد يتحدث في الوقت الفعلي."
+			"description": "Prettier Config Generator هو تطبيق ويب تفاعلي يجعل تهيئة Prettier أمرًا سهلًا. بدلاً من كتابة JSON يدويًا والبحث عن كل خيار في التوثيق، يمكنك بصريًا تبديل وضبط كل إعداد من إعدادات Prettier، وتنسيق كود حقيقي وفقًا لإعداداتك في 16 لغة، ومشاركة النتيجة برابط واحد. صُممت للمطورين الذين يرغبون في قضاء الوقت في كتابة الكود، لا في تهيئة الأدوات."
 		},
 		"features": {
 			"title": "الميزات",
 			"items": [
 				{
-					"title": "Real-time Generation",
-					"description": "Configuration updates instantly as you select options. See your .prettierrc file generate live."
+					"title": "كل إصدارات Prettier",
+					"description": "اختر أي إصدار من Prettier 3.x (من 3.0 إلى 3.6 وأحدث إصدار). يتم تحميل الخيارات الدقيقة لهذا الإصدار عند الطلب من jsDelivr."
 				},
 				{
-					"title": "Interactive Interface",
-					"description": "Beautiful, responsive interface with dark/light theme support and tooltips for each option."
+					"title": "اكتشاف تلقائي متعدد المحللات",
+					"description": "الصق TypeScript أو CSS أو HTML أو JSON أو Markdown أو YAML والمزيد — يتم اكتشاف المحلل المناسب تلقائيًا، مع قائمة منسدلة لتجاوز ذلك عند الحاجة."
 				},
 				{
-					"title": "Smart Search",
-					"description": "Find options quickly by name, description, or keyword with integrated search."
+					"title": "محرر كود حقيقي",
+					"description": "يُشغّل CodeMirror 6 لوحة الإدخال مع تمييز الصياغة وأرقام الأسطر وإزاحة Tab وسمة تتبع الوضع الفاتح/الداكن."
 				},
 				{
-					"title": "One-Click Copy",
-					"description": "Copy your generated configuration to clipboard instantly."
+					"title": "إعدادات قابلة للمشاركة",
+					"description": "انقر على \"مشاركة\" ليتم تعبئة إصدارك وخياراتك وكودك ومحلّلك في تجزئة الرابط. أرسله إلى أي مكان؛ يبقى كل شيء في المتصفح."
 				},
 				{
-					"title": "All Options Covered",
-					"description": "Every officially supported Prettier option is included with its default value and description."
+					"title": "فروق بأسلوب GitHub",
+					"description": "اطّلع تمامًا على ما يغيّره Prettier من خلال عرض موحّد أو منقسم، إضافة إلى رأس ملخص +X / −Y مثل طلب السحب."
 				},
 				{
-					"title": "15 Languages",
-					"description": "Fully localised in 15 languages including English, Thai, Chinese, Spanish, Hindi, and more."
+					"title": "عدّاد رموز الذكاء الاصطناعي",
+					"description": "عدد رموز مباشر للمدخل والمخرج عبر GPT-4o و GPT-4 و GPT-3.5 و Claude و Gemini و Llama 3 و Mistral — مفيد لتقدير تكاليف خطوط أنابيب الذكاء الاصطناعي."
+				},
+				{
+					"title": "إبراز أخطاء التحليل",
+					"description": "عندما يرفض Prettier مدخلاتك، يظهر خطأ SyntaxError الدقيق ورقم السطر:العمود فوق الفروق بدلاً من ابتلاعه بصمت."
+				},
+				{
+					"title": "اختيارات دائمة",
+					"description": "يتم حفظ إصدار Prettier واختيارات الخيارات في localStorage، حتى تبقى الأمور كما هي بعد التحديث — أو عند العودة في اليوم التالي."
+				},
+				{
+					"title": "15 لغة",
+					"description": "متوفّر بالكامل بالإنجليزية والتايلاندية والصينية والإسبانية والهندية والألمانية والفرنسية والبرتغالية واليابانية والكورية والروسية والفيتنامية والإندونيسية والإيطالية والعربية (RTL)."
 				}
 			]
 		},
 		"techStack": {
 			"title": "مبني باستخدام",
-			"items": ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "next-intl"]
+			"items": [
+				"Next.js 16",
+				"React 19",
+				"TypeScript",
+				"Tailwind CSS v4",
+				"shadcn/ui",
+				"next-intl",
+				"CodeMirror 6",
+				"prettier/standalone (CDN)",
+				"lz-string"
+			]
 		},
 		"openSource": {
 			"title": "مفتوح المصدر",

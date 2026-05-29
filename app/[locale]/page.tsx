@@ -109,9 +109,12 @@ export default function HomePage() {
 	 * the target version's option schema and check whether any active
 	 * selections would silently disappear. If conflicts exist, open the
 	 * warning dialog and let the user decide; otherwise switch immediately.
+	 * Toasts confirm the switch in every path so the user always sees that
+	 * something happened.
 	 */
 	const handleVersionRequest = async (next: string) => {
 		if (next === version) return;
+		const targetLabel = next === 'latest' ? 'latest' : next;
 		try {
 			const loaded = await loadPrettier(next);
 			const filterVersion = next === 'latest' ? null : next;
@@ -119,19 +122,25 @@ export default function HomePage() {
 			const conflicts = computeVersionConflicts(selected, validKeys, newOptions);
 			if (conflicts.length === 0) {
 				setVersion(next);
+				toast.success(`Switched to Prettier ${targetLabel}`);
 				return;
 			}
 			setPendingVersion(next);
 			setPendingConflicts(conflicts);
-		} catch {
+		} catch (err) {
 			// Network failure or invalid version — fall back to the old behaviour
-			// (switch and let usePrettierVersion surface the load error).
+			// (switch and let usePrettierVersion surface the load error) but
+			// surface the error in a toast so the user knows what happened.
+			const msg = err instanceof Error ? err.message : String(err);
+			toast.error(`Couldn't preload Prettier ${targetLabel}: ${msg}`);
 			setVersion(next);
 		}
 	};
 
 	const handleVersionConfirm = (drop: boolean) => {
 		if (!pendingVersion) return;
+		const targetLabel = pendingVersion === 'latest' ? 'latest' : pendingVersion;
+		const droppedCount = pendingConflicts.length;
 		if (drop) {
 			setSelected((prev) => {
 				const next = { ...prev };
@@ -142,6 +151,11 @@ export default function HomePage() {
 		setVersion(pendingVersion);
 		setPendingVersion(null);
 		setPendingConflicts([]);
+		toast.success(
+			drop
+				? `Switched to Prettier ${targetLabel} and removed ${droppedCount} selection${droppedCount === 1 ? '' : 's'}.`
+				: `Switched to Prettier ${targetLabel}. ${droppedCount} selection${droppedCount === 1 ? '' : 's'} stashed for later.`,
+		);
 	};
 
 	const hasSelectedOptions = Object.entries(selected).some(

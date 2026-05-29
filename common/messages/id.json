@@ -230,6 +230,10 @@
 			{
 				"question": "Mengapa strip kesalahan format terkadang muncul?",
 				"answer": "Ketika parser Prettier tidak dapat memparsing input Anda — biasanya karena parser yang dipilih tidak cocok dengan kode (misalnya CSS dipilih tetapi Anda menempelkan JSX) — pesan kesalahan muncul di strip merah di atas diff. Ganti parser agar sesuai dengan kode Anda dan kesalahan akan hilang."
+			},
+			{
+				"question": "Bisakah saya melakukan preview config saya terhadap bahasa selain JavaScript?",
+				"answer": "Ya. Tab Preview memiliki parser dropdown tersendiri di samping toggle diff, dan setiap parser hadir dengan contoh khusus — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL, ditambah TypeScript / JS. Mengganti parser akan memformat ulang contoh yang sesuai berdasarkan opsi Anda saat ini, sehingga opsi khusus bahasa seperti proseWrap, htmlWhitespaceSensitivity, dan vueIndentScriptAndStyle memiliki tempat untuk menunjukkan efeknya. Pilihan Anda tetap tersimpan setelah memuat ulang."
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "Pilih rilis Prettier 3.x apa pun (3.0 – 3.6 dan terbaru). Opsi yang tepat untuk versi itu dimuat sesuai permintaan dari jsDelivr."
 				},
 				{
-					"title": "Deteksi Otomatis Multi-Parser",
-					"description": "Tempel TypeScript, CSS, HTML, JSON, Markdown, YAML, dan lainnya — parser yang tepat dideteksi secara otomatis, dengan dropdown pengganti jika Anda membutuhkannya."
+					"title": "Semua Bahasa, Kedua Tab",
+					"description": "Preview menyediakan contoh khusus untuk setiap parser (TS, CSS, HTML, JSON/JSON5/JSONC, Markdown, YAML, Vue, GraphQL, dan lainnya) sehingga setiap opsi Prettier memiliki tempat untuk menunjukkan efeknya. Your Code mendeteksi parser secara otomatis dari kode yang Anda tempel, dengan opsi override manual."
 				},
 				{
 					"title": "Editor Kode Asli",

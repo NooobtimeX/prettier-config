@@ -230,6 +230,10 @@
 			{
 				"question": "为什么格式化错误条有时会出现？",
 				"answer": "当 Prettier 的解析器无法解析您的输入时——通常是因为所选解析器与代码不匹配（例如选了 CSS 却粘贴了 JSX）——错误消息会显示在 diff 上方的红色条中。把解析器切换到与您的代码匹配，错误就会消失。"
+			},
+			{
+				"question": "我可以针对 JavaScript 以外的语言预览我的配置吗？",
+				"answer": "可以。Preview tab 在 diff 切换按钮旁边有自己的 parser dropdown，每个 parser 都配有专门设计的示例——CSS、SCSS、Less、HTML、Vue、Angular、JSON / JSON5 / JSONC、Markdown、MDX、YAML、GraphQL，以及 TypeScript / JS。切换 parser 会用你当前的选项重新格式化对应的示例，因此像 proseWrap、htmlWhitespaceSensitivity、vueIndentScriptAndStyle 这类语言特定选项都有地方展示其效果。你的选择会在重新加载后保留。"
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "可选择任何 Prettier 3.x 版本（3.0 – 3.6 及 latest）。该版本的精确选项会按需从 jsDelivr 加载。"
 				},
 				{
-					"title": "多解析器自动识别",
-					"description": "粘贴 TypeScript、CSS、HTML、JSON、Markdown、YAML 等——系统会自动检测合适的解析器，需要时也可通过下拉菜单覆盖。"
+					"title": "所有语言，两个 tab 都支持",
+					"description": "Preview 为每个 parser 都内置了专门设计的示例（TypeScript / JS、CSS、HTML、JSON / JSON5 / JSONC、Markdown、YAML、Vue、GraphQL 等等），让每一个 Prettier 选项都有展示效果的地方。Your Code 会从你粘贴的内容中自动检测 parser，并支持手动覆盖。"
 				},
 				{
 					"title": "真实代码编辑器",

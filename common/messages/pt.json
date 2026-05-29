@@ -230,6 +230,10 @@
 			{
 				"question": "Por que a faixa de erro de formatação aparece às vezes?",
 				"answer": "Quando o parser do Prettier não consegue analisar sua entrada — geralmente porque o parser escolhido não corresponde ao código (ex.: CSS selecionado mas você colou JSX) — a mensagem de erro aparece em uma faixa vermelha acima do diff. Troque o parser para combinar com seu código e o erro desaparece."
+			},
+			{
+				"question": "Posso pré-visualizar minha configuração em linguagens além de JavaScript?",
+				"answer": "Sim. A aba Preview tem seu próprio dropdown de parser ao lado do toggle do diff, e cada parser vem com uma amostra feita sob medida — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL, além de TypeScript / JS. Trocar de parser re-formata a amostra correspondente com suas opções atuais, assim opções específicas de linguagem como proseWrap, htmlWhitespaceSensitivity e vueIndentScriptAndStyle têm um lugar para demonstrar seu efeito. Sua escolha persiste entre recarregamentos."
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "Escolha qualquer release do Prettier 3.x (3.0 – 3.6 e latest). As opções exatas daquela versão são carregadas sob demanda pelo jsDelivr."
 				},
 				{
-					"title": "Detecção Automática de Parser",
-					"description": "Cole TypeScript, CSS, HTML, JSON, Markdown, YAML e mais — o parser certo é detectado automaticamente, com um menu para forçar outro se precisar."
+					"title": "Todas as Linguagens, Ambas as Abas",
+					"description": "O Preview vem com uma amostra feita sob medida para cada parser (TS, CSS, HTML, JSON/JSON5/JSONC, Markdown, YAML, Vue, GraphQL e mais) para que cada opção do Prettier tenha onde mostrar seu efeito. Seu Código detecta o parser automaticamente a partir do que você cola, com substituição manual."
 				},
 				{
 					"title": "Editor de Código Real",

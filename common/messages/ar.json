@@ -230,6 +230,10 @@
 			{
 				"question": "لماذا يظهر شريط خطأ التنسيق أحيانًا؟",
 				"answer": "عندما لا يستطيع محلل Prettier تحليل المُدخل — عادةً لأن المحلل المختار لا يطابق الكود (مثلاً اختيار CSS ولكنك لصقت JSX) — تظهر رسالة الخطأ في شريط أحمر فوق الفروق. غيّر المحلل ليتطابق مع كودك وسيختفي الخطأ."
+			},
+			{
+				"question": "هل يمكنني معاينة إعداداتي مع لغات أخرى غير JavaScript؟",
+				"answer": "نعم. يحتوي tab المعاينة (Preview) على parser dropdown خاص به بجوار مفتاح تبديل diff، ويأتي كل parser مع عينة مخصصة — CSS، SCSS، Less، HTML، Vue، Angular، JSON / JSON5 / JSONC، Markdown، MDX، YAML، GraphQL، إضافة إلى TypeScript / JS. عند تغيير parser تتم إعادة تنسيق العينة المطابقة وفق خياراتك الحالية، حتى تجد الخيارات الخاصة باللغة مثل proseWrap وhtmlWhitespaceSensitivity وvueIndentScriptAndStyle مكانًا لإظهار تأثيرها. يبقى اختيارك محفوظًا بعد إعادة التحميل."
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "اختر أي إصدار من Prettier 3.x (من 3.0 إلى 3.6 وأحدث إصدار). يتم تحميل الخيارات الدقيقة لهذا الإصدار عند الطلب من jsDelivr."
 				},
 				{
-					"title": "اكتشاف تلقائي متعدد المحللات",
-					"description": "الصق TypeScript أو CSS أو HTML أو JSON أو Markdown أو YAML والمزيد — يتم اكتشاف المحلل المناسب تلقائيًا، مع قائمة منسدلة لتجاوز ذلك عند الحاجة."
+					"title": "كل اللغات في كلا التبويبين",
+					"description": "يوفر Preview عينة مخصصة لكل parser (TS، CSS، HTML، JSON/JSON5/JSONC، Markdown، YAML، Vue، GraphQL، وغيرها) بحيث يكون لكل خيار من خيارات Prettier مكان يُظهر فيه تأثيره. أما Your Code فيكتشف parser تلقائيًا من الكود الذي تلصقه، مع إمكانية التجاوز اليدوي."
 				},
 				{
 					"title": "محرر كود حقيقي",

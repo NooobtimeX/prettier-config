@@ -230,6 +230,10 @@
 			{
 				"question": "Why does the format error strip appear sometimes?",
 				"answer": "When Prettier's parser can't parse your input — usually because the chosen parser doesn't match the code (e.g. CSS picked but you pasted JSX) — the error message appears in a red strip above the diff. Switch the parser to match your code and the error clears."
+			},
+			{
+				"question": "Can I preview my config against languages other than JavaScript?",
+				"answer": "Yes. The Preview tab has its own parser dropdown next to the diff toggle, and each parser comes with a purpose-built sample — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL, plus TypeScript / JS. Switching parsers re-formats the matching sample under your current options, so language-specific options like proseWrap, htmlWhitespaceSensitivity, and vueIndentScriptAndStyle have a place to demonstrate their effect. Your choice persists across reloads."
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "Pick any Prettier 3.x release (3.0 – 3.6 and latest). The exact options for that version load on demand from jsDelivr."
 				},
 				{
-					"title": "Multi-Parser Auto-Detect",
-					"description": "Paste TypeScript, CSS, HTML, JSON, Markdown, YAML and more — the right parser is detected automatically, with an override dropdown if you need it."
+					"title": "All Languages, Both Tabs",
+					"description": "Preview ships a purpose-built sample per parser (TS, CSS, HTML, JSON/JSON5/JSONC, Markdown, YAML, Vue, GraphQL, and more) so every Prettier option has somewhere to show its effect. Your Code auto-detects the parser from your paste, with manual override."
 				},
 				{
 					"title": "Real Code Editor",

@@ -55,7 +55,7 @@ The differentiators that put this ahead of the official Prettier playground:
 | Feature                      | What it does                                                                                                                                                                     |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Every Prettier version**   | Pick any Prettier 3.x release from `3.0` through `3.6` plus `latest`. Each version's exact option schema is loaded on demand from jsDelivr.                                      |
-| **Multi-parser auto-detect** | Paste any supported language — the right parser is sniffed from the input (front-matter, root shape, tag patterns) and applied. Manual override dropdown is one click away.      |
+| **Multi-parser, both tabs**  | Paste any supported language in Your Code and the parser is auto-detected (front-matter, root shape, tag patterns) with a manual override. Preview has its own parser dropdown and a purpose-built sample per language so every Prettier option has somewhere to show its effect. |
 | **Real code editor**         | CodeMirror 6 with syntax highlighting, line numbers, bracket matching, tab-key indent, and a theme that follows your light/dark preference. Language packs lazy-load per parser. |
 | **Shareable URL**            | The Share button packs version + options + code + parser into an LZ-compressed URL hash. Send it anywhere — nothing is sent to a server.                                         |
 | **GitHub-style diff**        | Unified or split view, with a `+X −Y` line-change summary on a PR-style header.                                                                                                  |
@@ -64,7 +64,7 @@ The differentiators that put this ahead of the official Prettier playground:
 | **Persistent selections**    | Your version + option picks are saved to `localStorage`. A refresh restores everything; the URL hash takes precedence if one is present.                                         |
 | **15-language UI**           | Fully localized in English, Thai, Chinese, Spanish, Hindi, German, French, Portuguese, Japanese, Korean, Russian, Vietnamese, Indonesian, Italian, and Arabic (RTL).             |
 | **All options covered**      | Every officially supported Prettier option appears with its default value and description, auto-generated from the loaded version's `getSupportInfo()`.                          |
-| **Built-in sample preview**  | A purpose-built JS/JSX sample exercises every notable option so you can see your config's effects without leaving the page.                                                      |
+| **Per-language Preview**     | Switch the Preview parser to TypeScript, CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, or GraphQL and the right mis-formatted sample re-formats under your current config. `proseWrap`, `htmlWhitespaceSensitivity`, `vueIndentScriptAndStyle`, and friends finally have a place to demo. |
 
 ### Languages you can format here
 

@@ -230,6 +230,10 @@
 			{
 				"question": "Pourquoi le bandeau d'erreur de format apparaît-il parfois ?",
 				"answer": "Lorsque le parser de Prettier ne peut pas analyser votre entrée — généralement parce que le parser choisi ne correspond pas au code (par exemple CSS sélectionné mais vous avez collé du JSX) — le message d'erreur apparaît dans un bandeau rouge au-dessus du diff. Changez le parser pour qu'il corresponde à votre code et l'erreur disparaît."
+			},
+			{
+				"question": "Puis-je prévisualiser ma configuration sur des langages autres que JavaScript ?",
+				"answer": "Oui. L'onglet Preview a son propre dropdown de parser à côté du toggle du diff, et chaque parser est livré avec un exemple conçu sur mesure — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL, plus TypeScript / JS. Changer de parser re-formate l'exemple correspondant avec vos options actuelles, ainsi des options spécifiques au langage comme proseWrap, htmlWhitespaceSensitivity et vueIndentScriptAndStyle ont un endroit où démontrer leur effet. Votre choix persiste entre les rechargements."
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "Choisissez n'importe quelle version 3.x de Prettier (3.0 – 3.6 et latest). Les options exactes de cette version sont chargées à la demande depuis jsDelivr."
 				},
 				{
-					"title": "Détection automatique multi-parser",
-					"description": "Collez TypeScript, CSS, HTML, JSON, Markdown, YAML et plus — le bon parser est détecté automatiquement, avec un menu déroulant de remplacement si nécessaire."
+					"title": "Tous les langages, les deux onglets",
+					"description": "L'aperçu est livré avec un exemple conçu sur mesure pour chaque parser (TS, CSS, HTML, JSON/JSON5/JSONC, Markdown, YAML, Vue, GraphQL, et plus) afin que chaque option de Prettier ait un endroit où montrer son effet. Votre Code détecte automatiquement le parser à partir de ce que vous collez, avec un remplacement manuel."
 				},
 				{
 					"title": "Vrai éditeur de code",

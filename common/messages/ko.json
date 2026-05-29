@@ -230,6 +230,10 @@
 			{
 				"question": "포맷 오류 바가 가끔 나타나는 이유는 무엇인가요?",
 				"answer": "Prettier의 파서가 입력을 파싱할 수 없을 때 — 보통 선택한 파서가 코드와 일치하지 않을 때(예: CSS를 선택했는데 JSX를 붙여넣음) — 오류 메시지가 diff 위 빨간 바에 표시됩니다. 파서를 코드에 맞게 전환하면 오류가 사라집니다."
+			},
+			{
+				"question": "JavaScript 이외의 언어에 대해서도 설정을 미리볼 수 있나요?",
+				"answer": "예. Preview tab에는 diff 토글 옆에 자체 parser dropdown이 있고, 각 parser에는 전용 설계된 샘플이 함께 제공됩니다 — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL, 그리고 TypeScript / JS. parser를 전환하면 해당 샘플이 현재 옵션으로 다시 포맷되므로 proseWrap, htmlWhitespaceSensitivity, vueIndentScriptAndStyle 같은 언어별 옵션도 효과를 보여줄 자리가 생깁니다. 선택은 새로고침 후에도 유지됩니다."
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "Prettier 3.x 릴리스를 모두 선택할 수 있습니다(3.0 – 3.6 및 latest). 해당 버전의 정확한 옵션이 jsDelivr에서 필요할 때 로드됩니다."
 				},
 				{
-					"title": "멀티 파서 자동 감지",
-					"description": "TypeScript, CSS, HTML, JSON, Markdown, YAML 등을 붙여넣으면 알맞은 파서가 자동 감지되며, 필요하면 드롭다운으로 재정의할 수 있습니다."
+					"title": "모든 언어, 두 tab 모두",
+					"description": "Preview에는 parser별로 전용 설계된 샘플이 제공되어(TypeScript / JS, CSS, HTML, JSON / JSON5 / JSONC, Markdown, YAML, Vue, GraphQL 등) 모든 Prettier 옵션이 효과를 보여줄 자리를 갖습니다. Your Code는 붙여넣은 내용에서 parser를 자동 감지하며, 수동 재정의도 가능합니다."
 				},
 				{
 					"title": "실제 코드 에디터",

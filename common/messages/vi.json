@@ -230,6 +230,10 @@
 			{
 				"question": "Tại sao đôi khi xuất hiện dải lỗi định dạng?",
 				"answer": "Khi parser của Prettier không thể phân tích nội dung của bạn — thường vì parser được chọn không khớp với code (ví dụ chọn CSS nhưng bạn dán JSX) — thông báo lỗi sẽ hiện trong dải đỏ phía trên diff. Đổi parser cho khớp với code và lỗi sẽ biến mất."
+			},
+			{
+				"question": "Tôi có thể xem trước cấu hình của mình với các ngôn ngữ khác ngoài JavaScript không?",
+				"answer": "Có. Tab Preview có parser dropdown riêng nằm cạnh nút chuyển đổi diff, và mỗi parser đi kèm một mẫu được thiết kế riêng — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL, cùng với TypeScript / JS. Việc chuyển parser sẽ định dạng lại mẫu tương ứng theo các tùy chọn hiện tại của bạn, nhờ vậy các tùy chọn riêng theo ngôn ngữ như proseWrap, htmlWhitespaceSensitivity và vueIndentScriptAndStyle đều có chỗ để thể hiện hiệu ứng. Lựa chọn của bạn được giữ lại sau khi tải lại."
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "Chọn bất kỳ bản phát hành Prettier 3.x nào (3.0 – 3.6 và latest). Các tùy chọn chính xác cho phiên bản đó được tải theo yêu cầu từ jsDelivr."
 				},
 				{
-					"title": "Tự động phát hiện parser",
-					"description": "Dán TypeScript, CSS, HTML, JSON, Markdown, YAML và nhiều hơn nữa — parser phù hợp sẽ được phát hiện tự động, kèm dropdown để ghi đè khi cần."
+					"title": "Mọi ngôn ngữ, cả hai tab",
+					"description": "Preview đi kèm mẫu được thiết kế riêng cho từng parser (TypeScript / JS, CSS, HTML, JSON / JSON5 / JSONC, Markdown, YAML, Vue, GraphQL và nhiều nữa) để mọi tùy chọn của Prettier đều có chỗ thể hiện hiệu ứng. Your Code tự động phát hiện parser từ nội dung bạn dán, kèm tùy chọn ghi đè thủ công."
 				},
 				{
 					"title": "Trình soạn thảo code thực sự",

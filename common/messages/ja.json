@@ -230,6 +230,10 @@
 			{
 				"question": "フォーマットエラーバーが時々表示されるのはなぜですか？",
 				"answer": "Prettierのパーサーが入力を解析できないとき——通常は選択したパーサーがコードと一致しない場合（例：CSSを選んだのにJSXを貼り付けた）——エラーメッセージがdiffの上に赤いバーで表示されます。コードに合わせてパーサーを切り替えるとエラーは消えます。"
+			},
+			{
+				"question": "JavaScript 以外の言語に対しても設定をプレビューできますか？",
+				"answer": "はい。Preview tab には diff 切り替えの隣に独自の parser dropdown があり、各 parser には専用設計のサンプルが付属しています — CSS、SCSS、Less、HTML、Vue、Angular、JSON / JSON5 / JSONC、Markdown、MDX、YAML、GraphQL、さらに TypeScript / JS。parser を切り替えると、対応するサンプルが現在のオプションで再フォーマットされるため、proseWrap、htmlWhitespaceSensitivity、vueIndentScriptAndStyle のような言語固有のオプションも効果を示せます。あなたの選択はリロード後も保持されます。"
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "Prettier 3.xの任意のリリース（3.0〜3.6およびlatest）を選択できます。そのバージョンの正確なオプションがjsDelivrからオンデマンドで読み込まれます。"
 				},
 				{
-					"title": "マルチパーサー自動検出",
-					"description": "TypeScript、CSS、HTML、JSON、Markdown、YAMLなどを貼り付けるだけで、適切なパーサーが自動的に検出されます。必要に応じて上書きドロップダウンも利用できます。"
+					"title": "すべての言語、両方の tab",
+					"description": "Preview は parser ごとに専用設計のサンプルを用意しています（TypeScript / JS、CSS、HTML、JSON / JSON5 / JSONC、Markdown、YAML、Vue、GraphQL など）。これにより、すべての Prettier オプションが効果を見せる場所を持ちます。Your Code は貼り付けた内容から parser を自動検出し、手動での上書きも可能です。"
 				},
 				{
 					"title": "本格的なコードエディタ",

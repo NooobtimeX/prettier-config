@@ -230,6 +230,10 @@
 			{
 				"question": "फ़ॉर्मेट एरर पट्टी कभी-कभी क्यों दिखाई देती है?",
 				"answer": "जब Prettier का पार्सर आपके इनपुट को पार्स नहीं कर पाता — आमतौर पर इसलिए कि चुना गया पार्सर कोड से मेल नहीं खाता (जैसे CSS चुना है लेकिन आपने JSX पेस्ट किया) — एरर मैसेज diff के ऊपर एक लाल पट्टी में दिखता है। पार्सर को अपने कोड के अनुसार बदलें और एरर हट जाएगा।"
+			},
+			{
+				"question": "क्या मैं अपने config को JavaScript के अलावा अन्य भाषाओं के विरुद्ध preview कर सकता हूँ?",
+				"answer": "हाँ। Preview tab में diff toggle के बगल में अपना खुद का parser dropdown है, और हर parser के साथ एक विशेष रूप से बनाया गया नमूना आता है — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL, साथ ही TypeScript / JS। parser बदलने पर संबंधित नमूना आपके मौजूदा विकल्पों के अनुसार पुनः फ़ॉर्मेट होता है, जिससे proseWrap, htmlWhitespaceSensitivity, और vueIndentScriptAndStyle जैसे भाषा-विशिष्ट विकल्पों को अपना प्रभाव दिखाने का स्थान मिलता है। आपका चयन रीलोड के बाद भी बना रहता है।"
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "कोई भी Prettier 3.x रिलीज़ चुनें (3.0 – 3.6 और latest)। उस संस्करण के सटीक विकल्प मांग पर jsDelivr से लोड होते हैं।"
 				},
 				{
-					"title": "मल्टी-पार्सर ऑटो-डिटेक्ट",
-					"description": "TypeScript, CSS, HTML, JSON, Markdown, YAML और बहुत कुछ पेस्ट करें — सही पार्सर अपने आप पहचाना जाता है, और ज़रूरत पड़ने पर ड्रॉपडाउन से ओवरराइड कर सकते हैं।"
+					"title": "सभी भाषाएँ, दोनों tab",
+					"description": "Preview प्रत्येक parser के लिए एक विशेष रूप से बनाया गया नमूना देता है (TS, CSS, HTML, JSON/JSON5/JSONC, Markdown, YAML, Vue, GraphQL, और बहुत कुछ) ताकि हर Prettier विकल्प को अपना प्रभाव दिखाने का स्थान मिले। Your Code आपके पेस्ट किए गए कोड से parser को अपने आप पहचानता है, और मैन्युअल override की सुविधा भी देता है।"
 				},
 				{
 					"title": "असली कोड एडिटर",

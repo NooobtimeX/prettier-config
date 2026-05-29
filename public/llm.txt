@@ -26,7 +26,7 @@ https://prettier-config.dev/
 
 | Path               | Description                                                       |
 |--------------------|-------------------------------------------------------------------|
-| /{locale}          | Main config generator — interactive Prettier option selector with three tabs: Config (the generated .prettierrc), Preview (a built-in sample formatted under the current config), and Your Code (paste your own code and see the diff). |
+| /{locale}          | Main config generator — interactive Prettier option selector with three tabs: Config (the generated .prettierrc), Preview (one purpose-built mis-formatted sample per language — TS, CSS, HTML, JSON, Markdown, YAML, Vue, GraphQL, and more — re-formatted under the current config, with a parser dropdown to switch between them), and Your Code (paste your own code and see the diff). |
 | /{locale}/faq      | 26 Q&A covering Prettier basics, usage, supported versions and languages, shareable URLs, token counting, and persistence. |
 | /{locale}/about    | Tool overview, 9 feature cards, full tech stack, open source info, creator. |
 
@@ -94,9 +94,13 @@ version is selected, because the form is derived from each version's actual
 
 - Multi-version Prettier picker — every 3.x release from 3.0 to 3.6 plus
   "latest", loaded on demand from jsDelivr so switching is instant.
-- Multi-parser auto-detect — paste TypeScript, CSS, HTML, JSON, Markdown,
-  YAML, or other supported languages and the right parser is selected
-  automatically, with manual override.
+- Multi-parser, both tabs — Your Code auto-detects the parser from the
+  pasted input (TypeScript, CSS, HTML, JSON, Markdown, YAML, Vue, GraphQL,
+  and more) with manual override; Preview has its own parser dropdown
+  and a purpose-built sample per language so every Prettier option —
+  including language-specific ones like proseWrap (Markdown),
+  htmlWhitespaceSensitivity (HTML), and vueIndentScriptAndStyle (Vue) —
+  has somewhere to demonstrate its effect.
 - Real code editor — CodeMirror 6 with syntax highlighting, line numbers,
   tab-key indent, and a theme that follows light/dark mode.
 - Shareable configurations — Click Share and version, options, code, and
@@ -137,6 +141,9 @@ A: Every 3.x release from 3.0 through 3.6, plus "latest". The selected version's
 
 Q: Which languages can I format in the Your Code tab?
 A: TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, Angular templates, JSON, JSON5, JSON with comments, Markdown, MDX, YAML, and GraphQL. The parser is auto-detected and can be overridden.
+
+Q: Can I preview my config against languages other than JavaScript?
+A: Yes. The Preview tab has its own parser dropdown with a purpose-built sample per parser — TS, CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL. Switching parsers re-formats the sample under your current options, so language-specific options have a place to demonstrate their effect. Your choice persists across reloads.
 
 Q: How does the shareable URL work?
 A: Version, options, code, and parser are LZ-compressed into the URL hash. Send the URL anywhere; recipients see the exact same configuration. Everything stays in the browser — no server is involved.

@@ -230,6 +230,10 @@
 			{
 				"question": "Perché a volte appare la striscia di errore di formato?",
 				"answer": "Quando il parser di Prettier non riesce ad analizzare il tuo input — di solito perché il parser scelto non corrisponde al codice (ad esempio CSS scelto ma hai incollato JSX) — il messaggio di errore appare in una striscia rossa sopra il diff. Cambia il parser per farlo corrispondere al tuo codice e l'errore scompare."
+			},
+			{
+				"question": "Posso visualizzare l'anteprima della mia configurazione con linguaggi diversi da JavaScript?",
+				"answer": "Sì. La tab Preview ha un proprio dropdown di parser accanto al toggle del diff, e ogni parser è accompagnato da un esempio creato apposta — CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL, oltre a TypeScript / JS. Cambiare parser ri-formatta l'esempio corrispondente con le tue opzioni attuali, così opzioni specifiche del linguaggio come proseWrap, htmlWhitespaceSensitivity e vueIndentScriptAndStyle hanno un posto dove dimostrare il proprio effetto. La tua scelta persiste tra i ricaricamenti."
 			}
 		]
 	},
@@ -255,8 +259,8 @@
 					"description": "Scegli qualsiasi versione 3.x di Prettier (3.0 – 3.6 e latest). Le opzioni esatte per quella versione vengono caricate a richiesta da jsDelivr."
 				},
 				{
-					"title": "Rilevamento automatico multi-parser",
-					"description": "Incolla TypeScript, CSS, HTML, JSON, Markdown, YAML e altro — il parser corretto viene rilevato automaticamente, con un menu a tendina di override se ne hai bisogno."
+					"title": "Tutti i linguaggi, entrambe le tab",
+					"description": "L'anteprima include un esempio creato apposta per ogni parser (TS, CSS, HTML, JSON/JSON5/JSONC, Markdown, YAML, Vue, GraphQL e altri) così ogni opzione di Prettier ha un posto dove mostrare il proprio effetto. Il tuo Codice rileva automaticamente il parser dal contenuto incollato, con override manuale."
 				},
 				{
 					"title": "Vero editor di codice",

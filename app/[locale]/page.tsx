@@ -9,7 +9,10 @@ import { PrettierPanel } from '@/components/PrettierPanel';
 import { DEFAULT_PRETTIER_VERSION, VersionPicker } from '@/components/VersionPicker';
 import { usePersistedConfig } from '@/hooks/usePersistedConfig';
 import { usePrettierVersion } from '@/hooks/usePrettierVersion';
+import { useShareableUrl } from '@/hooks/useShareableUrl';
+import { toast } from 'sonner';
 import { RotateCcw, FilePlus, Loader2 } from 'lucide-react';
+import type { ParserId } from '@/lib/parsers';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import {
 	AlertDialog,
@@ -55,6 +58,25 @@ export default function HomePage() {
 	const [openResetTooltip, setOpenResetTooltip] = useState(false);
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
+	const [userCode, setUserCode] = useState('');
+	const [parserOverride, setParserOverride] = useState<ParserId | null>(null);
+
+	// Bidirectional URL hash sync — shareable links seed state on first load,
+	// then every relevant change is mirrored to the hash.
+	const { share } = useShareableUrl(
+		{ version, selected, code: userCode, parserOverride },
+		{
+			setVersion,
+			setSelected: (s) => setSelected(s as SelectedOptions),
+			setCode: setUserCode,
+			setParserOverride,
+		},
+	);
+
+	const handleShare = async () => {
+		const url = await share();
+		if (url) toast.success('Shareable URL copied to clipboard');
+	};
 
 	// Keys valid in the currently-loaded Prettier version. Selections for keys
 	// that don't exist in this version (e.g. after switching from 3.5 down to 3.0)
@@ -243,6 +265,11 @@ export default function HomePage() {
 							hasConfig={hasSelectedOptions}
 							selectedOptions={selected}
 							format={format}
+							userCode={userCode}
+							onUserCodeChange={setUserCode}
+							parserOverride={parserOverride}
+							onParserOverrideChange={setParserOverride}
+							onShare={handleShare}
 						/>
 					</ResizablePanel>
 				</ResizablePanelGroup>
@@ -312,6 +339,11 @@ export default function HomePage() {
 				onClose={() => setShowConfig(false)}
 				selectedOptions={selected}
 				format={format}
+				userCode={userCode}
+				onUserCodeChange={setUserCode}
+				parserOverride={parserOverride}
+				onParserOverrideChange={setParserOverride}
+				onShare={handleShare}
 			/>
 
 			<AlertDialog

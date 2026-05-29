@@ -1,7 +1,7 @@
 /**
  * Dynamically loads `prettier/standalone` plus every parser plugin for an
  * arbitrary Prettier version from jsDelivr, and exposes:
- *   - `format()` — version-bound formatter (JS only, via babel + estree).
+ *   - `format()` — version-bound formatter that switches plugins per parser.
  *   - `supportInfo` — the result of `getSupportInfo({ plugins })` so the UI
  *     can build its form from the version's actual option schema, including
  *     language-specific options registered by parser plugins.
@@ -9,6 +9,9 @@
  * Modules are cached per version so toggling the picker back and forth doesn't
  * re-download.
  */
+
+import type { ParserId } from './parsers';
+import { DEFAULT_PARSER } from './parsers';
 
 export type PrettierChoice = {
 	value: unknown;
@@ -32,7 +35,16 @@ export type PrettierSupportInfo = {
 	options: PrettierSupportOption[];
 };
 
-export type FormatFn = (code: string, selectedOptions: Record<string, unknown>) => Promise<string>;
+export type FormatResult = {
+	code: string;
+	error: string | null;
+};
+
+export type FormatFn = (
+	code: string,
+	selectedOptions: Record<string, unknown>,
+	parser?: ParserId,
+) => Promise<FormatResult>;
 
 export type LoadedPrettier = {
 	version: string;
@@ -43,13 +55,9 @@ export type LoadedPrettier = {
 const cache = new Map<string, Promise<LoadedPrettier>>();
 
 /**
- * Plugins to fetch alongside `standalone.mjs` so that `getSupportInfo()` returns
- * the language-specific options (singleQuote, trailingComma, proseWrap, …) in
- * addition to the always-present global ones. These plugins register their
- * option definitions on import.
- *
- * Note: actual formatting still uses just babel + estree (see `format` below).
- * The extra plugins exist only so the UI knows about non-JS options.
+ * Plugins to fetch alongside `standalone.mjs`. The first entry of each
+ * `PARSER_PLUGIN_FILES` tuple drives `format()`; the full list goes into
+ * `getSupportInfo` so the UI knows about every language-specific option.
  */
 const PLUGIN_FILES = [
 	'babel.mjs',
@@ -67,6 +75,28 @@ const PLUGIN_FILES = [
 	'meriyah.mjs',
 ] as const;
 
+type PluginFile = (typeof PLUGIN_FILES)[number];
+
+/** Which plugin files each Prettier parser needs at format time. */
+const PARSER_PLUGINS: Record<ParserId, readonly PluginFile[]> = {
+	babel: ['babel.mjs', 'estree.mjs'],
+	typescript: ['typescript.mjs', 'estree.mjs'],
+	flow: ['flow.mjs', 'estree.mjs'],
+	css: ['postcss.mjs'],
+	scss: ['postcss.mjs'],
+	less: ['postcss.mjs'],
+	html: ['html.mjs'],
+	vue: ['html.mjs'],
+	angular: ['html.mjs', 'angular.mjs'],
+	json: ['babel.mjs', 'estree.mjs'],
+	json5: ['babel.mjs', 'estree.mjs'],
+	jsonc: ['babel.mjs', 'estree.mjs'],
+	markdown: ['markdown.mjs'],
+	mdx: ['markdown.mjs'],
+	yaml: ['yaml.mjs'],
+	graphql: ['graphql.mjs'],
+};
+
 /**
  * Native dynamic `import()` wrapped in a `Function` constructor so bundlers
  * (Webpack/Turbopack) don't try to statically resolve the URL.
@@ -82,6 +112,24 @@ function unwrapDefault(mod: Record<string, unknown>): unknown {
 function resolveVersionPath(version: string): string {
 	// 'latest' → let jsDelivr resolve the latest Prettier 3.x release.
 	return version === 'latest' ? '3' : version;
+}
+
+/**
+ * Extract a one-line, location-aware message from Prettier's thrown errors.
+ * Prettier's `SyntaxError` shape is `{ message, loc?: { start: { line, column } } }`.
+ */
+function formatPrettierError(err: unknown): string {
+	if (err instanceof Error) {
+		const loc = (err as { loc?: { start?: { line?: number; column?: number } } }).loc;
+		const line = loc?.start?.line;
+		const col = loc?.start?.column;
+		const base = err.message.split('\n')[0];
+		if (line != null && col != null && !/\(\d+:\d+\)/.test(base)) {
+			return `${base} (${line}:${col})`;
+		}
+		return base;
+	}
+	return String(err);
 }
 
 export function loadPrettier(version: string): Promise<LoadedPrettier> {
@@ -103,8 +151,8 @@ export function loadPrettier(version: string): Promise<LoadedPrettier> {
 		};
 
 		const allPlugins = pluginMods.map(unwrapDefault);
-		// babel.mjs and estree.mjs are the first two entries in PLUGIN_FILES.
-		const [babelPlugin, estreePlugin] = allPlugins;
+		const pluginByFile = new Map<PluginFile, unknown>();
+		PLUGIN_FILES.forEach((file, i) => pluginByFile.set(file, allPlugins[i]));
 
 		// Pass every plugin to getSupportInfo so language-specific options
 		// (singleQuote, proseWrap, htmlWhitespaceSensitivity, …) are included.
@@ -112,22 +160,23 @@ export function loadPrettier(version: string): Promise<LoadedPrettier> {
 			prettier.getSupportInfo({ plugins: allPlugins }),
 		)) as PrettierSupportInfo;
 
-		const format: FormatFn = async (code, selected) => {
-			if (!code.trim()) return code;
+		const format: FormatFn = async (code, selected, parser = DEFAULT_PARSER) => {
+			if (!code.trim()) return { code, error: null };
+			const pluginFiles = PARSER_PLUGINS[parser] ?? PARSER_PLUGINS[DEFAULT_PARSER];
+			const plugins = pluginFiles
+				.map((file) => pluginByFile.get(file))
+				.filter((p): p is unknown => p !== undefined);
+			const filtered: Record<string, unknown> = {};
+			for (const [k, v] of Object.entries(selected)) {
+				if (k === 'parser' || k === 'plugins') continue;
+				if (v === null || v === '' || (Array.isArray(v) && v.length === 0)) continue;
+				filtered[k] = v;
+			}
 			try {
-				const filtered: Record<string, unknown> = {};
-				for (const [k, v] of Object.entries(selected)) {
-					if (k === 'parser' || k === 'plugins') continue;
-					if (v === null || v === '' || (Array.isArray(v) && v.length === 0)) continue;
-					filtered[k] = v;
-				}
-				return await prettier.format(code, {
-					...filtered,
-					parser: 'babel',
-					plugins: [babelPlugin, estreePlugin],
-				});
-			} catch {
-				return code;
+				const out = await prettier.format(code, { ...filtered, parser, plugins });
+				return { code: out, error: null };
+			} catch (err) {
+				return { code, error: formatPrettierError(err) };
 			}
 		};
 

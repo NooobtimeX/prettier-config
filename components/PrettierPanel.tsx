@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -13,6 +14,7 @@ import {
 	Play,
 	Code2,
 	Loader2,
+	Share2,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -20,9 +22,22 @@ import { sortConfig, type SortOrder } from '@/lib/sortConfig';
 import { useTranslations } from 'next-intl';
 import { DEFAULT_SAMPLE } from '@/lib/sample';
 import type { FormatFn } from '@/lib/prettierLoader';
+import { detectParser, DEFAULT_PARSER, type ParserId } from '@/lib/parsers';
 import { CodeDiff } from '@/components/CodeDiff';
 import { DiffViewToggle } from '@/components/DiffViewToggle';
+import { FormatError } from '@/components/FormatError';
+import { ParserPicker } from '@/components/ParserPicker';
 import { useDiffSettings } from '@/hooks/useDiffSettings';
+
+const CodeEditor = dynamic(() => import('@/components/CodeEditor'), {
+	ssr: false,
+	loading: () => (
+		<div className="bg-muted/30 text-muted-foreground flex h-48 items-center justify-center rounded-md border text-xs">
+			<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+			Loading editor…
+		</div>
+	),
+});
 
 type ViewMode = 'config' | 'preview' | 'yourcode';
 
@@ -37,6 +52,14 @@ interface PrettierPanelProps {
 	selectedOptions: Record<string, unknown>;
 	/** Version-bound formatter from the active `prettier/standalone` bundle. */
 	format: FormatFn;
+	/** Optional controlled user code (lifted for share-URL syncing). */
+	userCode?: string;
+	onUserCodeChange?: (code: string) => void;
+	/** Optional controlled parser override (`null` = auto-detect). */
+	parserOverride?: ParserId | null;
+	onParserOverrideChange?: (parser: ParserId | null) => void;
+	/** Optional Share button handler — when provided, a Share button appears in the header. */
+	onShare?: () => void;
 }
 
 export function PrettierPanel({
@@ -45,28 +68,47 @@ export function PrettierPanel({
 	hasConfig,
 	selectedOptions,
 	format,
+	userCode: userCodeProp,
+	onUserCodeChange,
+	parserOverride: parserOverrideProp,
+	onParserOverrideChange,
+	onShare,
 }: PrettierPanelProps) {
 	const t = useTranslations('Page.ConfigAside');
 	const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
 	const [viewMode, setViewMode] = useState<ViewMode>('config');
-	const [userCode, setUserCode] = useState('');
+	const [userCodeLocal, setUserCodeLocal] = useState('');
+	const userCode = userCodeProp ?? userCodeLocal;
+	const setUserCode = onUserCodeChange ?? setUserCodeLocal;
 	const [formattedPreview, setFormattedPreview] = useState('');
 	const [formattedUser, setFormattedUser] = useState('');
+	const [previewError, setPreviewError] = useState<string | null>(null);
+	const [userError, setUserError] = useState<string | null>(null);
 	const [isFormattingPreview, setIsFormattingPreview] = useState(false);
 	const [isFormattingUser, setIsFormattingUser] = useState(false);
+	// `null` = auto-detect from input; otherwise the user's manual override.
+	const [parserOverrideLocal, setParserOverrideLocal] = useState<ParserId | null>(null);
+	const parserOverride =
+		parserOverrideProp !== undefined ? parserOverrideProp : parserOverrideLocal;
+	const setParserOverride = onParserOverrideChange ?? setParserOverrideLocal;
+	const detectedParser = useMemo(() => detectParser(userCode), [userCode]);
+	const activeParser: ParserId = parserOverride ?? detectedParser;
 	const [diffSettings, updateDiffSettings] = useDiffSettings();
 
 	const displayConfig = useMemo(() => sortConfig(config, sortOrder), [config, sortOrder]);
 
 	// Format preview sample whenever options/version change or preview tab is active.
+	// The built-in sample is a JS/JSX blob — fix its parser to `typescript` so the
+	// full sample (incl. JSX) formats regardless of the user's Your-Code override.
 	useEffect(() => {
 		let cancelled = false;
 		void (async () => {
 			if (viewMode !== 'preview') return;
 			setIsFormattingPreview(true);
-			const result = await format(DEFAULT_SAMPLE, selectedOptions);
+			const result = await format(DEFAULT_SAMPLE, selectedOptions, DEFAULT_PARSER);
 			if (!cancelled) {
-				setFormattedPreview(result);
+				setFormattedPreview(result.code);
+				setPreviewError(result.error);
 				setIsFormattingPreview(false);
 			}
 		})();
@@ -75,25 +117,29 @@ export function PrettierPanel({
 		};
 	}, [selectedOptions, viewMode, format]);
 
-	// Format user code whenever user types or options/version change.
+	// Format user code whenever user types or options/version/parser change.
 	useEffect(() => {
 		let cancelled = false;
 		void (async () => {
 			if (viewMode !== 'yourcode' || !userCode.trim()) {
-				if (!cancelled) setFormattedUser('');
+				if (!cancelled) {
+					setFormattedUser('');
+					setUserError(null);
+				}
 				return;
 			}
 			setIsFormattingUser(true);
-			const result = await format(userCode, selectedOptions);
+			const result = await format(userCode, selectedOptions, activeParser);
 			if (!cancelled) {
-				setFormattedUser(result);
+				setFormattedUser(result.code);
+				setUserError(result.error);
 				setIsFormattingUser(false);
 			}
 		})();
 		return () => {
 			cancelled = true;
 		};
-	}, [userCode, selectedOptions, viewMode, format]);
+	}, [userCode, selectedOptions, viewMode, format, activeParser]);
 
 	const copyConfig = async () => {
 		if (displayConfig) {
@@ -144,11 +190,38 @@ export function PrettierPanel({
 							{t('yourCodeTab')}
 						</Button>
 					</div>
+					{viewMode === 'yourcode' && (
+						<ParserPicker
+							value={activeParser}
+							onChange={(p) => setParserOverride(p)}
+							autoDetected={parserOverride === null}
+						/>
+					)}
 					{viewMode !== 'config' && (
 						<DiffViewToggle
 							splitView={diffSettings.splitView}
 							onChange={(splitView) => updateDiffSettings({ splitView })}
 						/>
+					)}
+					{onShare && (
+						<TooltipProvider>
+							<Tooltip>
+								<TooltipTrigger
+									render={
+										<Button
+											variant="secondary"
+											size="icon"
+											className="h-7 w-7"
+											onClick={onShare}
+											aria-label="Copy shareable URL"
+										>
+											<Share2 className="h-3.5 w-3.5" />
+										</Button>
+									}
+								/>
+								<TooltipContent>Copy shareable URL</TooltipContent>
+							</Tooltip>
+						</TooltipProvider>
 					)}
 				</div>
 			</div>
@@ -252,6 +325,7 @@ export function PrettierPanel({
 			{viewMode === 'preview' && (
 				<div className="flex min-h-0 flex-1 flex-col overflow-auto">
 					<div className="min-h-0 flex-1 overflow-auto p-2">
+						{previewError && <FormatError message={previewError} />}
 						{isFormattingPreview || !formattedPreview ? (
 							<div className="text-muted-foreground flex items-center gap-2 py-4 text-sm">
 								<Loader2 className="h-4 w-4 animate-spin" />
@@ -290,14 +364,15 @@ export function PrettierPanel({
 						{/* Input */}
 						<div>
 							<p className="text-muted-foreground mb-1 text-xs font-medium">{t('pastePrompt')}</p>
-							<textarea
-								className="bg-background focus:ring-ring w-full resize-none rounded-md border p-2 font-mono text-xs focus:ring-1 focus:outline-none"
-								rows={8}
-								placeholder="// Paste your JS / TS code here…"
+							<CodeEditor
 								value={userCode}
-								onChange={(e) => setUserCode(e.target.value)}
+								onChange={setUserCode}
+								parser={activeParser}
+								placeholder="// Paste your code here…"
 							/>
 						</div>
+
+						{userError && <FormatError message={userError} />}
 
 						{/* Diff */}
 						{(userCode.trim() || isFormattingUser) && (

@@ -21,7 +21,7 @@ type Loaded = {
 	error: Error | null;
 };
 
-const passthroughFormat: FormatFn = async (code) => code;
+const passthroughFormat: FormatFn = async (code) => ({ code, error: null });
 
 const initialLoaded: Loaded = {
 	version: '',

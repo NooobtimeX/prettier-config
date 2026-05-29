@@ -115,6 +115,21 @@
 			"title": "Formatierungsfehler",
 			"prettierLoadFailed": "Prettier {version} konnte nicht geladen werden",
 			"networkTip": "Überprüfen Sie Ihre Netzwerkverbindung und probieren Sie eine andere Version."
+		},
+		"import": {
+			"button": "Importieren",
+			"ariaLabel": "Bestehende Prettier-Konfiguration importieren",
+			"dialogTitle": "Prettier-Konfiguration importieren",
+			"intro": "Fügen Sie eine .prettierrc, den prettier-Schlüssel aus einer package.json oder einen prettier.config.js-Modulexport ein.",
+			"placeholder": "// Fügen Sie Ihre Konfiguration hier ein…",
+			"parseButton": "Parsen",
+			"applyButton": "Auf Formular anwenden",
+			"cancelButton": "Abbrechen",
+			"success": "{applied} Optionen importiert. {ignored} ignoriert. {preserved} nicht editierbare beibehalten.",
+			"appliedListLabel": "Angewendete Optionen",
+			"ignoredListLabel": "Ignoriert",
+			"preservedListLabel": "Beibehalten (in der Ausgabe behalten)",
+			"errorTitle": "Konfiguration konnte nicht geparst werden"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "Funktionen",
 			"items": [
+				{
+					"title": "Bestehende Konfiguration übernehmen",
+					"description": "Fügen Sie eine vorhandene .prettierrc, prettier.config.js oder den prettier-Schlüssel aus package.json ein — das Formular füllt sich passend aus. Anpassen, teilen oder kopieren, alle Schlüssel bleiben erhalten."
+				},
 				{
 					"title": "Jede Prettier-Version",
 					"description": "Wählen Sie jede Prettier-3.x-Version (3.0 – 3.6 und latest). Die exakten Optionen für diese Version werden bei Bedarf von jsDelivr geladen."

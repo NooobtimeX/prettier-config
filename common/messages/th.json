@@ -115,6 +115,21 @@
 			"title": "ข้อผิดพลาดในการจัดรูปแบบ",
 			"prettierLoadFailed": "โหลด Prettier {version} ไม่สำเร็จ",
 			"networkTip": "ตรวจสอบการเชื่อมต่อเครือข่ายของคุณและลองเวอร์ชันอื่น"
+		},
+		"import": {
+			"button": "นำเข้า",
+			"ariaLabel": "นำเข้าไฟล์คอนฟิก Prettier ที่มีอยู่",
+			"dialogTitle": "นำเข้าคอนฟิก Prettier",
+			"intro": "วาง .prettierrc คีย์ prettier จาก package.json หรือโมดูล prettier.config.js",
+			"placeholder": "// วางคอนฟิกของคุณที่นี่…",
+			"parseButton": "แยกวิเคราะห์",
+			"applyButton": "นำไปใช้กับฟอร์ม",
+			"cancelButton": "ยกเลิก",
+			"success": "นำเข้า {applied} ตัวเลือกแล้ว ข้าม {ignored} เก็บไว้ {preserved} ตัวเลือกที่แก้ไขไม่ได้",
+			"appliedListLabel": "ตัวเลือกที่นำไปใช้",
+			"ignoredListLabel": "ข้าม",
+			"preservedListLabel": "เก็บไว้ (คงอยู่ในผลลัพธ์)",
+			"errorTitle": "ไม่สามารถแยกวิเคราะห์คอนฟิกได้"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "ฟีเจอร์",
 			"items": [
+				{
+					"title": "นำเข้าคอนฟิกที่มีอยู่ของคุณ",
+					"description": "วาง .prettierrc, prettier.config.js หรือคีย์ prettier จาก package.json ที่มีอยู่ — ฟอร์มจะตั้งค่าให้ตรงกันทันที ปรับแต่ง แชร์ หรือคัดลอกออก โดยรักษาทุกคีย์ไว้ครบถ้วน"
+				},
 				{
 					"title": "ทุกเวอร์ชันของ Prettier",
 					"description": "เลือก Prettier 3.x รุ่นใดก็ได้ (3.0 – 3.6 และ latest) ตัวเลือกที่ตรงกับเวอร์ชันนั้นจะถูกโหลดตามต้องการจาก jsDelivr"

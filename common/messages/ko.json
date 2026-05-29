@@ -115,6 +115,21 @@
 			"title": "포맷 오류",
 			"prettierLoadFailed": "Prettier {version} 로드 실패",
 			"networkTip": "네트워크 연결을 확인한 후 다른 버전을 시도해 보세요."
+		},
+		"import": {
+			"button": "가져오기",
+			"ariaLabel": "기존 Prettier 설정 가져오기",
+			"dialogTitle": "Prettier 설정 가져오기",
+			"intro": ".prettierrc, package.json의 prettier 키, 또는 prettier.config.js 모듈 내보내기를 붙여넣으세요.",
+			"placeholder": "// 여기에 설정을 붙여넣으세요…",
+			"parseButton": "분석",
+			"applyButton": "양식에 적용",
+			"cancelButton": "취소",
+			"success": "{applied}개 옵션을 가져왔습니다. {ignored}개를 무시했습니다. {preserved}개의 편집 불가 항목을 보존했습니다.",
+			"appliedListLabel": "적용된 옵션",
+			"ignoredListLabel": "무시됨",
+			"preservedListLabel": "보존됨 (출력에 유지됨)",
+			"errorTitle": "설정을 분석할 수 없습니다"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "기능",
 			"items": [
+				{
+					"title": "기존 구성 가져오기",
+					"description": "기존 .prettierrc, prettier.config.js, 또는 package.json의 prettier 키를 붙여넣으면 폼이 일치하도록 자동 입력됩니다. 조정, 공유, 또는 복사하여 내보낼 때 모든 키가 보존됩니다."
+				},
 				{
 					"title": "모든 Prettier 버전",
 					"description": "Prettier 3.x 릴리스를 모두 선택할 수 있습니다(3.0 – 3.6 및 latest). 해당 버전의 정확한 옵션이 jsDelivr에서 필요할 때 로드됩니다."

@@ -115,6 +115,21 @@
 			"title": "Kesalahan format",
 			"prettierLoadFailed": "Gagal memuat Prettier {version}",
 			"networkTip": "Periksa koneksi jaringan Anda dan coba versi lain."
+		},
+		"import": {
+			"button": "Impor",
+			"ariaLabel": "Impor konfigurasi Prettier yang sudah ada",
+			"dialogTitle": "Impor konfigurasi Prettier",
+			"intro": "Tempel .prettierrc, kunci prettier dari package.json, atau ekspor modul prettier.config.js.",
+			"placeholder": "// Tempel konfigurasi Anda di sini…",
+			"parseButton": "Parse",
+			"applyButton": "Terapkan ke formulir",
+			"cancelButton": "Batal",
+			"success": "Mengimpor {applied} opsi. Mengabaikan {ignored}. Mempertahankan {preserved} yang tidak dapat diedit.",
+			"appliedListLabel": "Opsi yang diterapkan",
+			"ignoredListLabel": "Diabaikan",
+			"preservedListLabel": "Dipertahankan (disimpan di output)",
+			"errorTitle": "Tidak dapat mengurai konfigurasi"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "Fitur",
 			"items": [
+				{
+					"title": "Impor Konfigurasi yang Sudah Ada",
+					"description": "Tempel .prettierrc, prettier.config.js, atau key prettier dari package.json yang sudah ada — formulir akan terisi sesuai. Ubah, bagikan, atau salin keluar, semua key tetap utuh."
+				},
 				{
 					"title": "Setiap Versi Prettier",
 					"description": "Pilih rilis Prettier 3.x apa pun (3.0 – 3.6 dan terbaru). Opsi yang tepat untuk versi itu dimuat sesuai permintaan dari jsDelivr."

@@ -115,6 +115,21 @@
 			"title": "Lỗi định dạng",
 			"prettierLoadFailed": "Không thể tải Prettier {version}",
 			"networkTip": "Kiểm tra kết nối mạng và thử một phiên bản khác."
+		},
+		"import": {
+			"button": "Nhập",
+			"ariaLabel": "Nhập cấu hình Prettier hiện có",
+			"dialogTitle": "Nhập cấu hình Prettier",
+			"intro": "Dán nội dung .prettierrc, khóa prettier từ package.json, hoặc module export của prettier.config.js.",
+			"placeholder": "// Dán cấu hình của bạn vào đây…",
+			"parseButton": "Phân tích",
+			"applyButton": "Áp dụng vào biểu mẫu",
+			"cancelButton": "Hủy",
+			"success": "Đã nhập {applied} tùy chọn. Bỏ qua {ignored}. Giữ nguyên {preserved} không thể chỉnh sửa.",
+			"appliedListLabel": "Tùy chọn đã áp dụng",
+			"ignoredListLabel": "Đã bỏ qua",
+			"preservedListLabel": "Đã giữ nguyên (giữ trong kết quả)",
+			"errorTitle": "Không thể phân tích cấu hình"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "Tính năng",
 			"items": [
+				{
+					"title": "Nhập cấu hình hiện có của bạn",
+					"description": "Dán một .prettierrc, prettier.config.js, hoặc key prettier từ package.json hiện có — biểu mẫu sẽ tự điền cho khớp. Tinh chỉnh, chia sẻ hoặc sao chép ra, mọi key đều được giữ nguyên."
+				},
 				{
 					"title": "Mọi phiên bản Prettier",
 					"description": "Chọn bất kỳ bản phát hành Prettier 3.x nào (3.0 – 3.6 và latest). Các tùy chọn chính xác cho phiên bản đó được tải theo yêu cầu từ jsDelivr."

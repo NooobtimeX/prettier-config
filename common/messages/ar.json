@@ -115,6 +115,21 @@
 			"title": "خطأ في التنسيق",
 			"prettierLoadFailed": "فشل تحميل Prettier {version}",
 			"networkTip": "تحقق من اتصال الشبكة وجرب إصدارًا آخر."
+		},
+		"import": {
+			"button": "استيراد",
+			"ariaLabel": "استيراد إعدادات Prettier موجودة",
+			"dialogTitle": "استيراد إعدادات Prettier",
+			"intro": "الصق ملف .prettierrc، أو مفتاح prettier من package.json، أو تصدير وحدة prettier.config.js.",
+			"placeholder": "// الصق إعداداتك هنا…",
+			"parseButton": "تحليل",
+			"applyButton": "تطبيق على النموذج",
+			"cancelButton": "إلغاء",
+			"success": "تم استيراد {applied} من الخيارات. تم تجاهل {ignored}. تم الحفاظ على {preserved} غير قابلة للتعديل.",
+			"appliedListLabel": "الخيارات المطبقة",
+			"ignoredListLabel": "المتجاهلة",
+			"preservedListLabel": "المحفوظة (تبقى في الإخراج)",
+			"errorTitle": "تعذر تحليل الإعدادات"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "الميزات",
 			"items": [
+				{
+					"title": "استيراد الإعدادات الحالية الخاصة بك",
+					"description": "الصق ملف .prettierrc أو prettier.config.js موجود، أو مفتاح prettier من package.json — وسيتم ملء النموذج تلقائياً ليطابقه. عدّل، شارك، أو انسخه، مع الحفاظ على جميع المفاتيح."
+				},
 				{
 					"title": "كل إصدارات Prettier",
 					"description": "اختر أي إصدار من Prettier 3.x (من 3.0 إلى 3.6 وأحدث إصدار). يتم تحميل الخيارات الدقيقة لهذا الإصدار عند الطلب من jsDelivr."

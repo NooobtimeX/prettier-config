@@ -115,6 +115,21 @@
 			"title": "Ошибка форматирования",
 			"prettierLoadFailed": "Не удалось загрузить Prettier {version}",
 			"networkTip": "Проверьте подключение к сети и попробуйте другую версию."
+		},
+		"import": {
+			"button": "Импорт",
+			"ariaLabel": "Импортировать существующую конфигурацию Prettier",
+			"dialogTitle": "Импортировать конфигурацию Prettier",
+			"intro": "Вставьте .prettierrc, ключ prettier из package.json или экспорт модуля prettier.config.js.",
+			"placeholder": "// Вставьте вашу конфигурацию сюда…",
+			"parseButton": "Разобрать",
+			"applyButton": "Применить к форме",
+			"cancelButton": "Отмена",
+			"success": "Импортировано {applied} опций. Пропущено {ignored}. Сохранено {preserved} нередактируемых.",
+			"appliedListLabel": "Применённые опции",
+			"ignoredListLabel": "Пропущенные",
+			"preservedListLabel": "Сохранённые (оставлены в выводе)",
+			"errorTitle": "Не удалось разобрать конфигурацию"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "Возможности",
 			"items": [
+				{
+					"title": "Импорт существующей конфигурации",
+					"description": "Вставьте существующий .prettierrc, prettier.config.js или ключ prettier из package.json — форма заполнится соответствующим образом. Настраивайте, делитесь или копируйте обратно — все ключи сохранятся."
+				},
 				{
 					"title": "Любая версия Prettier",
 					"description": "Выберите любой релиз Prettier 3.x (3.0 – 3.6 и latest). Точные опции для этой версии загружаются по требованию с jsDelivr."

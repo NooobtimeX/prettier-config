@@ -115,6 +115,21 @@
 			"title": "Format error",
 			"prettierLoadFailed": "Failed to load Prettier {version}",
 			"networkTip": "Check your network connection and try another version."
+		},
+		"import": {
+			"button": "Import",
+			"ariaLabel": "Import existing Prettier config",
+			"dialogTitle": "Import a Prettier config",
+			"intro": "Paste a .prettierrc, the prettier key from a package.json, or a prettier.config.js module export.",
+			"placeholder": "// Paste your config here…",
+			"parseButton": "Parse",
+			"applyButton": "Apply to form",
+			"cancelButton": "Cancel",
+			"success": "Imported {applied} options. Ignored {ignored}. Preserved {preserved} non-editable.",
+			"appliedListLabel": "Applied options",
+			"ignoredListLabel": "Ignored",
+			"preservedListLabel": "Preserved (kept in output)",
+			"errorTitle": "Couldn't parse the config"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "Features",
 			"items": [
+				{
+					"title": "Round-Trip Your Existing Config",
+					"description": "Paste an existing .prettierrc, prettier.config.js, or the prettier key from package.json — the form populates to match. Tweak, share, or copy out, all keys preserved."
+				},
 				{
 					"title": "Every Prettier Version",
 					"description": "Pick any Prettier 3.x release (3.0 – 3.6 and latest). The exact options for that version load on demand from jsDelivr."

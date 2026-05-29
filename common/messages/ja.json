@@ -115,6 +115,21 @@
 			"title": "フォーマットエラー",
 			"prettierLoadFailed": "Prettier {version}の読み込みに失敗しました",
 			"networkTip": "ネットワーク接続を確認して、別のバージョンを試してください。"
+		},
+		"import": {
+			"button": "インポート",
+			"ariaLabel": "既存の Prettier 設定をインポート",
+			"dialogTitle": "Prettier 設定をインポート",
+			"intro": ".prettierrc、package.json の prettier キー、または prettier.config.js のモジュールエクスポートを貼り付けてください。",
+			"placeholder": "// ここに設定を貼り付けてください…",
+			"parseButton": "解析",
+			"applyButton": "フォームに適用",
+			"cancelButton": "キャンセル",
+			"success": "{applied} 個のオプションをインポートしました。{ignored} 個を無視。{preserved} 個の編集不可項目を保持しました。",
+			"appliedListLabel": "適用されたオプション",
+			"ignoredListLabel": "無視されたもの",
+			"preservedListLabel": "保持されたもの（出力に保存）",
+			"errorTitle": "設定を解析できませんでした"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "機能",
 			"items": [
+				{
+					"title": "既存の設定をインポート",
+					"description": "既存の .prettierrc、prettier.config.js、または package.json の prettier キーを貼り付けると、フォームが一致するように自動入力されます。調整、共有、またはコピーアウトしても、すべてのキーが保持されます。"
+				},
 				{
 					"title": "すべてのPrettierバージョン",
 					"description": "Prettier 3.xの任意のリリース（3.0〜3.6およびlatest）を選択できます。そのバージョンの正確なオプションがjsDelivrからオンデマンドで読み込まれます。"

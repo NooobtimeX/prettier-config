@@ -96,6 +96,11 @@ version is selected, because the form is derived from each version's actual
 
 - Multi-version Prettier picker — every 3.x release from 3.0 to 3.6 plus
   "latest", loaded on demand from jsDelivr so switching is instant.
+- Round-trip your existing config — paste a `.prettierrc` (JSON, JSON5, or
+  JSONC), a `prettier.config.js` module export, or the `prettier` key from a
+  `package.json`, and the form populates to match. Unknown keys for the
+  selected Prettier version are surfaced in an "Ignored" list; structural
+  keys like `overrides` and `plugins` are preserved on copy-out.
 - Multi-parser, both tabs — Your Code auto-detects the parser from the
   pasted input (TypeScript, CSS, HTML, JSON, Markdown, YAML, Vue, GraphQL,
   and more) with manual override; Preview has its own parser dropdown
@@ -143,6 +148,9 @@ A: Every 3.x release from 3.0 through 3.6, plus "latest". The selected version's
 
 Q: Which languages can I format in the Your Code tab?
 A: TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, Angular templates, JSON, JSON5, JSON with comments, Markdown, MDX, YAML, and GraphQL. The parser is auto-detected and can be overridden.
+
+Q: Can I edit my existing .prettierrc on the site?
+A: Yes. Click the Import button (top-right of the options panel, or in the mobile FAB stack). Paste a `.prettierrc` (JSON / JSON5 / JSONC), a `prettier.config.js` module export, or your `package.json` (the tool detects the `prettier` key automatically). The form populates to match. Unknown keys for your selected Prettier version are listed under "Ignored"; structural keys like `overrides` and `plugins` are preserved verbatim so a copy-out round-trips them.
 
 Q: Can I preview my config against languages other than JavaScript?
 A: Yes. The Preview tab has its own parser dropdown with a purpose-built sample per parser — TS, CSS, SCSS, Less, HTML, Vue, Angular, JSON / JSON5 / JSONC, Markdown, MDX, YAML, GraphQL. Switching parsers re-formats the sample under your current options, so language-specific options have a place to demonstrate their effect. Your choice persists across reloads.

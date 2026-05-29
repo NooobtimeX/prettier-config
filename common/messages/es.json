@@ -115,6 +115,21 @@
 			"title": "Error de formato",
 			"prettierLoadFailed": "No se pudo cargar Prettier {version}",
 			"networkTip": "Verifica tu conexión de red y prueba con otra versión."
+		},
+		"import": {
+			"button": "Importar",
+			"ariaLabel": "Importar configuración existente de Prettier",
+			"dialogTitle": "Importar una configuración de Prettier",
+			"intro": "Pega un .prettierrc, la clave prettier de un package.json, o la exportación del módulo prettier.config.js.",
+			"placeholder": "// Pega tu configuración aquí…",
+			"parseButton": "Analizar",
+			"applyButton": "Aplicar al formulario",
+			"cancelButton": "Cancelar",
+			"success": "Se importaron {applied} opciones. Se ignoraron {ignored}. Se conservaron {preserved} no editables.",
+			"appliedListLabel": "Opciones aplicadas",
+			"ignoredListLabel": "Ignoradas",
+			"preservedListLabel": "Conservadas (mantenidas en la salida)",
+			"errorTitle": "No se pudo analizar la configuración"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "Características",
 			"items": [
+				{
+					"title": "Importa tu configuración existente",
+					"description": "Pega un .prettierrc, prettier.config.js o la clave prettier de package.json existente — el formulario se rellena para coincidir. Ajusta, comparte o cópialo, manteniendo todas las claves intactas."
+				},
 				{
 					"title": "Todas las versiones de Prettier",
 					"description": "Elige cualquier versión 3.x de Prettier (3.0 – 3.6 y latest). Las opciones exactas de esa versión se cargan bajo demanda desde jsDelivr."

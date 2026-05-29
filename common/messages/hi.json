@@ -115,6 +115,21 @@
 			"title": "फ़ॉर्मेट त्रुटि",
 			"prettierLoadFailed": "Prettier {version} लोड करने में विफल",
 			"networkTip": "अपना नेटवर्क कनेक्शन जाँचें और कोई अन्य संस्करण आज़माएँ।"
+		},
+		"import": {
+			"button": "आयात करें",
+			"ariaLabel": "मौजूदा Prettier कॉन्फ़िग आयात करें",
+			"dialogTitle": "Prettier कॉन्फ़िग आयात करें",
+			"intro": "एक .prettierrc, package.json की prettier कुंजी, या prettier.config.js मॉड्यूल एक्सपोर्ट पेस्ट करें।",
+			"placeholder": "// अपना कॉन्फ़िग यहाँ पेस्ट करें…",
+			"parseButton": "पार्स करें",
+			"applyButton": "फ़ॉर्म पर लागू करें",
+			"cancelButton": "रद्द करें",
+			"success": "{applied} विकल्प आयात किए गए। {ignored} अनदेखा किए गए। {preserved} गैर-संपादन योग्य संरक्षित किए गए।",
+			"appliedListLabel": "लागू किए गए विकल्प",
+			"ignoredListLabel": "अनदेखा किए गए",
+			"preservedListLabel": "संरक्षित (आउटपुट में रखे गए)",
+			"errorTitle": "कॉन्फ़िग पार्स नहीं किया जा सका"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "विशेषताएं",
 			"items": [
+				{
+					"title": "अपना मौजूदा कॉन्फ़िग वापस लाएँ",
+					"description": "किसी मौजूदा .prettierrc, prettier.config.js, या package.json के prettier key को पेस्ट करें — फॉर्म उसी के अनुसार भर जाता है। बदलें, साझा करें या कॉपी करें, सभी की सुरक्षित रहती हैं।"
+				},
 				{
 					"title": "हर Prettier संस्करण",
 					"description": "कोई भी Prettier 3.x रिलीज़ चुनें (3.0 – 3.6 और latest)। उस संस्करण के सटीक विकल्प मांग पर jsDelivr से लोड होते हैं।"

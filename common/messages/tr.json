@@ -115,6 +115,21 @@
 			"title": "Biçimlendirme hatası",
 			"prettierLoadFailed": "Prettier {version} yüklenemedi",
 			"networkTip": "Ağ bağlantınızı kontrol edin ve başka bir sürüm deneyin."
+		},
+		"import": {
+			"button": "İçe Aktar",
+			"ariaLabel": "Mevcut Prettier yapılandırmasını içe aktar",
+			"dialogTitle": "Prettier yapılandırmasını içe aktar",
+			"intro": "Bir .prettierrc dosyasını, package.json içindeki prettier anahtarını veya bir prettier.config.js modül dışa aktarımını yapıştırın.",
+			"placeholder": "// Yapılandırmanızı buraya yapıştırın…",
+			"parseButton": "Ayrıştır",
+			"applyButton": "Forma uygula",
+			"cancelButton": "İptal",
+			"success": "{applied} seçenek içe aktarıldı. {ignored} yok sayıldı. {preserved} düzenlenemez olarak korundu.",
+			"appliedListLabel": "Uygulanan seçenekler",
+			"ignoredListLabel": "Yok sayılanlar",
+			"preservedListLabel": "Korunanlar (çıktıda tutuldu)",
+			"errorTitle": "Yapılandırma ayrıştırılamadı"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "Özellikler",
 			"items": [
+				{
+					"title": "Mevcut Yapılandırmanızı İçe Aktarın",
+					"description": "Mevcut bir .prettierrc, prettier.config.js ya da package.json'daki prettier anahtarını yapıştırın — form eşleşecek şekilde dolar. İnce ayar yapın, paylaşın veya kopyalayın, tüm anahtarlar korunur."
+				},
 				{
 					"title": "Her Prettier Sürümü",
 					"description": "Herhangi bir Prettier 3.x sürümünü seçin (3.0 – 3.6 ve latest). Bu sürüm için tam seçenekler jsDelivr'dan talep üzerine yüklenir."

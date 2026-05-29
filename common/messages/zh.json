@@ -115,6 +115,21 @@
 			"title": "格式化错误",
 			"prettierLoadFailed": "加载 Prettier {version} 失败",
 			"networkTip": "请检查您的网络连接并尝试其他版本。"
+		},
+		"import": {
+			"button": "导入",
+			"ariaLabel": "导入现有的 Prettier 配置",
+			"dialogTitle": "导入 Prettier 配置",
+			"intro": "粘贴 .prettierrc、package.json 中的 prettier 键，或 prettier.config.js 模块导出。",
+			"placeholder": "// 在此粘贴您的配置…",
+			"parseButton": "解析",
+			"applyButton": "应用到表单",
+			"cancelButton": "取消",
+			"success": "已导入 {applied} 个选项。忽略 {ignored} 个。保留 {preserved} 个不可编辑项。",
+			"appliedListLabel": "已应用的选项",
+			"ignoredListLabel": "已忽略",
+			"preservedListLabel": "已保留（保留在输出中）",
+			"errorTitle": "无法解析配置"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "功能特点",
 			"items": [
+				{
+					"title": "导入你现有的配置",
+					"description": "粘贴现有的 .prettierrc、prettier.config.js,或 package.json 中的 prettier 键 —— 表单会自动填充以匹配。调整、分享或复制出来,所有键都将完整保留。"
+				},
 				{
 					"title": "全部 Prettier 版本",
 					"description": "可选择任何 Prettier 3.x 版本（3.0 – 3.6 及 latest）。该版本的精确选项会按需从 jsDelivr 加载。"

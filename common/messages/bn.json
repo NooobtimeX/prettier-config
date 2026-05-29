@@ -115,6 +115,21 @@
 			"title": "ফরম্যাট এরর",
 			"prettierLoadFailed": "Prettier {version} লোড করতে ব্যর্থ",
 			"networkTip": "আপনার নেটওয়ার্ক কানেকশন চেক করুন এবং অন্য একটি সংস্করণ চেষ্টা করুন।"
+		},
+		"import": {
+			"button": "ইম্পোর্ট",
+			"ariaLabel": "বিদ্যমান Prettier কনফিগ ইম্পোর্ট করুন",
+			"dialogTitle": "একটি Prettier কনফিগ ইম্পোর্ট করুন",
+			"intro": "একটি .prettierrc, package.json থেকে prettier কী, অথবা একটি prettier.config.js মডিউল এক্সপোর্ট পেস্ট করুন।",
+			"placeholder": "// আপনার কনফিগ এখানে পেস্ট করুন…",
+			"parseButton": "পার্স",
+			"applyButton": "ফর্মে প্রয়োগ করুন",
+			"cancelButton": "বাতিল",
+			"success": "{applied}টি অপশন ইম্পোর্ট করা হয়েছে। {ignored}টি উপেক্ষা করা হয়েছে। {preserved}টি অসম্পাদনযোগ্য সংরক্ষিত আছে।",
+			"appliedListLabel": "প্রয়োগ করা অপশন",
+			"ignoredListLabel": "উপেক্ষিত",
+			"preservedListLabel": "সংরক্ষিত (আউটপুটে রাখা হয়েছে)",
+			"errorTitle": "কনফিগ পার্স করা যায়নি"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "ফিচারসমূহ",
 			"items": [
+				{
+					"title": "আপনার বিদ্যমান কনফিগ ইম্পোর্ট করুন",
+					"description": "একটি বিদ্যমান .prettierrc, prettier.config.js, বা package.json থেকে prettier key পেস্ট করুন — ফর্মটি মিলিয়ে স্বয়ংক্রিয়ভাবে পূরণ হয়ে যাবে। সব key অক্ষুণ্ণ রেখে টিউন করুন, শেয়ার করুন বা কপি করে বের করুন।"
+				},
 				{
 					"title": "প্রতিটি Prettier সংস্করণ",
 					"description": "যেকোনো Prettier 3.x রিলিজ বাছাই করুন (3.0 – 3.6 এবং latest)। সেই সংস্করণের সঠিক অপশন jsDelivr থেকে অন-ডিমান্ড লোড হয়।"

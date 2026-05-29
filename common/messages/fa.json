@@ -115,6 +115,21 @@
 			"title": "خطای قالب‌بندی",
 			"prettierLoadFailed": "بارگذاری Prettier {version} ناموفق بود",
 			"networkTip": "اتصال شبکه خود را بررسی و نسخه دیگری را امتحان کنید."
+		},
+		"import": {
+			"button": "وارد کردن",
+			"ariaLabel": "وارد کردن پیکربندی موجود Prettier",
+			"dialogTitle": "وارد کردن پیکربندی Prettier",
+			"intro": "یک .prettierrc، کلید prettier از package.json، یا خروجی ماژول prettier.config.js را بچسبانید.",
+			"placeholder": "// پیکربندی خود را اینجا بچسبانید…",
+			"parseButton": "تجزیه",
+			"applyButton": "اعمال در فرم",
+			"cancelButton": "لغو",
+			"success": "{applied} گزینه وارد شد. {ignored} نادیده گرفته شد. {preserved} غیر قابل ویرایش حفظ شد.",
+			"appliedListLabel": "گزینه‌های اعمال‌شده",
+			"ignoredListLabel": "نادیده گرفته‌شده",
+			"preservedListLabel": "حفظ‌شده (در خروجی نگه داشته شد)",
+			"errorTitle": "تجزیه پیکربندی ممکن نشد"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "ویژگی‌ها",
 			"items": [
+				{
+					"title": "وارد کردن پیکربندی موجود شما",
+					"description": "یک .prettierrc، prettier.config.js، یا کلید prettier از package.json موجود را جای‌گذاری کنید — فرم برای مطابقت پر می‌شود. تنظیم کنید، به اشتراک بگذارید یا کپی کنید، همه کلیدها حفظ می‌شوند."
+				},
 				{
 					"title": "همه نسخه‌های Prettier",
 					"description": "هر نسخه Prettier 3.x را انتخاب کنید (3.0 – 3.6 و latest). گزینه‌های دقیق آن نسخه به‌صورت درخواستی از jsDelivr بارگذاری می‌شوند."

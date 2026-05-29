@@ -115,6 +115,21 @@
 			"title": "Помилка форматування",
 			"prettierLoadFailed": "Не вдалося завантажити Prettier {version}",
 			"networkTip": "Перевірте мережеве з'єднання та спробуйте іншу версію."
+		},
+		"import": {
+			"button": "Імпортувати",
+			"ariaLabel": "Імпортувати наявну конфігурацію Prettier",
+			"dialogTitle": "Імпорт конфігурації Prettier",
+			"intro": "Вставте файл .prettierrc, ключ prettier з package.json або експорт модуля prettier.config.js.",
+			"placeholder": "// Вставте свою конфігурацію тут…",
+			"parseButton": "Розібрати",
+			"applyButton": "Застосувати до форми",
+			"cancelButton": "Скасувати",
+			"success": "Імпортовано {applied} параметрів. Проігноровано {ignored}. Збережено {preserved} нередаговані.",
+			"appliedListLabel": "Застосовані параметри",
+			"ignoredListLabel": "Проігноровані",
+			"preservedListLabel": "Збережені (залишені у виводі)",
+			"errorTitle": "Не вдалося розібрати конфігурацію"
 		}
 	},
 	"Faq": {
@@ -255,6 +270,10 @@
 		"features": {
 			"title": "Можливості",
 			"items": [
+				{
+					"title": "Імпорт існуючої конфігурації",
+					"description": "Вставте існуючий .prettierrc, prettier.config.js або ключ prettier з package.json — форма заповниться відповідно. Налаштуйте, поділіться або скопіюйте назад — усі ключі збережено."
+				},
 				{
 					"title": "Кожна версія Prettier",
 					"description": "Виберіть будь-який реліз Prettier 3.x (3.0 – 3.6 та latest). Точні опції для цієї версії завантажуються на вимогу з jsDelivr."

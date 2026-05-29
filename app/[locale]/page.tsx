@@ -11,8 +11,9 @@ import { usePersistedConfig } from '@/hooks/usePersistedConfig';
 import { usePrettierVersion } from '@/hooks/usePrettierVersion';
 import { useShareableUrl } from '@/hooks/useShareableUrl';
 import { toast } from 'sonner';
-import { RotateCcw, FilePlus, Loader2 } from 'lucide-react';
+import { RotateCcw, FilePlus, Loader2, FileDown } from 'lucide-react';
 import type { ParserId } from '@/lib/parsers';
+import { ImportConfigDialog } from '@/components/ImportConfigDialog';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import {
 	AlertDialog,
@@ -57,6 +58,7 @@ export default function HomePage() {
 	const [openGenerateTooltip, setOpenGenerateTooltip] = useState(false);
 	const [openResetTooltip, setOpenResetTooltip] = useState(false);
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
+	const [isImportOpen, setIsImportOpen] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
 	const [userCode, setUserCode] = useState('');
 	const [parserOverride, setParserOverride] = useState<ParserId | null>(null);
@@ -75,6 +77,7 @@ export default function HomePage() {
 
 	const tConfigAside = useTranslations('Page.ConfigAside');
 	const tErrors = useTranslations('Page.errors');
+	const tImport = useTranslations('Page.import');
 
 	const handleShare = async () => {
 		const url = await share();
@@ -86,6 +89,14 @@ export default function HomePage() {
 	// stay in state but are excluded from the generated config and from
 	// `hasSelectedOptions` so they don't surface in the UI.
 	const validKeys = useMemo(() => new Set(options.map((o) => o.key)), [options]);
+
+	const handleImportApply = (next: Record<string, unknown>) => {
+		setSelected(next as SelectedOptions);
+		setIsImportOpen(false);
+		if (isLargeScreen) {
+			setGeneratedConfig(generateConfig(next as SelectedOptions, validKeys));
+		}
+	};
 
 	const hasSelectedOptions = Object.entries(selected).some(
 		([key, value]) =>
@@ -180,6 +191,25 @@ export default function HomePage() {
 					onChange={setVersion}
 					disabled={status === 'loading'}
 				/>
+				<TooltipProvider>
+					<Tooltip>
+						<TooltipTrigger
+							render={
+								<Button
+									size="icon"
+									variant="outline"
+									className="h-8 w-8"
+									onClick={() => setIsImportOpen(true)}
+									disabled={status !== 'ready'}
+									aria-label={tImport('ariaLabel')}
+								>
+									<FileDown className="h-4 w-4" />
+								</Button>
+							}
+						/>
+						<TooltipContent>{tImport('button')}</TooltipContent>
+					</Tooltip>
+				</TooltipProvider>
 			</div>
 			<div className="flex-1 overflow-auto p-2">
 				{searchQuery && (
@@ -331,6 +361,29 @@ export default function HomePage() {
 								{t('fab.resetSelections')}
 							</TooltipContent>
 						</Tooltip>
+
+						<Tooltip>
+							<TooltipTrigger
+								render={
+									<Button
+										size="icon"
+										variant="outline"
+										className="h-12 w-12 rounded-full shadow-md"
+										onClick={() => setIsImportOpen(true)}
+										disabled={status !== 'ready'}
+										aria-label={tImport('ariaLabel')}
+									>
+										<FileDown className="h-5 w-5" />
+									</Button>
+								}
+							/>
+							<TooltipContent
+								side="left"
+								sideOffset={8}
+							>
+								{tImport('button')}
+							</TooltipContent>
+						</Tooltip>
 					</div>
 				</TooltipProvider>
 			)}
@@ -346,6 +399,15 @@ export default function HomePage() {
 				parserOverride={parserOverride}
 				onParserOverrideChange={setParserOverride}
 				onShare={handleShare}
+			/>
+
+			<ImportConfigDialog
+				open={isImportOpen}
+				onOpenChange={setIsImportOpen}
+				options={options}
+				format={format}
+				version={version}
+				onApply={handleImportApply}
 			/>
 
 			<AlertDialog

@@ -171,19 +171,6 @@ export function PrettierPanelModal({
 					{t('yourCodeTab')}
 				</Button>
 			</div>
-			{viewMode === 'yourcode' && (
-				<ParserPicker
-					value={activeParser}
-					onChange={(p) => setParserOverride(p)}
-					autoDetected={parserOverride === null}
-				/>
-			)}
-			{viewMode !== 'config' && (
-				<DiffViewToggle
-					splitView={diffSettings.splitView}
-					onChange={(splitView) => updateDiffSettings({ splitView })}
-				/>
-			)}
 			{onShare && (
 				<TooltipProvider>
 					<Tooltip>
@@ -261,6 +248,12 @@ export function PrettierPanelModal({
 			{/* ── PREVIEW TAB ── */}
 			{viewMode === 'preview' && (
 				<>
+					<div className="flex justify-end">
+						<DiffViewToggle
+							splitView={diffSettings.splitView}
+							onChange={(splitView) => updateDiffSettings({ splitView })}
+						/>
+					</div>
 					{previewError && <FormatError message={previewError} />}
 					{isFormattingPreview || !formattedPreview ? (
 						<div className="text-muted-foreground flex items-center gap-2 py-4 text-sm">
@@ -292,6 +285,17 @@ export function PrettierPanelModal({
 			{/* ── YOUR CODE TAB ── */}
 			{viewMode === 'yourcode' && (
 				<>
+					<div className="flex items-center justify-end gap-2">
+						<ParserPicker
+							value={activeParser}
+							onChange={(p) => setParserOverride(p)}
+							autoDetected={parserOverride === null}
+						/>
+						<DiffViewToggle
+							splitView={diffSettings.splitView}
+							onChange={(splitView) => updateDiffSettings({ splitView })}
+						/>
+					</div>
 					<div>
 						<p className="text-muted-foreground mb-1 text-xs font-medium">{t('pastePrompt')}</p>
 						<CodeEditor

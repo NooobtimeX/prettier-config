@@ -192,19 +192,6 @@ export function PrettierPanel({
 							{t('yourCodeTab')}
 						</Button>
 					</div>
-					{viewMode === 'yourcode' && (
-						<ParserPicker
-							value={activeParser}
-							onChange={(p) => setParserOverride(p)}
-							autoDetected={parserOverride === null}
-						/>
-					)}
-					{viewMode !== 'config' && (
-						<DiffViewToggle
-							splitView={diffSettings.splitView}
-							onChange={(splitView) => updateDiffSettings({ splitView })}
-						/>
-					)}
 					{onShare && (
 						<TooltipProvider>
 							<Tooltip>
@@ -328,6 +315,12 @@ export function PrettierPanel({
 			{/* ── PREVIEW TAB ── */}
 			{viewMode === 'preview' && (
 				<div className="flex min-h-0 flex-1 flex-col overflow-auto">
+					<div className="flex shrink-0 justify-end border-b p-2">
+						<DiffViewToggle
+							splitView={diffSettings.splitView}
+							onChange={(splitView) => updateDiffSettings({ splitView })}
+						/>
+					</div>
 					<div className="min-h-0 flex-1 overflow-auto p-2">
 						{previewError && <FormatError message={previewError} />}
 						{isFormattingPreview || !formattedPreview ? (
@@ -364,6 +357,17 @@ export function PrettierPanel({
 			{/* ── YOUR CODE TAB ── */}
 			{viewMode === 'yourcode' && (
 				<div className="flex min-h-0 flex-1 flex-col overflow-auto">
+					<div className="flex shrink-0 items-center justify-end gap-2 border-b p-2">
+						<ParserPicker
+							value={activeParser}
+							onChange={(p) => setParserOverride(p)}
+							autoDetected={parserOverride === null}
+						/>
+						<DiffViewToggle
+							splitView={diffSettings.splitView}
+							onChange={(splitView) => updateDiffSettings({ splitView })}
+						/>
+					</div>
 					<div className="flex-1 space-y-3 overflow-auto p-2">
 						{/* Input */}
 						<div>

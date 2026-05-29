@@ -157,6 +157,26 @@ export function PrettierPanel({
 		}
 	};
 
+	const shareIconButton = onShare ? (
+		<TooltipProvider>
+			<Tooltip>
+				<TooltipTrigger
+					render={
+						<Button
+							variant="outline"
+							size="icon"
+							onClick={onShare}
+							aria-label={t('shareButton')}
+						>
+							<Share2 className="h-4 w-4" />
+						</Button>
+					}
+				/>
+				<TooltipContent>{t('shareButton')}</TooltipContent>
+			</Tooltip>
+		</TooltipProvider>
+	) : null;
+
 	return (
 		<div className="relative flex h-full flex-col overflow-hidden rounded-lg border-l">
 			{/* Sticky Header */}
@@ -192,26 +212,6 @@ export function PrettierPanel({
 							{t('yourCodeTab')}
 						</Button>
 					</div>
-					{onShare && (
-						<TooltipProvider>
-							<Tooltip>
-								<TooltipTrigger
-									render={
-										<Button
-											variant="secondary"
-											size="icon"
-											className="h-7 w-7"
-											onClick={onShare}
-											aria-label={t('shareButton')}
-										>
-											<Share2 className="h-3.5 w-3.5" />
-										</Button>
-									}
-								/>
-								<TooltipContent>{t('shareButton')}</TooltipContent>
-							</Tooltip>
-						</TooltipProvider>
-					)}
 				</div>
 			</div>
 
@@ -288,17 +288,18 @@ export function PrettierPanel({
 								{t('copyInstructions')}
 							</p>
 
-							<div className="bg-background/95 sticky bottom-0 z-10 shrink-0 rounded-b-lg border-t p-2 backdrop-blur">
+							<div className="bg-background/95 sticky bottom-0 z-10 flex shrink-0 gap-2 rounded-b-lg border-t p-2 backdrop-blur">
 								<Button
 									variant="outline"
 									onClick={copyConfig}
 									aria-label={t('copyConfig')}
-									className="w-full"
+									className="flex-1"
 									disabled={!displayConfig}
 								>
 									<Copy className="mr-2 h-4 w-4" />
 									{t('copyConfig')}
 								</Button>
+								{shareIconButton}
 							</div>
 						</>
 					) : (
@@ -339,17 +340,18 @@ export function PrettierPanel({
 						)}
 					</div>
 
-					<div className="bg-background/95 sticky bottom-0 z-10 shrink-0 rounded-b-lg border-t p-2 backdrop-blur">
+					<div className="bg-background/95 sticky bottom-0 z-10 flex shrink-0 gap-2 rounded-b-lg border-t p-2 backdrop-blur">
 						<Button
 							variant="outline"
 							onClick={() => copyFormatted(formattedPreview)}
 							aria-label={t('copyFormatted')}
-							className="w-full"
+							className="flex-1"
 							disabled={!formattedPreview}
 						>
 							<Copy className="mr-2 h-4 w-4" />
 							{t('copyFormatted')}
 						</Button>
+						{shareIconButton}
 					</div>
 				</div>
 			)}
@@ -406,17 +408,18 @@ export function PrettierPanel({
 						)}
 					</div>
 
-					<div className="bg-background/95 sticky bottom-0 z-10 shrink-0 rounded-b-lg border-t p-2 backdrop-blur">
+					<div className="bg-background/95 sticky bottom-0 z-10 flex shrink-0 gap-2 rounded-b-lg border-t p-2 backdrop-blur">
 						<Button
 							variant="outline"
 							onClick={() => copyFormatted(formattedUser)}
 							aria-label={t('copyFormatted')}
-							className="w-full"
+							className="flex-1"
 							disabled={!formattedUser}
 						>
 							<Copy className="mr-2 h-4 w-4" />
 							{t('copyFormatted')}
 						</Button>
+						{shareIconButton}
 					</div>
 				</div>
 			)}

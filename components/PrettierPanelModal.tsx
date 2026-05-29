@@ -171,28 +171,28 @@ export function PrettierPanelModal({
 					{t('yourCodeTab')}
 				</Button>
 			</div>
-			{onShare && (
-				<TooltipProvider>
-					<Tooltip>
-						<TooltipTrigger
-							render={
-								<Button
-									variant="secondary"
-									size="icon"
-									className="h-7 w-7"
-									onClick={onShare}
-									aria-label={t('shareButton')}
-								>
-									<Share2 className="h-3.5 w-3.5" />
-								</Button>
-							}
-						/>
-						<TooltipContent>{t('shareButton')}</TooltipContent>
-					</Tooltip>
-				</TooltipProvider>
-			)}
 		</div>
 	);
+
+	const shareIconButton = onShare ? (
+		<TooltipProvider>
+			<Tooltip>
+				<TooltipTrigger
+					render={
+						<Button
+							variant="outline"
+							size="icon"
+							onClick={onShare}
+							aria-label={t('shareButton')}
+						>
+							<Share2 className="h-4 w-4" />
+						</Button>
+					}
+				/>
+				<TooltipContent>{t('shareButton')}</TooltipContent>
+			</Tooltip>
+		</TooltipProvider>
+	) : null;
 
 	const content = (
 		<div className="space-y-3">
@@ -221,14 +221,17 @@ export function PrettierPanelModal({
 								{t('sortDesc')}
 							</Button>
 						</div>
-						<Button
-							onClick={copyConfig}
-							size="sm"
-							disabled={!displayConfig}
-						>
-							<Copy className="mr-2 h-4 w-4" />
-							{t('copyConfig')}
-						</Button>
+						<div className="flex gap-2">
+							<Button
+								onClick={copyConfig}
+								size="sm"
+								disabled={!displayConfig}
+							>
+								<Copy className="mr-2 h-4 w-4" />
+								{t('copyConfig')}
+							</Button>
+							{shareIconButton}
+						</div>
 					</div>
 
 					{displayConfig && (
@@ -270,15 +273,18 @@ export function PrettierPanelModal({
 						/>
 					)}
 
-					<Button
-						variant="outline"
-						onClick={() => copyFormatted(formattedPreview)}
-						className="w-full"
-						disabled={!formattedPreview}
-					>
-						<Copy className="mr-2 h-4 w-4" />
-						{t('copyFormatted')}
-					</Button>
+					<div className="flex gap-2">
+						<Button
+							variant="outline"
+							onClick={() => copyFormatted(formattedPreview)}
+							className="flex-1"
+							disabled={!formattedPreview}
+						>
+							<Copy className="mr-2 h-4 w-4" />
+							{t('copyFormatted')}
+						</Button>
+						{shareIconButton}
+					</div>
 				</>
 			)}
 
@@ -331,15 +337,18 @@ export function PrettierPanelModal({
 						</div>
 					)}
 
-					<Button
-						variant="outline"
-						onClick={() => copyFormatted(formattedUser)}
-						className="w-full"
-						disabled={!formattedUser}
-					>
-						<Copy className="mr-2 h-4 w-4" />
-						{t('copyFormatted')}
-					</Button>
+					<div className="flex gap-2">
+						<Button
+							variant="outline"
+							onClick={() => copyFormatted(formattedUser)}
+							className="flex-1"
+							disabled={!formattedUser}
+						>
+							<Copy className="mr-2 h-4 w-4" />
+							{t('copyFormatted')}
+						</Button>
+						{shareIconButton}
+					</div>
 				</>
 			)}
 		</div>

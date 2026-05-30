@@ -1,12 +1,18 @@
 /**
  * Curated registry of third-party Prettier plugins the playground can load
- * from a CDN. Each entry pins a known-good version (bump deliberately) and
- * uses jsDelivr's `+esm` suffix so CommonJS-only packages get auto-converted
- * to ESM at request time.
+ * from a CDN. Each entry pins a known-good version (bump deliberately).
  *
- * Excluded for now:
- *   - `prettier-plugin-organize-imports` — needs the Node `typescript` module.
- *   - `@prettier/plugin-php` / `plugin-xml` — large, niche; revisit on demand.
+ * We load via **esm.sh** rather than jsDelivr's `+esm` endpoint because
+ * esm.sh ships browser polyfills for Node built-ins (`node:module`,
+ * `node:path`, `node:process`, etc.) that most Prettier plugins pull in
+ * transitively. jsDelivr's Rollup-based bundler refuses those imports,
+ * which is what bit the first version of this registry.
+ *
+ * Risk to watch: the esm.sh build of each plugin pulls in its own copy
+ * of Prettier (`/prettier@^3.0?target=es2022`). In practice plugins only
+ * use that for re-exports, not for format calls — the active Prettier
+ * instance is the one the loader picked. Bumping a plugin past its
+ * `peerDependency` on Prettier may break things; pin deliberately.
  */
 
 import type { ParserId } from './parsers';
@@ -28,22 +34,46 @@ export type Plugin = {
 
 export const PLUGINS: readonly Plugin[] = [
 	{
+		id: 'tailwindcss',
+		npm: 'prettier-plugin-tailwindcss',
+		version: '0.8.0',
+		cdnUrl: 'https://esm.sh/prettier-plugin-tailwindcss@0.8.0',
+		parsers: ['babel', 'typescript', 'vue', 'angular', 'html', 'css', 'scss'],
+		homepage: 'https://github.com/tailwindlabs/prettier-plugin-tailwindcss',
+	},
+	{
 		id: 'sort-json',
 		npm: 'prettier-plugin-sort-json',
 		version: '4.1.1',
-		cdnUrl: 'https://cdn.jsdelivr.net/npm/prettier-plugin-sort-json@4.1.1/+esm',
+		cdnUrl: 'https://esm.sh/prettier-plugin-sort-json@4.1.1',
 		parsers: ['json', 'json5', 'jsonc'],
 		homepage: 'https://github.com/Sec-ant/prettier-plugin-sort-json',
 	},
+	{
+		id: 'packagejson',
+		npm: 'prettier-plugin-packagejson',
+		version: '2.5.6',
+		cdnUrl: 'https://esm.sh/prettier-plugin-packagejson@2.5.6',
+		parsers: ['json'],
+		homepage: 'https://github.com/matzkoh/prettier-plugin-packagejson',
+	},
+	{
+		id: 'jsdoc',
+		npm: 'prettier-plugin-jsdoc',
+		version: '1.3.0',
+		cdnUrl: 'https://esm.sh/prettier-plugin-jsdoc@1.3.0',
+		parsers: ['babel', 'typescript'],
+		homepage: 'https://github.com/hosseinmd/prettier-plugin-jsdoc',
+	},
+	{
+		id: 'curly',
+		npm: 'prettier-plugin-curly',
+		version: '0.4.0',
+		cdnUrl: 'https://esm.sh/prettier-plugin-curly@0.4.0',
+		parsers: ['babel', 'typescript'],
+		homepage: 'https://github.com/JoshuaKGoldberg/prettier-plugin-curly',
+	},
 ];
-
-// Withheld — jsDelivr's `+esm` endpoint can't bundle these for browsers:
-//   - prettier-plugin-tailwindcss   — uses `node:module` for Tailwind resolve.
-//   - prettier-plugin-packagejson   — drags in Node-only deps (sort-package-json).
-//   - prettier-plugin-jsdoc         — imports `node:module` via its TS deps.
-//   - prettier-plugin-organize-imports — needs the Node `typescript` package.
-// Open question: can any of these be loaded via a hand-picked dist path
-// (e.g. `dist/index.mjs`) that skips Rollup bundling? Worth a future probe.
 
 export const PLUGIN_BY_ID = new Map(PLUGINS.map((p) => [p.id, p]));
 export const PLUGIN_BY_NPM = new Map(PLUGINS.map((p) => [p.npm, p]));

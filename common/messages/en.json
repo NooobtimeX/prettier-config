@@ -211,6 +211,10 @@
 				"jsdoc": {
 					"name": "JSDoc formatter",
 					"description": "Tidies JSDoc / TSDoc comment blocks (alignment, line wrap, tag ordering)."
+				},
+				"curly": {
+					"name": "Curly braces",
+					"description": "Adds curly braces around the bodies of single-line if/else/for/while statements."
 				}
 			}
 		}

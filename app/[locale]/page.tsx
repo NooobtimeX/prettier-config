@@ -11,9 +11,10 @@ import { usePersistedConfig } from '@/hooks/usePersistedConfig';
 import { usePrettierVersion } from '@/hooks/usePrettierVersion';
 import { useShareableUrl } from '@/hooks/useShareableUrl';
 import { toast } from 'sonner';
-import { RotateCcw, FilePlus, Loader2, FileDown } from 'lucide-react';
+import { RotateCcw, FilePlus, Loader2, FileDown, Sparkles } from 'lucide-react';
 import type { ParserId } from '@/lib/parsers';
 import { ImportConfigDialog } from '@/components/ImportConfigDialog';
+import { PresetDialog } from '@/components/PresetDialog';
 import { VersionSwitchWarningDialog } from '@/components/VersionSwitchWarningDialog';
 import { useOptionSearchHotkey } from '@/hooks/useOptionSearchHotkey';
 import { computeVersionConflicts, type VersionConflict } from '@/lib/versionDiff';
@@ -64,6 +65,7 @@ export default function HomePage() {
 	const [openResetTooltip, setOpenResetTooltip] = useState(false);
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
 	const [isImportOpen, setIsImportOpen] = useState(false);
+	const [isPresetOpen, setIsPresetOpen] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
 	const [pendingVersion, setPendingVersion] = useState<string | null>(null);
 	const [pendingConflicts, setPendingConflicts] = useState<VersionConflict[]>([]);
@@ -85,6 +87,7 @@ export default function HomePage() {
 	const tConfigAside = useTranslations('Page.ConfigAside');
 	const tErrors = useTranslations('Page.errors');
 	const tImport = useTranslations('Page.import');
+	const tPresets = useTranslations('Page.presets');
 	const tVersionSwitch = useTranslations('Page.versionSwitch');
 
 	useOptionSearchHotkey();
@@ -106,6 +109,15 @@ export default function HomePage() {
 		if (isLargeScreen) {
 			setGeneratedConfig(generateConfig(next as SelectedOptions, validKeys));
 		}
+	};
+
+	const handlePresetApply = (next: Record<string, unknown>, presetName: string) => {
+		setSelected(next as SelectedOptions);
+		setIsPresetOpen(false);
+		if (isLargeScreen) {
+			setGeneratedConfig(generateConfig(next as SelectedOptions, validKeys));
+		}
+		toast.success(tPresets('appliedToast', { name: presetName }));
 	};
 
 	/**
@@ -256,6 +268,23 @@ export default function HomePage() {
 					disabled={status === 'loading'}
 				/>
 				<TooltipProvider>
+					<Tooltip>
+						<TooltipTrigger
+							render={
+								<Button
+									size="icon"
+									variant="outline"
+									className="h-8 w-8"
+									onClick={() => setIsPresetOpen(true)}
+									disabled={status !== 'ready'}
+									aria-label={tPresets('ariaLabel')}
+								>
+									<Sparkles className="h-4 w-4" />
+								</Button>
+							}
+						/>
+						<TooltipContent>{tPresets('button')}</TooltipContent>
+					</Tooltip>
 					<Tooltip>
 						<TooltipTrigger
 							render={
@@ -433,6 +462,29 @@ export default function HomePage() {
 										size="icon"
 										variant="outline"
 										className="h-12 w-12 rounded-full shadow-md"
+										onClick={() => setIsPresetOpen(true)}
+										disabled={status !== 'ready'}
+										aria-label={tPresets('ariaLabel')}
+									>
+										<Sparkles className="h-5 w-5" />
+									</Button>
+								}
+							/>
+							<TooltipContent
+								side="left"
+								sideOffset={8}
+							>
+								{tPresets('button')}
+							</TooltipContent>
+						</Tooltip>
+
+						<Tooltip>
+							<TooltipTrigger
+								render={
+									<Button
+										size="icon"
+										variant="outline"
+										className="h-12 w-12 rounded-full shadow-md"
 										onClick={() => setIsImportOpen(true)}
 										disabled={status !== 'ready'}
 										aria-label={tImport('ariaLabel')}
@@ -471,6 +523,15 @@ export default function HomePage() {
 				options={options}
 				version={version}
 				onApply={handleImportApply}
+			/>
+
+			<PresetDialog
+				open={isPresetOpen}
+				onOpenChange={setIsPresetOpen}
+				validKeys={validKeys}
+				version={version}
+				current={selected}
+				onApply={handlePresetApply}
 			/>
 
 			<VersionSwitchWarningDialog

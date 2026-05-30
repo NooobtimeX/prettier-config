@@ -144,6 +144,46 @@
 			"ignoredListLabel": "نادیده گرفته‌شده",
 			"preservedListLabel": "حفظ‌شده (در خروجی نگه داشته شد)",
 			"errorTitle": "تجزیه پیکربندی ممکن نشد"
+		},
+		"presets": {
+			"button": "Presets",
+			"ariaLabel": "Apply a starter Prettier config",
+			"dialogTitle": "Choose a preset",
+			"intro": "Start from a common style. You can tweak any option afterwards.",
+			"applyButton": "Apply preset",
+			"cancelButton": "Cancel",
+			"appliedToast": "Applied “{name}”",
+			"changesLabel": "Changes vs current",
+			"addsLabel": "{count, plural, one {# added} other {# added}}",
+			"changesCountLabel": "{count, plural, one {# changed} other {# changed}}",
+			"removesLabel": "{count, plural, one {# removed} other {# removed}}",
+			"ignoredLabel": "{count, plural, one {# not supported by Prettier {version}} other {# not supported by Prettier {version}}}",
+			"items": {
+				"defaults": {
+					"name": "Prettier defaults",
+					"description": "Clear all overrides and use Prettier's built-in defaults."
+				},
+				"tabs": {
+					"name": "Tabs (4-wide)",
+					"description": "Hard tabs, width 4."
+				},
+				"standard": {
+					"name": "Standard-style",
+					"description": "Single quotes, no semicolons, no trailing commas."
+				},
+				"airbnb": {
+					"name": "Airbnb-leaning",
+					"description": "Single quotes, trailing commas everywhere, printWidth 100."
+				},
+				"wide": {
+					"name": "Wide (120)",
+					"description": "printWidth 120 — for wider monitors."
+				},
+				"lowToken": {
+					"name": "Low-token (LLM)",
+					"description": "Pack code densely to shrink token count when pasting into LLMs."
+				}
+			}
 		}
 	},
 	"Faq": {

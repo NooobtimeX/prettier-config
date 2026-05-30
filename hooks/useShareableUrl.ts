@@ -22,6 +22,7 @@ export type SharedState = {
 	selected: Record<string, unknown>;
 	code: string;
 	parserOverride: ParserId | null;
+	pluginIds: string[];
 };
 
 type StoredPayload = {
@@ -29,6 +30,7 @@ type StoredPayload = {
 	o: Record<string, unknown>;
 	c: string;
 	p: ParserId | null;
+	pl: string[];
 };
 
 const HASH_PREFIX = '#s=';
@@ -49,6 +51,10 @@ function readHash(): StoredPayload | null {
 			o: parsed.o && typeof parsed.o === 'object' && !Array.isArray(parsed.o) ? parsed.o : {},
 			c: typeof parsed.c === 'string' ? parsed.c : '',
 			p: typeof parsed.p === 'string' ? (parsed.p as ParserId) : null,
+			pl:
+				Array.isArray(parsed.pl) && parsed.pl.every((s) => typeof s === 'string')
+					? (parsed.pl as string[])
+					: [],
 		};
 	} catch {
 		return null;
@@ -71,6 +77,7 @@ export type ShareableUrlSeeders = {
 	setSelected: (s: Record<string, unknown>) => void;
 	setCode: (c: string) => void;
 	setParserOverride: (p: ParserId | null) => void;
+	setPluginIds: (ids: string[]) => void;
 };
 
 /**
@@ -95,6 +102,7 @@ export function useShareableUrl(state: SharedState, seeders: ShareableUrlSeeders
 		s.setSelected(payload.o);
 		s.setCode(payload.c);
 		s.setParserOverride(payload.p);
+		s.setPluginIds(payload.pl);
 	}, []);
 
 	// Debounced mirror of state → hash.
@@ -106,10 +114,11 @@ export function useShareableUrl(state: SharedState, seeders: ShareableUrlSeeders
 				o: state.selected,
 				c: state.code,
 				p: state.parserOverride,
+				pl: state.pluginIds,
 			});
 		}, DEBOUNCE_URL_HASH_MS);
 		return () => clearTimeout(t);
-	}, [state.version, state.selected, state.code, state.parserOverride]);
+	}, [state.version, state.selected, state.code, state.parserOverride, state.pluginIds]);
 
 	return {
 		share: async (): Promise<string> => {
@@ -120,6 +129,7 @@ export function useShareableUrl(state: SharedState, seeders: ShareableUrlSeeders
 				o: state.selected,
 				c: state.code,
 				p: state.parserOverride,
+				pl: state.pluginIds,
 			});
 			const url = typeof window === 'undefined' ? '' : window.location.href;
 			if (url && typeof navigator !== 'undefined' && navigator.clipboard) {

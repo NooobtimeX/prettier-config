@@ -11,10 +11,12 @@ import { usePersistedConfig } from '@/hooks/usePersistedConfig';
 import { usePrettierVersion } from '@/hooks/usePrettierVersion';
 import { useShareableUrl } from '@/hooks/useShareableUrl';
 import { toast } from 'sonner';
-import { RotateCcw, FilePlus, Loader2, FileDown, Sparkles } from 'lucide-react';
+import { RotateCcw, FilePlus, Loader2, FileDown, Sparkles, Plug } from 'lucide-react';
 import type { ParserId } from '@/lib/parsers';
 import { ImportConfigDialog } from '@/components/ImportConfigDialog';
 import { PresetDialog } from '@/components/PresetDialog';
+import { PluginPickerDialog } from '@/components/PluginPickerDialog';
+import { pluginNpmNamesFor, pluginUrlsFor } from '@/lib/plugins';
 import { VersionSwitchWarningDialog } from '@/components/VersionSwitchWarningDialog';
 import { useOptionSearchHotkey } from '@/hooks/useOptionSearchHotkey';
 import { computeVersionConflicts, type VersionConflict } from '@/lib/versionDiff';
@@ -40,13 +42,20 @@ import Header from './(components)/Header';
 type OptionValue = string | number | boolean | string[] | null;
 type SelectedOptions = Record<string, OptionValue>;
 
-function generateConfig(selected: SelectedOptions, validKeys: Set<string>): string {
-	const config: SelectedOptions = {};
+function generateConfig(
+	selected: SelectedOptions,
+	validKeys: Set<string>,
+	pluginNpmNames: readonly string[] = [],
+): string {
+	const config: Record<string, unknown> = {};
 	for (const [key, value] of Object.entries(selected)) {
 		if (!validKeys.has(key)) continue;
 		if (value !== null && value !== '' && !(Array.isArray(value) && value.length === 0)) {
 			config[key] = value;
 		}
+	}
+	if (pluginNpmNames.length > 0) {
+		config.plugins = [...pluginNpmNames];
 	}
 	return JSON.stringify(config, null, 2);
 }
@@ -54,9 +63,10 @@ function generateConfig(selected: SelectedOptions, validKeys: Set<string>): stri
 export default function HomePage() {
 	const t = useTranslations('Page');
 
-	const { version, setVersion, selected, setSelected } =
+	const { version, setVersion, selected, setSelected, pluginIds, setPluginIds } =
 		usePersistedConfig<SelectedOptions>(DEFAULT_PRETTIER_VERSION);
-	const { options, format, status, error } = usePrettierVersion(version);
+	const pluginUrls = useMemo(() => pluginUrlsFor(pluginIds), [pluginIds]);
+	const { options, format, status, error } = usePrettierVersion(version, pluginUrls);
 
 	const [showConfig, setShowConfig] = useState(false);
 	const [generatedConfig, setGeneratedConfig] = useState('');
@@ -66,6 +76,7 @@ export default function HomePage() {
 	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
 	const [isImportOpen, setIsImportOpen] = useState(false);
 	const [isPresetOpen, setIsPresetOpen] = useState(false);
+	const [isPluginOpen, setIsPluginOpen] = useState(false);
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
 	const [pendingVersion, setPendingVersion] = useState<string | null>(null);
 	const [pendingConflicts, setPendingConflicts] = useState<VersionConflict[]>([]);
@@ -75,12 +86,13 @@ export default function HomePage() {
 	// Bidirectional URL hash sync — shareable links seed state on first load,
 	// then every relevant change is mirrored to the hash.
 	const { share } = useShareableUrl(
-		{ version, selected, code: userCode, parserOverride },
+		{ version, selected, code: userCode, parserOverride, pluginIds },
 		{
 			setVersion,
 			setSelected: (s) => setSelected(s as SelectedOptions),
 			setCode: setUserCode,
 			setParserOverride,
+			setPluginIds,
 		},
 	);
 
@@ -88,6 +100,7 @@ export default function HomePage() {
 	const tErrors = useTranslations('Page.errors');
 	const tImport = useTranslations('Page.import');
 	const tPresets = useTranslations('Page.presets');
+	const tPlugins = useTranslations('Page.plugins');
 	const tVersionSwitch = useTranslations('Page.versionSwitch');
 
 	useOptionSearchHotkey();
@@ -102,12 +115,16 @@ export default function HomePage() {
 	// stay in state but are excluded from the generated config and from
 	// `hasSelectedOptions` so they don't surface in the UI.
 	const validKeys = useMemo(() => new Set(options.map((o) => o.key)), [options]);
+	const pluginNpmNames = useMemo(() => pluginNpmNamesFor(pluginIds), [pluginIds]);
 
-	const handleImportApply = (next: Record<string, unknown>) => {
+	const handleImportApply = (next: Record<string, unknown>, importedPluginIds: string[]) => {
 		setSelected(next as SelectedOptions);
+		setPluginIds(importedPluginIds);
 		setIsImportOpen(false);
 		if (isLargeScreen) {
-			setGeneratedConfig(generateConfig(next as SelectedOptions, validKeys));
+			setGeneratedConfig(
+				generateConfig(next as SelectedOptions, validKeys, pluginNpmNamesFor(importedPluginIds)),
+			);
 		}
 	};
 
@@ -115,9 +132,18 @@ export default function HomePage() {
 		setSelected(next as SelectedOptions);
 		setIsPresetOpen(false);
 		if (isLargeScreen) {
-			setGeneratedConfig(generateConfig(next as SelectedOptions, validKeys));
+			setGeneratedConfig(generateConfig(next as SelectedOptions, validKeys, pluginNpmNames));
 		}
 		toast.success(tPresets('appliedToast', { name: presetName }));
+	};
+
+	const handlePluginsApply = (next: string[]) => {
+		setPluginIds(next);
+		setIsPluginOpen(false);
+		if (isLargeScreen) {
+			setGeneratedConfig(generateConfig(selected, validKeys, pluginNpmNamesFor(next)));
+		}
+		toast.success(tPlugins('appliedToast', { count: next.length }));
 	};
 
 	/**
@@ -174,13 +200,15 @@ export default function HomePage() {
 		);
 	};
 
-	const hasSelectedOptions = Object.entries(selected).some(
-		([key, value]) =>
-			validKeys.has(key) &&
-			value !== null &&
-			value !== '' &&
-			!(Array.isArray(value) && value.length === 0),
-	);
+	const hasSelectedOptions =
+		pluginIds.length > 0 ||
+		Object.entries(selected).some(
+			([key, value]) =>
+				validKeys.has(key) &&
+				value !== null &&
+				value !== '' &&
+				!(Array.isArray(value) && value.length === 0),
+		);
 
 	useEffect(() => {
 		const checkScreenSize = () => {
@@ -188,13 +216,13 @@ export default function HomePage() {
 			setIsLargeScreen(newIsLargeScreen);
 
 			if (newIsLargeScreen && !isLargeScreen && hasSelectedOptions) {
-				setGeneratedConfig(generateConfig(selected, validKeys));
+				setGeneratedConfig(generateConfig(selected, validKeys, pluginNpmNames));
 			}
 		};
 		checkScreenSize();
 		window.addEventListener('resize', checkScreenSize);
 		return () => window.removeEventListener('resize', checkScreenSize);
-	}, [isLargeScreen, hasSelectedOptions, selected, validKeys]);
+	}, [isLargeScreen, hasSelectedOptions, selected, validKeys, pluginNpmNames]);
 
 	useEffect(() => {
 		const showTimer = setTimeout(() => {
@@ -214,11 +242,11 @@ export default function HomePage() {
 	useEffect(() => {
 		if (isLargeScreen && hasSelectedOptions && !generatedConfig) {
 			const timer = setTimeout(() => {
-				setGeneratedConfig(generateConfig(selected, validKeys));
+				setGeneratedConfig(generateConfig(selected, validKeys, pluginNpmNames));
 			}, 0);
 			return () => clearTimeout(timer);
 		}
-	}, [isLargeScreen, hasSelectedOptions, selected, generatedConfig, validKeys]);
+	}, [isLargeScreen, hasSelectedOptions, selected, generatedConfig, validKeys, pluginNpmNames]);
 
 	const filteredOptions = useMemo(() => {
 		if (!searchQuery.trim()) return options;
@@ -234,14 +262,14 @@ export default function HomePage() {
 		setSelected((prev) => {
 			const newSelected = { ...prev, [key]: value };
 			if (isLargeScreen) {
-				setGeneratedConfig(generateConfig(newSelected, validKeys));
+				setGeneratedConfig(generateConfig(newSelected, validKeys, pluginNpmNames));
 			}
 			return newSelected;
 		});
 	};
 
 	const handleGenerate = () => {
-		setGeneratedConfig(generateConfig(selected, validKeys));
+		setGeneratedConfig(generateConfig(selected, validKeys, pluginNpmNames));
 		if (!isLargeScreen) {
 			setShowConfig(true);
 		}
@@ -249,6 +277,7 @@ export default function HomePage() {
 
 	const executeReset = () => {
 		setSelected({});
+		setPluginIds([]);
 		setGeneratedConfig('');
 		setShowConfig(false);
 		setSearchQuery('');
@@ -284,6 +313,28 @@ export default function HomePage() {
 							}
 						/>
 						<TooltipContent>{tPresets('button')}</TooltipContent>
+					</Tooltip>
+					<Tooltip>
+						<TooltipTrigger
+							render={
+								<Button
+									size="icon"
+									variant="outline"
+									className="relative h-8 w-8"
+									onClick={() => setIsPluginOpen(true)}
+									disabled={status !== 'ready'}
+									aria-label={tPlugins('ariaLabel')}
+								>
+									<Plug className="h-4 w-4" />
+									{pluginIds.length > 0 && (
+										<span className="bg-primary text-primary-foreground absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] font-medium">
+											{pluginIds.length}
+										</span>
+									)}
+								</Button>
+							}
+						/>
+						<TooltipContent>{tPlugins('button')}</TooltipContent>
 					</Tooltip>
 					<Tooltip>
 						<TooltipTrigger
@@ -484,6 +535,34 @@ export default function HomePage() {
 									<Button
 										size="icon"
 										variant="outline"
+										className="relative h-12 w-12 rounded-full shadow-md"
+										onClick={() => setIsPluginOpen(true)}
+										disabled={status !== 'ready'}
+										aria-label={tPlugins('ariaLabel')}
+									>
+										<Plug className="h-5 w-5" />
+										{pluginIds.length > 0 && (
+											<span className="bg-primary text-primary-foreground absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] font-medium">
+												{pluginIds.length}
+											</span>
+										)}
+									</Button>
+								}
+							/>
+							<TooltipContent
+								side="left"
+								sideOffset={8}
+							>
+								{tPlugins('button')}
+							</TooltipContent>
+						</Tooltip>
+
+						<Tooltip>
+							<TooltipTrigger
+								render={
+									<Button
+										size="icon"
+										variant="outline"
 										className="h-12 w-12 rounded-full shadow-md"
 										onClick={() => setIsImportOpen(true)}
 										disabled={status !== 'ready'}
@@ -532,6 +611,13 @@ export default function HomePage() {
 				version={version}
 				current={selected}
 				onApply={handlePresetApply}
+			/>
+
+			<PluginPickerDialog
+				open={isPluginOpen}
+				onOpenChange={setIsPluginOpen}
+				current={pluginIds}
+				onApply={handlePluginsApply}
 			/>
 
 			<VersionSwitchWarningDialog

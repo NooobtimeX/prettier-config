@@ -21,6 +21,7 @@
 
 import { PrettierOptionTypeEnum, PrettierOptionValidateEnum } from '@/common/enum/prettierOption';
 import type { PrettierOptionType } from '@/common/interface/PrettierOptionType';
+import { PLUGIN_BY_NPM } from './plugins';
 
 export type IgnoredEntry = { key: string; reason: string };
 
@@ -30,10 +31,15 @@ export type ImportResult = {
 	/** Keys we drop, each with a human-readable reason. */
 	ignored: IgnoredEntry[];
 	/**
-	 * Keys we keep verbatim but don't render UI for (`overrides`, `plugins`).
+	 * Keys we keep verbatim but don't render UI for (`overrides`).
 	 * They round-trip through the generated config unchanged.
 	 */
 	preserved: Record<string, unknown>;
+	/**
+	 * Plugin ids resolved from the imported `plugins` array. Caller wires
+	 * these into the plugin picker state.
+	 */
+	pluginIds: string[];
 	/** Set if the input couldn't be parsed at all. */
 	error: string | null;
 };
@@ -50,11 +56,11 @@ const PLAYGROUND_INTERNAL_KEYS = new Set([
 ]);
 
 /**
- * Keys we keep even though the form doesn't render them. `plugins` is a
- * Prettier-supported array; `overrides` is the standard per-glob override
- * mechanism. Both survive round-tripping.
+ * Keys we keep even though the form doesn't render them. `overrides` is the
+ * standard per-glob override mechanism. (`plugins` is handled specially —
+ * matched against the curated registry and surfaced as `pluginIds`.)
  */
-const PRESERVED_TOP_LEVEL_KEYS = new Set(['plugins', 'overrides']);
+const PRESERVED_TOP_LEVEL_KEYS = new Set(['overrides']);
 
 /**
  * Strip the common JS-module wrappers so the remaining text is a bare
@@ -295,7 +301,7 @@ export function importPrettierConfig(
 ): ImportResult {
 	const trimmed = raw.trim();
 	if (!trimmed) {
-		return { applied: {}, ignored: [], preserved: {}, error: 'empty input' };
+		return { applied: {}, ignored: [], preserved: {}, pluginIds: [], error: 'empty input' };
 	}
 
 	const stripped = stripModuleWrapper(trimmed);
@@ -304,6 +310,7 @@ export function importPrettierConfig(
 			applied: {},
 			ignored: [],
 			preserved: {},
+			pluginIds: [],
 			error:
 				'Expected an object literal — did you paste a file that exports a function or a non-object value?',
 		};
@@ -311,7 +318,7 @@ export function importPrettierConfig(
 
 	const parsed = parseLoose(stripped);
 	if (parsed.error || parsed.value === null) {
-		return { applied: {}, ignored: [], preserved: {}, error: parsed.error };
+		return { applied: {}, ignored: [], preserved: {}, pluginIds: [], error: parsed.error };
 	}
 
 	const root = maybePluckPrettierFromPackageJson(parsed.value);
@@ -320,6 +327,7 @@ export function importPrettierConfig(
 			applied: {},
 			ignored: [],
 			preserved: {},
+			pluginIds: [],
 			error: 'Pasted value is not a Prettier config object.',
 		};
 	}
@@ -329,10 +337,30 @@ export function importPrettierConfig(
 	const applied: Record<string, unknown> = {};
 	const ignored: IgnoredEntry[] = [];
 	const preserved: Record<string, unknown> = {};
+	const pluginIds: string[] = [];
 
 	for (const [key, value] of Object.entries(root as Record<string, unknown>)) {
 		if (PLAYGROUND_INTERNAL_KEYS.has(key)) {
 			ignored.push({ key, reason: 'playground-internal' });
+			continue;
+		}
+		if (key === 'plugins') {
+			if (!Array.isArray(value)) {
+				ignored.push({ key, reason: 'expected array of plugin names' });
+				continue;
+			}
+			for (const entry of value) {
+				if (typeof entry !== 'string') {
+					ignored.push({ key: 'plugins', reason: `non-string plugin: ${JSON.stringify(entry)}` });
+					continue;
+				}
+				const known = PLUGIN_BY_NPM.get(entry);
+				if (known) {
+					if (!pluginIds.includes(known.id)) pluginIds.push(known.id);
+				} else {
+					ignored.push({ key: `plugins[${entry}]`, reason: 'unknown plugin' });
+				}
+			}
 			continue;
 		}
 		if (PRESERVED_TOP_LEVEL_KEYS.has(key)) {
@@ -356,5 +384,5 @@ export function importPrettierConfig(
 		else ignored.push({ key, reason: validated.reason });
 	}
 
-	return { applied, ignored, preserved, error: null };
+	return { applied, ignored, preserved, pluginIds, error: null };
 }

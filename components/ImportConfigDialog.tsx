@@ -27,8 +27,11 @@ interface ImportConfigDialogProps {
 	onOpenChange: (open: boolean) => void;
 	options: PrettierOptionType[];
 	version: string;
-	/** Called with the merged `applied + preserved` map on Apply click. */
-	onApply: (next: Record<string, unknown>) => void;
+	/**
+	 * Called with the merged `applied + preserved` map (form state) and the
+	 * resolved plugin ids on Apply click. Caller wires both into state.
+	 */
+	onApply: (next: Record<string, unknown>, pluginIds: string[]) => void;
 }
 
 /**
@@ -68,11 +71,15 @@ export function ImportConfigDialog({
 	};
 
 	const canApply =
-		result !== null && result.error === null && Object.keys(result.applied).length > 0;
+		result !== null &&
+		result.error === null &&
+		(Object.keys(result.applied).length > 0 ||
+			Object.keys(result.preserved).length > 0 ||
+			result.pluginIds.length > 0);
 
 	const handleApply = () => {
 		if (!result || !canApply) return;
-		onApply({ ...result.applied, ...result.preserved });
+		onApply({ ...result.applied, ...result.preserved }, result.pluginIds);
 	};
 
 	return (

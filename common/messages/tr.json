@@ -184,6 +184,34 @@
 					"description": "Pack code densely to shrink token count when pasting into LLMs."
 				}
 			}
+		},
+		"plugins": {
+			"button": "Plugins",
+			"ariaLabel": "Enable Prettier plugins",
+			"dialogTitle": "Prettier plugins",
+			"intro": "Enable third-party plugins. They load from jsDelivr on demand and add their own options to the form.",
+			"appliesToLabel": "Applies to:",
+			"applyButton": "Apply",
+			"cancelButton": "Cancel",
+			"appliedToast": "{count, plural, =0 {Plugins cleared} one {# plugin enabled} other {# plugins enabled}}",
+			"items": {
+				"tailwindcss": {
+					"name": "Tailwind CSS",
+					"description": "Sorts Tailwind utility classes in the order Tailwind itself recommends."
+				},
+				"sort-json": {
+					"name": "Sort JSON",
+					"description": "Sorts the keys of JSON files alphabetically."
+				},
+				"packagejson": {
+					"name": "package.json sort",
+					"description": "Sorts and normalises fields in package.json."
+				},
+				"jsdoc": {
+					"name": "JSDoc formatter",
+					"description": "Tidies JSDoc / TSDoc comment blocks (alignment, line wrap, tag ordering)."
+				}
+			}
 		}
 	},
 	"Faq": {

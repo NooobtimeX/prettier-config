@@ -27,27 +27,30 @@ export type ParserId =
 
 export type Parser = {
 	id: ParserId;
-	label: string;
+	/**
+	 * File extensions this parser commonly handles. (User-facing labels live in
+	 * the `Page.parserPicker.parsers.*` i18n keys, not here.)
+	 */
 	extensions: readonly string[];
 };
 
 export const PARSERS: readonly Parser[] = [
-	{ id: 'typescript', label: 'TypeScript / JS', extensions: ['ts', 'tsx', 'js', 'jsx', 'mjs'] },
-	{ id: 'babel', label: 'Babel (JS)', extensions: ['js', 'jsx'] },
-	{ id: 'flow', label: 'Flow', extensions: ['js'] },
-	{ id: 'css', label: 'CSS', extensions: ['css'] },
-	{ id: 'scss', label: 'SCSS', extensions: ['scss'] },
-	{ id: 'less', label: 'Less', extensions: ['less'] },
-	{ id: 'html', label: 'HTML', extensions: ['html', 'htm'] },
-	{ id: 'vue', label: 'Vue', extensions: ['vue'] },
-	{ id: 'angular', label: 'Angular template', extensions: ['html'] },
-	{ id: 'json', label: 'JSON', extensions: ['json'] },
-	{ id: 'json5', label: 'JSON5', extensions: ['json5'] },
-	{ id: 'jsonc', label: 'JSON with comments', extensions: ['jsonc'] },
-	{ id: 'markdown', label: 'Markdown', extensions: ['md', 'markdown'] },
-	{ id: 'mdx', label: 'MDX', extensions: ['mdx'] },
-	{ id: 'yaml', label: 'YAML', extensions: ['yaml', 'yml'] },
-	{ id: 'graphql', label: 'GraphQL', extensions: ['graphql', 'gql'] },
+	{ id: 'typescript', extensions: ['ts', 'tsx', 'js', 'jsx', 'mjs'] },
+	{ id: 'babel', extensions: ['js', 'jsx'] },
+	{ id: 'flow', extensions: ['js'] },
+	{ id: 'css', extensions: ['css'] },
+	{ id: 'scss', extensions: ['scss'] },
+	{ id: 'less', extensions: ['less'] },
+	{ id: 'html', extensions: ['html', 'htm'] },
+	{ id: 'vue', extensions: ['vue'] },
+	{ id: 'angular', extensions: ['html'] },
+	{ id: 'json', extensions: ['json'] },
+	{ id: 'json5', extensions: ['json5'] },
+	{ id: 'jsonc', extensions: ['jsonc'] },
+	{ id: 'markdown', extensions: ['md', 'markdown'] },
+	{ id: 'mdx', extensions: ['mdx'] },
+	{ id: 'yaml', extensions: ['yaml', 'yml'] },
+	{ id: 'graphql', extensions: ['graphql', 'gql'] },
 ] as const;
 
 export const DEFAULT_PARSER: ParserId = 'typescript';

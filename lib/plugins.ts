@@ -28,14 +28,6 @@ export type Plugin = {
 
 export const PLUGINS: readonly Plugin[] = [
 	{
-		id: 'tailwindcss',
-		npm: 'prettier-plugin-tailwindcss',
-		version: '0.8.0',
-		cdnUrl: 'https://cdn.jsdelivr.net/npm/prettier-plugin-tailwindcss@0.8.0/+esm',
-		parsers: ['babel', 'typescript', 'vue', 'angular', 'html', 'css', 'scss'],
-		homepage: 'https://github.com/tailwindlabs/prettier-plugin-tailwindcss',
-	},
-	{
 		id: 'sort-json',
 		npm: 'prettier-plugin-sort-json',
 		version: '4.1.1',
@@ -45,10 +37,13 @@ export const PLUGINS: readonly Plugin[] = [
 	},
 ];
 
-// Withheld until I can verify they load cleanly via jsDelivr's `+esm`:
+// Withheld — jsDelivr's `+esm` endpoint can't bundle these for browsers:
+//   - prettier-plugin-tailwindcss   — uses `node:module` for Tailwind resolve.
 //   - prettier-plugin-packagejson   — drags in Node-only deps (sort-package-json).
 //   - prettier-plugin-jsdoc         — imports `node:module` via its TS deps.
 //   - prettier-plugin-organize-imports — needs the Node `typescript` package.
+// Open question: can any of these be loaded via a hand-picked dist path
+// (e.g. `dist/index.mjs`) that skips Rollup bundling? Worth a future probe.
 
 export const PLUGIN_BY_ID = new Map(PLUGINS.map((p) => [p.id, p]));
 export const PLUGIN_BY_NPM = new Map(PLUGINS.map((p) => [p.npm, p]));

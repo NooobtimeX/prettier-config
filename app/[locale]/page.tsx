@@ -16,7 +16,7 @@ import type { ParserId } from '@/lib/parsers';
 import { ImportConfigDialog } from '@/components/ImportConfigDialog';
 import { PresetDialog } from '@/components/PresetDialog';
 import { PluginPickerDialog } from '@/components/PluginPickerDialog';
-import { pluginNpmNamesFor, pluginUrlsFor, PLUGIN_BY_URL } from '@/lib/plugins';
+import { pluginNpmNamesFor, pluginUrlsFor, PLUGIN_BY_ID, PLUGIN_BY_URL } from '@/lib/plugins';
 import { VersionSwitchWarningDialog } from '@/components/VersionSwitchWarningDialog';
 import { useOptionSearchHotkey } from '@/hooks/useOptionSearchHotkey';
 import { computeVersionConflicts, type VersionConflict } from '@/lib/versionDiff';
@@ -123,6 +123,15 @@ export default function HomePage() {
 			setPluginIds((prev) => prev.filter((id) => !failedIds.includes(id)));
 		}
 	}, [pluginFailures, setPluginIds, tPlugins]);
+
+	// Defensive cleanup — drop any persisted ids that no longer match a plugin
+	// in the registry (e.g. plugin removed in a later release). Silent.
+	useEffect(() => {
+		if (pluginIds.length === 0) return;
+		const orphans = pluginIds.filter((id) => !PLUGIN_BY_ID.has(id));
+		if (orphans.length === 0) return;
+		setPluginIds((prev) => prev.filter((id) => PLUGIN_BY_ID.has(id)));
+	}, [pluginIds, setPluginIds]);
 
 	const handleShare = async () => {
 		const url = await share();

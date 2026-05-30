@@ -132,17 +132,32 @@ function formatPrettierError(err: unknown): string {
 	return String(err);
 }
 
-export function loadPrettier(version: string): Promise<LoadedPrettier> {
-	const cached = cache.get(version);
+/**
+ * Stable cache key for a (version, extra-plugins) combo. Sorting the URLs
+ * means `[a, b]` and `[b, a]` share a cache entry.
+ */
+function cacheKey(version: string, extraPluginUrls: readonly string[]): string {
+	if (extraPluginUrls.length === 0) return version;
+	const sorted = [...extraPluginUrls].sort();
+	return `${version}::${sorted.join('|')}`;
+}
+
+export function loadPrettier(
+	version: string,
+	extraPluginUrls: readonly string[] = [],
+): Promise<LoadedPrettier> {
+	const key = cacheKey(version, extraPluginUrls);
+	const cached = cache.get(key);
 	if (cached) return cached;
 
 	const versionPath = resolveVersionPath(version);
 	const base = `https://cdn.jsdelivr.net/npm/prettier@${versionPath}`;
 
 	const pending = (async (): Promise<LoadedPrettier> => {
-		const [standaloneMod, ...pluginMods] = await Promise.all([
+		const [standaloneMod, ...allPluginMods] = await Promise.all([
 			importFromUrl(`${base}/standalone.mjs`),
 			...PLUGIN_FILES.map((file) => importFromUrl(`${base}/plugins/${file}`)),
+			...extraPluginUrls.map((url) => importFromUrl(url)),
 		]);
 
 		const prettier = unwrapDefault(standaloneMod) as {
@@ -150,22 +165,33 @@ export function loadPrettier(version: string): Promise<LoadedPrettier> {
 			getSupportInfo: (opts?: unknown) => unknown;
 		};
 
-		const allPlugins = pluginMods.map(unwrapDefault);
-		const pluginByFile = new Map<PluginFile, unknown>();
-		PLUGIN_FILES.forEach((file, i) => pluginByFile.set(file, allPlugins[i]));
+		const allUnwrapped = allPluginMods.map(unwrapDefault);
+		const builtinCount = PLUGIN_FILES.length;
+		const builtinPlugins = allUnwrapped.slice(0, builtinCount);
+		const extraPlugins = allUnwrapped.slice(builtinCount);
 
-		// Pass every plugin to getSupportInfo so language-specific options
-		// (singleQuote, proseWrap, htmlWhitespaceSensitivity, …) are included.
+		const pluginByFile = new Map<PluginFile, unknown>();
+		PLUGIN_FILES.forEach((file, i) => pluginByFile.set(file, builtinPlugins[i]));
+
+		// Pass every plugin (built-in + third-party) to getSupportInfo so
+		// language-specific options (singleQuote, proseWrap, …) and
+		// plugin-contributed options (tailwindConfig, jsdocPreferCodeFences, …)
+		// are all included.
 		const supportInfo = (await Promise.resolve(
-			prettier.getSupportInfo({ plugins: allPlugins }),
+			prettier.getSupportInfo({ plugins: [...builtinPlugins, ...extraPlugins] }),
 		)) as PrettierSupportInfo;
 
 		const format: FormatFn = async (code, selected, parser = DEFAULT_PARSER) => {
 			if (!code.trim()) return { code, error: null };
 			const pluginFiles = PARSER_PLUGINS[parser] ?? PARSER_PLUGINS[DEFAULT_PARSER];
-			const plugins = pluginFiles
+			const builtinForParser = pluginFiles
 				.map((file) => pluginByFile.get(file))
 				.filter((p): p is unknown => p !== undefined);
+			// Third-party plugins are always passed — Prettier ignores ones whose
+			// `parsers` don't match the active parser, and some plugins (e.g.
+			// tailwindcss) extend the formatter behaviour even when their parsers
+			// aren't directly invoked.
+			const plugins = [...builtinForParser, ...extraPlugins];
 			const filtered: Record<string, unknown> = {};
 			for (const [k, v] of Object.entries(selected)) {
 				if (k === 'parser' || k === 'plugins') continue;
@@ -184,7 +210,7 @@ export function loadPrettier(version: string): Promise<LoadedPrettier> {
 	})();
 
 	// Drop failed loads so the next call retries instead of being stuck on the rejection.
-	pending.catch(() => cache.delete(version));
-	cache.set(version, pending);
+	pending.catch(() => cache.delete(key));
+	cache.set(key, pending);
 	return pending;
 }

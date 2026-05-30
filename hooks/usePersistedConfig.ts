@@ -16,6 +16,7 @@ type Selections = Record<string, unknown>;
 export type PersistedConfig<S extends Selections = Selections> = {
 	version: string;
 	selected: S;
+	pluginIds: string[];
 };
 
 const STORAGE_KEY = 'prettier-config-state';
@@ -31,7 +32,7 @@ const serverSnapshotCache = new Map<string, PersistedConfig>();
 function getServerSnapshot(defaultVersion: string): PersistedConfig {
 	let snap = serverSnapshotCache.get(defaultVersion);
 	if (!snap) {
-		snap = { version: defaultVersion, selected: {} };
+		snap = { version: defaultVersion, selected: {}, pluginIds: [] };
 		serverSnapshotCache.set(defaultVersion, snap);
 	}
 	return snap;
@@ -39,13 +40,13 @@ function getServerSnapshot(defaultVersion: string): PersistedConfig {
 
 function readFromStorage(defaultVersion: string): PersistedConfig {
 	if (typeof window === 'undefined') {
-		return { version: defaultVersion, selected: {} };
+		return { version: defaultVersion, selected: {}, pluginIds: [] };
 	}
 	const raw = window.localStorage.getItem(STORAGE_KEY);
 	if (raw === cachedRaw && cached) return cached;
 	cachedRaw = raw;
 	if (!raw) {
-		cached = { version: defaultVersion, selected: {} };
+		cached = { version: defaultVersion, selected: {}, pluginIds: [] };
 		return cached;
 	}
 	try {
@@ -56,9 +57,13 @@ function readFromStorage(defaultVersion: string): PersistedConfig {
 				parsed.selected && typeof parsed.selected === 'object' && !Array.isArray(parsed.selected)
 					? (parsed.selected as Selections)
 					: {},
+			pluginIds:
+				Array.isArray(parsed.pluginIds) && parsed.pluginIds.every((s) => typeof s === 'string')
+					? (parsed.pluginIds as string[])
+					: [],
 		};
 	} catch {
-		cached = { version: defaultVersion, selected: {} };
+		cached = { version: defaultVersion, selected: {}, pluginIds: [] };
 	}
 	return cached;
 }
@@ -106,6 +111,8 @@ export function usePersistedConfig<S extends Selections = Selections>(
 	setVersion: Dispatch<SetStateAction<string>>;
 	selected: S;
 	setSelected: Dispatch<SetStateAction<S>>;
+	pluginIds: string[];
+	setPluginIds: Dispatch<SetStateAction<string[]>>;
 } {
 	const config = useSyncExternalStore(
 		subscribe,
@@ -133,10 +140,21 @@ export function usePersistedConfig<S extends Selections = Selections>(
 		[defaultVersion],
 	);
 
+	const setPluginIds = useCallback<Dispatch<SetStateAction<string[]>>>(
+		(next) => {
+			const current = readFromStorage(defaultVersion);
+			const value = typeof next === 'function' ? next(current.pluginIds) : next;
+			writeToStorage({ ...current, pluginIds: value });
+		},
+		[defaultVersion],
+	);
+
 	return {
 		version: config.version,
 		setVersion,
 		selected: config.selected as S,
 		setSelected,
+		pluginIds: config.pluginIds,
+		setPluginIds,
 	};
 }

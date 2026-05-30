@@ -17,6 +17,7 @@ export type UsePrettierVersionResult = {
 
 type Loaded = {
 	version: string;
+	pluginKey: string;
 	options: PrettierOptionType[];
 	format: FormatFn;
 	error: Error | null;
@@ -26,6 +27,7 @@ const passthroughFormat: FormatFn = async (code) => ({ code, error: null });
 
 const initialLoaded: Loaded = {
 	version: '',
+	pluginKey: '',
 	options: [],
 	format: passthroughFormat,
 	error: null,
@@ -41,19 +43,34 @@ const initialLoaded: Loaded = {
  * requested `version`, so we don't write a transient "loading" state into React
  * from inside the effect (which would trigger a cascading render).
  */
-export function usePrettierVersion(version: string): UsePrettierVersionResult {
+/**
+ * Pulls a stable key out of an array so `useEffect` can dep on it without
+ * thrashing whenever a parent re-creates the array literal.
+ */
+function joinUrls(urls: readonly string[]): string {
+	if (urls.length === 0) return '';
+	return [...urls].sort().join('|');
+}
+
+export function usePrettierVersion(
+	version: string,
+	pluginUrls: readonly string[] = [],
+): UsePrettierVersionResult {
 	const [loaded, setLoaded] = useState<Loaded>(initialLoaded);
-	// Guards against out-of-order completions when the user flips versions quickly.
+	// Guards against out-of-order completions when the user flips versions / plugins quickly.
 	const { next: nextRequestId, isCurrent: isCurrentRequest } = useRequestId();
+	const pluginKey = joinUrls(pluginUrls);
 
 	useEffect(() => {
 		const id = nextRequestId();
-		loadPrettier(version)
+		const urls = pluginKey ? pluginKey.split('|') : [];
+		loadPrettier(version, urls)
 			.then((res) => {
 				if (!isCurrentRequest(id)) return;
 				const filterVersion = version === 'latest' ? null : version;
 				setLoaded({
 					version,
+					pluginKey,
 					options: adaptSupportInfo(res.supportInfo, filterVersion),
 					format: res.format,
 					error: null,
@@ -63,14 +80,15 @@ export function usePrettierVersion(version: string): UsePrettierVersionResult {
 				if (!isCurrentRequest(id)) return;
 				setLoaded({
 					version,
+					pluginKey,
 					options: [],
 					format: passthroughFormat,
 					error: err instanceof Error ? err : new Error(String(err)),
 				});
 			});
-	}, [version, nextRequestId, isCurrentRequest]);
+	}, [version, pluginKey, nextRequestId, isCurrentRequest]);
 
-	const isCurrent = loaded.version === version;
+	const isCurrent = loaded.version === version && loaded.pluginKey === pluginKey;
 	const status: PrettierLoadStatus = !isCurrent ? 'loading' : loaded.error ? 'error' : 'ready';
 
 	return {

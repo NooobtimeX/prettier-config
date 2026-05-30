@@ -43,26 +43,16 @@ export const PLUGINS: readonly Plugin[] = [
 		parsers: ['json', 'json5', 'jsonc'],
 		homepage: 'https://github.com/Sec-ant/prettier-plugin-sort-json',
 	},
-	{
-		id: 'packagejson',
-		npm: 'prettier-plugin-packagejson',
-		version: '2.5.6',
-		cdnUrl: 'https://cdn.jsdelivr.net/npm/prettier-plugin-packagejson@2.5.6/+esm',
-		parsers: ['json'],
-		homepage: 'https://github.com/matzkoh/prettier-plugin-packagejson',
-	},
-	{
-		id: 'jsdoc',
-		npm: 'prettier-plugin-jsdoc',
-		version: '1.3.0',
-		cdnUrl: 'https://cdn.jsdelivr.net/npm/prettier-plugin-jsdoc@1.3.0/+esm',
-		parsers: ['babel', 'typescript'],
-		homepage: 'https://github.com/hosseinmd/prettier-plugin-jsdoc',
-	},
 ];
+
+// Withheld until I can verify they load cleanly via jsDelivr's `+esm`:
+//   - prettier-plugin-packagejson   — drags in Node-only deps (sort-package-json).
+//   - prettier-plugin-jsdoc         — imports `node:module` via its TS deps.
+//   - prettier-plugin-organize-imports — needs the Node `typescript` package.
 
 export const PLUGIN_BY_ID = new Map(PLUGINS.map((p) => [p.id, p]));
 export const PLUGIN_BY_NPM = new Map(PLUGINS.map((p) => [p.npm, p]));
+export const PLUGIN_BY_URL = new Map(PLUGINS.map((p) => [p.cdnUrl, p]));
 
 /**
  * Map a list of plugin ids to their pinned CDN URLs. Unknown ids are silently

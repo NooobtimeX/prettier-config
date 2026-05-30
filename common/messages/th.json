@@ -194,6 +194,7 @@
 			"applyButton": "Apply",
 			"cancelButton": "Cancel",
 			"appliedToast": "{count, plural, =0 {Plugins cleared} one {# plugin enabled} other {# plugins enabled}}",
+			"failedToast": "Couldn't load {name}: {message}",
 			"items": {
 				"tailwindcss": {
 					"name": "Tailwind CSS",

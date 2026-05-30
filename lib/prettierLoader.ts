@@ -46,10 +46,14 @@ export type FormatFn = (
 	parser?: ParserId,
 ) => Promise<FormatResult>;
 
+export type PluginLoadFailure = { url: string; message: string };
+
 export type LoadedPrettier = {
 	version: string;
 	supportInfo: PrettierSupportInfo;
 	format: FormatFn;
+	/** Third-party plugin URLs that failed to load — surfaced for a toast. */
+	pluginFailures: PluginLoadFailure[];
 };
 
 const cache = new Map<string, Promise<LoadedPrettier>>();
@@ -154,22 +158,35 @@ export function loadPrettier(
 	const base = `https://cdn.jsdelivr.net/npm/prettier@${versionPath}`;
 
 	const pending = (async (): Promise<LoadedPrettier> => {
-		const [standaloneMod, ...allPluginMods] = await Promise.all([
+		// Core + built-in plugins are required — these load atomically.
+		const [standaloneMod, ...builtinMods] = await Promise.all([
 			importFromUrl(`${base}/standalone.mjs`),
 			...PLUGIN_FILES.map((file) => importFromUrl(`${base}/plugins/${file}`)),
-			...extraPluginUrls.map((url) => importFromUrl(url)),
 		]);
+
+		// Third-party plugins are best-effort: a single failed plugin must not
+		// take down Prettier itself. `allSettled` lets us collect partial wins.
+		const extraResults = await Promise.allSettled(extraPluginUrls.map((url) => importFromUrl(url)));
+		const extraPlugins: unknown[] = [];
+		const pluginFailures: PluginLoadFailure[] = [];
+		extraResults.forEach((res, i) => {
+			const url = extraPluginUrls[i];
+			if (res.status === 'fulfilled') {
+				extraPlugins.push(unwrapDefault(res.value));
+			} else {
+				pluginFailures.push({
+					url,
+					message: res.reason instanceof Error ? res.reason.message : String(res.reason),
+				});
+			}
+		});
 
 		const prettier = unwrapDefault(standaloneMod) as {
 			format: (code: string, opts: unknown) => Promise<string>;
 			getSupportInfo: (opts?: unknown) => unknown;
 		};
 
-		const allUnwrapped = allPluginMods.map(unwrapDefault);
-		const builtinCount = PLUGIN_FILES.length;
-		const builtinPlugins = allUnwrapped.slice(0, builtinCount);
-		const extraPlugins = allUnwrapped.slice(builtinCount);
-
+		const builtinPlugins = builtinMods.map(unwrapDefault);
 		const pluginByFile = new Map<PluginFile, unknown>();
 		PLUGIN_FILES.forEach((file, i) => pluginByFile.set(file, builtinPlugins[i]));
 
@@ -206,7 +223,7 @@ export function loadPrettier(
 			}
 		};
 
-		return { version, supportInfo, format };
+		return { version, supportInfo, format, pluginFailures };
 	})();
 
 	// Drop failed loads so the next call retries instead of being stuck on the rejection.

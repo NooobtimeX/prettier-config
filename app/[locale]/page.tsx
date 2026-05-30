@@ -16,7 +16,7 @@ import type { ParserId } from '@/lib/parsers';
 import { ImportConfigDialog } from '@/components/ImportConfigDialog';
 import { PresetDialog } from '@/components/PresetDialog';
 import { PluginPickerDialog } from '@/components/PluginPickerDialog';
-import { pluginNpmNamesFor, pluginUrlsFor } from '@/lib/plugins';
+import { pluginNpmNamesFor, pluginUrlsFor, PLUGIN_BY_URL } from '@/lib/plugins';
 import { VersionSwitchWarningDialog } from '@/components/VersionSwitchWarningDialog';
 import { useOptionSearchHotkey } from '@/hooks/useOptionSearchHotkey';
 import { computeVersionConflicts, type VersionConflict } from '@/lib/versionDiff';
@@ -66,7 +66,10 @@ export default function HomePage() {
 	const { version, setVersion, selected, setSelected, pluginIds, setPluginIds } =
 		usePersistedConfig<SelectedOptions>(DEFAULT_PRETTIER_VERSION);
 	const pluginUrls = useMemo(() => pluginUrlsFor(pluginIds), [pluginIds]);
-	const { options, format, status, error } = usePrettierVersion(version, pluginUrls);
+	const { options, format, status, error, pluginFailures } = usePrettierVersion(
+		version,
+		pluginUrls,
+	);
 
 	const [showConfig, setShowConfig] = useState(false);
 	const [generatedConfig, setGeneratedConfig] = useState('');
@@ -104,6 +107,22 @@ export default function HomePage() {
 	const tVersionSwitch = useTranslations('Page.versionSwitch');
 
 	useOptionSearchHotkey();
+
+	// If a plugin URL failed to load (CDN couldn't bundle Node-only deps, network
+	// blip, …) toast the user and auto-deselect it so the next load isn't stuck.
+	useEffect(() => {
+		if (pluginFailures.length === 0) return;
+		const failedIds = pluginFailures
+			.map((f) => PLUGIN_BY_URL.get(f.url)?.id)
+			.filter((id): id is string => Boolean(id));
+		for (const f of pluginFailures) {
+			const name = PLUGIN_BY_URL.get(f.url)?.npm ?? f.url;
+			toast.error(tPlugins('failedToast', { name, message: f.message }));
+		}
+		if (failedIds.length > 0) {
+			setPluginIds((prev) => prev.filter((id) => !failedIds.includes(id)));
+		}
+	}, [pluginFailures, setPluginIds, tPlugins]);
 
 	const handleShare = async () => {
 		const url = await share();

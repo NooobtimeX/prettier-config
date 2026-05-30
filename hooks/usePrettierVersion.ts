@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { adaptSupportInfo } from '@/lib/adaptSupportInfo';
-import { loadPrettier, type FormatFn } from '@/lib/prettierLoader';
+import { loadPrettier, type FormatFn, type PluginLoadFailure } from '@/lib/prettierLoader';
 import type { PrettierOptionType } from '@/common/interface/PrettierOptionType';
 import { useRequestId } from '@/hooks/useRequestId';
 
@@ -13,6 +13,8 @@ export type UsePrettierVersionResult = {
 	format: FormatFn;
 	status: PrettierLoadStatus;
 	error: Error | null;
+	/** Third-party plugin URLs that failed to load on the last completed load. */
+	pluginFailures: PluginLoadFailure[];
 };
 
 type Loaded = {
@@ -21,6 +23,7 @@ type Loaded = {
 	options: PrettierOptionType[];
 	format: FormatFn;
 	error: Error | null;
+	pluginFailures: PluginLoadFailure[];
 };
 
 const passthroughFormat: FormatFn = async (code) => ({ code, error: null });
@@ -31,6 +34,7 @@ const initialLoaded: Loaded = {
 	options: [],
 	format: passthroughFormat,
 	error: null,
+	pluginFailures: [],
 };
 
 /**
@@ -74,6 +78,7 @@ export function usePrettierVersion(
 					options: adaptSupportInfo(res.supportInfo, filterVersion),
 					format: res.format,
 					error: null,
+					pluginFailures: res.pluginFailures,
 				});
 			})
 			.catch((err: unknown) => {
@@ -84,6 +89,7 @@ export function usePrettierVersion(
 					options: [],
 					format: passthroughFormat,
 					error: err instanceof Error ? err : new Error(String(err)),
+					pluginFailures: [],
 				});
 			});
 	}, [version, pluginKey, nextRequestId, isCurrentRequest]);
@@ -96,5 +102,6 @@ export function usePrettierVersion(
 		format: isCurrent ? loaded.format : passthroughFormat,
 		status,
 		error: isCurrent ? loaded.error : null,
+		pluginFailures: isCurrent ? loaded.pluginFailures : [],
 	};
 }

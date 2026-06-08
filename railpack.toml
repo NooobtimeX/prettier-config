@@ -1,6 +1,0 @@
-[options]
-packageManager = "bun"
-useFrozenLockfile = false
-
-[phases.install]
-cmds = ["bun install"]

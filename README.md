@@ -109,6 +109,46 @@ TypeScript, JavaScript, Flow, CSS, SCSS, Less, HTML, Vue, Angular templates, JSO
 └── public/                 # Static assets, llm.txt, og-image
 ```
 
+## 🚊 Deployment (Railway)
+
+**[Railway](https://railway.com/) is the only deployment target.** The app runs as a
+single service that deploys from `main` — Railway's GitHub integration handles
+deploys automatically.
+
+| File             | Role                                                                               |
+| :--------------- | :--------------------------------------------------------------------------------- |
+| `railway.toml`   | Tells Railway to use the Dockerfile builder, plus start command and restart policy |
+| `Dockerfile`     | Three-stage build — Bun installs, Bun builds, **Node serves**                      |
+| `.dockerignore`  | Keeps `node_modules`, `.next`, and `.env` out of the build context                 |
+| `.tool-versions` | Pins the local toolchain (`bun 1.3.14`, `node 24`) to match the image              |
+
+**Runtimes.** The image **builds with Bun** but **serves under Node**
+(`node:24-slim` runner stage, `CMD node server.js`) — Bun's Node-compat HTTP layer
+leaks RSS under the Next standalone server
+([oven-sh/bun#27514](https://github.com/oven-sh/bun/issues/27514): buffers are freed
+by GC but never returned to the OS). Don't move the runner back to Bun until that's
+fixed upstream.
+
+**Railway dashboard settings.** Leave the service **Root Directory** at `/` (repo
+root). Nothing else needs configuring — `railway.toml` carries the rest.
+
+> [!NOTE]
+> **No environment variables are required.** Prettier and every parser plugin are
+> fetched client-side from jsDelivr, so there is no backend, no API key, and no
+> secret to set. Railway injects `PORT` on its own and the standalone `server.js`
+> reads it at startup — never pin `PORT` in the image. (The repo's `.env` sets
+> `PORT=2000` for local dev only; `.dockerignore` keeps it out of the build.)
+
+Verify the production image locally before pushing:
+
+```bash
+docker build -t prettier-config .
+```
+
+```bash
+docker run --rm -e PORT=2000 -p 2000:2000 prettier-config
+```
+
 ## 📸 Screenshots
 
 <div align="center">
@@ -133,7 +173,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 | 🌟 [**mnicole**](https://github.com/mnicole/prettier-config) - _Original project that this was forked from_ |
 |                   💎 [**Prettier Team**](https://prettier.io/) - _Amazing code formatter_                   |
 |                   🎨 [**shadcn/ui**](https://ui.shadcn.com/) - _Beautiful UI components_                    |
-|                  🚀 [**Vercel**](https://vercel.com/) - _Next.js and deployment platform_                   |
+|                        🚀 [**Next.js**](https://nextjs.org/) - _The React framework_                        |
+|                       🚊 [**Railway**](https://railway.com/) - _Deployment platform_                        |
 |              ✏️ [**CodeMirror**](https://codemirror.net/) - _The editor in the Your Code tab_               |
 
 </div>

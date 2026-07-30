@@ -13,6 +13,6 @@ export const config = {
 		// - API routes
 		// - _next (Next.js internals)
 		// - Static files (images, etc.)
-		'/((?!api|_next|_vercel|.*\\..*).*)',
+		'/((?!api|_next|.*\\..*).*)',
 	],
 };

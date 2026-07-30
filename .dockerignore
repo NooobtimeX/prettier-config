@@ -1,0 +1,11 @@
+**/.git
+**/.DS_Store
+**/node_modules
+**/.next
+**/coverage
+# PORT=2000 is a local-dev convenience; Railway injects PORT itself.
+**/.env
+**/.env.local
+**/.claude
+**/.github
+**/*.md

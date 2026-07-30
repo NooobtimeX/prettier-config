@@ -36,6 +36,12 @@ bun run lint   # eslint --fix && prettier --write .
 
 There is **no test suite**. Verify changes by running `bun dev` and exercising the UI.
 
+To exercise the exact image Railway ships:
+
+```bash
+docker build -t prettier-config . && docker run --rm -e PORT=2000 -p 2000:2000 prettier-config
+```
+
 ## Architecture & data flow
 
 Single main screen: [app/[locale]/page.tsx](app/[locale]/page.tsx) (`'use client'`).
@@ -100,7 +106,29 @@ common/
 i18n/                 next-intl request.ts + navigation.ts
 next-intl.config.ts   routing: locales list + defaultLocale
 proxy.ts              next-intl middleware (matcher excludes api/_next/static)
+Dockerfile            Bun builds → Node serves (Railway image)
+railway.toml          Railway build/deploy config
 ```
+
+## Deployment (Railway)
+
+**Railway is the only deployment target.** One service, deploying from `main` via
+Railway's GitHub integration. Do not add config for any other platform.
+
+- **[railway.toml](railway.toml)** — `builder = "DOCKERFILE"`,
+  `startCommand = "node server.js"`, `restartPolicyType = "ON_FAILURE"`. Service
+  **Root Directory** stays `/` in the dashboard; everything else lives in this file.
+- **[Dockerfile](Dockerfile)** — three stages: Bun installs → Bun builds → **Node
+  serves**. The runner is `node:24-slim`, not Bun: the Next standalone server leaks
+  RSS under Bun's Node-compat HTTP layer (oven-sh/bun#27514). Keep the split unless
+  that's fixed upstream. The build stage still needs a `node` binary because
+  `next build` spawns Node workers.
+- `output: 'standalone'` emits `server.js` + traced `node_modules` only — it does
+  **not** copy `.next/static` or `public/`, so the runner stage copies both by hand.
+  Drop either and every asset 404s.
+- **No env vars are required.** Everything is client-side and CDN-loaded, so there
+  is no secret to configure. Railway injects `PORT`; `server.js` reads it at
+  startup — never pin `PORT` in the image.
 
 ## Conventions
 
@@ -131,4 +159,5 @@ proxy.ts              next-intl middleware (matcher excludes api/_next/static)
 - The options form is **auto-generated** from each version's `getSupportInfo()` —
   new Prettier options appear without code changes.
 - `/:locale/config` permanently redirects to `/:locale` (see `next.config.ts`).
-- `.env` only sets `PORT=2000`.
+- `.env` only sets `PORT=2000`, and only for local dev — `.dockerignore` keeps it
+  out of the image so it can never shadow the `PORT` Railway injects.

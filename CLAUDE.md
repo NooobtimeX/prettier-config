@@ -119,10 +119,13 @@ Railway's GitHub integration. Do not add config for any other platform.
   `startCommand = "node server.js"`, `restartPolicyType = "ON_FAILURE"`. Service
   **Root Directory** stays `/` in the dashboard; everything else lives in this file.
 - **[Dockerfile](Dockerfile)** — three stages: Bun installs → Bun builds → **Node
-  serves**. The runner is `node:24-slim`, not Bun: the Next standalone server leaks
+  serves**. The runner is `node:26-slim`, not Bun: the Next standalone server leaks
   RSS under Bun's Node-compat HTTP layer (oven-sh/bun#27514). Keep the split unless
   that's fixed upstream. The build stage still needs a `node` binary because
-  `next build` spawns Node workers.
+  `next build` spawns Node workers — it `COPY --from=node:26-slim`s that binary in
+  rather than `apt-get install nodejs`, which on Debian trixie is Node 20. The copy
+  relies on the Bun base and `node:26-slim` both being trixie, plus `libatomic1`;
+  bump the two Debian releases together. Node stays on 26 in both stages.
 - `output: 'standalone'` emits `server.js` + traced `node_modules` only — it does
   **not** copy `.next/static` or `public/`, so the runner stage copies both by hand.
   Drop either and every asset 404s.

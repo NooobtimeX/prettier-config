@@ -16,7 +16,15 @@ WORKDIR /app
 
 # `next build` spawns Node worker processes (page/route compilation, static
 # generation), so the build stage needs a `node` binary even though Bun drives it.
-RUN apt-get update && apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*
+# Debian's own `nodejs` package is Node 20 — two majors behind the runner — so lift
+# the real Node 26 binary out of the official image instead. Both this base and
+# node:26-slim are Debian trixie, so the glibc matches; `libatomic1` is the only
+# shared library the Bun slim image is missing. Keep the two Debian releases in step
+# if either tag moves.
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends libatomic1 \
+	&& rm -rf /var/lib/apt/lists/*
+COPY --from=node:26-slim /usr/local/bin/node /usr/local/bin/node
 
 COPY --from=installer /app/node_modules ./node_modules
 COPY . .
@@ -29,7 +37,7 @@ RUN bun run build
 # Node, not Bun: the Next standalone server leaks RSS under Bun's Node-compat HTTP
 # layer (oven-sh/bun#27514 — buffers are freed by GC but never returned to the OS).
 # Bun still installs + builds above; only serving runs on Node.
-FROM node:24-slim AS runner
+FROM node:26-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production

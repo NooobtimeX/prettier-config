@@ -80,6 +80,19 @@ export function usePrettierVersion(
 					error: null,
 					pluginFailures: res.pluginFailures,
 				});
+
+				// The loader resolves as soon as the core plus the default parser's
+				// plugins are in, so the form is usable immediately. The remaining
+				// built-in plugins land shortly after and contribute the rest of the
+				// language-specific options — fold them in when they do.
+				res.whenComplete.then((fullSupportInfo) => {
+					if (!isCurrentRequest(id)) return;
+					setLoaded((prev) =>
+						prev.version === version && prev.pluginKey === pluginKey
+							? { ...prev, options: adaptSupportInfo(fullSupportInfo, filterVersion) }
+							: prev,
+					);
+				});
 			})
 			.catch((err: unknown) => {
 				if (!isCurrentRequest(id)) return;

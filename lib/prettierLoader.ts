@@ -50,10 +50,21 @@ export type PluginLoadFailure = { url: string; message: string };
 
 export type LoadedPrettier = {
 	version: string;
+	/**
+	 * Options known as of the first phase — `standalone.mjs` plus the plugins the
+	 * default parser needs. This covers the bulk of the form; language-specific
+	 * options from the remaining plugins arrive via `whenComplete`.
+	 */
 	supportInfo: PrettierSupportInfo;
 	format: FormatFn;
 	/** Third-party plugin URLs that failed to load — surfaced for a toast. */
 	pluginFailures: PluginLoadFailure[];
+	/**
+	 * Resolves once every built-in plugin has loaded in the background and
+	 * `getSupportInfo` has been re-run against the full set. Consumers should
+	 * re-read options from this to get the complete list.
+	 */
+	whenComplete: Promise<PrettierSupportInfo>;
 };
 
 const cache = new Map<string, Promise<LoadedPrettier>>();
@@ -141,9 +152,12 @@ function formatPrettierError(err: unknown): string {
  * means `[a, b]` and `[b, a]` share a cache entry.
  */
 function cacheKey(version: string, extraPluginUrls: readonly string[]): string {
-	if (extraPluginUrls.length === 0) return version;
+	// Key on the *resolved* path so `latest` and the concrete `3.x` it maps to
+	// share one entry instead of downloading and retaining the same build twice.
+	const resolved = resolveVersionPath(version);
+	if (extraPluginUrls.length === 0) return resolved;
 	const sorted = [...extraPluginUrls].sort();
-	return `${version}::${sorted.join('|')}`;
+	return `${resolved}::${sorted.join('|')}`;
 }
 
 export function loadPrettier(
@@ -158,10 +172,27 @@ export function loadPrettier(
 	const base = `https://cdn.jsdelivr.net/npm/prettier@${versionPath}`;
 
 	const pending = (async (): Promise<LoadedPrettier> => {
-		// Core + built-in plugins are required — these load atomically.
-		const [standaloneMod, ...builtinMods] = await Promise.all([
+		// One promise per plugin file, started on first request and shared after.
+		// Loading all 13 up front cost ~3.4 MB of JS per version before anything
+		// could be formatted, and the browser's module map keys modules by URL for
+		// the lifetime of the document — so anything fetched here can never be
+		// reclaimed. The only real lever is not fetching it until it's needed.
+		const pluginPromises = new Map<PluginFile, Promise<unknown>>();
+		const getPlugin = (file: PluginFile): Promise<unknown> => {
+			let p = pluginPromises.get(file);
+			if (!p) {
+				p = importFromUrl(`${base}/plugins/${file}`).then(unwrapDefault);
+				pluginPromises.set(file, p);
+			}
+			return p;
+		};
+
+		// Phase 1 — the critical path: the core plus just the default parser's
+		// plugins. Everything else is either fetched on demand by `format` or
+		// picked up by the background phase below.
+		const [standaloneMod] = await Promise.all([
 			importFromUrl(`${base}/standalone.mjs`),
-			...PLUGIN_FILES.map((file) => importFromUrl(`${base}/plugins/${file}`)),
+			...PARSER_PLUGINS[DEFAULT_PARSER].map(getPlugin),
 		]);
 
 		// Third-party plugins are best-effort: a single failed plugin must not
@@ -186,24 +217,34 @@ export function loadPrettier(
 			getSupportInfo: (opts?: unknown) => unknown;
 		};
 
-		const builtinPlugins = builtinMods.map(unwrapDefault);
-		const pluginByFile = new Map<PluginFile, unknown>();
-		PLUGIN_FILES.forEach((file, i) => pluginByFile.set(file, builtinPlugins[i]));
+		/**
+		 * Pass every plugin loaded so far (built-in + third-party) to
+		 * getSupportInfo so language-specific options (singleQuote, proseWrap, …)
+		 * and plugin-contributed options (tailwindConfig, jsdocPreferCodeFences, …)
+		 * are all included.
+		 */
+		const buildSupportInfo = async (): Promise<PrettierSupportInfo> => {
+			const loaded = await Promise.all([...pluginPromises.values()]);
+			return (await Promise.resolve(
+				prettier.getSupportInfo({ plugins: [...loaded, ...extraPlugins] }),
+			)) as PrettierSupportInfo;
+		};
 
-		// Pass every plugin (built-in + third-party) to getSupportInfo so
-		// language-specific options (singleQuote, proseWrap, …) and
-		// plugin-contributed options (tailwindConfig, jsdocPreferCodeFences, …)
-		// are all included.
-		const supportInfo = (await Promise.resolve(
-			prettier.getSupportInfo({ plugins: [...builtinPlugins, ...extraPlugins] }),
-		)) as PrettierSupportInfo;
+		const supportInfo = await buildSupportInfo();
+
+		// Phase 2 — pull in the rest in the background so the full option list
+		// fills in shortly after the form is already usable. Failures here are
+		// non-fatal: `format` re-requests whatever it needs anyway.
+		const whenComplete = Promise.all(PLUGIN_FILES.map(getPlugin))
+			.then(buildSupportInfo)
+			.catch(() => supportInfo);
 
 		const format: FormatFn = async (code, selected, parser = DEFAULT_PARSER) => {
 			if (!code.trim()) return { code, error: null };
 			const pluginFiles = PARSER_PLUGINS[parser] ?? PARSER_PLUGINS[DEFAULT_PARSER];
-			const builtinForParser = pluginFiles
-				.map((file) => pluginByFile.get(file))
-				.filter((p): p is unknown => p !== undefined);
+			// Awaits exactly this parser's plugins, fetching them if the background
+			// phase hasn't reached them yet.
+			const builtinForParser = await Promise.all(pluginFiles.map(getPlugin));
 			// Third-party plugins are always passed — Prettier ignores ones whose
 			// `parsers` don't match the active parser, and some plugins (e.g.
 			// tailwindcss) extend the formatter behaviour even when their parsers
@@ -223,7 +264,7 @@ export function loadPrettier(
 			}
 		};
 
-		return { version, supportInfo, format, pluginFailures };
+		return { version, supportInfo, format, pluginFailures, whenComplete };
 	})();
 
 	// Drop failed loads so the next call retries instead of being stuck on the rejection.

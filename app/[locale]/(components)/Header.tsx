@@ -1,11 +1,10 @@
 'use client';
 
-import { FaGithub } from 'react-icons/fa6';
+import { GithubIcon } from '@/components/GithubIcon';
 import { useTranslations } from 'next-intl';
 import ThemeChanger from '@/components/ButtonThemeChanger';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { REPOSITORY } from '@/common/constants';
 
@@ -20,7 +19,12 @@ export default function Header() {
 					href="/"
 					className="flex items-center space-x-3"
 				>
-					<Image
+					{/* Plain <img>: this is a 20 KB .ico served as-is. Routing it through
+					    next/image only added a round-trip and pulled sharp + libvips
+					    (16 MB) into the standalone build for a format the optimizer
+					    passes through untouched anyway. */}
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+					<img
 						src="/favicon.ico"
 						alt={brandName}
 						width={32}
@@ -40,7 +44,7 @@ export default function Header() {
 							className="rounded-full"
 							aria-label={t('aria.repository')}
 						>
-							<FaGithub className="h-4 w-4" />
+							<GithubIcon className="h-4 w-4" />
 						</Button>
 					</Link>
 					<ThemeChanger />

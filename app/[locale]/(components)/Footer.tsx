@@ -2,8 +2,7 @@
 
 import { Link } from '@/i18n/navigation';
 import { ExternalLink } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa6';
-import Image from 'next/image';
+import { GithubIcon } from '@/components/GithubIcon';
 import { useTranslations } from 'next-intl';
 import { REPOSITORY, EXTERNAL_LINKS, DEVELOPER } from '@/common/constants';
 
@@ -19,7 +18,9 @@ export default function Footer() {
 					{/* Brand Section */}
 					<div className="space-y-4 @md:col-span-2 @[60rem]:col-span-1">
 						<div className="flex items-center space-x-2">
-							<Image
+							{/* Plain <img> — see the note in Header.tsx. */}
+							{/* eslint-disable-next-line @next/next/no-img-element */}
+							<img
 								src="/favicon.ico"
 								alt={t('brand.alt')}
 								width={32}
@@ -124,7 +125,7 @@ export default function Footer() {
 								rel="noopener noreferrer"
 								className="text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm transition-colors"
 							>
-								<FaGithub className="h-4 w-4" />
+								<GithubIcon className="h-4 w-4" />
 								{t('developer.viewOnGitHub')}
 							</Link>
 						</div>

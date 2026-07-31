@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
 import { Maximize2 } from 'lucide-react';
@@ -78,6 +78,25 @@ async function loadLanguage(parser: ParserId): Promise<Extension | null> {
 	}
 }
 
+/**
+ * Allocated once, at module scope. `EditorView.theme()` mints a fresh
+ * `StyleModule` with a fresh generated class name on every call, and style-mod
+ * only ever *inserts* into the document's stylesheet — destroying a view does
+ * not remove its rules. Building this inside the mount effect leaked one style
+ * module per mount, and this component mounts in three places including a
+ * nested copy inside its own expand dialog.
+ *
+ * `minHeight` varies per instance, so it goes through a CSS variable set on the
+ * host element rather than baking a distinct theme per value.
+ */
+const BASE_THEME = EditorView.theme({
+	'&': { fontSize: '0.75rem' },
+	'.cm-content': {
+		fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+	},
+	'.cm-scroller': { minHeight: 'var(--cm-min-height, 12rem)' },
+});
+
 interface CodeEditorProps {
 	value: string;
 	onChange: (value: string) => void;
@@ -134,13 +153,7 @@ export function CodeEditor({
 			syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
 			keymap.of([...defaultKeymap, ...historyKeymap, indentWithTab]),
 			EditorView.lineWrapping,
-			EditorView.theme({
-				'&': { fontSize: '0.75rem' },
-				'.cm-content': {
-					fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
-				},
-				'.cm-scroller': { minHeight },
-			}),
+			BASE_THEME,
 			EditorView.updateListener.of((update) => {
 				if (update.docChanged) {
 					onChangeRef.current(update.state.doc.toString());
@@ -208,6 +221,7 @@ export function CodeEditor({
 					ref={hostRef}
 					role="textbox"
 					aria-label={placeholder}
+					style={{ '--cm-min-height': minHeight } as CSSProperties}
 					className="bg-background focus-within:ring-ring overflow-hidden rounded-md border focus-within:ring-1"
 				/>
 				{!disableExpand && (

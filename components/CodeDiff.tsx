@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Loader2, Maximize2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -58,6 +58,42 @@ function countLineChanges(oldValue: string, newValue: string) {
 	return { added, removed };
 }
 
+/**
+ * Decide whether to throw away the diff viewer's accumulated cache.
+ *
+ * `react-diff-viewer-continued` memoises every diff it has ever computed in an
+ * internal `computedDiffResult` map, keyed by a JSON string that contains full
+ * copies of both the old and the new source. Nothing ever prunes it — not even
+ * `componentWillUnmount` — so it grows by one entry per debounced format for as
+ * long as the component stays mounted. A few minutes of typing is tens of MB.
+ *
+ * The cache lives on the component instance, so returning `true` here bumps the
+ * viewer's `key`, React discards the instance, and the whole map goes with it.
+ * The cost is one full re-diff (and a lost scroll position) at each reset.
+ *
+ * @param diffsSinceReset  Distinct (oldValue, newValue) pairs since the last reset
+ *                         — i.e. how many entries the cache is currently holding.
+ * @param bytesSinceReset  Sum of `oldValue.length + newValue.length` over those
+ *                         pairs — a rough proxy for how much memory they occupy.
+ * @returns `true` to drop the cache and remount the viewer.
+ */
+function shouldResetDiffCache(diffsSinceReset: number, bytesSinceReset: number): boolean {
+	return diffsSinceReset > MAX_CACHED_DIFFS || bytesSinceReset > MAX_CACHED_DIFF_BYTES;
+}
+
+/**
+ * Both bounds are deliberately generous — the goal is to stop unbounded growth,
+ * not to keep the cache small. Tune either freely; they only trade retained
+ * memory against how often the viewer visibly rebuilds mid-edit.
+ *
+ * The byte bound is what actually caps memory, and it's the one that bites on
+ * large files: at ~100 KB a side it trips after ~10 edits. The count bound is
+ * the backstop for small files, where 60 entries is only a few hundred KB and
+ * bytes would essentially never trip.
+ */
+const MAX_CACHED_DIFFS = 60;
+const MAX_CACHED_DIFF_BYTES = 2_000_000;
+
 const DIFF_VIEWER_STYLES = {
 	codeFold: { display: 'none' },
 	codeFoldGutter: { display: 'none' },
@@ -105,6 +141,30 @@ export function CodeDiff({
 
 	const unchanged = added === 0 && removed === 0;
 	const tokens = useTokenCount(oldValue, newValue, tokenModel);
+
+	// Bounded diff cache — see `shouldResetDiffCache` above. Bumping `generation`
+	// remounts the viewer, which is the only way to drop its internal cache.
+	const [generation, setGeneration] = useState(0);
+	const prevPairRef = useRef<{ old: string; new: string } | null>(null);
+	const cacheStatsRef = useRef({ diffs: 0, bytes: 0 });
+
+	useEffect(() => {
+		const prev = prevPairRef.current;
+		// Only a *distinct* pair costs a cache entry; re-renders with the same
+		// values hit the viewer's memo and allocate nothing.
+		if (prev && prev.old === oldValue && prev.new === newValue) return;
+		prevPairRef.current = { old: oldValue, new: newValue };
+
+		const stats = cacheStatsRef.current;
+		stats.diffs += 1;
+		stats.bytes += oldValue.length + newValue.length;
+
+		if (shouldResetDiffCache(stats.diffs, stats.bytes)) {
+			stats.diffs = 0;
+			stats.bytes = 0;
+			setGeneration((g) => g + 1);
+		}
+	}, [oldValue, newValue]);
 
 	const formatCount = (n: number | null) => (n === null ? '…' : n.toLocaleString());
 
@@ -161,6 +221,7 @@ export function CodeDiff({
 
 	const renderViewer = (hideLines: boolean) => (
 		<ReactDiffViewer
+			key={generation}
 			oldValue={oldValue}
 			newValue={newValue}
 			splitView={splitView}

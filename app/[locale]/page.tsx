@@ -186,9 +186,17 @@ export default function HomePage() {
 		if (next === version) return;
 		const targetLabel = next === 'latest' ? 'latest' : next;
 		try {
-			const loaded = await loadPrettier(next);
+			// Pass the selected plugin URLs so this shares the cache entry that
+			// `usePrettierVersion` will use after the switch — omitting them fetched
+			// a second, complete copy of the module graph under a bare-version key
+			// that was then orphaned if the user cancelled the dialog.
+			const loaded = await loadPrettier(next, pluginUrls);
 			const filterVersion = next === 'latest' ? null : next;
-			const newOptions = adaptSupportInfo(loaded.supportInfo, filterVersion);
+			// Conflict detection has to see the *full* option list. The loader
+			// resolves early with only the default parser's options, which would
+			// flag everything else as disappearing in the target version.
+			const fullSupportInfo = await loaded.whenComplete;
+			const newOptions = adaptSupportInfo(fullSupportInfo, filterVersion);
 			const conflicts = computeVersionConflicts(selected, validKeys, newOptions);
 			if (conflicts.length === 0) {
 				setVersion(next);
@@ -611,18 +619,25 @@ export default function HomePage() {
 				</TooltipProvider>
 			)}
 
-			<PrettierPanelModal
-				open={showConfig}
-				config={generatedConfig}
-				onClose={() => setShowConfig(false)}
-				selectedOptions={selected}
-				format={format}
-				userCode={userCode}
-				onUserCodeChange={setUserCode}
-				parserOverride={parserOverride}
-				onParserOverrideChange={setParserOverride}
-				onShare={handleShare}
-			/>
+			{/* Only ever opened on small screens (`handleGenerate` gates `setShowConfig`
+			    on `!isLargeScreen`). Rendering it unconditionally kept a second
+			    `usePrettierPanel` alive on desktop — its own formatted-preview,
+			    formatted-user and sorted-config strings, plus a second pair of format
+			    effects running against the same `format` function. */}
+			{!isLargeScreen && (
+				<PrettierPanelModal
+					open={showConfig}
+					config={generatedConfig}
+					onClose={() => setShowConfig(false)}
+					selectedOptions={selected}
+					format={format}
+					userCode={userCode}
+					onUserCodeChange={setUserCode}
+					parserOverride={parserOverride}
+					onParserOverrideChange={setParserOverride}
+					onShare={handleShare}
+				/>
+			)}
 
 			<ImportConfigDialog
 				open={isImportOpen}

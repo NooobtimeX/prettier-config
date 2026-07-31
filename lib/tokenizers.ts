@@ -8,8 +8,13 @@
  *    or for which shipping the official tokenizer would bloat the bundle
  *    beyond what this preview tool warrants.
  *
- * The exact encoders are loaded via dynamic `import()` so each ~250KB chunk
- * is only fetched the first time the user picks that model.
+ * The exact encoders are loaded via dynamic `import()` so the chunk is only
+ * fetched the first time the user picks that model. They are not small: the
+ * BPE rank tables build to ~2.0 MB for `o200k_base` and ~955 KB for
+ * `cl100k_base` — the two largest chunks in the whole app. Once fetched they
+ * stay in the browser's module map for the lifetime of the document, so the
+ * default model (`gpt-4o` → `o200k_base`) is a deliberate 2 MB commitment the
+ * first time the Preview tab renders.
  */
 
 export type TokenModelId =

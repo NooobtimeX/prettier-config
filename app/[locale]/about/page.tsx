@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/next-intl.config';
 import { Link } from '@/i18n/navigation';
-import { FaGithub } from 'react-icons/fa6';
+import { GithubIcon } from '@/components/GithubIcon';
 import { ExternalLink } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { REPOSITORY, DEVELOPER } from '@/common/constants';
@@ -151,7 +151,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 							rel="noopener noreferrer"
 							className="border-input hover:bg-accent hover:text-accent-foreground inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium transition-colors"
 						>
-							<FaGithub className="h-4 w-4" />
+							<GithubIcon className="h-4 w-4" />
 							{t('openSource.button')}
 						</Link>
 					</section>

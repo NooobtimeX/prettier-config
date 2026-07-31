@@ -10,8 +10,9 @@
 
 import dynamic from 'next/dynamic';
 import { ArrowDownAZ, ArrowUpAZ, Code2, FileJson, Loader2, Play, Share2 } from 'lucide-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import jsonLang from 'react-syntax-highlighter/dist/esm/languages/prism/json';
+import atomDark from 'react-syntax-highlighter/dist/esm/styles/prism/atom-dark';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { CodeDiff } from '@/components/CodeDiff';
@@ -23,6 +24,12 @@ import type { SortOrder } from '@/lib/sortConfig';
 import type { ParserId } from '@/lib/parsers';
 import type { PanelViewMode } from '@/common/interface/panel';
 import type { UsePrettierPanelResult } from '@/hooks/usePrettierPanel';
+
+// `PrismLight` pulls `refractor/core` and nothing else. The plain `Prism` export
+// pulls `refractor/all` — 297 grammar definitions, ~900 KB — and the only thing
+// highlighted here is the generated `.prettierrc` JSON. Same for the style: the
+// `styles/prism` barrel carries all 42 themes.
+SyntaxHighlighter.registerLanguage('json', jsonLang);
 
 const CodeEditor = dynamic(() => import('@/components/CodeEditor'), {
 	ssr: false,

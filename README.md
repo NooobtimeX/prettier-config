@@ -31,7 +31,7 @@
 
 ### Prerequisites
 
-- [Bun](https://bun.sh) (recommended) or Node.js & npm/yarn/pnpm
+- [Bun](https://bun.sh) (recommended) or Node.js 26 & npm/yarn/pnpm
 
 ### Installation
 
@@ -120,14 +120,21 @@ deploys automatically.
 | `railway.toml`   | Tells Railway to use the Dockerfile builder, plus start command and restart policy |
 | `Dockerfile`     | Three-stage build — Bun installs, Bun builds, **Node serves**                      |
 | `.dockerignore`  | Keeps `node_modules`, `.next`, and `.env` out of the build context                 |
-| `.tool-versions` | Pins the local toolchain (`bun 1.3.14`, `node 24`) to match the image              |
+| `.tool-versions` | Pins the local toolchain (`bun 1.3.14`, `node 26`) to match the image              |
 
 **Runtimes.** The image **builds with Bun** but **serves under Node**
-(`node:24-slim` runner stage, `CMD node server.js`) — Bun's Node-compat HTTP layer
+(`node:26-slim` runner stage, `CMD node server.js`) — Bun's Node-compat HTTP layer
 leaks RSS under the Next standalone server
 ([oven-sh/bun#27514](https://github.com/oven-sh/bun/issues/27514): buffers are freed
 by GC but never returned to the OS). Don't move the runner back to Bun until that's
 fixed upstream.
+
+Node 26 is used in **both** stages. `next build` spawns Node workers, so the build
+stage needs a `node` binary too — it copies one out of `node:26-slim` rather than
+`apt-get install nodejs`, which on Debian trixie would install Node 20. That copy
+works because the Bun base and `node:26-slim` are both trixie (matching glibc); it
+only needs `libatomic1` added. If either tag moves to a new Debian release, move
+them together.
 
 **Railway dashboard settings.** Leave the service **Root Directory** at `/` (repo
 root). Nothing else needs configuring — `railway.toml` carries the rest.

@@ -86,6 +86,12 @@ selected plugins' npm names under `plugins`.
   approximation for Claude/Gemini/Llama/Mistral. Exact encoders lazy-`import()`ed.
 - **versionDiff.ts** — `computeVersionConflicts()`: which active selections would
   vanish when switching versions (drives the warning dialog).
+- **seo.ts** — `buildPageMetadata`, canonical + hreflang, shared og:image.
+- **optionRoutes.ts** — slug mapping for `/options/[option]`, related options,
+  and the playground deep link (mirrors `useShareableUrl`'s LZ payload).
+- **generated/prettierOptions.ts** — build-time snapshot of `getSupportInfo()`
+  plus real formatted examples. Regenerate with `bun run gen:options` (chained
+  into `build`). Bumping the `prettier` dependency is the whole maintenance step.
 - **sortConfig.ts**, **timing.ts**, **utils.ts** (`cn`), **optionOverrides.ts**, **sample.ts**.
 
 ### Ads (Google AdSense)
@@ -109,7 +115,11 @@ Client-side only, like everything else here.
 ### Directory map
 
 ```
-app/[locale]/        Locale-aware App Router routes (page, about, faq, layout)
+app/[locale]/        Locale-aware App Router routes
+  page.tsx            server shell: metadata + JSON-LD + h1
+  (components)/       Header, Footer, Playground (client), OptionReference (server)
+  options/            /options hub + /options/[option] per-option pages
+  about, faq, privacy
   (components)/       Header, Footer
 components/           Feature components (CodeEditor, CodeDiff, *Dialog, *Picker, Prettier*)
   ui/                 shadcn/ui primitives — generated, avoid hand-editing
@@ -169,9 +179,14 @@ Railway's GitHub integration. Do not add config for any other platform.
 
 ## Gotchas
 
-- **Never bundle Prettier.** It is loaded from CDN at runtime. Don't add `prettier`
-  as a runtime import for formatting user code — go through `loadPrettier()`.
-  (`prettier` _is_ a devDependency, only for formatting this repo's own source.)
+- **Never bundle Prettier _for runtime formatting_.** User code is formatted by
+  the CDN-loaded copy — go through `loadPrettier()`. Note `prettier` is a regular
+  **dependency** (not a devDependency, as this file used to claim), which is what
+  lets `scripts/generate-prettier-options.mjs` resolve it at build time. Build-time
+  codegen is fine: it calls `getSupportInfo()` and formats sample snippets, emits
+  plain data, and no `prettier` import survives into either bundle. Assert it —
+  after a build `.next/standalone/node_modules/prettier` must not exist and no
+  client chunk may contain `STATIC_PRETTIER_OPTIONS`.
 - Adding a **parser**: update `ParserId` + `PARSERS` + `detectParser` in
   `lib/parsers.ts` **and** `PARSER_PLUGINS` in `lib/prettierLoader.ts`, then add a
   Preview sample and the `parserPicker` i18n labels.
@@ -180,6 +195,22 @@ Railway's GitHub integration. Do not add config for any other platform.
 - The options form is **auto-generated** from each version's `getSupportInfo()` —
   new Prettier options appear without code changes.
 - `/:locale/config` permanently redirects to `/:locale` (see `next.config.ts`).
+- **Never add `public/robots.txt`.** Next resolves `public/` before app routes, so
+  it silently shadows `app/robots.ts` and drops the `Sitemap:` directive.
+- **Page metadata must go through `buildPageMetadata()`** in [lib/seo.ts](lib/seo.ts).
+  Next _replaces_ rather than merges `robots`/`openGraph`/`twitter`, so a route
+  that sets any of them by hand silently loses the layout's `googleBot`
+  directives and `og:image`. The layout deliberately declares **no** `alternates`
+  — a route that forgets its canonical should emit none rather than inherit a
+  wrong one.
+- **`dynamicParams = false`** on `app/[locale]/layout.tsx` is load-bearing.
+  `proxy.ts`'s matcher skips dotted paths and `i18n/request.ts` falls back to
+  `defaultLocale`, so without it `/anything.foo` renders the home page with
+  HTTP 200 and `<html lang="anything.foo">`.
+- The home route is a **server shell**: `app/[locale]/page.tsx` owns
+  `generateMetadata`, the JSON-LD and the `<h1>`; the interactive tree lives in
+  `app/[locale]/(components)/Playground.tsx`. Keep it that way — making page.tsx
+  a client component again would take the per-locale canonical with it.
 - The AdSense publisher ID is spelled **two different ways**: `ca-pub-…` in the
   `<meta google-adsense-account>` tag, the loader's `?client=`, and every
   `data-ad-client`; bare `pub-…` (no `ca-`) in `public/ads.txt`. Getting the

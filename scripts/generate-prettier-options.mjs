@@ -27,6 +27,69 @@ const kebab = (key) => key.replace(/([A-Z])/g, '-$1').toLowerCase();
 
 const { options } = await prettier.getSupportInfo();
 
+/**
+ * One snippet that exercises most formatting decisions at once: a long line,
+ * semicolons, both quote styles, a quoted object key, a multiline literal, an
+ * arrow with a single parameter, a ternary, and nesting.
+ *
+ * Rather than hand-authoring a sample per option (26 entries to keep in sync,
+ * which is the rot the auto-generation invariant exists to avoid), every option
+ * is applied to this one snippet and the result is compared across its possible
+ * values. If the output does not change, the option gets no example — so
+ * options this snippet cannot demonstrate (JSX, HTML, CSS, line endings) are
+ * filtered out honestly instead of shipping an "example" that shows nothing.
+ */
+const SAMPLE = `const user = {name: "Ada", "user-id": 7, roles: ["admin", "editor"], active: true};
+const greet = name => \`Hello \${name}\`;
+const label = user.active ? "active member of the team" : "inactive member of the team";
+export function summarize(items) { return items.filter(i => i.active).map(i => i.name).join(", "); }
+`;
+
+/**
+ * Options that take a byte offset rather than a style choice. A worked example
+ * of `rangeEnd: 40` teaches nothing and would be actively misleading.
+ */
+const NO_EXAMPLE_KEYS = new Set(['rangeStart', 'rangeEnd', 'cursorOffset']);
+
+/** The values worth demonstrating for an option. */
+function sampleValues(opt) {
+	if (NO_EXAMPLE_KEYS.has(opt.name)) return [];
+	if (opt.type === 'boolean') return [true, false];
+	if (opt.choices?.length) return opt.choices.map((c) => c.value);
+	if (opt.type === 'int' && typeof opt.default === 'number') {
+		// Width-like options need a wide spread to show any difference at all:
+		// 80 vs 40 wrapped this sample identically, which silently cost
+		// printWidth — the single most searched option — its example.
+		return opt.default >= 40 ? [40, 120] : [opt.default, opt.default * 2];
+	}
+	return [];
+}
+
+async function buildExamples(opt) {
+	const values = sampleValues(opt);
+	if (values.length < 2) return [];
+
+	const rendered = [];
+	for (const value of values) {
+		try {
+			const code = await prettier.format(SAMPLE, { parser: 'babel', [opt.name]: value });
+			rendered.push({ value: String(value), code });
+		} catch {
+			// Invalid value for this option/parser combination — skip it rather
+			// than failing the whole build.
+			return [];
+		}
+	}
+
+	// No visible difference means this snippet cannot demonstrate the option.
+	const unique = new Set(rendered.map((r) => r.code));
+	return unique.size > 1 ? rendered : [];
+}
+
+const examplesByKey = Object.fromEntries(
+	await Promise.all(options.map(async (opt) => [opt.name, await buildExamples(opt)])),
+);
+
 const snapshot = options
 	.map((opt) => ({
 		key: opt.name,
@@ -45,6 +108,7 @@ const snapshot = options
 				: `--${kebab(opt.name)}`,
 		...(opt.array ? { array: true } : {}),
 		...(opt.range ? { range: opt.range } : {}),
+		examples: examplesByKey[opt.name] ?? [],
 	}))
 	.sort((a, b) => a.category.localeCompare(b.category) || a.key.localeCompare(b.key));
 
@@ -65,4 +129,7 @@ const formatted = await prettier.format(source, { ...config, parser: 'typescript
 mkdirSync(new URL('../lib/generated/', import.meta.url), { recursive: true });
 writeFileSync(out, formatted);
 
-console.warn(`generated ${snapshot.length} Prettier options from prettier@${version}`);
+const withExamples = snapshot.filter((o) => o.examples.length > 0).length;
+console.warn(
+	`generated ${snapshot.length} Prettier options from prettier@${version} (${withExamples} with worked examples)`,
+);

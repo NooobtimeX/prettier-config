@@ -213,6 +213,36 @@ export default async function OptionPage({ params }: { params: Params }) {
 						{t('snippet.tryIt')}
 					</Link>
 
+					{option.examples.length > 0 && (
+						<>
+							<Separator className="my-8" />
+							<h2 className="mb-3 text-xl font-bold">{t('examples.title')}</h2>
+							<p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+								{t('examples.intro', { key: option.key })}
+							</p>
+							<div className="space-y-4">
+								{option.examples.map((example) => (
+									<div key={example.value}>
+										<h3 className="mb-2 font-mono text-sm font-semibold">
+											<code dir="ltr">
+												{option.key}: {example.value}
+											</code>
+										</h3>
+										{/* Real Prettier output, produced at build time by running the
+										    pinned Prettier over one shared snippet — not hand-written,
+										    so it cannot drift from what the tool actually does. */}
+										<pre
+											dir="ltr"
+											className="bg-muted overflow-x-auto rounded-lg p-4 text-xs leading-relaxed"
+										>
+											<code className="font-mono">{example.code.trimEnd()}</code>
+										</pre>
+									</div>
+								))}
+							</div>
+						</>
+					)}
+
 					{option.choices.length > 0 && (
 						<>
 							<Separator className="my-8" />

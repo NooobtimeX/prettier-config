@@ -14,6 +14,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: false,
 		choices: [],
 		cliFlag: '--bracket-same-line',
+		examples: [],
 	},
 	{
 		key: 'bracketSpacing',
@@ -23,6 +24,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: true,
 		choices: [],
 		cliFlag: '--no-bracket-spacing',
+		examples: [],
 	},
 	{
 		key: 'objectWrap',
@@ -42,6 +44,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			},
 		],
 		cliFlag: '--object-wrap',
+		examples: [],
 	},
 	{
 		key: 'proseWrap',
@@ -64,6 +67,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			},
 		],
 		cliFlag: '--prose-wrap',
+		examples: [],
 	},
 	{
 		key: 'singleAttributePerLine',
@@ -73,6 +77,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: false,
 		choices: [],
 		cliFlag: '--single-attribute-per-line',
+		examples: [],
 	},
 	{
 		key: 'singleQuote',
@@ -82,6 +87,16 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: false,
 		choices: [],
 		cliFlag: '--single-quote',
+		examples: [
+			{
+				value: 'true',
+				code: "const user = {\n  name: 'Ada',\n  'user-id': 7,\n  roles: ['admin', 'editor'],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? 'active member of the team'\n  : 'inactive member of the team';\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(', ');\n}\n",
+			},
+			{
+				value: 'false',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+		],
 	},
 	{
 		key: 'embeddedLanguageFormatting',
@@ -100,6 +115,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			},
 		],
 		cliFlag: '--embedded-language-formatting',
+		examples: [],
 	},
 	{
 		key: 'endOfLine',
@@ -127,6 +143,24 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			},
 		],
 		cliFlag: '--end-of-line',
+		examples: [
+			{
+				value: 'lf',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: 'crlf',
+				code: 'const user = {\r\n  name: "Ada",\r\n  "user-id": 7,\r\n  roles: ["admin", "editor"],\r\n  active: true,\r\n};\r\nconst greet = (name) => `Hello ${name}`;\r\nconst label = user.active\r\n  ? "active member of the team"\r\n  : "inactive member of the team";\r\nexport function summarize(items) {\r\n  return items\r\n    .filter((i) => i.active)\r\n    .map((i) => i.name)\r\n    .join(", ");\r\n}\r\n',
+			},
+			{
+				value: 'cr',
+				code: 'const user = {\r  name: "Ada",\r  "user-id": 7,\r  roles: ["admin", "editor"],\r  active: true,\r};\rconst greet = (name) => `Hello ${name}`;\rconst label = user.active\r  ? "active member of the team"\r  : "inactive member of the team";\rexport function summarize(items) {\r  return items\r    .filter((i) => i.active)\r    .map((i) => i.name)\r    .join(", ");\r}\r',
+			},
+			{
+				value: 'auto',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+		],
 	},
 	{
 		key: 'parser',
@@ -237,6 +271,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			},
 		],
 		cliFlag: '--parser',
+		examples: [],
 	},
 	{
 		key: 'plugins',
@@ -247,6 +282,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		choices: [],
 		cliFlag: '--plugins',
 		array: true,
+		examples: [],
 	},
 	{
 		key: 'printWidth',
@@ -261,6 +297,16 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			end: null,
 			step: 1,
 		},
+		examples: [
+			{
+				value: '40',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: '120',
+				code: 'const user = { name: "Ada", "user-id": 7, roles: ["admin", "editor"], active: true };\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active ? "active member of the team" : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+		],
 	},
 	{
 		key: 'tabWidth',
@@ -275,6 +321,16 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			end: null,
 			step: 1,
 		},
+		examples: [
+			{
+				value: '2',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: '4',
+				code: 'const user = {\n    name: "Ada",\n    "user-id": 7,\n    roles: ["admin", "editor"],\n    active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n    ? "active member of the team"\n    : "inactive member of the team";\nexport function summarize(items) {\n    return items\n        .filter((i) => i.active)\n        .map((i) => i.name)\n        .join(", ");\n}\n',
+			},
+		],
 	},
 	{
 		key: 'useTabs',
@@ -284,6 +340,16 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: false,
 		choices: [],
 		cliFlag: '--use-tabs',
+		examples: [
+			{
+				value: 'true',
+				code: 'const user = {\n\tname: "Ada",\n\t"user-id": 7,\n\troles: ["admin", "editor"],\n\tactive: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n\t? "active member of the team"\n\t: "inactive member of the team";\nexport function summarize(items) {\n\treturn items\n\t\t.filter((i) => i.active)\n\t\t.map((i) => i.name)\n\t\t.join(", ");\n}\n',
+			},
+			{
+				value: 'false',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+		],
 	},
 	{
 		key: 'htmlWhitespaceSensitivity',
@@ -306,6 +372,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			},
 		],
 		cliFlag: '--html-whitespace-sensitivity',
+		examples: [],
 	},
 	{
 		key: 'vueIndentScriptAndStyle',
@@ -315,6 +382,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: false,
 		choices: [],
 		cliFlag: '--vue-indent-script-and-style',
+		examples: [],
 	},
 	{
 		key: 'arrowParens',
@@ -333,6 +401,16 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			},
 		],
 		cliFlag: '--arrow-parens',
+		examples: [
+			{
+				value: 'always',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: 'avoid',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = name => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter(i => i.active)\n    .map(i => i.name)\n    .join(", ");\n}\n',
+			},
+		],
 	},
 	{
 		key: 'experimentalOperatorPosition',
@@ -351,6 +429,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			},
 		],
 		cliFlag: '--experimental-operator-position',
+		examples: [],
 	},
 	{
 		key: 'experimentalTernaries',
@@ -360,6 +439,16 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: false,
 		choices: [],
 		cliFlag: '--experimental-ternaries',
+		examples: [
+			{
+				value: 'true',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label =\n  user.active ? "active member of the team" : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: 'false',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+		],
 	},
 	{
 		key: 'jsxSingleQuote',
@@ -369,6 +458,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: false,
 		choices: [],
 		cliFlag: '--jsx-single-quote',
+		examples: [],
 	},
 	{
 		key: 'quoteProps',
@@ -391,6 +481,20 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			},
 		],
 		cliFlag: '--quote-props',
+		examples: [
+			{
+				value: 'as-needed',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: 'consistent',
+				code: 'const user = {\n  "name": "Ada",\n  "user-id": 7,\n  "roles": ["admin", "editor"],\n  "active": true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: 'preserve',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+		],
 	},
 	{
 		key: 'semi',
@@ -400,6 +504,16 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: true,
 		choices: [],
 		cliFlag: '--no-semi',
+		examples: [
+			{
+				value: 'true',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: 'false',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n}\nconst greet = (name) => `Hello ${name}`\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team"\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ")\n}\n',
+			},
+		],
 	},
 	{
 		key: 'trailingComma',
@@ -422,6 +536,20 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			},
 		],
 		cliFlag: '--trailing-comma',
+		examples: [
+			{
+				value: 'all',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: 'es5',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: 'none',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+		],
 	},
 	{
 		key: 'checkIgnorePragma',
@@ -432,6 +560,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: false,
 		choices: [],
 		cliFlag: '--check-ignore-pragma',
+		examples: [],
 	},
 	{
 		key: 'cursorOffset',
@@ -447,6 +576,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			end: null,
 			step: 1,
 		},
+		examples: [],
 	},
 	{
 		key: 'filepath',
@@ -456,6 +586,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: null,
 		choices: [],
 		cliFlag: '--filepath',
+		examples: [],
 	},
 	{
 		key: 'insertPragma',
@@ -465,6 +596,16 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: false,
 		choices: [],
 		cliFlag: '--insert-pragma',
+		examples: [
+			{
+				value: 'true',
+				code: '/** @format */\n\nconst user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+			{
+				value: 'false',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+		],
 	},
 	{
 		key: 'rangeEnd',
@@ -480,6 +621,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			end: null,
 			step: 1,
 		},
+		examples: [],
 	},
 	{
 		key: 'rangeStart',
@@ -495,6 +637,7 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 			end: null,
 			step: 1,
 		},
+		examples: [],
 	},
 	{
 		key: 'requirePragma',
@@ -505,5 +648,15 @@ export const STATIC_PRETTIER_OPTIONS: readonly StaticPrettierOption[] = [
 		default: false,
 		choices: [],
 		cliFlag: '--require-pragma',
+		examples: [
+			{
+				value: 'true',
+				code: 'const user = {name: "Ada", "user-id": 7, roles: ["admin", "editor"], active: true};\nconst greet = name => `Hello ${name}`;\nconst label = user.active ? "active member of the team" : "inactive member of the team";\nexport function summarize(items) { return items.filter(i => i.active).map(i => i.name).join(", "); }\n',
+			},
+			{
+				value: 'false',
+				code: 'const user = {\n  name: "Ada",\n  "user-id": 7,\n  roles: ["admin", "editor"],\n  active: true,\n};\nconst greet = (name) => `Hello ${name}`;\nconst label = user.active\n  ? "active member of the team"\n  : "inactive member of the team";\nexport function summarize(items) {\n  return items\n    .filter((i) => i.active)\n    .map((i) => i.name)\n    .join(", ");\n}\n',
+			},
+		],
 	},
 ];

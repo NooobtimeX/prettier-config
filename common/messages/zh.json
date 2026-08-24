@@ -595,6 +595,10 @@
 			"intro": "把 {key} 加入你的 Prettier 配置文件：",
 			"tryIt": "在生成器中试用"
 		},
+		"examples": {
+			"title": "实际示例",
+			"intro": "同一段代码在 {key} 各个取值下的格式化结果。"
+		},
 		"values": {
 			"title": "可选值"
 		},

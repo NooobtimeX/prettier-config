@@ -597,6 +597,10 @@
 			"intro": "{key} を Prettier の設定ファイルに追加します:",
 			"tryIt": "ジェネレーターで試す"
 		},
+		"examples": {
+			"title": "実際の例",
+			"intro": "{key} の各値で同じコードを整形した結果。"
+		},
 		"values": {
 			"title": "指定できる値"
 		},

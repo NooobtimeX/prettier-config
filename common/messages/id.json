@@ -597,6 +597,10 @@
 			"intro": "Tambahkan {key} ke berkas konfigurasi Prettier Anda:",
 			"tryIt": "Coba di generator"
 		},
+		"examples": {
+			"title": "Contoh nyata",
+			"intro": "Kode yang sama diformat dengan setiap nilai {key}."
+		},
 		"values": {
 			"title": "Nilai yang diizinkan"
 		},

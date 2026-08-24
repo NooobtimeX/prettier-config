@@ -597,6 +597,10 @@
 			"intro": "Drop {key} into your Prettier config file:",
 			"tryIt": "Try it in the generator"
 		},
+		"examples": {
+			"title": "Worked examples",
+			"intro": "The same code formatted with each value of {key}."
+		},
 		"values": {
 			"title": "Allowed values"
 		},

@@ -597,6 +597,10 @@
 			"intro": "Thêm {key} vào tệp cấu hình Prettier của bạn:",
 			"tryIt": "Thử trong trình tạo"
 		},
+		"examples": {
+			"title": "Ví dụ thực tế",
+			"intro": "Cùng một đoạn mã được định dạng với từng giá trị của {key}."
+		},
 		"values": {
 			"title": "Giá trị hợp lệ"
 		},

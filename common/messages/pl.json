@@ -597,6 +597,10 @@
 			"intro": "Dodaj {key} do swojego pliku konfiguracyjnego Prettier:",
 			"tryIt": "Wypróbuj w generatorze"
 		},
+		"examples": {
+			"title": "Praktyczne przykłady",
+			"intro": "Ten sam kod sformatowany każdą wartością {key}."
+		},
 		"values": {
 			"title": "Dozwolone wartości"
 		},

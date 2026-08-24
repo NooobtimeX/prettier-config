@@ -1,3 +1,10 @@
+export type StaticPrettierOptionExample = {
+	/** The option value this output was produced with. */
+	value: string;
+	/** Real Prettier output — generated at build time, not hand-written. */
+	code: string;
+};
+
 export type StaticPrettierOptionChoice = {
 	value: string;
 	description: string;
@@ -26,6 +33,8 @@ export type StaticPrettierOption = {
 	choices: StaticPrettierOptionChoice[];
 	/** e.g. `--print-width`, or `--no-semi` for booleans defaulting to true. */
 	cliFlag: string;
+	/** Empty when the shared sample cannot demonstrate this option. */
+	examples: StaticPrettierOptionExample[];
 	array?: boolean;
 	range?: { start: number; end: number | null; step: number };
 };

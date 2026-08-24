@@ -597,6 +597,10 @@
 			"intro": "{key} seçeneğini Prettier yapılandırma dosyanıza ekleyin:",
 			"tryIt": "Oluşturucuda deneyin"
 		},
+		"examples": {
+			"title": "Uygulamalı örnekler",
+			"intro": "Aynı kodun {key} seçeneğinin her değeriyle biçimlendirilmiş hâli."
+		},
 		"values": {
 			"title": "İzin verilen değerler"
 		},

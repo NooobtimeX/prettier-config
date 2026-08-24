@@ -616,6 +616,15 @@
 			"generatedFrom": "Dibuat dari Prettier {version}."
 		}
 	},
+	"NotFound": {
+		"title": "Halaman tidak ditemukan",
+		"description": "URL tersebut tidak ada. Mungkin telah dipindahkan, atau tautannya salah.",
+		"cta": {
+			"generator": "Buka generator",
+			"options": "Lihat semua opsi",
+			"faq": "Baca FAQ"
+		}
+	},
 	"Ads": {
 		"label": "Iklan"
 	}

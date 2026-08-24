@@ -5,6 +5,33 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
 	/* config options here */
+	/**
+	 * Security headers only. Deliberately no Cache-Control for HTML: Cloudflare
+	 * sits in front and Next already emits `s-maxage=31536000` for these fully
+	 * static pages, but CF reports `cf-cache-status: DYNAMIC` because next-intl's
+	 * middleware attaches a Set-Cookie. Adding our own HTML caching on top would
+	 * risk serving stale pages after a deploy for no measured gain — fix the
+	 * cookie-on-static-route issue first if TTFB ever needs work.
+	 */
+	async headers() {
+		return [
+			{
+				source: '/:path*',
+				headers: [
+					// HTTPS is a ranking signal and without HSTS a naked http:// hit
+					// takes an extra redirect hop before the locale redirect.
+					{
+						key: 'Strict-Transport-Security',
+						value: 'max-age=63072000; includeSubDomains',
+					},
+					{ key: 'X-Content-Type-Options', value: 'nosniff' },
+					{ key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+					{ key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+				],
+			},
+		];
+	},
+
 	async redirects() {
 		return [
 			{

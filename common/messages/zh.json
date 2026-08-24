@@ -614,6 +614,15 @@
 			"generatedFrom": "生成自 Prettier {version}。"
 		}
 	},
+	"NotFound": {
+		"title": "页面未找到",
+		"description": "该网址不存在。它可能已被移动，或者链接有误。",
+		"cta": {
+			"generator": "打开生成器",
+			"options": "浏览全部选项",
+			"faq": "查看常见问题"
+		}
+	},
 	"Ads": {
 		"label": "广告"
 	}

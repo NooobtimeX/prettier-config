@@ -616,6 +616,15 @@
 			"generatedFrom": "Được tạo từ Prettier {version}."
 		}
 	},
+	"NotFound": {
+		"title": "Không tìm thấy trang",
+		"description": "URL này không tồn tại. Có thể trang đã được chuyển hoặc liên kết bị sai.",
+		"cta": {
+			"generator": "Mở trình tạo",
+			"options": "Xem tất cả tuỳ chọn",
+			"faq": "Đọc câu hỏi thường gặp"
+		}
+	},
 	"Ads": {
 		"label": "Quảng cáo"
 	}

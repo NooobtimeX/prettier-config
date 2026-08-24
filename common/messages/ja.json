@@ -616,6 +616,15 @@
 			"generatedFrom": "Prettier {version} から生成。"
 		}
 	},
+	"NotFound": {
+		"title": "ページが見つかりません",
+		"description": "この URL は存在しません。移動されたか、リンクが間違っている可能性があります。",
+		"cta": {
+			"generator": "ジェネレーターを開く",
+			"options": "すべてのオプションを見る",
+			"faq": "FAQ を読む"
+		}
+	},
 	"Ads": {
 		"label": "広告"
 	}

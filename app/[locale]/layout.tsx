@@ -11,7 +11,41 @@ import { SITE_URL, OG_IMAGE } from '@/lib/seo';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { AdSenseScript } from '@/components/AdSenseScript';
 
-const oswald = OswaldFont({ subsets: ['latin'] });
+/**
+ * Oswald is a Latin-script display face. Google Fonts ships it in latin,
+ * latin-ext, cyrillic, cyrillic-ext and vietnamese — and in nothing else, so it
+ * has no glyphs at all for Thai, Han, Kana, Hangul, Arabic, Devanagari or
+ * Bengali. Eight of the twenty locales fall back to a system face no matter
+ * what we do here.
+ *
+ * `preload: false` is deliberate. The LCP on the home page is the cross-origin
+ * jsDelivr fetch that populates the options grid — nothing can paint until it
+ * lands — so a high-priority font preload was competing for a connection slot
+ * with the thing that actually determines LCP, and on 8 locales it preloaded a
+ * file the page could never use. Without the preload the extra subsets below
+ * cost nothing: each is fetched only if a page actually references it.
+ */
+const oswald = OswaldFont({
+	subsets: ['latin', 'latin-ext', 'cyrillic', 'vietnamese'],
+	display: 'swap',
+	preload: false,
+});
+
+/** Locales whose script Oswald can actually render. */
+const OSWALD_LOCALES = new Set([
+	'en',
+	'es',
+	'de',
+	'fr',
+	'pt',
+	'it',
+	'id',
+	'pl',
+	'tr',
+	'vi',
+	'ru',
+	'uk',
+]);
 
 // Static SEO keywords covering the most-searched Prettier options.
 // The UI option list itself is loaded dynamically per Prettier version
@@ -155,7 +189,9 @@ export default async function LocaleLayout({
 			</head>
 			<body
 				suppressHydrationWarning
-				className={oswald.className}
+				// Applying a Latin-only face to e.g. Thai just forces an unstyled
+				// fallback with uncompensated metrics — skip it where it cannot help.
+				className={OSWALD_LOCALES.has(locale) ? oswald.className : undefined}
 			>
 				<ThemeProvider
 					attribute="class"

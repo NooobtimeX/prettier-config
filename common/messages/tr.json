@@ -616,6 +616,15 @@
 			"generatedFrom": "Prettier {version} sürümünden üretildi."
 		}
 	},
+	"NotFound": {
+		"title": "Sayfa bulunamadı",
+		"description": "Bu URL mevcut değil. Taşınmış olabilir ya da bağlantı hatalı olabilir.",
+		"cta": {
+			"generator": "Oluşturucuyu aç",
+			"options": "Tüm seçeneklere göz at",
+			"faq": "SSS'yi oku"
+		}
+	},
 	"Ads": {
 		"label": "Reklam"
 	}

@@ -616,6 +616,15 @@
 			"generatedFrom": "Wygenerowano z Prettier {version}."
 		}
 	},
+	"NotFound": {
+		"title": "Nie znaleziono strony",
+		"description": "Ten adres URL nie istnieje. Mógł zostać przeniesiony lub link jest błędny.",
+		"cta": {
+			"generator": "Otwórz generator",
+			"options": "Zobacz wszystkie opcje",
+			"faq": "Przeczytaj FAQ"
+		}
+	},
 	"Ads": {
 		"label": "Reklama"
 	}

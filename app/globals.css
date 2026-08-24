@@ -172,4 +172,15 @@
 	html {
 		@apply font-sans;
 	}
+
+	/* Google marks a slot it could not fill with data-ad-status="unfilled" but
+	   leaves the <ins> at the height it requested, with a white iframe inside —
+	   which on the dark theme renders as a blank white slab under an orphaned
+	   "Advertisement" label. Collapsing the whole container is Google's own
+	   documented remedy for unfilled units, and it also covers the label.
+	   No-fill is the normal case here (ad blockers, no matching demand), so this
+	   is not a temporary workaround for the pending site review. */
+	[data-ad-container]:has(ins.adsbygoogle[data-ad-status='unfilled']) {
+		display: none;
+	}
 }

@@ -97,6 +97,8 @@ export function AdSlot({
 
 	return (
 		<aside
+			// Hook for the unfilled-slot collapse rule in globals.css.
+			data-ad-container=""
 			aria-label={label}
 			className={cn('w-full', className)}
 		>

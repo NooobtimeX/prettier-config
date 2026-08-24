@@ -6,7 +6,9 @@ import { Toaster } from '@/components/ui/sonner';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { routing } from '@/next-intl.config';
+import { ADSENSE } from '@/common/constants';
 import { GoogleTagManager } from '@next/third-parties/google';
+import { AdSenseScript } from '@/components/AdSenseScript';
 
 const oswald = OswaldFont({ subsets: ['latin'] });
 
@@ -140,10 +142,11 @@ export default async function LocaleLayout({
 			dir={RTL_LOCALES.has(locale) ? 'rtl' : 'ltr'}
 		>
 			<head>
+				{/* Ownership verification only — ad serving comes from <AdSenseScript />. */}
 				<meta
 					name="google-adsense-account"
-					content="ca-pub-6034794215506479"
-				></meta>
+					content={ADSENSE.CLIENT_ID}
+				/>
 			</head>
 			<body
 				suppressHydrationWarning
@@ -155,12 +158,19 @@ export default async function LocaleLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<NextIntlClientProvider messages={messages}>
+					{/* `locale` is required, not optional: without it the provider falls back
+					    to routing.defaultLocale, and every next-intl <Link> — header, footer,
+					    everywhere — renders an /en/… href on all 19 non-English locales. */}
+					<NextIntlClientProvider
+						locale={locale}
+						messages={messages}
+					>
 						{children}
 						<Toaster />
 					</NextIntlClientProvider>
 				</ThemeProvider>
 				<GoogleTagManager gtmId="GTM-N3C2N4G7" />
+				<AdSenseScript />
 			</body>
 		</html>
 	);

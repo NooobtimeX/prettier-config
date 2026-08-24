@@ -18,13 +18,7 @@
  */
 
 export type TokenModelId =
-	| 'gpt-4o'
-	| 'gpt-4'
-	| 'gpt-3-5'
-	| 'claude'
-	| 'gemini'
-	| 'llama-3'
-	| 'mistral';
+	'gpt-4o' | 'gpt-4' | 'gpt-3-5' | 'claude' | 'gemini' | 'llama-3' | 'mistral';
 
 export type TokenModel = {
 	id: TokenModelId;

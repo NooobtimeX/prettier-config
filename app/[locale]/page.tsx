@@ -36,6 +36,8 @@ import {
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import { SearchBar } from '@/components/SearchBar';
 import { cn } from '@/lib/utils';
+import { AD_SLOTS } from '@/common/constants';
+import { AdSlot } from '@/components/AdSlot';
 import Footer from './(components)/Footer';
 import Header from './(components)/Header';
 
@@ -440,6 +442,15 @@ export default function HomePage() {
 						</div>
 					</div>
 				)}
+
+				{/* End of the options list — the only spot on this screen with real
+				    document flow. The rest of / is a fixed-height, overflow-hidden
+				    panel layout, and the mobile FABs sit at bottom-right, so nothing
+				    floating or sticky can go here without colliding. */}
+				<AdSlot
+					slot={AD_SLOTS.homeOptionsFooter}
+					className="mt-8"
+				/>
 
 				<Footer />
 			</div>

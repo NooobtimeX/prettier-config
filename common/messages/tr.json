@@ -435,7 +435,8 @@
 			"generator": "Yapılandırma Oluşturucu",
 			"docs": "Dokümantasyon",
 			"faq": "SSS",
-			"about": "Hakkında"
+			"about": "Hakkında",
+			"privacy": "Gizlilik Politikası"
 		},
 		"resources": {
 			"title": "Kaynaklar",
@@ -451,5 +452,115 @@
 		"bottom": {
 			"copyright": "Prettier Config"
 		}
+	},
+	"Privacy": {
+		"meta": {
+			"title": "Gizlilik Politikası – Prettier Config",
+			"description": "prettier-config.dev verilerinizi nasıl işliyor: kodunuz tarayıcınızdan asla çıkmaz. Yerel depolama, analitik, reklam çerezleri ve tercihleriniz hakkında ayrıntılar."
+		},
+		"hero": {
+			"badge": "Gizlilik",
+			"title": "Gizlilik Politikası",
+			"description": "Bu site istemci tarafında çalışan bir araçtır. Kodunuz tarayıcınızda biçimlendirilir ve asla bir sunucuya yüklenmez.",
+			"lastUpdated": "Son güncelleme:"
+		},
+		"summary": {
+			"title": "Kısaca",
+			"items": [
+				"Yapıştırdığınız kod tamamen tarayıcınızın içinde biçimlendirilir. Kontrolümüzdeki hiçbir sunucuya asla gönderilmez, kaydedilmez veya orada saklanmaz.",
+				"Hesap yok, kayıt yok ve kodunuzdan hiçbir takip profili oluşturulmaz.",
+				"Seçenek tercihleriniz, sayfanın onları hatırlaması için kendi tarayıcınızın yerel depolamasına kaydedilir. İstediğiniz zaman silebilirsiniz.",
+				"Google AdSense aracılığıyla reklam gösteriyor ve toplu trafiği Google Analytics ile ölçüyoruz. Her ikisi de çerez kullanır ve her ikisi de aşağıda ayrıntılı olarak açıklanmıştır."
+			]
+		},
+		"sections": [
+			{
+				"title": "Kim sorumlu",
+				"paragraphs": [
+					"prettier-config.dev, bir şirket değil, tek bir geliştirici tarafından yürütülen açık kaynaklı bir projedir. Bu politika boyunca “biz” ve “site” ifadeleri bu projeyi belirtir.",
+					"Buradaki herhangi bir konu hakkında sorunuz varsa, iletişim bilgileri bu sayfanın sonundadır."
+				]
+			},
+			{
+				"title": "Kodunuz tarayıcınızda kalır",
+				"paragraphs": [
+					"Biçimlendirme motoru Prettier'in kendisidir ve genel bir CDN'den doğrudan tarayıcınıza yüklenir. Kod yapıştırıp biçimlendirilmiş bir sonuç gördüğünüzde, bu işlem kendi makinenizde gerçekleşir — metin hiçbir yere iletilmez.",
+					"Paylaşım bağlantıları da aynı şekilde çalışır. Paylaştığınız yapılandırma ve kod, URL'nin “#” işaretinden sonraki kısmına sıkıştırılır; tarayıcılar bu kısmı web sunucularına göndermez. Bir paylaşım bağlantısı yalnızca vermeyi seçtiğiniz kişi tarafından okunabilir."
+				]
+			},
+			{
+				"title": "Tarayıcınızda ne saklanıyor",
+				"paragraphs": [
+					"Site, ziyaretler arasında kurulumunuzu hatırlayabilmek için tarayıcınızın yerel depolamasında birkaç tercih tutar. Bu veriler cihazınızda kalır, çerez değildir ve bize asla iletilmez."
+				],
+				"items": [
+					"prettier-config-state — seçtiğiniz Prettier sürümü, seçenek tercihleriniz ve etkinleştirilen eklentiler.",
+					"prettier-config-diff-settings — bölünmüş mü yoksa birleşik fark görünümünü mü tercih ettiğiniz ve seçtiğiniz belirteç sayacı modeli.",
+					"prettier-config-layout-v2 — yeniden boyutlandırılabilir düzenleyici panellerinin genişlikleri.",
+					"theme — açık, koyu veya sistem görünümünden hangisini seçtiğiniz."
+				],
+				"footnote": "Tarayıcı ayarlarınızda prettier-config.dev için site verilerini temizleyerek bunların tamamını istediğiniz zaman kaldırabilirsiniz. Hiçbir şey bozulmaz — sayfa yalnızca varsayılan değerlerine döner."
+			},
+			{
+				"title": "Analitik",
+				"paragraphs": [
+					"Aracı kaç kişinin kullandığını ve hangi özelliklerin kullanıldığını kabaca anlamak için Google Tag Manager ve Google Analytics kullanıyoruz. Bu toplu bir ölçümdür: bize bir seçeneğin değiştirildiğini söyler, kimin değiştirdiğini değil ve yapıştırdığınız kodu asla içermez.",
+					"Google bunun için çerezler yerleştirebilir. Google Analytics devre dışı bırakma tarayıcı eklentisini kurarak ziyaret ettiğiniz tüm sitelerde bunu kapatabilirsiniz."
+				]
+			},
+			{
+				"title": "Reklamcılık",
+				"paragraphs": [
+					"Bu sitenin kullanımı ücretsizdir ve reklamlarla finanse edilmektedir. Reklamları Google AdSense aracılığıyla gösteriyoruz.",
+					"Google'ın reklam çerezlerini kullanması, Google'ın ve iş ortaklarının bu siteyi ve/veya İnternet'teki diğer siteleri ziyaretinize dayalı olarak size reklam sunmasını sağlar.",
+					"Google Reklam Ayarları üzerinden kişiselleştirilmiş reklamları istediğiniz zaman devre dışı bırakabilirsiniz. Ayrıca aboutads.info adresindeki sektörel devre dışı bırakma sayfasından bazı üçüncü taraf sağlayıcıların kişiselleştirilmiş reklam amacıyla çerez kullanmasını da devre dışı bırakabilirsiniz.",
+					"Google dışındaki üçüncü taraf sağlayıcılar ve reklam ağları da bu sitede reklam sunabilir. Onların çerez kullanımı bu politikaya değil, kendi gizlilik politikalarına tabidir."
+				]
+			},
+			{
+				"title": "AEA, Birleşik Krallık ve İsviçre'de rıza",
+				"paragraphs": [
+					"Avrupa Ekonomik Alanı, Birleşik Krallık veya İsviçre'den ziyaret ediyorsanız, rıza gerektiren herhangi bir reklam veya analitik çerezi yerleştirilmeden önce size bir rıza mesajı gösterilir. Orada kabul edebilir, reddedebilir veya tercihlerinizi yapılandırabilirsiniz.",
+					"Rızanızı istediğiniz zaman, o mesajın sunduğu gizlilik ayarları bağlantısıyla mesajı yeniden açarak değiştirebilir veya geri çekebilirsiniz."
+				]
+			},
+			{
+				"title": "Sitenin dayandığı diğer hizmetler",
+				"paragraphs": [
+					"Sayfanın olağan şekilde sunulması sırasında iki taraf daha zorunlu olarak isteğinizi görür."
+				],
+				"items": [
+					"jsDelivr — bir sürüm seçtiğiniz her seferinde Prettier'i ve eklentilerini tarayıcınıza ileten genel CDN. Herhangi bir web isteğinde olduğu gibi, bu isteğin parçası olarak IP adresinizi alır.",
+					"Railway — siteyi sunan barındırma sağlayıcısı. Sayfayı size ulaştırmak için IP adresi ve user agent gibi standart web sunucusu istek verilerini işler."
+				]
+			},
+			{
+				"title": "Haklarınız ve tercihleriniz",
+				"paragraphs": [
+					"Site bir sunucuda kişisel bilgi toplamadığı veya saklamadığı için, genellikle arayabileceğimiz, dışa aktarabileceğimiz veya silebileceğimiz bir hesap ya da kayıt bulunmaz.",
+					"Google'ın reklamcılık ve analitik yoluyla işlediği veriler bakımından Google kendi başına veri sorumlusu olarak hareket eder. Yaşadığınız yere bağlı olarak bu verilere erişme, düzeltme, silme veya işlenmesini kısıtlama, işlemeye itiraz etme ya da rızanızı geri çekme hakkınız olabilir. Google'ın kendi gizlilik politikası bu hakları nasıl kullanacağınızı açıklar.",
+					"Ayrıca istediğiniz zaman bu sitenin yerel depolamasını temizleyebilir, çerezleri engelleyebilir veya bir reklam engelleyici kullanabilirsiniz. Araç çalışmaya devam edecektir."
+				]
+			},
+			{
+				"title": "Çocuklar",
+				"paragraphs": [
+					"Bu site geliştiriciler için bir araçtır ve çocuklara yönelik değildir. 16 yaşın altındaki kişilerden bilerek kişisel bilgi toplamıyoruz."
+				]
+			},
+			{
+				"title": "Bu politikadaki değişiklikler",
+				"paragraphs": [
+					"Site değiştikçe veya reklamcılık ve gizlilik gereklilikleri geliştikçe bu politikayı güncelleyebiliriz. Bu sayfanın üstünde gösterilen tarih her zaman en son revizyonu yansıtır."
+				]
+			}
+		],
+		"contact": {
+			"title": "İletişim",
+			"description": "Bu politika ya da sitenin verileri nasıl işlediği hakkında sorularınız mı var? Bize ulaşın."
+		}
+	},
+	"Ads": {
+		"label": "Reklam"
 	}
 }

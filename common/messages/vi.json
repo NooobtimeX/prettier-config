@@ -435,7 +435,8 @@
 			"generator": "Trình tạo cấu hình",
 			"docs": "Tài liệu",
 			"faq": "Câu hỏi thường gặp",
-			"about": "Giới thiệu"
+			"about": "Giới thiệu",
+			"privacy": "Chính sách bảo mật"
 		},
 		"resources": {
 			"title": "Tài nguyên",
@@ -451,5 +452,115 @@
 		"bottom": {
 			"copyright": "Prettier Config"
 		}
+	},
+	"Privacy": {
+		"meta": {
+			"title": "Chính sách bảo mật – Prettier Config",
+			"description": "Cách prettier-config.dev xử lý dữ liệu của bạn: mã của bạn không bao giờ rời khỏi trình duyệt. Chi tiết về bộ nhớ cục bộ, phân tích, cookie quảng cáo và các lựa chọn của bạn."
+		},
+		"hero": {
+			"badge": "Quyền riêng tư",
+			"title": "Chính sách bảo mật",
+			"description": "Trang web này là một công cụ chạy phía máy khách. Mã của bạn được định dạng ngay trong trình duyệt và không bao giờ được tải lên máy chủ.",
+			"lastUpdated": "Cập nhật lần cuối:"
+		},
+		"summary": {
+			"title": "Tóm tắt ngắn gọn",
+			"items": [
+				"Mã bạn dán vào được định dạng hoàn toàn bên trong trình duyệt của bạn. Nó không bao giờ được gửi đến, ghi lại hay lưu trữ trên bất kỳ máy chủ nào chúng tôi kiểm soát.",
+				"Không có tài khoản, không cần đăng ký, và không có hồ sơ theo dõi nào được xây dựng từ mã của bạn.",
+				"Các tùy chọn của bạn được lưu trong bộ nhớ cục bộ của chính trình duyệt bạn để trang ghi nhớ chúng. Bạn có thể xóa bất cứ lúc nào.",
+				"Chúng tôi hiển thị quảng cáo qua Google AdSense và đo lường lưu lượng tổng hợp bằng Google Analytics. Cả hai đều dùng cookie và đều được mô tả đầy đủ bên dưới."
+			]
+		},
+		"sections": [
+			{
+				"title": "Ai chịu trách nhiệm",
+				"paragraphs": [
+					"prettier-config.dev là một dự án mã nguồn mở do một nhà phát triển cá nhân điều hành, không phải một công ty. Trong toàn bộ chính sách này, “chúng tôi” và “trang web” đề cập đến dự án đó.",
+					"Nếu bạn có thắc mắc về bất kỳ điều gì ở đây, thông tin liên hệ nằm ở cuối trang này."
+				]
+			},
+			{
+				"title": "Mã của bạn ở lại trong trình duyệt",
+				"paragraphs": [
+					"Bộ máy định dạng chính là Prettier, được tải trực tiếp vào trình duyệt của bạn từ một CDN công cộng. Khi bạn dán mã và thấy kết quả đã định dạng, công việc đó diễn ra trên chính máy của bạn — văn bản không bao giờ được truyền đi đâu cả.",
+					"Liên kết chia sẻ cũng hoạt động như vậy. Cấu hình và mã bạn chia sẻ được nén vào phần URL sau ký tự “#”, phần mà trình duyệt không gửi tới máy chủ web. Liên kết chia sẻ chỉ có thể đọc được bởi người bạn chọn gửi đến."
+				]
+			},
+			{
+				"title": "Những gì được lưu trong trình duyệt của bạn",
+				"paragraphs": [
+					"Trang web giữ một vài tùy chọn trong bộ nhớ cục bộ của trình duyệt để ghi nhớ thiết lập giữa các lần truy cập. Dữ liệu này ở lại trên thiết bị của bạn, không phải cookie, và không bao giờ được truyền tới chúng tôi."
+				],
+				"items": [
+					"prettier-config-state — phiên bản Prettier đã chọn, các tùy chọn và plugin đã bật.",
+					"prettier-config-diff-settings — bạn thích chế độ xem khác biệt tách đôi hay hợp nhất, và mô hình đếm token bạn chọn.",
+					"prettier-config-layout-v2 — độ rộng của các bảng trình soạn thảo có thể thay đổi kích thước.",
+					"theme — bạn đã chọn giao diện sáng, tối hay theo hệ thống."
+				],
+				"footnote": "Bạn có thể xóa toàn bộ bất cứ lúc nào bằng cách xóa dữ liệu trang web cho prettier-config.dev trong cài đặt trình duyệt. Không có gì hỏng cả — trang chỉ đơn giản trở về giá trị mặc định."
+			},
+			{
+				"title": "Phân tích",
+				"paragraphs": [
+					"Chúng tôi dùng Google Tag Manager và Google Analytics để hiểu sơ bộ có bao nhiêu người dùng công cụ và những tính năng nào được sử dụng. Đây là phép đo tổng hợp: nó cho biết một tùy chọn đã được bật, chứ không phải ai đã bật, và không bao giờ bao gồm mã bạn dán vào.",
+					"Google có thể đặt cookie để làm việc này. Bạn có thể tắt trên mọi trang web bạn truy cập bằng cách cài tiện ích trình duyệt từ chối Google Analytics."
+				]
+			},
+			{
+				"title": "Quảng cáo",
+				"paragraphs": [
+					"Trang web này miễn phí và được tài trợ bằng quảng cáo. Chúng tôi hiển thị quảng cáo thông qua Google AdSense.",
+					"Việc Google sử dụng cookie quảng cáo cho phép Google và các đối tác phân phát quảng cáo tới bạn dựa trên lượt truy cập của bạn vào trang này và/hoặc các trang khác trên Internet.",
+					"Bạn có thể từ chối quảng cáo cá nhân hóa bất cứ lúc nào thông qua Cài đặt quảng cáo của Google. Bạn cũng có thể từ chối việc một số nhà cung cấp bên thứ ba dùng cookie cho quảng cáo cá nhân hóa tại trang từ chối của ngành ở aboutads.info.",
+					"Các nhà cung cấp bên thứ ba và mạng quảng cáo khác ngoài Google cũng có thể phân phát quảng cáo trên trang này. Việc họ sử dụng cookie được điều chỉnh bởi chính sách bảo mật của riêng họ, không phải chính sách này."
+				]
+			},
+			{
+				"title": "Sự đồng ý tại EEA, Vương quốc Anh và Thụy Sĩ",
+				"paragraphs": [
+					"Nếu bạn truy cập từ Khu vực Kinh tế Châu Âu, Vương quốc Anh hoặc Thụy Sĩ, bạn sẽ thấy thông báo xin sự đồng ý trước khi bất kỳ cookie quảng cáo hay phân tích nào cần sự đồng ý được đặt. Tại đó bạn có thể chấp nhận, từ chối hoặc tùy chỉnh lựa chọn của mình.",
+					"Bạn có thể thay đổi hoặc rút lại sự đồng ý bất cứ lúc nào bằng cách mở lại thông báo đó qua liên kết cài đặt quyền riêng tư mà nó cung cấp."
+				]
+			},
+			{
+				"title": "Các dịch vụ khác mà trang web phụ thuộc",
+				"paragraphs": [
+					"Hai bên khác tất yếu nhìn thấy yêu cầu của bạn trong quá trình phục vụ trang một cách thông thường."
+				],
+				"items": [
+					"jsDelivr — CDN công cộng phân phối Prettier và các plugin tới trình duyệt của bạn mỗi khi bạn chọn một phiên bản. Nó nhận địa chỉ IP của bạn như một phần của yêu cầu đó, giống như mọi yêu cầu web.",
+					"Railway — nhà cung cấp dịch vụ lưu trữ phục vụ trang web. Nó xử lý dữ liệu yêu cầu máy chủ web tiêu chuẩn như địa chỉ IP và user agent để gửi trang tới bạn."
+				]
+			},
+			{
+				"title": "Quyền và lựa chọn của bạn",
+				"paragraphs": [
+					"Vì trang web không thu thập hay lưu trữ thông tin cá nhân trên máy chủ, thường sẽ không có tài khoản hay bản ghi nào để chúng tôi tra cứu, xuất ra hoặc xóa.",
+					"Đối với dữ liệu mà Google xử lý qua quảng cáo và phân tích, Google hoạt động với tư cách bên kiểm soát riêng. Tùy nơi bạn sống, bạn có thể có quyền truy cập, sửa, xóa hoặc hạn chế việc xử lý dữ liệu đó, phản đối việc xử lý hoặc rút lại sự đồng ý. Chính sách bảo mật của Google giải thích cách thực hiện các quyền này.",
+					"Bạn cũng có thể, bất cứ lúc nào, xóa bộ nhớ cục bộ của trang này, chặn cookie hoặc dùng trình chặn quảng cáo. Công cụ vẫn sẽ hoạt động."
+				]
+			},
+			{
+				"title": "Trẻ em",
+				"paragraphs": [
+					"Trang web này là công cụ dành cho nhà phát triển và không hướng đến trẻ em. Chúng tôi không cố ý thu thập thông tin cá nhân từ bất kỳ ai dưới 16 tuổi."
+				]
+			},
+			{
+				"title": "Thay đổi chính sách này",
+				"paragraphs": [
+					"Chúng tôi có thể cập nhật chính sách này khi trang web thay đổi hoặc khi các yêu cầu về quảng cáo và quyền riêng tư thay đổi. Ngày hiển thị ở đầu trang luôn phản ánh lần sửa đổi gần nhất."
+				]
+			}
+		],
+		"contact": {
+			"title": "Liên hệ",
+			"description": "Có thắc mắc về chính sách này hoặc về cách trang web xử lý dữ liệu? Hãy liên hệ với chúng tôi."
+		}
+	},
+	"Ads": {
+		"label": "Quảng cáo"
 	}
 }

@@ -1,0 +1,8 @@
+# Authorized Digital Sellers — https://iabtechlab.com/ads-txt/
+# Served straight from public/ (proxy.ts's matcher skips any path with a dot,
+# so this is NOT rewritten to /en/ads.txt) and copied into the Railway image by
+# the Dockerfile's `COPY --from=builder /app/public ./public`.
+#
+# Publisher ID here is the bare `pub-…` form — no `ca-` prefix, unlike the
+# <meta google-adsense-account> tag and data-ad-client.
+google.com, pub-6034794215506479, DIRECT, f08c47fec0942fa0

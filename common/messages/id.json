@@ -435,7 +435,8 @@
 			"generator": "Pembuat Konfigurasi",
 			"docs": "Dokumentasi",
 			"faq": "FAQ",
-			"about": "Tentang"
+			"about": "Tentang",
+			"privacy": "Kebijakan Privasi"
 		},
 		"resources": {
 			"title": "Sumber Daya",
@@ -451,5 +452,115 @@
 		"bottom": {
 			"copyright": "Prettier Config"
 		}
+	},
+	"Privacy": {
+		"meta": {
+			"title": "Kebijakan Privasi – Prettier Config",
+			"description": "Bagaimana prettier-config.dev menangani data Anda: kode Anda tidak pernah meninggalkan peramban. Detail tentang penyimpanan lokal, analitik, cookie iklan, dan pilihan Anda."
+		},
+		"hero": {
+			"badge": "Privasi",
+			"title": "Kebijakan Privasi",
+			"description": "Situs ini adalah alat yang berjalan di sisi klien. Kode Anda diformat di peramban dan tidak pernah diunggah ke server.",
+			"lastUpdated": "Terakhir diperbarui:"
+		},
+		"summary": {
+			"title": "Versi singkatnya",
+			"items": [
+				"Kode yang Anda tempel diformat sepenuhnya di dalam peramban Anda. Kode itu tidak pernah dikirim, dicatat, atau disimpan di server mana pun yang kami kendalikan.",
+				"Tidak ada akun, tidak ada pendaftaran, dan tidak ada profil pelacakan yang dibangun dari kode Anda.",
+				"Pilihan opsi Anda disimpan di penyimpanan lokal peramban Anda sendiri agar halaman mengingatnya. Anda dapat menghapusnya kapan saja.",
+				"Kami menampilkan iklan melalui Google AdSense dan mengukur lalu lintas agregat dengan Google Analytics. Keduanya menggunakan cookie dan keduanya dijelaskan lengkap di bawah ini."
+			]
+		},
+		"sections": [
+			{
+				"title": "Siapa yang bertanggung jawab",
+				"paragraphs": [
+					"prettier-config.dev adalah proyek sumber terbuka yang dijalankan oleh seorang pengembang perorangan, bukan perusahaan. Sepanjang kebijakan ini, “kami” dan “situs ini” merujuk pada proyek tersebut.",
+					"Jika Anda punya pertanyaan tentang apa pun di sini, detail kontak ada di akhir halaman ini."
+				]
+			},
+			{
+				"title": "Kode Anda tetap di peramban Anda",
+				"paragraphs": [
+					"Mesin pemformatnya adalah Prettier itu sendiri, dimuat langsung ke peramban Anda dari CDN publik. Ketika Anda menempelkan kode dan melihat hasil yang terformat, pekerjaan itu terjadi di mesin Anda sendiri — teksnya tidak pernah dikirim ke mana pun.",
+					"Tautan berbagi bekerja dengan cara yang sama. Konfigurasi dan kode yang Anda bagikan dipadatkan ke bagian URL setelah simbol “#”, yang tidak dikirim peramban ke server web. Tautan berbagi hanya dapat dibaca oleh orang yang Anda pilih untuk menerimanya."
+				]
+			},
+			{
+				"title": "Apa yang disimpan di peramban Anda",
+				"paragraphs": [
+					"Situs ini menyimpan beberapa preferensi di penyimpanan lokal peramban Anda agar dapat mengingat pengaturan Anda antar kunjungan. Data ini tetap di perangkat Anda, bukan cookie, dan tidak pernah dikirimkan kepada kami."
+				],
+				"items": [
+					"prettier-config-state — versi Prettier yang Anda pilih, pilihan opsi, dan plugin yang diaktifkan.",
+					"prettier-config-diff-settings — apakah Anda lebih suka tampilan perbedaan terpisah atau terpadu, dan model penghitung token yang Anda pilih.",
+					"prettier-config-layout-v2 — lebar panel editor yang dapat diubah ukurannya.",
+					"theme — apakah Anda memilih tampilan terang, gelap, atau mengikuti sistem."
+				],
+				"footnote": "Anda dapat menghapus semuanya kapan saja dengan membersihkan data situs prettier-config.dev di pengaturan peramban Anda. Tidak ada yang rusak — halaman hanya kembali ke nilai bawaannya."
+			},
+			{
+				"title": "Analitik",
+				"paragraphs": [
+					"Kami menggunakan Google Tag Manager dan Google Analytics untuk memahami secara kasar berapa banyak orang yang memakai alat ini dan fitur mana yang digunakan. Ini adalah pengukuran agregat: ia memberi tahu kami bahwa sebuah opsi diaktifkan, bukan siapa yang mengaktifkannya, dan tidak pernah menyertakan kode yang Anda tempel.",
+					"Google dapat menetapkan cookie untuk ini. Anda dapat menonaktifkannya di semua situs yang Anda kunjungi dengan memasang pengaya peramban penyisihan Google Analytics."
+				]
+			},
+			{
+				"title": "Periklanan",
+				"paragraphs": [
+					"Situs ini gratis digunakan dan didanai oleh iklan. Kami menampilkan iklan melalui Google AdSense.",
+					"Penggunaan cookie iklan oleh Google memungkinkan Google dan mitranya menayangkan iklan kepada Anda berdasarkan kunjungan Anda ke situs ini dan/atau situs lain di Internet.",
+					"Anda dapat menyisih dari iklan yang dipersonalisasi kapan saja melalui Setelan Iklan Google. Anda juga dapat menyisih dari penggunaan cookie untuk iklan yang dipersonalisasi oleh beberapa vendor pihak ketiga melalui halaman penyisihan industri di aboutads.info.",
+					"Vendor pihak ketiga dan jaringan iklan selain Google juga dapat menayangkan iklan di situs ini. Penggunaan cookie oleh mereka diatur oleh kebijakan privasi mereka sendiri, bukan kebijakan ini."
+				]
+			},
+			{
+				"title": "Persetujuan di EEA, Inggris, dan Swiss",
+				"paragraphs": [
+					"Jika Anda berkunjung dari Wilayah Ekonomi Eropa, Britania Raya, atau Swiss, Anda akan ditunjukkan pesan persetujuan sebelum cookie iklan atau analitik apa pun yang memerlukan persetujuan ditetapkan. Di sana Anda dapat menerima, menolak, atau mengatur pilihan Anda.",
+					"Anda dapat mengubah atau menarik persetujuan kapan saja dengan membuka kembali pesan tersebut melalui tautan pengaturan privasi yang disediakannya."
+				]
+			},
+			{
+				"title": "Layanan lain yang diandalkan situs ini",
+				"paragraphs": [
+					"Dua pihak lain mau tak mau melihat permintaan Anda dalam proses normal penyajian halaman."
+				],
+				"items": [
+					"jsDelivr — CDN publik yang mengirimkan Prettier dan pluginnya ke peramban Anda setiap kali Anda memilih versi. Ia menerima alamat IP Anda sebagai bagian dari permintaan itu, sebagaimana permintaan web mana pun.",
+					"Railway — penyedia hosting yang menyajikan situs ini. Ia memproses data permintaan server web standar seperti alamat IP dan user agent untuk mengirimkan halaman kepada Anda."
+				]
+			},
+			{
+				"title": "Hak dan pilihan Anda",
+				"paragraphs": [
+					"Karena situs ini tidak mengumpulkan atau menyimpan informasi pribadi di server, umumnya tidak ada akun atau catatan yang dapat kami cari, ekspor, atau hapus.",
+					"Untuk data yang diproses Google melalui periklanan dan analitik, Google bertindak sebagai pengendali tersendiri. Bergantung pada tempat tinggal Anda, Anda mungkin berhak mengakses, memperbaiki, menghapus, atau membatasi pemrosesan data tersebut, menolaknya, atau menarik persetujuan Anda. Kebijakan privasi Google sendiri menjelaskan cara menggunakan hak-hak itu.",
+					"Anda juga dapat, kapan saja, menghapus penyimpanan lokal situs ini, memblokir cookie, atau menggunakan pemblokir iklan. Alat ini akan tetap berfungsi."
+				]
+			},
+			{
+				"title": "Anak-anak",
+				"paragraphs": [
+					"Situs ini adalah alat untuk pengembang dan tidak ditujukan bagi anak-anak. Kami tidak dengan sengaja mengumpulkan informasi pribadi dari siapa pun yang berusia di bawah 16 tahun."
+				]
+			},
+			{
+				"title": "Perubahan pada kebijakan ini",
+				"paragraphs": [
+					"Kami dapat memperbarui kebijakan ini seiring perubahan situs atau perkembangan persyaratan periklanan dan privasi. Tanggal yang ditampilkan di bagian atas halaman ini selalu mencerminkan revisi terbaru."
+				]
+			}
+		],
+		"contact": {
+			"title": "Kontak",
+			"description": "Ada pertanyaan tentang kebijakan ini, atau tentang bagaimana situs menangani data? Hubungi kami."
+		}
+	},
+	"Ads": {
+		"label": "Iklan"
 	}
 }

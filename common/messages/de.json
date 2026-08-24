@@ -435,7 +435,8 @@
 			"generator": "Konfigurations-Generator",
 			"docs": "Dokumentation",
 			"faq": "FAQ",
-			"about": "Über uns"
+			"about": "Über uns",
+			"privacy": "Datenschutzerklärung"
 		},
 		"resources": {
 			"title": "Ressourcen",
@@ -451,5 +452,115 @@
 		"bottom": {
 			"copyright": "Prettier Konfiguration"
 		}
+	},
+	"Privacy": {
+		"meta": {
+			"title": "Datenschutzerklärung – Prettier Config",
+			"description": "Wie prettier-config.dev mit Ihren Daten umgeht: Ihr Code verlässt nie den Browser. Details zu lokalem Speicher, Analyse, Werbe-Cookies und Ihren Wahlmöglichkeiten."
+		},
+		"hero": {
+			"badge": "Datenschutz",
+			"title": "Datenschutzerklärung",
+			"description": "Diese Website ist ein clientseitiges Werkzeug. Ihr Code wird in Ihrem Browser formatiert und niemals auf einen Server hochgeladen.",
+			"lastUpdated": "Zuletzt aktualisiert:"
+		},
+		"summary": {
+			"title": "Die Kurzfassung",
+			"items": [
+				"Der Code, den Sie einfügen, wird vollständig in Ihrem Browser formatiert. Er wird niemals an einen von uns kontrollierten Server gesendet, dort protokolliert oder gespeichert.",
+				"Es gibt keine Konten, keine Registrierung, und aus Ihrem Code wird kein Tracking-Profil erstellt.",
+				"Ihre Einstellungen werden im lokalen Speicher Ihres eigenen Browsers abgelegt, damit die Seite sie sich merkt. Sie können sie jederzeit löschen.",
+				"Wir zeigen Werbung über Google AdSense und messen aggregierte Zugriffszahlen mit Google Analytics. Beide verwenden Cookies und werden unten vollständig beschrieben."
+			]
+		},
+		"sections": [
+			{
+				"title": "Verantwortlich",
+				"paragraphs": [
+					"prettier-config.dev ist ein Open-Source-Projekt, das von einem einzelnen Entwickler betrieben wird, nicht von einem Unternehmen. In dieser Erklärung beziehen sich „wir“ und „die Website“ auf dieses Projekt.",
+					"Wenn Sie zu irgendetwas hier eine Frage haben, finden Sie die Kontaktdaten am Ende dieser Seite."
+				]
+			},
+			{
+				"title": "Ihr Code bleibt in Ihrem Browser",
+				"paragraphs": [
+					"Die Formatierungs-Engine ist Prettier selbst, das direkt aus einem öffentlichen CDN in Ihren Browser geladen wird. Wenn Sie Code einfügen und ein formatiertes Ergebnis sehen, geschieht diese Arbeit auf Ihrem eigenen Rechner — der Text wird niemals irgendwohin übertragen.",
+					"Teilen-Links funktionieren genauso. Die Konfiguration und der Code, die Sie teilen, werden in den Teil der URL nach dem „#“-Zeichen komprimiert, den Browser nicht an Webserver senden. Ein Teilen-Link ist nur für die Person lesbar, der Sie ihn geben."
+				]
+			},
+			{
+				"title": "Was in Ihrem Browser gespeichert wird",
+				"paragraphs": [
+					"Die Website speichert einige Einstellungen im lokalen Speicher Ihres Browsers, damit sie sich Ihre Konfiguration zwischen Besuchen merken kann. Diese Daten bleiben auf Ihrem Gerät, sind kein Cookie und werden niemals an uns übermittelt."
+				],
+				"items": [
+					"prettier-config-state — die von Ihnen gewählte Prettier-Version, Ihre Optionen und aktivierte Plugins.",
+					"prettier-config-diff-settings — ob Sie die geteilte oder die vereinheitlichte Diff-Ansicht bevorzugen, sowie Ihr gewähltes Token-Zähler-Modell.",
+					"prettier-config-layout-v2 — die Breiten der größenveränderbaren Editor-Bereiche.",
+					"theme — ob Sie helles, dunkles oder systemabhängiges Erscheinungsbild gewählt haben."
+				],
+				"footnote": "Sie können all das jederzeit entfernen, indem Sie in Ihren Browsereinstellungen die Websitedaten für prettier-config.dev löschen. Dabei geht nichts kaputt — die Seite kehrt einfach zu ihren Standardwerten zurück."
+			},
+			{
+				"title": "Analyse",
+				"paragraphs": [
+					"Wir verwenden Google Tag Manager und Google Analytics, um ungefähr zu verstehen, wie viele Menschen das Werkzeug nutzen und welche Funktionen verwendet werden. Das ist eine aggregierte Messung: Sie sagt uns, dass eine Option umgeschaltet wurde, nicht wer sie umgeschaltet hat, und sie enthält niemals den von Ihnen eingefügten Code.",
+					"Google kann dafür Cookies setzen. Sie können dies für alle von Ihnen besuchten Websites deaktivieren, indem Sie das Browser-Add-on zur Deaktivierung von Google Analytics installieren."
+				]
+			},
+			{
+				"title": "Werbung",
+				"paragraphs": [
+					"Diese Website ist kostenlos nutzbar und wird durch Werbung finanziert. Wir zeigen Anzeigen über Google AdSense.",
+					"Die Verwendung von Werbe-Cookies durch Google ermöglicht es Google und seinen Partnern, Ihnen Anzeigen auf Grundlage Ihres Besuchs dieser Website und/oder anderer Websites im Internet auszuliefern.",
+					"Sie können personalisierte Werbung jederzeit über die Anzeigeneinstellungen von Google deaktivieren. Über die Branchen-Opt-out-Seite aboutads.info können Sie zudem die Verwendung von Cookies für personalisierte Werbung durch einige Drittanbieter deaktivieren.",
+					"Auch andere Drittanbieter und Werbenetzwerke als Google können Anzeigen auf dieser Website ausliefern. Ihre Verwendung von Cookies unterliegt ihren eigenen Datenschutzerklärungen, nicht dieser."
+				]
+			},
+			{
+				"title": "Einwilligung im EWR, im Vereinigten Königreich und in der Schweiz",
+				"paragraphs": [
+					"Wenn Sie aus dem Europäischen Wirtschaftsraum, dem Vereinigten Königreich oder der Schweiz zugreifen, wird Ihnen ein Einwilligungshinweis angezeigt, bevor ein einwilligungspflichtiges Werbe- oder Analyse-Cookie gesetzt wird. Dort können Sie annehmen, ablehnen oder Ihre Auswahl konfigurieren.",
+					"Sie können Ihre Einwilligung jederzeit ändern oder widerrufen, indem Sie diesen Hinweis über den darin angebotenen Datenschutzeinstellungen-Link erneut öffnen."
+				]
+			},
+			{
+				"title": "Weitere Dienste, auf die die Website angewiesen ist",
+				"paragraphs": [
+					"Zwei weitere Parteien sehen Ihre Anfrage im normalen Verlauf der Auslieferung der Seite zwangsläufig."
+				],
+				"items": [
+					"jsDelivr — das öffentliche CDN, das Prettier und seine Plugins bei jeder Versionsauswahl an Ihren Browser ausliefert. Es erhält dabei Ihre IP-Adresse, wie bei jeder Webanfrage.",
+					"Railway — der Hosting-Anbieter, der die Website ausliefert. Er verarbeitet übliche Webserver-Anfragedaten wie IP-Adresse und User-Agent, um Ihnen die Seite zuzustellen."
+				]
+			},
+			{
+				"title": "Ihre Rechte und Wahlmöglichkeiten",
+				"paragraphs": [
+					"Da die Website keine personenbezogenen Daten auf einem Server erhebt oder speichert, gibt es in der Regel kein Konto und keinen Datensatz, den wir nachschlagen, exportieren oder löschen könnten.",
+					"Für die Daten, die Google über Werbung und Analyse verarbeitet, ist Google eigenständig Verantwortlicher. Je nachdem, wo Sie leben, können Sie das Recht haben, auf diese Daten zuzugreifen, sie berichtigen, löschen oder ihre Verarbeitung einschränken zu lassen, ihr zu widersprechen oder Ihre Einwilligung zu widerrufen. Die Datenschutzerklärung von Google erläutert, wie Sie diese Rechte ausüben.",
+					"Sie können außerdem jederzeit den lokalen Speicher dieser Website löschen, Cookies blockieren oder einen Werbeblocker verwenden. Das Werkzeug funktioniert weiterhin."
+				]
+			},
+			{
+				"title": "Kinder",
+				"paragraphs": [
+					"Diese Website ist ein Entwicklerwerkzeug und richtet sich nicht an Kinder. Wir erheben wissentlich keine personenbezogenen Daten von Personen unter 16 Jahren."
+				]
+			},
+			{
+				"title": "Änderungen dieser Erklärung",
+				"paragraphs": [
+					"Wir können diese Erklärung aktualisieren, wenn sich die Website ändert oder Werbe- und Datenschutzanforderungen sich weiterentwickeln. Das oben auf dieser Seite angezeigte Datum gibt stets die aktuellste Fassung wieder."
+				]
+			}
+		],
+		"contact": {
+			"title": "Kontakt",
+			"description": "Fragen zu dieser Erklärung oder dazu, wie die Website mit Daten umgeht? Melden Sie sich."
+		}
+	},
+	"Ads": {
+		"label": "Werbung"
 	}
 }

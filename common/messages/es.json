@@ -435,7 +435,8 @@
 			"generator": "Generador de Config",
 			"docs": "Documentación",
 			"faq": "Preguntas Frecuentes",
-			"about": "Acerca de"
+			"about": "Acerca de",
+			"privacy": "Política de Privacidad"
 		},
 		"resources": {
 			"title": "Recursos",
@@ -451,5 +452,115 @@
 		"bottom": {
 			"copyright": "Prettier Config"
 		}
+	},
+	"Privacy": {
+		"meta": {
+			"title": "Política de Privacidad – Prettier Config",
+			"description": "Cómo trata tus datos prettier-config.dev: tu código nunca sale del navegador. Detalles sobre almacenamiento local, analítica, cookies publicitarias y tus opciones."
+		},
+		"hero": {
+			"badge": "Privacidad",
+			"title": "Política de Privacidad",
+			"description": "Este sitio es una herramienta que funciona en el cliente. Tu código se formatea en tu navegador y nunca se sube a un servidor.",
+			"lastUpdated": "Última actualización:"
+		},
+		"summary": {
+			"title": "La versión corta",
+			"items": [
+				"El código que pegas se formatea íntegramente dentro de tu navegador. Nunca se envía, registra ni almacena en ningún servidor que controlemos.",
+				"No hay cuentas, ni registros, ni se construye ningún perfil de seguimiento a partir de tu código.",
+				"Tus opciones se guardan en el almacenamiento local de tu propio navegador para que la página las recuerde. Puedes borrarlas cuando quieras.",
+				"Mostramos anuncios mediante Google AdSense y medimos el tráfico agregado con Google Analytics. Ambos usan cookies y ambos se describen en detalle más abajo."
+			]
+		},
+		"sections": [
+			{
+				"title": "Quién es responsable",
+				"paragraphs": [
+					"prettier-config.dev es un proyecto de código abierto gestionado por un desarrollador individual, no por una empresa. A lo largo de esta política, «nosotros» y «el sitio» se refieren a ese proyecto.",
+					"Si tienes alguna duda sobre lo que aquí se explica, los datos de contacto están al final de esta página."
+				]
+			},
+			{
+				"title": "Tu código se queda en tu navegador",
+				"paragraphs": [
+					"El motor de formateo es el propio Prettier, cargado directamente en tu navegador desde una CDN pública. Cuando pegas código y ves un resultado formateado, ese trabajo ocurre en tu propia máquina: el texto nunca se transmite a ninguna parte.",
+					"Los enlaces para compartir funcionan igual. La configuración y el código que compartes se comprimen en la parte de la URL posterior al símbolo «#», que los navegadores no envían a los servidores web. Un enlace compartido solo puede leerlo quien tú decidas."
+				]
+			},
+			{
+				"title": "Qué se guarda en tu navegador",
+				"paragraphs": [
+					"El sitio conserva algunas preferencias en el almacenamiento local de tu navegador para recordar tu configuración entre visitas. Estos datos permanecen en tu dispositivo, no son una cookie y nunca se nos transmiten."
+				],
+				"items": [
+					"prettier-config-state — la versión de Prettier seleccionada, tus opciones y los plugins activados.",
+					"prettier-config-diff-settings — si prefieres la vista de diferencias dividida o unificada, y el modelo de contador de tokens elegido.",
+					"prettier-config-layout-v2 — el ancho de los paneles redimensionables del editor.",
+					"theme — si elegiste apariencia clara, oscura o la del sistema."
+				],
+				"footnote": "Puedes eliminarlo todo cuando quieras borrando los datos del sitio prettier-config.dev en la configuración de tu navegador. No se rompe nada: la página simplemente vuelve a sus valores por defecto."
+			},
+			{
+				"title": "Analítica",
+				"paragraphs": [
+					"Usamos Google Tag Manager y Google Analytics para saber aproximadamente cuánta gente usa la herramienta y qué funciones se utilizan. Es una medición agregada: nos dice que se activó una opción, no quién la activó, y nunca incluye el código que pegas.",
+					"Google puede establecer cookies para ello. Puedes desactivarlo en todos los sitios que visites instalando el complemento de inhabilitación para navegadores de Google Analytics."
+				]
+			},
+			{
+				"title": "Publicidad",
+				"paragraphs": [
+					"Este sitio es gratuito y se financia con publicidad. Mostramos anuncios a través de Google AdSense.",
+					"El uso de cookies publicitarias por parte de Google le permite, a él y a sus socios, mostrarte anuncios basados en tu visita a este sitio y/o a otros sitios de Internet.",
+					"Puedes desactivar la publicidad personalizada en cualquier momento desde la Configuración de anuncios de Google. También puedes desactivar el uso de cookies para publicidad personalizada de algunos proveedores externos en la página sectorial de exclusión aboutads.info.",
+					"Proveedores externos y redes publicitarias distintas de Google también pueden mostrar anuncios en este sitio. Su uso de cookies se rige por sus propias políticas de privacidad, no por esta."
+				]
+			},
+			{
+				"title": "Consentimiento en el EEE, el Reino Unido y Suiza",
+				"paragraphs": [
+					"Si nos visitas desde el Espacio Económico Europeo, el Reino Unido o Suiza, verás un mensaje de consentimiento antes de que se establezca cualquier cookie publicitaria o analítica que requiera consentimiento. Allí puedes aceptar, rechazar o configurar tus opciones.",
+					"Puedes cambiar o retirar tu consentimiento en cualquier momento reabriendo ese mensaje mediante el enlace de configuración de privacidad que ofrece."
+				]
+			},
+			{
+				"title": "Otros servicios de los que depende el sitio",
+				"paragraphs": [
+					"Otras dos partes ven necesariamente tu solicitud en el curso normal de la entrega de la página."
+				],
+				"items": [
+					"jsDelivr — la CDN pública que entrega Prettier y sus plugins a tu navegador cada vez que eliges una versión. Recibe tu dirección IP como parte de esa solicitud, igual que cualquier petición web.",
+					"Railway — el proveedor de alojamiento que sirve el sitio. Procesa datos estándar de solicitud de servidor web, como la dirección IP y el user agent, para poder entregarte la página."
+				]
+			},
+			{
+				"title": "Tus derechos y opciones",
+				"paragraphs": [
+					"Como el sitio no recopila ni almacena información personal en un servidor, por lo general no existe ninguna cuenta ni registro que podamos consultar, exportar o eliminar.",
+					"En cuanto a los datos que Google trata mediante la publicidad y la analítica, Google actúa como responsable independiente. Según dónde vivas, puedes tener derecho a acceder, rectificar, suprimir o limitar el tratamiento de esos datos, a oponerte a él o a retirar tu consentimiento. La propia política de privacidad de Google explica cómo ejercerlos.",
+					"También puedes, en cualquier momento, borrar el almacenamiento local de este sitio, bloquear cookies o usar un bloqueador de anuncios. La herramienta seguirá funcionando."
+				]
+			},
+			{
+				"title": "Menores",
+				"paragraphs": [
+					"Este sitio es una herramienta para desarrolladores y no está dirigido a menores. No recopilamos conscientemente información personal de personas menores de 16 años."
+				]
+			},
+			{
+				"title": "Cambios en esta política",
+				"paragraphs": [
+					"Podemos actualizar esta política a medida que el sitio cambie o evolucionen los requisitos de publicidad y privacidad. La fecha que aparece en la parte superior de esta página refleja siempre la revisión más reciente."
+				]
+			}
+		],
+		"contact": {
+			"title": "Contacto",
+			"description": "¿Tienes preguntas sobre esta política o sobre cómo el sitio trata los datos? Ponte en contacto."
+		}
+	},
+	"Ads": {
+		"label": "Publicidad"
 	}
 }

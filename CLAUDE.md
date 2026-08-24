@@ -88,6 +88,24 @@ selected plugins' npm names under `plugins`.
   vanish when switching versions (drives the warning dialog).
 - **sortConfig.ts**, **timing.ts**, **utils.ts** (`cn`), **optionOverrides.ts**, **sample.ts**.
 
+### Ads (Google AdSense)
+
+Client-side only, like everything else here.
+
+- **[common/constants/adsense.ts](common/constants/adsense.ts)** — `ADSENSE.CLIENT_ID`
+  plus `AD_SLOTS`, the registry of `data-ad-slot` IDs. A `null` slot renders
+  nothing, so placements can be committed before the unit exists in the AdSense
+  dashboard. The publisher ID is public, so it is a constant, not an env var —
+  the "no env vars required" deploy story stays true.
+- **[components/AdSenseScript.tsx](components/AdSenseScript.tsx)** — the
+  `adsbygoogle.js` loader, `afterInteractive`, rendered from the root layout.
+  Required for Auto ads _and_ manual units. Returns `null` outside production.
+- **[components/AdSlot.tsx](components/AdSlot.tsx)** — one `<ins class="adsbygoogle">`.
+  Guards against Strict Mode double-push (`data-adsbygoogle-status`) and defers
+  the push through a `ResizeObserver` until the container has non-zero width,
+  because AdSense bails permanently on `availableWidth=0`.
+- **[public/ads.txt](public/ads.txt)** — authorized-sellers file.
+
 ### Directory map
 
 ```
@@ -162,5 +180,15 @@ Railway's GitHub integration. Do not add config for any other platform.
 - The options form is **auto-generated** from each version's `getSupportInfo()` —
   new Prettier options appear without code changes.
 - `/:locale/config` permanently redirects to `/:locale` (see `next.config.ts`).
+- The AdSense publisher ID is spelled **two different ways**: `ca-pub-…` in the
+  `<meta google-adsense-account>` tag, the loader's `?client=`, and every
+  `data-ad-client`; bare `pub-…` (no `ca-`) in `public/ads.txt`. Getting the
+  ads.txt one wrong fails silently as "Earnings at risk" in the dashboard.
+- `/ads.txt` is reachable only because `proxy.ts`'s matcher skips any path
+  containing a dot. Loosening that regex would send it through the next-intl
+  middleware, redirect it to `/en/ads.txt`, and break Google's crawler.
+- The home page is `h-screen` with `overflow-hidden` panels and fixed FABs at
+  `bottom-4 right-4`. AdSense **anchor and vignette Auto ads** overlay that UI —
+  keep them off in the dashboard; in-content units only.
 - `.env` only sets `PORT=2000`, and only for local dev — `.dockerignore` keeps it
   out of the image so it can never shadow the `PORT` Railway injects.

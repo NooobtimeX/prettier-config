@@ -5,7 +5,8 @@ import { Link } from '@/i18n/navigation';
 import { GithubIcon } from '@/components/GithubIcon';
 import { ExternalLink } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { REPOSITORY, DEVELOPER } from '@/common/constants';
+import { REPOSITORY, DEVELOPER, AD_SLOTS } from '@/common/constants';
+import { AdSlot } from '@/components/AdSlot';
 import Header from '../(components)/Header';
 import Footer from '../(components)/Footer';
 
@@ -101,6 +102,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 						<h2 className="mb-4 text-2xl font-bold">{t('whatIsThis.title')}</h2>
 						<p className="text-muted-foreground leading-relaxed">{t('whatIsThis.description')}</p>
 					</section>
+
+					<AdSlot
+						slot={AD_SLOTS.aboutInline}
+						className="mx-auto max-w-3xl"
+					/>
 
 					<Separator className="my-12" />
 

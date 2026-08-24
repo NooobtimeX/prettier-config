@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/next-intl.config';
+import { AD_SLOTS } from '@/common/constants';
+import { AdSlot } from '@/components/AdSlot';
 import Header from '../(components)/Header';
 import Footer from '../(components)/Footer';
 import {
@@ -117,6 +119,11 @@ export default async function FaqPage({ params }: { params: Promise<{ locale: st
 								</AccordionItem>
 							))}
 						</Accordion>
+
+						<AdSlot
+							slot={AD_SLOTS.faqInline}
+							className="mt-12"
+						/>
 					</div>
 				</div>
 			</main>

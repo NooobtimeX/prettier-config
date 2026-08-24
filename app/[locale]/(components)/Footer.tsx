@@ -60,6 +60,14 @@ export default function Footer() {
 									{t('quickLinks.about')}
 								</Link>
 							</li>
+							<li>
+								<Link
+									href="/privacy"
+									className="text-muted-foreground hover:text-foreground transition-colors"
+								>
+									{t('quickLinks.privacy')}
+								</Link>
+							</li>
 						</ul>
 					</div>
 

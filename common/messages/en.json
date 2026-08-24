@@ -435,7 +435,8 @@
 			"generator": "Config Generator",
 			"docs": "Documentation",
 			"faq": "FAQ",
-			"about": "About"
+			"about": "About",
+			"privacy": "Privacy Policy"
 		},
 		"resources": {
 			"title": "Resources",
@@ -450,6 +451,116 @@
 		},
 		"bottom": {
 			"copyright": "Prettier Config"
+		}
+	},
+	"Ads": {
+		"label": "Advertisement"
+	},
+	"Privacy": {
+		"meta": {
+			"title": "Privacy Policy – Prettier Config",
+			"description": "How prettier-config.dev handles your data: your code never leaves your browser. Details on local storage, analytics, advertising cookies, and your choices."
+		},
+		"hero": {
+			"badge": "Privacy",
+			"title": "Privacy Policy",
+			"description": "This site is a client-side tool. Your code is formatted in your browser and is never uploaded to a server.",
+			"lastUpdated": "Last updated:"
+		},
+		"summary": {
+			"title": "The short version",
+			"items": [
+				"The code you paste is formatted entirely inside your browser. It is never sent to, logged by, or stored on any server we control.",
+				"There are no accounts, no sign-ups, and no tracking profile is built from your code.",
+				"Your option choices are saved in your own browser's local storage so the page remembers them. You can clear them at any time.",
+				"We show ads through Google AdSense and measure aggregate traffic with Google Analytics. Both use cookies, and both are described in full below."
+			]
+		},
+		"sections": [
+			{
+				"title": "Who is responsible",
+				"paragraphs": [
+					"prettier-config.dev is an open-source project run by an individual developer, not a company. Throughout this policy, “we” and “the site” refer to that project.",
+					"If you have a question about anything here, the contact details are at the end of this page."
+				]
+			},
+			{
+				"title": "Your code stays in your browser",
+				"paragraphs": [
+					"The formatting engine is Prettier itself, loaded directly into your browser from a public CDN. When you paste code and see a formatted result, that work happens on your own machine — the text is never transmitted anywhere.",
+					"Share links work the same way. The configuration and code you share are compressed into the part of the URL after the “#” symbol, which browsers do not send to web servers. A share link is only readable by someone you choose to give it to."
+				]
+			},
+			{
+				"title": "What is stored in your browser",
+				"paragraphs": [
+					"The site keeps a few preferences in your browser's local storage so it can remember your setup between visits. This data stays on your device, is not a cookie, and is never transmitted to us."
+				],
+				"items": [
+					"prettier-config-state — your selected Prettier version, option choices, and enabled plugins.",
+					"prettier-config-diff-settings — whether you prefer the split or unified diff view, and your chosen token-counter model.",
+					"prettier-config-layout-v2 — the widths of the resizable editor panels.",
+					"theme — whether you chose the light, dark, or system appearance."
+				],
+				"footnote": "You can remove all of it at any time by clearing site data for prettier-config.dev in your browser settings. Nothing breaks — the page simply returns to its defaults."
+			},
+			{
+				"title": "Analytics",
+				"paragraphs": [
+					"We use Google Tag Manager and Google Analytics to understand roughly how many people use the tool and which features get used. This is aggregate measurement: it tells us that an option was toggled, not who toggled it, and it never includes the code you paste.",
+					"Google may set cookies to do this. You can opt out across every site you visit by installing Google's Analytics opt-out browser add-on."
+				]
+			},
+			{
+				"title": "Advertising",
+				"paragraphs": [
+					"This site is free to use and is funded by advertising. We display ads through Google AdSense.",
+					"Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to this site and/or other sites on the Internet.",
+					"You can opt out of personalised advertising at any time through Google's Ads Settings. You can also opt out of some third-party vendors' use of cookies for personalised advertising via the industry opt-out page at aboutads.info.",
+					"Third-party vendors and ad networks other than Google may also serve ads on this site. Their use of cookies is governed by their own privacy policies, not this one."
+				]
+			},
+			{
+				"title": "Consent in the EEA, the UK and Switzerland",
+				"paragraphs": [
+					"If you visit from the European Economic Area, the United Kingdom, or Switzerland, you are shown a consent message before any advertising or analytics cookie that requires consent is set. You can accept, reject, or configure your choices there.",
+					"You can change or withdraw your consent at any time by reopening that message through the privacy settings link it provides."
+				]
+			},
+			{
+				"title": "Other services the site relies on",
+				"paragraphs": [
+					"Two further parties necessarily see your request in the ordinary course of serving the page."
+				],
+				"items": [
+					"jsDelivr — the public CDN that delivers Prettier and its plugins to your browser each time you pick a version. It receives your IP address as part of that request, as any web request would.",
+					"Railway — the hosting provider that serves the site. It processes standard web-server request data such as IP address and user agent in order to deliver the page to you."
+				]
+			},
+			{
+				"title": "Your rights and choices",
+				"paragraphs": [
+					"Because the site does not collect or store personal information on a server, there is generally no account or record for us to look up, export, or delete.",
+					"For the data Google processes through advertising and analytics, Google acts as its own controller. Depending on where you live, you may have the right to access, correct, delete, or restrict the processing of that data, to object to it, or to withdraw your consent. Google's own privacy policy explains how to exercise those rights.",
+					"You can also, at any time, clear this site's local storage, block cookies, or use an ad blocker. The tool will keep working."
+				]
+			},
+			{
+				"title": "Children",
+				"paragraphs": [
+					"This site is a developer tool and is not directed at children. We do not knowingly collect personal information from anyone under the age of 16."
+				]
+			},
+			{
+				"title": "Changes to this policy",
+				"paragraphs": [
+					"We may update this policy as the site changes or as advertising and privacy requirements evolve. The date shown at the top of this page always reflects the most recent revision."
+				]
+			}
+		],
+		"contact": {
+			"title": "Contact",
+			"description": "Questions about this policy, or about how the site handles data? Get in touch."
 		}
 	}
 }

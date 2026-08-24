@@ -11,6 +11,11 @@
 		}
 	},
 	"Page": {
+		"meta": {
+			"title": "Prettier Yapılandırma Oluşturucu — .prettierrc oluştur",
+			"description": "Ücretsiz ve etkileşimli Prettier oyun alanı. Her seçeneği değiştirin, kendi kodunuzun canlı farkını görün ve oluşturulan .prettierrc dosyasını kopyalayın. Kurulum yok.",
+			"h1": "Prettier yapılandırma oluşturucu ve oyun alanı"
+		},
 		"search": {
 			"found": "{total} seçenekten {count} tanesi bulundu",
 			"noOptions": "Seçenek bulunamadı",

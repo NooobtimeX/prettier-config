@@ -11,6 +11,11 @@
 		}
 	},
 	"Page": {
+		"meta": {
+			"title": "Prettier-Config-Generator — .prettierrc online erstellen",
+			"description": "Kostenloses interaktives Prettier-Playground. Jede Option umschalten, ein Live-Diff des eigenen Codes ansehen und die erzeugte .prettierrc kopieren. Ohne Installation.",
+			"h1": "Prettier-Konfigurationsgenerator und Playground"
+		},
 		"search": {
 			"found": "{count} von {total} Optionen gefunden",
 			"noOptions": "Keine Optionen gefunden",

@@ -11,6 +11,11 @@
 		}
 	},
 	"Page": {
+		"meta": {
+			"title": "Generatore di config Prettier — crea il tuo .prettierrc",
+			"description": "Playground Prettier interattivo e gratuito. Attiva ogni opzione, guarda un diff live del tuo codice e copia il .prettierrc generato. Senza installare nulla.",
+			"h1": "Generatore di configurazione e playground Prettier"
+		},
 		"search": {
 			"found": "Trovate {count} opzioni su {total}",
 			"noOptions": "Nessuna opzione trovata",

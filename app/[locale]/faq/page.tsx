@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/next-intl.config';
+import { buildPageMetadata } from '@/lib/seo';
 import { AD_SLOTS } from '@/common/constants';
 import { AdSlot } from '@/components/AdSlot';
 import Header from '../(components)/Header';
@@ -11,8 +12,6 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from '@/components/ui/accordion';
-
-const SITE_URL = 'https://prettier-config.dev';
 
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));
@@ -26,34 +25,12 @@ export async function generateMetadata({
 	const { locale } = await params;
 	const t = await getTranslations({ locale, namespace: 'Faq' });
 
-	return {
+	return buildPageMetadata({
+		locale,
+		path: '/faq',
 		title: t('meta.title'),
 		description: t('meta.description'),
-		alternates: {
-			canonical: `${SITE_URL}/${locale}/faq`,
-			languages: {
-				...Object.fromEntries(routing.locales.map((l) => [l, `${SITE_URL}/${l}/faq`])),
-				'x-default': `${SITE_URL}/en/faq`,
-			},
-		},
-		openGraph: {
-			title: t('meta.title'),
-			description: t('meta.description'),
-			url: `${SITE_URL}/${locale}/faq`,
-			siteName: 'Prettier Config',
-			type: 'website',
-		},
-		twitter: {
-			card: 'summary_large_image',
-			title: t('meta.title'),
-			description: t('meta.description'),
-			creator: '@nooobtimex',
-		},
-		robots: {
-			index: true,
-			follow: true,
-		},
-	};
+	});
 }
 
 export default async function FaqPage({ params }: { params: Promise<{ locale: string }> }) {

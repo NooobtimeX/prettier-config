@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/next-intl.config';
+import { SITE_URL, buildPageMetadata } from '@/lib/seo';
 import { Link } from '@/i18n/navigation';
 import { GithubIcon } from '@/components/GithubIcon';
 import { ExternalLink } from 'lucide-react';
@@ -9,8 +10,6 @@ import { REPOSITORY, DEVELOPER, AD_SLOTS } from '@/common/constants';
 import { AdSlot } from '@/components/AdSlot';
 import Header from '../(components)/Header';
 import Footer from '../(components)/Footer';
-
-const SITE_URL = 'https://prettier-config.dev';
 
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));
@@ -24,34 +23,12 @@ export async function generateMetadata({
 	const { locale } = await params;
 	const t = await getTranslations({ locale, namespace: 'About' });
 
-	return {
+	return buildPageMetadata({
+		locale,
+		path: '/about',
 		title: t('meta.title'),
 		description: t('meta.description'),
-		alternates: {
-			canonical: `${SITE_URL}/${locale}/about`,
-			languages: {
-				...Object.fromEntries(routing.locales.map((l) => [l, `${SITE_URL}/${l}/about`])),
-				'x-default': `${SITE_URL}/en/about`,
-			},
-		},
-		openGraph: {
-			title: t('meta.title'),
-			description: t('meta.description'),
-			url: `${SITE_URL}/${locale}/about`,
-			siteName: 'Prettier Config',
-			type: 'website',
-		},
-		twitter: {
-			card: 'summary_large_image',
-			title: t('meta.title'),
-			description: t('meta.description'),
-			creator: '@nooobtimex',
-		},
-		robots: {
-			index: true,
-			follow: true,
-		},
-	};
+	});
 }
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {

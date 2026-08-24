@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/next-intl.config';
+import { SITE_URL, buildPageMetadata } from '@/lib/seo';
 import { CONTACT } from '@/common/constants';
 import { Separator } from '@/components/ui/separator';
 import Header from '../(components)/Header';
 import Footer from '../(components)/Footer';
-
-const SITE_URL = 'https://prettier-config.dev';
 
 /**
  * Bump whenever the policy text changes materially. Rendered through
@@ -27,34 +26,12 @@ export async function generateMetadata({
 	const { locale } = await params;
 	const t = await getTranslations({ locale, namespace: 'Privacy' });
 
-	return {
+	return buildPageMetadata({
+		locale,
+		path: '/privacy',
 		title: t('meta.title'),
 		description: t('meta.description'),
-		alternates: {
-			canonical: `${SITE_URL}/${locale}/privacy`,
-			languages: {
-				...Object.fromEntries(routing.locales.map((l) => [l, `${SITE_URL}/${l}/privacy`])),
-				'x-default': `${SITE_URL}/en/privacy`,
-			},
-		},
-		openGraph: {
-			title: t('meta.title'),
-			description: t('meta.description'),
-			url: `${SITE_URL}/${locale}/privacy`,
-			siteName: 'Prettier Config',
-			type: 'website',
-		},
-		twitter: {
-			card: 'summary_large_image',
-			title: t('meta.title'),
-			description: t('meta.description'),
-			creator: '@nooobtimex',
-		},
-		robots: {
-			index: true,
-			follow: true,
-		},
-	};
+	});
 }
 
 type Section = { title: string; paragraphs: string[]; items?: string[]; footnote?: string };

@@ -31,7 +31,10 @@ export default function Header() {
 						height={32}
 						className="h-8 w-8 rounded-md"
 					/>
-					<h1 className="text-xl font-semibold tracking-tight">{brandName}</h1>
+					{/* Deliberately NOT an <h1>: this brand mark renders on every route, so an
+					    h1 here gave /about, /faq and /privacy two h1s and made the home
+					    page's only h1 the bare brand name. Each route owns its own h1. */}
+					<span className="text-xl font-semibold tracking-tight">{brandName}</span>
 				</Link>
 
 				{/* Right-side Actions */}

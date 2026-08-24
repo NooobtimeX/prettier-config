@@ -11,6 +11,11 @@
 		}
 	},
 	"Page": {
+		"meta": {
+			"title": "Generator Konfigurasi Prettier — buat .prettierrc online",
+			"description": "Playground Prettier interaktif dan gratis. Ubah setiap opsi, lihat diff langsung dari kode Anda, lalu salin .prettierrc yang dihasilkan. Tanpa perlu instalasi.",
+			"h1": "Generator konfigurasi dan playground Prettier"
+		},
 		"search": {
 			"found": "Ditemukan {count} dari {total} opsi",
 			"noOptions": "Tidak ada opsi yang ditemukan",

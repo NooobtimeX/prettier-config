@@ -11,6 +11,11 @@
 		}
 	},
 	"Page": {
+		"meta": {
+			"title": "Prettier Config Generator — build your .prettierrc online",
+			"description": "Free interactive Prettier playground. Toggle every option, preview a live diff of your own code, and copy the generated .prettierrc. No install needed.",
+			"h1": "Prettier config generator and playground"
+		},
 		"search": {
 			"found": "Found {count} of {total} options",
 			"noOptions": "No options found",

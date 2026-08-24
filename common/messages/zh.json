@@ -11,6 +11,11 @@
 		}
 	},
 	"Page": {
+		"meta": {
+			"title": "Prettier 配置生成器 — 在线生成 .prettierrc",
+			"description": "免费的交互式 Prettier 演练场。切换每个选项，实时预览自己代码的差异，然后复制生成的 .prettierrc。无需安装。",
+			"h1": "Prettier 配置生成器与演练场"
+		},
 		"search": {
 			"found": "找到 {count} 个选项（共 {total} 个）",
 			"noOptions": "未找到选项",

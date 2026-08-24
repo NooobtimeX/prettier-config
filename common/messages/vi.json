@@ -11,6 +11,11 @@
 		}
 	},
 	"Page": {
+		"meta": {
+			"title": "Trình tạo cấu hình Prettier — tạo .prettierrc trực tuyến",
+			"description": "Playground Prettier tương tác miễn phí. Bật tắt mọi tuỳ chọn, xem diff trực tiếp của mã của bạn và sao chép tệp .prettierrc được tạo ra. Không cần cài đặt.",
+			"h1": "Trình tạo cấu hình và playground Prettier"
+		},
 		"search": {
 			"found": "Tìm thấy {count} trong số {total} tùy chọn",
 			"noOptions": "Không tìm thấy tùy chọn nào",

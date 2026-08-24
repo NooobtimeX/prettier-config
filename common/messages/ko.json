@@ -11,6 +11,11 @@
 		}
 	},
 	"Page": {
+		"meta": {
+			"title": "Prettier 설정 생성기 — .prettierrc 온라인으로 만들기",
+			"description": "무료 대화형 Prettier 플레이그라운드. 모든 옵션을 전환하고 내 코드의 실시간 diff를 미리 보고 생성된 .prettierrc를 복사하세요. 설치가 필요 없습니다.",
+			"h1": "Prettier 설정 생성기 및 플레이그라운드"
+		},
 		"search": {
 			"found": "{total}개 중 {count}개의 옵션을 찾았습니다",
 			"noOptions": "옵션을 찾을 수 없습니다",

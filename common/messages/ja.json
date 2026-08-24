@@ -11,6 +11,11 @@
 		}
 	},
 	"Page": {
+		"meta": {
+			"title": "Prettier 設定ジェネレーター — .prettierrc をオンライン作成",
+			"description": "無料で使えるインタラクティブな Prettier プレイグラウンド。各オプションを切り替え、自分のコードの差分をリアルタイムで確認し、生成された .prettierrc をコピーできます。インストール不要。",
+			"h1": "Prettier 設定ジェネレーターとプレイグラウンド"
+		},
 		"search": {
 			"found": "{total}個中 {count}個のオプションが見つかりました",
 			"noOptions": "オプションが見つかりません",

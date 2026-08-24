@@ -135,6 +135,18 @@ export default async function LocaleLayout({
 			dir={RTL_LOCALES.has(locale) ? 'rtl' : 'ltr'}
 		>
 			<head>
+				{/* The options grid cannot paint until Prettier arrives from jsDelivr, so
+				    this fetch IS the LCP. Warming DNS + TLS here is the cheapest win
+				    available on the home page. */}
+				<link
+					rel="preconnect"
+					href="https://cdn.jsdelivr.net"
+					crossOrigin=""
+				/>
+				<link
+					rel="dns-prefetch"
+					href="https://cdn.jsdelivr.net"
+				/>
 				{/* Ownership verification only — ad serving comes from <AdSenseScript />. */}
 				<meta
 					name="google-adsense-account"

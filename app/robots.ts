@@ -17,5 +17,7 @@ export default function robots(): MetadataRoute.Robots {
 			allow: '/',
 		},
 		sitemap: 'https://prettier-config.dev/sitemap.xml',
+		// /llms.txt is the emerging convention (plural). Nothing crawls `llm.txt`.
+		host: 'https://prettier-config.dev',
 	};
 }

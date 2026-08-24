@@ -6,11 +6,13 @@ import { ADSENSE } from '@/common/constants';
  * the `<meta name="google-adsense-account">` tag in the layout only verifies
  * domain ownership, it never serves an ad on its own.
  *
- * `afterInteractive` rather than `beforeInteractive`: the tag is ~100 KB and
- * pulls in more once it runs, and the playground's first paint is the whole
- * product. Letting it wait for hydration keeps it off the LCP path. Ads land a
- * few hundred ms later, which costs nothing on in-content units placed below
- * the fold.
+ * `lazyOnload`, not `afterInteractive`. The original comment here claimed
+ * afterInteractive kept the tag off the LCP path — that was wrong: Next still
+ * emits a <link rel=preload as=script> for it in <head>, so a ~100 KB
+ * third-party script was competing for connections and main-thread time with
+ * the jsDelivr fetch that produces the actual page content. lazyOnload defers
+ * until the window load event. The ad units are below the fold, so nothing is
+ * lost.
  *
  * Development is deliberately excluded: `adsbygoogle.js` throws `TagError` all
  * over the console under React Strict Mode's double-mount, and clicking your own
@@ -24,7 +26,7 @@ export function AdSenseScript() {
 		<Script
 			id="adsbygoogle-init"
 			async
-			strategy="afterInteractive"
+			strategy="lazyOnload"
 			crossOrigin="anonymous"
 			src={`${ADSENSE.SCRIPT_SRC}?client=${ADSENSE.CLIENT_ID}`}
 		/>

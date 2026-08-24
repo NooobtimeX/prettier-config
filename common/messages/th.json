@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "ลิงก์ด่วน",
 			"generator": "ตัวสร้างการตั้งค่า",
+			"options": "ตัวเลือกทั้งหมด",
 			"docs": "เอกสาร",
 			"faq": "คำถามที่พบบ่อย",
 			"about": "เกี่ยวกับเรา",
@@ -568,6 +569,45 @@
 		"contact": {
 			"title": "ติดต่อ",
 			"description": "มีคำถามเกี่ยวกับนโยบายนี้ หรือเกี่ยวกับวิธีที่เว็บไซต์จัดการข้อมูล? ติดต่อเราได้เลย"
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — ทำอะไร ค่าเริ่มต้น และตัวอย่าง",
+			"description": "ตัวเลือก {key} ของ Prettier ทำงานอย่างไร ค่าเริ่มต้นคือ {default} ค่าที่ใช้ได้ และตัวอย่าง .prettierrc ที่คัดลอกไปใช้ได้ทันที"
+		},
+		"hero": {
+			"subtitle": "ตัวเลือก {name} ของ Prettier"
+		},
+		"breadcrumb": {
+			"label": "เส้นทางนำทาง",
+			"home": "หน้าแรก",
+			"options": "ตัวเลือก"
+		},
+		"facts": {
+			"default": "ค่าเริ่มต้น",
+			"type": "ชนิด",
+			"cli": "แฟล็ก CLI",
+			"values": "ค่าที่ใช้ได้"
+		},
+		"snippet": {
+			"title": "ใช้ใน .prettierrc",
+			"intro": "ใส่ {key} ลงในไฟล์ตั้งค่า Prettier ของคุณ:",
+			"tryIt": "ลองใช้ในตัวสร้าง"
+		},
+		"values": {
+			"title": "ค่าที่ใช้ได้"
+		},
+		"related": {
+			"title": "ตัวเลือก {category} อื่น ๆ"
+		},
+		"generatedFrom": "สร้างจาก Prettier {version}",
+		"index": {
+			"title": "อ้างอิงตัวเลือกทั้งหมดของ Prettier",
+			"description": "ทุกตัวเลือกการจัดรูปแบบของ Prettier พร้อมค่าเริ่มต้น ค่าที่ใช้ได้ และตัวอย่างการตั้งค่าที่คัดลอกไปใช้ได้",
+			"metaTitle": "ตัวเลือก Prettier ทั้งหมด — พร้อมค่าเริ่มต้น",
+			"metaDescription": "ดูตัวเลือก Prettier ทุกตัว: printWidth, tabWidth, semi, trailingComma, singleQuote และอื่น ๆ พร้อมค่าเริ่มต้นและตัวอย่าง .prettierrc",
+			"generatedFrom": "สร้างจาก Prettier {version}"
 		}
 	},
 	"Ads": {

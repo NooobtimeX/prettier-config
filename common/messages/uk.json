@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Швидкі посилання",
 			"generator": "Генератор конфігурації",
+			"options": "Усі опції",
 			"docs": "Документація",
 			"faq": "Поширені запитання",
 			"about": "Про нас",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "Контакти",
 			"description": "Маєте запитання щодо цієї політики або того, як сайт поводиться з даними? Напишіть нам."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — призначення, типове значення та приклади",
+			"description": "Як працює опція {key} у Prettier, її типове значення {default}, допустимі значення та готовий фрагмент .prettierrc."
+		},
+		"hero": {
+			"subtitle": "Опція {name} у Prettier"
+		},
+		"breadcrumb": {
+			"label": "Навігаційний ланцюжок",
+			"home": "Головна",
+			"options": "Опції"
+		},
+		"facts": {
+			"default": "Типове значення",
+			"type": "Тип",
+			"cli": "Прапорець CLI",
+			"values": "Допустимі значення"
+		},
+		"snippet": {
+			"title": "Використати в .prettierrc",
+			"intro": "Додайте {key} до свого файлу конфігурації Prettier:",
+			"tryIt": "Спробувати в генераторі"
+		},
+		"values": {
+			"title": "Допустимі значення"
+		},
+		"related": {
+			"title": "Інші опції категорії {category}"
+		},
+		"generatedFrom": "Згенеровано з Prettier {version}.",
+		"index": {
+			"title": "Довідник опцій Prettier",
+			"description": "Усі опції форматування Prettier — з типовими значеннями, допустимими значеннями та готовими фрагментами конфігурації.",
+			"metaTitle": "Усі опції Prettier — довідник",
+			"metaDescription": "Перегляньте всі опції Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote та інші, кожна з типовим значенням і прикладом .prettierrc.",
+			"generatedFrom": "Згенеровано з Prettier {version}."
 		}
 	},
 	"Ads": {

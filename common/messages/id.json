@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Tautan Cepat",
 			"generator": "Pembuat Konfigurasi",
+			"options": "Semua opsi",
 			"docs": "Dokumentasi",
 			"faq": "FAQ",
 			"about": "Tentang",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "Kontak",
 			"description": "Ada pertanyaan tentang kebijakan ini, atau tentang bagaimana situs menangani data? Hubungi kami."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — fungsi, nilai bawaan, dan contoh",
+			"description": "Cara kerja opsi {key} pada Prettier, nilai bawaannya {default}, nilai yang diizinkan, dan potongan .prettierrc siap salin."
+		},
+		"hero": {
+			"subtitle": "Opsi {name} pada Prettier"
+		},
+		"breadcrumb": {
+			"label": "Remah roti",
+			"home": "Beranda",
+			"options": "Opsi"
+		},
+		"facts": {
+			"default": "Bawaan",
+			"type": "Tipe",
+			"cli": "Flag CLI",
+			"values": "Nilai yang diizinkan"
+		},
+		"snippet": {
+			"title": "Gunakan di .prettierrc",
+			"intro": "Tambahkan {key} ke berkas konfigurasi Prettier Anda:",
+			"tryIt": "Coba di generator"
+		},
+		"values": {
+			"title": "Nilai yang diizinkan"
+		},
+		"related": {
+			"title": "Opsi {category} lainnya"
+		},
+		"generatedFrom": "Dibuat dari Prettier {version}.",
+		"index": {
+			"title": "Referensi opsi Prettier",
+			"description": "Semua opsi pemformatan Prettier, lengkap dengan nilai bawaan, nilai yang diizinkan, dan potongan konfigurasi siap salin.",
+			"metaTitle": "Semua opsi Prettier — referensi",
+			"metaDescription": "Jelajahi setiap opsi Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote, dan lainnya, masing-masing dengan nilai bawaan dan contoh .prettierrc.",
+			"generatedFrom": "Dibuat dari Prettier {version}."
 		}
 	},
 	"Ads": {

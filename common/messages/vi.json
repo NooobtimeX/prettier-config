@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Liên kết nhanh",
 			"generator": "Trình tạo cấu hình",
+			"options": "Tất cả tuỳ chọn",
 			"docs": "Tài liệu",
 			"faq": "Câu hỏi thường gặp",
 			"about": "Giới thiệu",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "Liên hệ",
 			"description": "Có thắc mắc về chính sách này hoặc về cách trang web xử lý dữ liệu? Hãy liên hệ với chúng tôi."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — công dụng, giá trị mặc định và ví dụ",
+			"description": "Cách hoạt động của tuỳ chọn {key} trong Prettier, giá trị mặc định {default}, các giá trị hợp lệ và đoạn .prettierrc sẵn sàng sao chép."
+		},
+		"hero": {
+			"subtitle": "Tuỳ chọn {name} của Prettier"
+		},
+		"breadcrumb": {
+			"label": "Đường dẫn",
+			"home": "Trang chủ",
+			"options": "Tuỳ chọn"
+		},
+		"facts": {
+			"default": "Mặc định",
+			"type": "Kiểu",
+			"cli": "Cờ CLI",
+			"values": "Giá trị hợp lệ"
+		},
+		"snippet": {
+			"title": "Dùng trong .prettierrc",
+			"intro": "Thêm {key} vào tệp cấu hình Prettier của bạn:",
+			"tryIt": "Thử trong trình tạo"
+		},
+		"values": {
+			"title": "Giá trị hợp lệ"
+		},
+		"related": {
+			"title": "Các tuỳ chọn {category} khác"
+		},
+		"generatedFrom": "Được tạo từ Prettier {version}.",
+		"index": {
+			"title": "Tham chiếu tuỳ chọn Prettier",
+			"description": "Mọi tuỳ chọn định dạng của Prettier, kèm giá trị mặc định, giá trị hợp lệ và đoạn cấu hình sao chép được.",
+			"metaTitle": "Tất cả tuỳ chọn Prettier — tham chiếu",
+			"metaDescription": "Duyệt mọi tuỳ chọn Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote và hơn thế, mỗi tuỳ chọn kèm giá trị mặc định và ví dụ .prettierrc.",
+			"generatedFrom": "Được tạo từ Prettier {version}."
 		}
 	},
 	"Ads": {

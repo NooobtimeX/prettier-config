@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Quick Links",
 			"generator": "Config Generator",
+			"options": "All options",
 			"docs": "Documentation",
 			"faq": "FAQ",
 			"about": "About",
@@ -464,9 +465,6 @@
 		"bottom": {
 			"copyright": "Prettier Config"
 		}
-	},
-	"Ads": {
-		"label": "Advertisement"
 	},
 	"Privacy": {
 		"meta": {
@@ -574,5 +572,47 @@
 			"title": "Contact",
 			"description": "Questions about this policy, or about how the site handles data? Get in touch."
 		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — what it does, default and examples",
+			"description": "How the Prettier {key} option works, its default value of {default}, allowed values and a ready-to-copy .prettierrc snippet."
+		},
+		"hero": {
+			"subtitle": "The Prettier {name} option"
+		},
+		"breadcrumb": {
+			"label": "Breadcrumb",
+			"home": "Home",
+			"options": "Options"
+		},
+		"facts": {
+			"default": "Default",
+			"type": "Type",
+			"cli": "CLI flag",
+			"values": "Allowed values"
+		},
+		"snippet": {
+			"title": "Use it in .prettierrc",
+			"intro": "Drop {key} into your Prettier config file:",
+			"tryIt": "Try it in the generator"
+		},
+		"values": {
+			"title": "Allowed values"
+		},
+		"related": {
+			"title": "Other {category} options"
+		},
+		"generatedFrom": "Generated from Prettier {version}.",
+		"index": {
+			"title": "Prettier options reference",
+			"description": "Every Prettier formatting option, with defaults, allowed values and copy-paste config snippets.",
+			"metaTitle": "All Prettier options — reference with defaults",
+			"metaDescription": "Browse every Prettier option: printWidth, tabWidth, semi, trailingComma, singleQuote and more, each with its default and a .prettierrc example.",
+			"generatedFrom": "Generated from Prettier {version}."
+		}
+	},
+	"Ads": {
+		"label": "Advertisement"
 	}
 }

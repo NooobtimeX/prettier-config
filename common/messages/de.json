@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Quick-Links",
 			"generator": "Konfigurations-Generator",
+			"options": "Alle Optionen",
 			"docs": "Dokumentation",
 			"faq": "FAQ",
 			"about": "Über uns",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "Kontakt",
 			"description": "Fragen zu dieser Erklärung oder dazu, wie die Website mit Daten umgeht? Melden Sie sich."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — Funktion, Standardwert und Beispiele",
+			"description": "Wie die Prettier-Option {key} funktioniert, ihr Standardwert {default}, zulässige Werte und ein kopierfertiges .prettierrc-Snippet."
+		},
+		"hero": {
+			"subtitle": "Die Prettier-Option {name}"
+		},
+		"breadcrumb": {
+			"label": "Brotkrumennavigation",
+			"home": "Start",
+			"options": "Optionen"
+		},
+		"facts": {
+			"default": "Standard",
+			"type": "Typ",
+			"cli": "CLI-Flag",
+			"values": "Zulässige Werte"
+		},
+		"snippet": {
+			"title": "In .prettierrc verwenden",
+			"intro": "Fügen Sie {key} in Ihre Prettier-Konfigurationsdatei ein:",
+			"tryIt": "Im Generator ausprobieren"
+		},
+		"values": {
+			"title": "Zulässige Werte"
+		},
+		"related": {
+			"title": "Weitere {category}-Optionen"
+		},
+		"generatedFrom": "Erzeugt aus Prettier {version}.",
+		"index": {
+			"title": "Prettier-Optionsreferenz",
+			"description": "Alle Formatierungsoptionen von Prettier — mit Standardwerten, zulässigen Werten und kopierfertigen Konfigurations-Snippets.",
+			"metaTitle": "Alle Prettier-Optionen — Referenz mit Standardwerten",
+			"metaDescription": "Alle Prettier-Optionen durchsuchen: printWidth, tabWidth, semi, trailingComma, singleQuote und mehr, jeweils mit Standardwert und .prettierrc-Beispiel.",
+			"generatedFrom": "Erzeugt aus Prettier {version}."
 		}
 	},
 	"Ads": {

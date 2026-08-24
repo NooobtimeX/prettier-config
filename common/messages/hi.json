@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "त्वरित लिंक",
 			"generator": "कॉन्फ़िगरेशन जेनरेटर",
+			"options": "सभी विकल्प",
 			"docs": "दस्तावेज़",
 			"faq": "सामान्य प्रश्न",
 			"about": "के बारे में",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "संपर्क",
 			"description": "इस नीति के बारे में या साइट डेटा को कैसे संभालती है, इस बारे में प्रश्न हैं? संपर्क करें।"
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — क्या करता है, डिफ़ॉल्ट और उदाहरण",
+			"description": "Prettier का {key} विकल्प कैसे काम करता है, इसका डिफ़ॉल्ट {default}, स्वीकृत मान और कॉपी करने योग्य .prettierrc स्निपेट।"
+		},
+		"hero": {
+			"subtitle": "Prettier का {name} विकल्प"
+		},
+		"breadcrumb": {
+			"label": "ब्रेडक्रंब",
+			"home": "होम",
+			"options": "विकल्प"
+		},
+		"facts": {
+			"default": "डिफ़ॉल्ट",
+			"type": "प्रकार",
+			"cli": "CLI फ़्लैग",
+			"values": "स्वीकृत मान"
+		},
+		"snippet": {
+			"title": ".prettierrc में इस्तेमाल करें",
+			"intro": "{key} को अपनी Prettier कॉन्फ़िग फ़ाइल में जोड़ें:",
+			"tryIt": "जेनरेटर में आज़माएँ"
+		},
+		"values": {
+			"title": "स्वीकृत मान"
+		},
+		"related": {
+			"title": "अन्य {category} विकल्प"
+		},
+		"generatedFrom": "Prettier {version} से बनाया गया।",
+		"index": {
+			"title": "Prettier विकल्प संदर्भ",
+			"description": "Prettier के सभी फ़ॉर्मैटिंग विकल्प, डिफ़ॉल्ट, स्वीकृत मान और कॉपी-पेस्ट कॉन्फ़िग स्निपेट के साथ।",
+			"metaTitle": "सभी Prettier विकल्प — डिफ़ॉल्ट सहित संदर्भ",
+			"metaDescription": "हर Prettier विकल्प देखें: printWidth, tabWidth, semi, trailingComma, singleQuote और अधिक, हर एक अपने डिफ़ॉल्ट और .prettierrc उदाहरण के साथ।",
+			"generatedFrom": "Prettier {version} से बनाया गया।"
 		}
 	},
 	"Ads": {

@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Liens rapides",
 			"generator": "Générateur de config",
+			"options": "Toutes les options",
 			"docs": "Documentation",
 			"faq": "FAQ",
 			"about": "À propos",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "Contact",
 			"description": "Des questions sur cette politique ou sur la façon dont le site traite les données ? Contactez-nous."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — rôle, valeur par défaut et exemples",
+			"description": "Comment fonctionne l'option Prettier {key}, sa valeur par défaut {default}, les valeurs autorisées et un extrait .prettierrc prêt à copier."
+		},
+		"hero": {
+			"subtitle": "L'option Prettier {name}"
+		},
+		"breadcrumb": {
+			"label": "Fil d'Ariane",
+			"home": "Accueil",
+			"options": "Options"
+		},
+		"facts": {
+			"default": "Par défaut",
+			"type": "Type",
+			"cli": "Option CLI",
+			"values": "Valeurs autorisées"
+		},
+		"snippet": {
+			"title": "L'utiliser dans .prettierrc",
+			"intro": "Ajoutez {key} à votre fichier de configuration Prettier :",
+			"tryIt": "Essayer dans le générateur"
+		},
+		"values": {
+			"title": "Valeurs autorisées"
+		},
+		"related": {
+			"title": "Autres options {category}"
+		},
+		"generatedFrom": "Généré à partir de Prettier {version}.",
+		"index": {
+			"title": "Référence des options Prettier",
+			"description": "Toutes les options de formatage de Prettier, avec valeurs par défaut, valeurs autorisées et extraits de configuration à copier.",
+			"metaTitle": "Toutes les options Prettier — référence",
+			"metaDescription": "Parcourez toutes les options Prettier : printWidth, tabWidth, semi, trailingComma, singleQuote et plus, chacune avec sa valeur par défaut et un exemple .prettierrc.",
+			"generatedFrom": "Généré à partir de Prettier {version}."
 		}
 	},
 	"Ads": {

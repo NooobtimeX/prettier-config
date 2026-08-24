@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Szybkie linki",
 			"generator": "Generator konfiguracji",
+			"options": "Wszystkie opcje",
 			"docs": "Dokumentacja",
 			"faq": "FAQ",
 			"about": "O nas",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "Kontakt",
 			"description": "Masz pytania dotyczące tej polityki lub tego, jak witryna obchodzi się z danymi? Napisz do nas."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — działanie, wartość domyślna i przykłady",
+			"description": "Jak działa opcja {key} w Prettier, jej wartość domyślna {default}, dozwolone wartości i gotowy do skopiowania fragment .prettierrc."
+		},
+		"hero": {
+			"subtitle": "Opcja {name} w Prettier"
+		},
+		"breadcrumb": {
+			"label": "Ścieżka nawigacji",
+			"home": "Strona główna",
+			"options": "Opcje"
+		},
+		"facts": {
+			"default": "Domyślnie",
+			"type": "Typ",
+			"cli": "Flaga CLI",
+			"values": "Dozwolone wartości"
+		},
+		"snippet": {
+			"title": "Użyj w .prettierrc",
+			"intro": "Dodaj {key} do swojego pliku konfiguracyjnego Prettier:",
+			"tryIt": "Wypróbuj w generatorze"
+		},
+		"values": {
+			"title": "Dozwolone wartości"
+		},
+		"related": {
+			"title": "Inne opcje z kategorii {category}"
+		},
+		"generatedFrom": "Wygenerowano z Prettier {version}.",
+		"index": {
+			"title": "Dokumentacja opcji Prettier",
+			"description": "Wszystkie opcje formatowania Prettier — z wartościami domyślnymi, dozwolonymi wartościami i gotowymi fragmentami konfiguracji.",
+			"metaTitle": "Wszystkie opcje Prettier — dokumentacja",
+			"metaDescription": "Przeglądaj każdą opcję Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote i inne, każdą z wartością domyślną i przykładem .prettierrc.",
+			"generatedFrom": "Wygenerowano z Prettier {version}."
 		}
 	},
 	"Ads": {

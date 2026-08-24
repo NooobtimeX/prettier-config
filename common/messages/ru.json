@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Быстрые ссылки",
 			"generator": "Генератор конфига",
+			"options": "Все опции",
 			"docs": "Документация",
 			"faq": "FAQ",
 			"about": "О нас",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "Контакты",
 			"description": "Есть вопросы об этой политике или о том, как сайт обращается с данными? Напишите нам."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — назначение, значение по умолчанию и примеры",
+			"description": "Как работает опция {key} в Prettier, её значение по умолчанию {default}, допустимые значения и готовый фрагмент .prettierrc."
+		},
+		"hero": {
+			"subtitle": "Опция Prettier {name}"
+		},
+		"breadcrumb": {
+			"label": "Хлебные крошки",
+			"home": "Главная",
+			"options": "Опции"
+		},
+		"facts": {
+			"default": "По умолчанию",
+			"type": "Тип",
+			"cli": "Флаг CLI",
+			"values": "Допустимые значения"
+		},
+		"snippet": {
+			"title": "Использовать в .prettierrc",
+			"intro": "Добавьте {key} в файл конфигурации Prettier:",
+			"tryIt": "Попробовать в генераторе"
+		},
+		"values": {
+			"title": "Допустимые значения"
+		},
+		"related": {
+			"title": "Другие опции категории {category}"
+		},
+		"generatedFrom": "Сгенерировано из Prettier {version}.",
+		"index": {
+			"title": "Справочник опций Prettier",
+			"description": "Все опции форматирования Prettier — со значениями по умолчанию, допустимыми значениями и готовыми фрагментами конфигурации.",
+			"metaTitle": "Все опции Prettier — справочник",
+			"metaDescription": "Просмотрите все опции Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote и другие, каждая со значением по умолчанию и примером .prettierrc.",
+			"generatedFrom": "Сгенерировано из Prettier {version}."
 		}
 	},
 	"Ads": {

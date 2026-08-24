@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "কুইক লিংক",
 			"generator": "কনফিগ জেনারেটর",
+			"options": "সব অপশন",
 			"docs": "ডকুমেন্টেশন",
 			"faq": "FAQ",
 			"about": "আমাদের সম্পর্কে",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "যোগাযোগ",
 			"description": "এই নীতি সম্পর্কে বা সাইট কীভাবে ডেটা পরিচালনা করে সে সম্পর্কে প্রশ্ন আছে? যোগাযোগ করুন।"
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — কী করে, ডিফল্ট ও উদাহরণ",
+			"description": "Prettier-এর {key} অপশন কীভাবে কাজ করে, এর ডিফল্ট মান {default}, অনুমোদিত মান এবং কপি করার মতো .prettierrc নমুনা।"
+		},
+		"hero": {
+			"subtitle": "Prettier-এর {name} অপশন"
+		},
+		"breadcrumb": {
+			"label": "ব্রেডক্রাম্ব",
+			"home": "হোম",
+			"options": "অপশন"
+		},
+		"facts": {
+			"default": "ডিফল্ট",
+			"type": "ধরন",
+			"cli": "CLI ফ্ল্যাগ",
+			"values": "অনুমোদিত মান"
+		},
+		"snippet": {
+			"title": ".prettierrc-এ ব্যবহার করুন",
+			"intro": "আপনার Prettier কনফিগ ফাইলে {key} যোগ করুন:",
+			"tryIt": "জেনারেটরে চেষ্টা করুন"
+		},
+		"values": {
+			"title": "অনুমোদিত মান"
+		},
+		"related": {
+			"title": "অন্যান্য {category} অপশন"
+		},
+		"generatedFrom": "Prettier {version} থেকে তৈরি।",
+		"index": {
+			"title": "Prettier অপশন রেফারেন্স",
+			"description": "Prettier-এর সব ফরম্যাটিং অপশন, ডিফল্ট মান, অনুমোদিত মান এবং কপি-পেস্ট করার মতো কনফিগ নমুনাসহ।",
+			"metaTitle": "সব Prettier অপশন — রেফারেন্স",
+			"metaDescription": "প্রতিটি Prettier অপশন দেখুন: printWidth, tabWidth, semi, trailingComma, singleQuote এবং আরও, প্রতিটির ডিফল্ট ও .prettierrc উদাহরণসহ।",
+			"generatedFrom": "Prettier {version} থেকে তৈরি।"
 		}
 	},
 	"Ads": {

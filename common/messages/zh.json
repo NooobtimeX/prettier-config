@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "快速链接",
 			"generator": "配置生成器",
+			"options": "全部选项",
 			"docs": "文档",
 			"faq": "常见问题",
 			"about": "关于我们",
@@ -568,6 +569,45 @@
 		"contact": {
 			"title": "联系我们",
 			"description": "对本政策或本站的数据处理方式有疑问？欢迎与我们联系。"
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — 作用、默认值与示例",
+			"description": "Prettier 的 {key} 选项如何工作、默认值 {default}、可选值，以及可直接复制的 .prettierrc 片段。"
+		},
+		"hero": {
+			"subtitle": "Prettier 的 {name} 选项"
+		},
+		"breadcrumb": {
+			"label": "面包屑导航",
+			"home": "首页",
+			"options": "选项"
+		},
+		"facts": {
+			"default": "默认值",
+			"type": "类型",
+			"cli": "CLI 参数",
+			"values": "可选值"
+		},
+		"snippet": {
+			"title": "在 .prettierrc 中使用",
+			"intro": "把 {key} 加入你的 Prettier 配置文件：",
+			"tryIt": "在生成器中试用"
+		},
+		"values": {
+			"title": "可选值"
+		},
+		"related": {
+			"title": "其他 {category} 选项"
+		},
+		"generatedFrom": "生成自 Prettier {version}。",
+		"index": {
+			"title": "Prettier 选项参考",
+			"description": "每一个 Prettier 格式化选项，附默认值、可选值和可复制的配置片段。",
+			"metaTitle": "全部 Prettier 选项 — 含默认值参考",
+			"metaDescription": "浏览每个 Prettier 选项：printWidth、tabWidth、semi、trailingComma、singleQuote 等，各附默认值与 .prettierrc 示例。",
+			"generatedFrom": "生成自 Prettier {version}。"
 		}
 	},
 	"Ads": {

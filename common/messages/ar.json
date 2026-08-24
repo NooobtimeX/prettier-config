@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "روابط سريعة",
 			"generator": "مولد الإعدادات",
+			"options": "كل الخيارات",
 			"docs": "التوثيق",
 			"faq": "الأسئلة الشائعة",
 			"about": "من نحن",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "التواصل",
 			"description": "هل لديك أسئلة عن هذه السياسة أو عن كيفية تعامل الموقع مع البيانات؟ تواصل معنا."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — وظيفته وقيمته الافتراضية وأمثلة",
+			"description": "كيف يعمل خيار {key} في Prettier، وقيمته الافتراضية {default}، والقيم المسموح بها، ومقتطف .prettierrc جاهز للنسخ."
+		},
+		"hero": {
+			"subtitle": "خيار {name} في Prettier"
+		},
+		"breadcrumb": {
+			"label": "مسار التنقل",
+			"home": "الرئيسية",
+			"options": "الخيارات"
+		},
+		"facts": {
+			"default": "القيمة الافتراضية",
+			"type": "النوع",
+			"cli": "خيار سطر الأوامر",
+			"values": "القيم المسموح بها"
+		},
+		"snippet": {
+			"title": "استخدمه في .prettierrc",
+			"intro": "أضف {key} إلى ملف إعدادات Prettier لديك:",
+			"tryIt": "جرّبه في المولّد"
+		},
+		"values": {
+			"title": "القيم المسموح بها"
+		},
+		"related": {
+			"title": "خيارات {category} الأخرى"
+		},
+		"generatedFrom": "مُولَّد من Prettier {version}.",
+		"index": {
+			"title": "مرجع خيارات Prettier",
+			"description": "كل خيارات التنسيق في Prettier، مع القيم الافتراضية والقيم المسموح بها ومقتطفات إعداد جاهزة للنسخ.",
+			"metaTitle": "كل خيارات Prettier — مرجع بالقيم الافتراضية",
+			"metaDescription": "تصفّح كل خيارات Prettier: printWidth وtabWidth وsemi وtrailingComma وsingleQuote وغيرها، كل واحد بقيمته الافتراضية ومثال .prettierrc.",
+			"generatedFrom": "مُولَّد من Prettier {version}."
 		}
 	},
 	"Ads": {

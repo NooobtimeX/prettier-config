@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Links Rápidos",
 			"generator": "Gerador de Configuração",
+			"options": "Todas as opções",
 			"docs": "Documentação",
 			"faq": "Perguntas Frequentes",
 			"about": "Sobre",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "Contato",
 			"description": "Dúvidas sobre esta política ou sobre como o site trata os dados? Entre em contato."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — o que faz, padrão e exemplos",
+			"description": "Como funciona a opção {key} do Prettier, seu valor padrão {default}, valores permitidos e um trecho .prettierrc pronto para copiar."
+		},
+		"hero": {
+			"subtitle": "A opção {name} do Prettier"
+		},
+		"breadcrumb": {
+			"label": "Trilha de navegação",
+			"home": "Início",
+			"options": "Opções"
+		},
+		"facts": {
+			"default": "Padrão",
+			"type": "Tipo",
+			"cli": "Flag da CLI",
+			"values": "Valores permitidos"
+		},
+		"snippet": {
+			"title": "Use no .prettierrc",
+			"intro": "Adicione {key} ao seu arquivo de configuração do Prettier:",
+			"tryIt": "Testar no gerador"
+		},
+		"values": {
+			"title": "Valores permitidos"
+		},
+		"related": {
+			"title": "Outras opções de {category}"
+		},
+		"generatedFrom": "Gerado a partir do Prettier {version}.",
+		"index": {
+			"title": "Referência de opções do Prettier",
+			"description": "Todas as opções de formatação do Prettier, com padrões, valores permitidos e trechos de configuração para copiar.",
+			"metaTitle": "Todas as opções do Prettier — referência",
+			"metaDescription": "Explore todas as opções do Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote e mais, cada uma com seu padrão e um exemplo .prettierrc.",
+			"generatedFrom": "Gerado a partir do Prettier {version}."
 		}
 	},
 	"Ads": {

@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "빠른 링크",
 			"generator": "설정 생성기",
+			"options": "모든 옵션",
 			"docs": "문서",
 			"faq": "자주 묻는 질문",
 			"about": "소개",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "문의",
 			"description": "본 방침이나 사이트의 데이터 처리 방식에 대해 궁금한 점이 있으신가요? 연락 주세요."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — 기능, 기본값, 예제",
+			"description": "Prettier의 {key} 옵션이 하는 일, 기본값 {default}, 허용되는 값, 그리고 바로 복사할 수 있는 .prettierrc 예제."
+		},
+		"hero": {
+			"subtitle": "Prettier의 {name} 옵션"
+		},
+		"breadcrumb": {
+			"label": "탐색 경로",
+			"home": "홈",
+			"options": "옵션"
+		},
+		"facts": {
+			"default": "기본값",
+			"type": "타입",
+			"cli": "CLI 플래그",
+			"values": "허용되는 값"
+		},
+		"snippet": {
+			"title": ".prettierrc에서 사용하기",
+			"intro": "{key}를 Prettier 설정 파일에 추가하세요:",
+			"tryIt": "생성기에서 사용해 보기"
+		},
+		"values": {
+			"title": "허용되는 값"
+		},
+		"related": {
+			"title": "다른 {category} 옵션"
+		},
+		"generatedFrom": "Prettier {version} 기준으로 생성됨.",
+		"index": {
+			"title": "Prettier 옵션 레퍼런스",
+			"description": "모든 Prettier 포매팅 옵션을 기본값, 허용되는 값, 복사해 쓸 수 있는 설정 예제와 함께 정리했습니다.",
+			"metaTitle": "모든 Prettier 옵션 — 기본값 레퍼런스",
+			"metaDescription": "printWidth, tabWidth, semi, trailingComma, singleQuote 등 모든 Prettier 옵션을 기본값과 .prettierrc 예제와 함께 살펴보세요.",
+			"generatedFrom": "Prettier {version} 기준으로 생성됨."
 		}
 	},
 	"Ads": {

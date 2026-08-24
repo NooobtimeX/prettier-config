@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Hızlı Bağlantılar",
 			"generator": "Yapılandırma Oluşturucu",
+			"options": "Tüm seçenekler",
 			"docs": "Dokümantasyon",
 			"faq": "SSS",
 			"about": "Hakkında",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "İletişim",
 			"description": "Bu politika ya da sitenin verileri nasıl işlediği hakkında sorularınız mı var? Bize ulaşın."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — ne işe yarar, varsayılanı ve örnekler",
+			"description": "Prettier'in {key} seçeneği nasıl çalışır, varsayılan değeri {default}, izin verilen değerler ve kopyalamaya hazır bir .prettierrc parçası."
+		},
+		"hero": {
+			"subtitle": "Prettier'in {name} seçeneği"
+		},
+		"breadcrumb": {
+			"label": "Gezinti yolu",
+			"home": "Ana sayfa",
+			"options": "Seçenekler"
+		},
+		"facts": {
+			"default": "Varsayılan",
+			"type": "Tür",
+			"cli": "CLI bayrağı",
+			"values": "İzin verilen değerler"
+		},
+		"snippet": {
+			"title": ".prettierrc içinde kullanın",
+			"intro": "{key} seçeneğini Prettier yapılandırma dosyanıza ekleyin:",
+			"tryIt": "Oluşturucuda deneyin"
+		},
+		"values": {
+			"title": "İzin verilen değerler"
+		},
+		"related": {
+			"title": "Diğer {category} seçenekleri"
+		},
+		"generatedFrom": "Prettier {version} sürümünden üretildi.",
+		"index": {
+			"title": "Prettier seçenek referansı",
+			"description": "Prettier'in tüm biçimlendirme seçenekleri; varsayılan değerleri, izin verilen değerleri ve kopyalanabilir yapılandırma parçalarıyla.",
+			"metaTitle": "Tüm Prettier seçenekleri — referans",
+			"metaDescription": "printWidth, tabWidth, semi, trailingComma, singleQuote ve daha fazlası dahil her Prettier seçeneğine, varsayılanı ve .prettierrc örneğiyle göz atın.",
+			"generatedFrom": "Prettier {version} sürümünden üretildi."
 		}
 	},
 	"Ads": {

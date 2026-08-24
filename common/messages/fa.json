@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "لینک‌های سریع",
 			"generator": "تولیدکننده پیکربندی",
+			"options": "همهٔ گزینه‌ها",
 			"docs": "مستندات",
 			"faq": "پرسش‌های متداول",
 			"about": "درباره",
@@ -568,6 +569,45 @@
 		"contact": {
 			"title": "تماس",
 			"description": "درباره این سیاست یا نحوه برخورد سایت با داده‌ها پرسشی دارید؟ با ما در تماس باشید."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — کارکرد، مقدار پیش‌فرض و نمونه‌ها",
+			"description": "گزینهٔ {key} در Prettier چگونه کار می‌کند، مقدار پیش‌فرض آن {default}، مقادیر مجاز و نمونهٔ آمادهٔ کپی .prettierrc."
+		},
+		"hero": {
+			"subtitle": "گزینهٔ {name} در Prettier"
+		},
+		"breadcrumb": {
+			"label": "مسیر راهبری",
+			"home": "خانه",
+			"options": "گزینه‌ها"
+		},
+		"facts": {
+			"default": "پیش‌فرض",
+			"type": "نوع",
+			"cli": "پرچم CLI",
+			"values": "مقادیر مجاز"
+		},
+		"snippet": {
+			"title": "استفاده در .prettierrc",
+			"intro": "{key} را به فایل پیکربندی Prettier خود اضافه کنید:",
+			"tryIt": "در سازنده امتحان کنید"
+		},
+		"values": {
+			"title": "مقادیر مجاز"
+		},
+		"related": {
+			"title": "سایر گزینه‌های {category}"
+		},
+		"generatedFrom": "ساخته‌شده از Prettier {version}.",
+		"index": {
+			"title": "مرجع گزینه‌های Prettier",
+			"description": "همهٔ گزینه‌های قالب‌بندی Prettier، همراه با مقادیر پیش‌فرض، مقادیر مجاز و نمونه‌های پیکربندی آمادهٔ کپی.",
+			"metaTitle": "همهٔ گزینه‌های Prettier — مرجع",
+			"metaDescription": "همهٔ گزینه‌های Prettier را مرور کنید: printWidth، tabWidth، semi، trailingComma، singleQuote و بیشتر، هرکدام با مقدار پیش‌فرض و نمونهٔ .prettierrc.",
+			"generatedFrom": "ساخته‌شده از Prettier {version}."
 		}
 	},
 	"Ads": {

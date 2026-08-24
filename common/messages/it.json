@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Link rapidi",
 			"generator": "Generatore Config",
+			"options": "Tutte le opzioni",
 			"docs": "Documentazione",
 			"faq": "FAQ",
 			"about": "Chi siamo",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "Contatti",
 			"description": "Domande su questa informativa o su come il sito tratta i dati? Scrivici."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — cosa fa, valore predefinito ed esempi",
+			"description": "Come funziona l'opzione {key} di Prettier, il suo valore predefinito {default}, i valori ammessi e uno snippet .prettierrc pronto da copiare."
+		},
+		"hero": {
+			"subtitle": "L'opzione {name} di Prettier"
+		},
+		"breadcrumb": {
+			"label": "Percorso di navigazione",
+			"home": "Home",
+			"options": "Opzioni"
+		},
+		"facts": {
+			"default": "Predefinito",
+			"type": "Tipo",
+			"cli": "Flag CLI",
+			"values": "Valori ammessi"
+		},
+		"snippet": {
+			"title": "Usalo in .prettierrc",
+			"intro": "Aggiungi {key} al tuo file di configurazione Prettier:",
+			"tryIt": "Provalo nel generatore"
+		},
+		"values": {
+			"title": "Valori ammessi"
+		},
+		"related": {
+			"title": "Altre opzioni {category}"
+		},
+		"generatedFrom": "Generato da Prettier {version}.",
+		"index": {
+			"title": "Riferimento delle opzioni Prettier",
+			"description": "Tutte le opzioni di formattazione di Prettier, con valori predefiniti, valori ammessi e snippet di configurazione pronti da copiare.",
+			"metaTitle": "Tutte le opzioni Prettier — riferimento",
+			"metaDescription": "Sfoglia ogni opzione Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote e altre, ciascuna con il suo valore predefinito e un esempio .prettierrc.",
+			"generatedFrom": "Generato da Prettier {version}."
 		}
 	},
 	"Ads": {

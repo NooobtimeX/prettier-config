@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "クイックリンク",
 			"generator": "設定ジェネレーター",
+			"options": "すべてのオプション",
 			"docs": "ドキュメント",
 			"faq": "よくある質問",
 			"about": "概要",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "お問い合わせ",
 			"description": "本ポリシーについて、またはサイトのデータの取り扱いについてご質問がありますか？お気軽にご連絡ください。"
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — 役割・既定値・使用例",
+			"description": "Prettier の {key} オプションの動作、既定値 {default}、指定できる値、そしてそのままコピーできる .prettierrc の例。"
+		},
+		"hero": {
+			"subtitle": "Prettier の {name} オプション"
+		},
+		"breadcrumb": {
+			"label": "パンくずリスト",
+			"home": "ホーム",
+			"options": "オプション"
+		},
+		"facts": {
+			"default": "既定値",
+			"type": "型",
+			"cli": "CLI フラグ",
+			"values": "指定できる値"
+		},
+		"snippet": {
+			"title": ".prettierrc で使う",
+			"intro": "{key} を Prettier の設定ファイルに追加します:",
+			"tryIt": "ジェネレーターで試す"
+		},
+		"values": {
+			"title": "指定できる値"
+		},
+		"related": {
+			"title": "その他の {category} オプション"
+		},
+		"generatedFrom": "Prettier {version} から生成。",
+		"index": {
+			"title": "Prettier オプションリファレンス",
+			"description": "Prettier のすべてのフォーマットオプションを、既定値・指定できる値・コピーできる設定例とともに掲載。",
+			"metaTitle": "Prettier 全オプション — 既定値つきリファレンス",
+			"metaDescription": "printWidth、tabWidth、semi、trailingComma、singleQuote など Prettier のすべてのオプションを、既定値と .prettierrc の例つきで一覧。",
+			"generatedFrom": "Prettier {version} から生成。"
 		}
 	},
 	"Ads": {

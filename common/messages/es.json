@@ -445,6 +445,7 @@
 		"quickLinks": {
 			"title": "Enlaces Rápidos",
 			"generator": "Generador de Config",
+			"options": "Todas las opciones",
 			"docs": "Documentación",
 			"faq": "Preguntas Frecuentes",
 			"about": "Acerca de",
@@ -570,6 +571,45 @@
 		"contact": {
 			"title": "Contacto",
 			"description": "¿Tienes preguntas sobre esta política o sobre cómo el sitio trata los datos? Ponte en contacto."
+		}
+	},
+	"Options": {
+		"meta": {
+			"title": "Prettier {key} — qué hace, valor por defecto y ejemplos",
+			"description": "Cómo funciona la opción {key} de Prettier, su valor por defecto {default}, los valores permitidos y un fragmento .prettierrc listo para copiar."
+		},
+		"hero": {
+			"subtitle": "La opción {name} de Prettier"
+		},
+		"breadcrumb": {
+			"label": "Ruta de navegación",
+			"home": "Inicio",
+			"options": "Opciones"
+		},
+		"facts": {
+			"default": "Por defecto",
+			"type": "Tipo",
+			"cli": "Opción CLI",
+			"values": "Valores permitidos"
+		},
+		"snippet": {
+			"title": "Úsalo en .prettierrc",
+			"intro": "Añade {key} a tu archivo de configuración de Prettier:",
+			"tryIt": "Pruébalo en el generador"
+		},
+		"values": {
+			"title": "Valores permitidos"
+		},
+		"related": {
+			"title": "Otras opciones de {category}"
+		},
+		"generatedFrom": "Generado a partir de Prettier {version}.",
+		"index": {
+			"title": "Referencia de opciones de Prettier",
+			"description": "Todas las opciones de formato de Prettier, con valores por defecto, valores permitidos y fragmentos de configuración listos para copiar.",
+			"metaTitle": "Todas las opciones de Prettier — referencia",
+			"metaDescription": "Explora todas las opciones de Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote y más, cada una con su valor por defecto y un ejemplo .prettierrc.",
+			"generatedFrom": "Generado a partir de Prettier {version}."
 		}
 	},
 	"Ads": {

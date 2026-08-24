@@ -46,6 +46,14 @@ export default function Footer() {
 							</li>
 							<li>
 								<Link
+									href="/options"
+									className="text-muted-foreground hover:text-foreground transition-colors"
+								>
+									{t('quickLinks.options')}
+								</Link>
+							</li>{' '}
+							<li>
+								<Link
 									href="/faq"
 									className="text-muted-foreground hover:text-foreground transition-colors"
 								>

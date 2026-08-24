@@ -100,8 +100,13 @@ export default async function FaqPage({ params }: { params: Promise<{ locale: st
 
 					{/* FAQ Accordion */}
 					<div className="mx-auto max-w-3xl">
+						{/* hiddenUntilFound keeps every panel mounted as hidden="until-found"
+						    rather than unmounting it. Base UI defaults keepMounted to false, so
+						    all 27 answers (~879 words) previously rendered null and reached
+						    Googlebot only inside the JSON-LD — never as body copy. */}
 						<Accordion
 							multiple={false}
+							hiddenUntilFound
 							className="space-y-2"
 						>
 							{items.map((item, index) => (

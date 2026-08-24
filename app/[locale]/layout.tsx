@@ -51,6 +51,15 @@ const hreflangLanguages: Record<string, string> = {
 /** Locales that need `<html dir="rtl">`. */
 const RTL_LOCALES = new Set(['ar', 'fa', 'he', 'ur']);
 
+/**
+ * Locked to the locales in generateStaticParams below. Without this, any path
+ * containing a dot bypasses proxy.ts's matcher, falls through to [locale], and
+ * i18n/request.ts quietly falls back to defaultLocale — so `/llms.txt`,
+ * `/anything.foo` and friends rendered the home page with HTTP 200 and
+ * `<html lang="llms.txt">`. An unbounded soft-404 surface; now they 404.
+ */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));
 }

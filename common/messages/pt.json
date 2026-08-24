@@ -16,6 +16,13 @@
 			"description": "Playground interativo e gratuito do Prettier. Alterne cada opção, veja um diff ao vivo do seu código e copie o .prettierrc gerado. Sem precisar instalar nada.",
 			"h1": "Gerador de configuração e playground do Prettier"
 		},
+		"optionReference": {
+			"title": "Referência de opções do Prettier",
+			"intro": "Todas as opções abaixo estão disponíveis no gerador acima. Os padrões exibidos são do Prettier {version}.",
+			"defaultLabel": "Padrão",
+			"valuesLabel": "Valores permitidos",
+			"cliLabel": "Flag da CLI"
+		},
 		"search": {
 			"found": "{count} de {total} opções encontradas",
 			"noOptions": "Nenhuma opção encontrada",

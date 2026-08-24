@@ -16,6 +16,13 @@
 			"description": "Free interactive Prettier playground. Toggle every option, preview a live diff of your own code, and copy the generated .prettierrc. No install needed.",
 			"h1": "Prettier config generator and playground"
 		},
+		"optionReference": {
+			"title": "Prettier options reference",
+			"intro": "Every option below is available in the generator above. Defaults shown are from Prettier {version}.",
+			"defaultLabel": "Default",
+			"valuesLabel": "Allowed values",
+			"cliLabel": "CLI flag"
+		},
 		"search": {
 			"found": "Found {count} of {total} options",
 			"noOptions": "No options found",

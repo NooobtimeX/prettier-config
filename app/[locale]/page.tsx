@@ -4,6 +4,7 @@ import { routing } from '@/next-intl.config';
 import { SITE_URL, SITE_NAME, OG_IMAGE, buildPageMetadata } from '@/lib/seo';
 import { DEVELOPER, REPOSITORY } from '@/common/constants';
 import Playground from './(components)/Playground';
+import OptionReference from './(components)/OptionReference';
 
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));
@@ -93,7 +94,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 			    of just the brand name. sr-only is position:absolute, so it cannot
 			    disturb the h-screen layout. */}
 			<h1 className="sr-only">{t('h1')}</h1>
-			<Playground />
+			{/* Passed as an already-rendered element, not a component: a function
+			    cannot cross the RSC boundary. Playground drops it into the options
+			    surface, the one part of this h-screen layout with real document flow. */}
+			<Playground optionReference={<OptionReference locale={locale} />} />
 		</>
 	);
 }

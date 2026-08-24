@@ -16,6 +16,13 @@
 			"description": "Playground Prettier tương tác miễn phí. Bật tắt mọi tuỳ chọn, xem diff trực tiếp của mã của bạn và sao chép tệp .prettierrc được tạo ra. Không cần cài đặt.",
 			"h1": "Trình tạo cấu hình và playground Prettier"
 		},
+		"optionReference": {
+			"title": "Tham chiếu tuỳ chọn Prettier",
+			"intro": "Mọi tuỳ chọn bên dưới đều có trong trình tạo ở trên. Giá trị mặc định hiển thị lấy từ Prettier {version}.",
+			"defaultLabel": "Mặc định",
+			"valuesLabel": "Giá trị hợp lệ",
+			"cliLabel": "Cờ CLI"
+		},
 		"search": {
 			"found": "Tìm thấy {count} trong số {total} tùy chọn",
 			"noOptions": "Không tìm thấy tùy chọn nào",

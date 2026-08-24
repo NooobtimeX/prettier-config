@@ -16,6 +16,13 @@
 			"description": "Playground Prettier interattivo e gratuito. Attiva ogni opzione, guarda un diff live del tuo codice e copia il .prettierrc generato. Senza installare nulla.",
 			"h1": "Generatore di configurazione e playground Prettier"
 		},
+		"optionReference": {
+			"title": "Riferimento delle opzioni Prettier",
+			"intro": "Ogni opzione qui sotto è disponibile nel generatore in alto. I valori predefiniti mostrati provengono da Prettier {version}.",
+			"defaultLabel": "Predefinito",
+			"valuesLabel": "Valori ammessi",
+			"cliLabel": "Flag CLI"
+		},
 		"search": {
 			"found": "Trovate {count} opzioni su {total}",
 			"noOptions": "Nessuna opzione trovata",

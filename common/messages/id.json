@@ -16,6 +16,13 @@
 			"description": "Playground Prettier interaktif dan gratis. Ubah setiap opsi, lihat diff langsung dari kode Anda, lalu salin .prettierrc yang dihasilkan. Tanpa perlu instalasi.",
 			"h1": "Generator konfigurasi dan playground Prettier"
 		},
+		"optionReference": {
+			"title": "Referensi opsi Prettier",
+			"intro": "Setiap opsi di bawah tersedia pada generator di atas. Nilai bawaan yang ditampilkan berasal dari Prettier {version}.",
+			"defaultLabel": "Bawaan",
+			"valuesLabel": "Nilai yang diizinkan",
+			"cliLabel": "Flag CLI"
+		},
 		"search": {
 			"found": "Ditemukan {count} dari {total} opsi",
 			"noOptions": "Tidak ada opsi yang ditemukan",

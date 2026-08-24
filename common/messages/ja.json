@@ -16,6 +16,13 @@
 			"description": "無料で使えるインタラクティブな Prettier プレイグラウンド。各オプションを切り替え、自分のコードの差分をリアルタイムで確認し、生成された .prettierrc をコピーできます。インストール不要。",
 			"h1": "Prettier 設定ジェネレーターとプレイグラウンド"
 		},
+		"optionReference": {
+			"title": "Prettier オプションリファレンス",
+			"intro": "以下のすべてのオプションは上のジェネレーターで利用できます。表示されている既定値は Prettier {version} のものです。",
+			"defaultLabel": "既定値",
+			"valuesLabel": "指定できる値",
+			"cliLabel": "CLI フラグ"
+		},
 		"search": {
 			"found": "{total}個中 {count}個のオプションが見つかりました",
 			"noOptions": "オプションが見つかりません",

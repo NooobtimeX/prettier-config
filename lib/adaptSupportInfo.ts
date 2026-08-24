@@ -1,6 +1,7 @@
 import { PrettierOptionTypeEnum, PrettierOptionValidateEnum } from '@/common/enum/prettierOption';
 import type { PrettierOptionType } from '@/common/interface/PrettierOptionType';
 import { optionOverrides } from './optionOverrides';
+import { humanizeOptionName } from './humanizeOptionName';
 import type { PrettierSupportInfo, PrettierSupportOption } from './prettierLoader';
 
 /**
@@ -8,7 +9,7 @@ import type { PrettierSupportInfo, PrettierSupportOption } from './prettierLoade
  *  - `parser` / `filepath` — we always format JS with babel internally.
  *  - `plugins` / `pluginSearchDirs` — not loadable in the browser.
  */
-const IGNORED_OPTION_KEYS = new Set([
+export const IGNORED_OPTION_KEYS = new Set([
 	'parser',
 	'filepath',
 	'plugins',
@@ -18,13 +19,6 @@ const IGNORED_OPTION_KEYS = new Set([
 
 /** Threshold above which a `choice` option renders as SELECT instead of BUTTONS. */
 const BUTTONS_MAX_CHOICES = 4;
-
-function humanize(camelCase: string): string {
-	return camelCase
-		.replace(/([A-Z])/g, ' $1')
-		.replace(/^./, (c) => c.toUpperCase())
-		.trim();
-}
 
 /**
  * Returns 1 if `a > b`, -1 if `a < b`, 0 if equal. Compares the first three
@@ -75,7 +69,7 @@ function mapOption(opt: PrettierSupportOption): PrettierOptionType | null {
 	}
 
 	const built: PrettierOptionType = {
-		name: humanize(opt.name),
+		name: humanizeOptionName(opt.name),
 		key: opt.name,
 		description: opt.description ?? '',
 		type,

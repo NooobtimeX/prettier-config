@@ -4,7 +4,8 @@
 	"private": false,
 	"scripts": {
 		"dev": "next dev -p 2000",
-		"build": "next build",
+		"gen:options": "node scripts/generate-prettier-options.mjs",
+		"build": "bun run gen:options && next build",
 		"start": "next start -p 2000",
 		"lint": "eslint --fix && prettier --write ."
 	},

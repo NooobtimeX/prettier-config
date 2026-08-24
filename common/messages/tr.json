@@ -16,6 +16,13 @@
 			"description": "Ücretsiz ve etkileşimli Prettier oyun alanı. Her seçeneği değiştirin, kendi kodunuzun canlı farkını görün ve oluşturulan .prettierrc dosyasını kopyalayın. Kurulum yok.",
 			"h1": "Prettier yapılandırma oluşturucu ve oyun alanı"
 		},
+		"optionReference": {
+			"title": "Prettier seçenek referansı",
+			"intro": "Aşağıdaki her seçenek yukarıdaki oluşturucuda mevcuttur. Gösterilen varsayılanlar Prettier {version} sürümündendir.",
+			"defaultLabel": "Varsayılan",
+			"valuesLabel": "İzin verilen değerler",
+			"cliLabel": "CLI bayrağı"
+		},
 		"search": {
 			"found": "{total} seçenekten {count} tanesi bulundu",
 			"noOptions": "Seçenek bulunamadı",

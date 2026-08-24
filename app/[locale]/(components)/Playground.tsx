@@ -511,7 +511,20 @@ export default function Playground({ optionReference }: PlaygroundProps) {
 					</ResizablePanel>
 				</ResizablePanelGroup>
 			) : (
-				<main className="flex flex-1 flex-col overflow-hidden">{optionsSurface}</main>
+				/* This branch is also what every DESKTOP visitor sees for one frame:
+				   isLargeScreen starts false and is only set in an effect, so the server
+				   HTML and the first client render are always the single-column layout.
+				   Without the lg: constraint the options list paints full-width and then
+				   reflows to 40% when ResizablePanelGroup mounts — a full-width-to-40%
+				   reflow of every option card. Pinning it to the same 40% the panel will
+				   take makes hydration an *addition* (the right-hand panel appears) rather
+				   than a reflow. On real mobile the lg: prefix never applies.
+				   Note: could not measure CLS in the harness browser — the layout-shift
+				   observer did not fire even for a forced 300px insertion — so this is a
+				   reasoned geometric fix, not a measured one. */
+				<main className="flex flex-1 flex-col overflow-hidden lg:w-2/5 lg:flex-none">
+					{optionsSurface}
+				</main>
 			)}
 
 			{!isLargeScreen && (

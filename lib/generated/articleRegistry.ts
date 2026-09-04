@@ -39,7 +39,7 @@ export const ARTICLE_COVERAGE: Readonly<Record<string, readonly string[]>> = {
 		'useTabs',
 		'vueIndentScriptAndStyle',
 	],
-	th: ['printWidth'],
+	th: ['printWidth', 'semi', 'singleQuote'],
 };
 
 /**
@@ -79,5 +79,7 @@ export const ARTICLES: Record<string, Record<string, () => Promise<ArticleModule
 	},
 	th: {
 		printWidth: () => import('@/content/options/th/printWidth'),
+		semi: () => import('@/content/options/th/semi'),
+		singleQuote: () => import('@/content/options/th/singleQuote'),
 	},
 };

@@ -10,6 +10,9 @@ import { REPOSITORY } from '@/common/constants';
 
 export default function Header() {
 	const t = useTranslations('Header');
+	// Reuses the Footer's link labels rather than adding a Header namespace:
+	// they are already translated in all 20 locales and name the same routes.
+	const tNav = useTranslations('Footer.quickLinks');
 	const brandName = t('brand.name');
 	return (
 		<header>
@@ -36,6 +39,34 @@ export default function Header() {
 					    page's only h1 the bare brand name. Each route owns its own h1. */}
 					<span className="text-xl font-semibold tracking-tight">{brandName}</span>
 				</Link>
+
+				{/* Until this existed the header linked to exactly one internal page —
+				    "/" — and every other route was reachable only from the footer.
+				    Hidden below sm so the h-screen playground header stays uncrowded
+				    on mobile, where the footer links remain the way in. */}
+				<nav
+					aria-label={tNav('title')}
+					className="ms-6 me-auto hidden items-center gap-5 text-sm sm:flex"
+				>
+					<Link
+						href="/options"
+						className="text-muted-foreground hover:text-foreground transition-colors"
+					>
+						{tNav('options')}
+					</Link>
+					<Link
+						href="/faq"
+						className="text-muted-foreground hover:text-foreground transition-colors"
+					>
+						{tNav('faq')}
+					</Link>
+					<Link
+						href="/about"
+						className="text-muted-foreground hover:text-foreground transition-colors"
+					>
+						{tNav('about')}
+					</Link>
+				</nav>
 
 				{/* Right-side Actions */}
 				<div className="flex items-center gap-4">

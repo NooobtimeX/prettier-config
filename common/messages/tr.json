@@ -614,6 +614,11 @@
 			"metaTitle": "Tüm Prettier seçenekleri — referans",
 			"metaDescription": "printWidth, tabWidth, semi, trailingComma, singleQuote ve daha fazlası dahil her Prettier seçeneğine, varsayılanı ve .prettierrc örneğiyle göz atın.",
 			"generatedFrom": "Prettier {version} sürümünden üretildi."
+		},
+		"article": {
+			"upstream": "Resmî seçenek belgelerinden Prettier'ın kendi açıklaması",
+			"faqTitle": "Sık sorulan sorular",
+			"fallbackNotice": "Bu rehber henüz dilinize çevrilmedi, bu yüzden İngilizce gösteriliyor."
 		}
 	},
 	"NotFound": {

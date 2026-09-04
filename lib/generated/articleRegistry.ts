@@ -10,7 +10,36 @@ type ArticleModule = { default: OptionArticle };
  * Plain data with no imports, so app/sitemap.ts can ask "is this translated?"
  * 520 times without dragging a single article into its module graph.
  */
-export const ARTICLE_COVERAGE: Readonly<Record<string, readonly string[]>> = {};
+export const ARTICLE_COVERAGE: Readonly<Record<string, readonly string[]>> = {
+	en: [
+		'arrowParens',
+		'bracketSameLine',
+		'bracketSpacing',
+		'checkIgnorePragma',
+		'cursorOffset',
+		'embeddedLanguageFormatting',
+		'endOfLine',
+		'experimentalOperatorPosition',
+		'experimentalTernaries',
+		'htmlWhitespaceSensitivity',
+		'insertPragma',
+		'jsxSingleQuote',
+		'objectWrap',
+		'printWidth',
+		'proseWrap',
+		'quoteProps',
+		'rangeEnd',
+		'rangeStart',
+		'requirePragma',
+		'semi',
+		'singleAttributePerLine',
+		'singleQuote',
+		'tabWidth',
+		'trailingComma',
+		'useTabs',
+		'vueIndentScriptAndStyle',
+	],
+};
 
 /**
  * locale -> option key -> lazy import. Every specifier is a string literal:
@@ -18,4 +47,33 @@ export const ARTICLE_COVERAGE: Readonly<Record<string, readonly string[]>> = {};
  * than webpack's, so a template-literal path built from two variables is not
  * worth the risk. Nothing here is evaluated until a page awaits it.
  */
-export const ARTICLES: Record<string, Record<string, () => Promise<ArticleModule>>> = {};
+export const ARTICLES: Record<string, Record<string, () => Promise<ArticleModule>>> = {
+	en: {
+		arrowParens: () => import('@/content/options/en/arrowParens'),
+		bracketSameLine: () => import('@/content/options/en/bracketSameLine'),
+		bracketSpacing: () => import('@/content/options/en/bracketSpacing'),
+		checkIgnorePragma: () => import('@/content/options/en/checkIgnorePragma'),
+		cursorOffset: () => import('@/content/options/en/cursorOffset'),
+		embeddedLanguageFormatting: () => import('@/content/options/en/embeddedLanguageFormatting'),
+		endOfLine: () => import('@/content/options/en/endOfLine'),
+		experimentalOperatorPosition: () => import('@/content/options/en/experimentalOperatorPosition'),
+		experimentalTernaries: () => import('@/content/options/en/experimentalTernaries'),
+		htmlWhitespaceSensitivity: () => import('@/content/options/en/htmlWhitespaceSensitivity'),
+		insertPragma: () => import('@/content/options/en/insertPragma'),
+		jsxSingleQuote: () => import('@/content/options/en/jsxSingleQuote'),
+		objectWrap: () => import('@/content/options/en/objectWrap'),
+		printWidth: () => import('@/content/options/en/printWidth'),
+		proseWrap: () => import('@/content/options/en/proseWrap'),
+		quoteProps: () => import('@/content/options/en/quoteProps'),
+		rangeEnd: () => import('@/content/options/en/rangeEnd'),
+		rangeStart: () => import('@/content/options/en/rangeStart'),
+		requirePragma: () => import('@/content/options/en/requirePragma'),
+		semi: () => import('@/content/options/en/semi'),
+		singleAttributePerLine: () => import('@/content/options/en/singleAttributePerLine'),
+		singleQuote: () => import('@/content/options/en/singleQuote'),
+		tabWidth: () => import('@/content/options/en/tabWidth'),
+		trailingComma: () => import('@/content/options/en/trailingComma'),
+		useTabs: () => import('@/content/options/en/useTabs'),
+		vueIndentScriptAndStyle: () => import('@/content/options/en/vueIndentScriptAndStyle'),
+	},
+};

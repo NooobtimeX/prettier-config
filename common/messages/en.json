@@ -614,6 +614,11 @@
 			"metaTitle": "All Prettier options — reference with defaults",
 			"metaDescription": "Browse every Prettier option: printWidth, tabWidth, semi, trailingComma, singleQuote and more, each with its default and a .prettierrc example.",
 			"generatedFrom": "Generated from Prettier {version}."
+		},
+		"article": {
+			"upstream": "Prettier's own description, from the official options documentation",
+			"faqTitle": "Common questions",
+			"fallbackNotice": "This guide has not been translated into your language yet, so it is shown in English."
 		}
 	},
 	"NotFound": {

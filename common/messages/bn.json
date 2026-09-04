@@ -614,6 +614,11 @@
 			"metaTitle": "সব Prettier অপশন — রেফারেন্স",
 			"metaDescription": "প্রতিটি Prettier অপশন দেখুন: printWidth, tabWidth, semi, trailingComma, singleQuote এবং আরও, প্রতিটির ডিফল্ট ও .prettierrc উদাহরণসহ।",
 			"generatedFrom": "Prettier {version} থেকে তৈরি।"
+		},
+		"article": {
+			"upstream": "Prettier-এর নিজস্ব বর্ণনা, অফিশিয়াল অপশন ডকুমেন্টেশন থেকে",
+			"faqTitle": "সাধারণ প্রশ্ন",
+			"fallbackNotice": "এই গাইডটি এখনও আপনার ভাষায় অনুবাদ করা হয়নি, তাই এটি ইংরেজিতে দেখানো হচ্ছে।"
 		}
 	},
 	"NotFound": {

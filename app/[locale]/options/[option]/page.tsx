@@ -14,6 +14,8 @@ import {
 	playgroundUrl,
 } from '@/lib/optionRoutes';
 import { humanizeOptionName } from '@/lib/humanizeOptionName';
+import { hasOptionArticle, resolveOptionArticle } from '@/lib/optionArticle';
+import { ArticleBody, Inline, stripInlineMarkers } from '@/components/ArticleBody';
 import { Separator } from '@/components/ui/separator';
 import Header from '../../(components)/Header';
 import Footer from '../../(components)/Footer';
@@ -34,6 +36,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 	if (!option) return {};
 
 	const t = await getTranslations({ locale, namespace: 'Options' });
+	const resolved = await resolveOptionArticle(locale, option.key);
+	const translated = routing.locales.filter((l) => hasOptionArticle(l, option.key));
 
 	return buildPageMetadata({
 		locale,
@@ -44,6 +48,13 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 			key: option.key,
 			default: String(option.default),
 		}),
+		// A page serving the English article on a non-English locale is a
+		// near-duplicate of /en — index it and we are asking Google to rank 20
+		// copies of one article. It stays live and followable for readers.
+		index: !resolved?.isFallback,
+		// Before any article exists the family is untranslated everywhere, so the
+		// full cluster is still the honest annotation.
+		hreflangLocales: translated.length > 0 ? translated : undefined,
 	});
 }
 
@@ -55,6 +66,8 @@ export default async function OptionPage({ params }: { params: Params }) {
 
 	const t = await getTranslations({ locale, namespace: 'Options' });
 	const related = relatedOptions(option);
+	const resolved = await resolveOptionArticle(locale, option.key);
+	const article = resolved?.article;
 
 	const jsonLd = {
 		'@context': 'https://schema.org',
@@ -62,9 +75,13 @@ export default async function OptionPage({ params }: { params: Params }) {
 			{
 				'@type': 'TechArticle',
 				headline: `Prettier ${option.key}`,
-				description: option.description,
+				// Our summary, not Prettier's sentence — the latter is upstream's
+				// wording and identical on all 20 locales.
+				description: article ? stripInlineMarkers(article.summary) : option.description,
 				url: `${SITE_URL}/${locale}/options/${slug}`,
-				inLanguage: locale,
+				// The language the prose is actually in, which is English whenever
+				// this locale is still serving the fallback.
+				inLanguage: resolved?.articleLocale ?? locale,
 				about: { '@type': 'SoftwareApplication', name: 'Prettier' },
 			},
 			{
@@ -85,6 +102,23 @@ export default async function OptionPage({ params }: { params: Params }) {
 					{ '@type': 'ListItem', position: 3, name: option.key },
 				],
 			},
+			...(article && article.faq.length > 0
+				? [
+						{
+							'@type': 'FAQPage',
+							mainEntity: article.faq.map((item) => ({
+								'@type': 'Question',
+								name: item.question,
+								acceptedAnswer: {
+									'@type': 'Answer',
+									// Structured data takes plain text: the authoring
+									// backticks must not leak into it.
+									text: stripInlineMarkers(item.answer),
+								},
+							})),
+						},
+					]
+				: []),
 		],
 	};
 
@@ -120,6 +154,8 @@ export default async function OptionPage({ params }: { params: Params }) {
 						<span className="text-foreground">{option.key}</span>
 					</nav>
 
+					{/* The h1 used to be the bare identifier, giving the page no
+					    descriptive heading text at all. */}
 					<h1 className="mb-2 text-3xl font-bold tracking-tight">
 						<code
 							dir="ltr"
@@ -127,18 +163,40 @@ export default async function OptionPage({ params }: { params: Params }) {
 						>
 							{option.key}
 						</code>
+						{article && <span> &mdash; {article.tagline}</span>}
 					</h1>
-					<p className="text-muted-foreground mb-8 text-lg">
+					<p className="text-muted-foreground mb-6 text-lg">
 						{t('hero.subtitle', { name: humanizeOptionName(option.key) })}
 					</p>
 
-					{/* Prettier's own wording, English on every locale — see OptionReference.tsx */}
-					<p
-						lang="en"
-						className="mb-8 leading-relaxed"
-					>
-						{option.description}
-					</p>
+					{article && (
+						<p className="mb-8 text-lg leading-relaxed">
+							<Inline text={article.summary} />
+						</p>
+					)}
+
+					{/* Prettier's own wording, English on every locale — see
+					    OptionReference.tsx. Once we have our own explanation above, this
+					    stops being the page's body copy and becomes what it always was:
+					    a quotation, attributed to its source. */}
+					<figure className="border-muted mb-8 border-l-2 pl-4">
+						<blockquote
+							lang="en"
+							className="text-muted-foreground leading-relaxed"
+						>
+							{option.description}
+						</blockquote>
+						<figcaption className="text-muted-foreground mt-2 text-xs">
+							<a
+								href="https://prettier.io/docs/options"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="hover:text-foreground underline underline-offset-2"
+							>
+								{t('article.upstream')}
+							</a>
+						</figcaption>
+					</figure>
 
 					<dl className="mb-8 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
 						<div>
@@ -193,6 +251,18 @@ export default async function OptionPage({ params }: { params: Params }) {
 							</div>
 						)}
 					</dl>
+
+					{article && (
+						<>
+							<Separator className="my-8" />
+							{resolved?.isFallback && (
+								<p className="text-muted-foreground mb-6 text-sm">{t('article.fallbackNotice')}</p>
+							)}
+							<div lang={resolved?.isFallback ? resolved.articleLocale : undefined}>
+								<ArticleBody sections={article.sections} />
+							</div>
+						</>
+					)}
 
 					<Separator className="my-8" />
 
@@ -266,6 +336,23 @@ export default async function OptionPage({ params }: { params: Params }) {
 												{choice.description}
 											</dd>
 										)}
+									</div>
+								))}
+							</dl>
+						</>
+					)}
+
+					{article && article.faq.length > 0 && (
+						<>
+							<Separator className="my-8" />
+							<h2 className="mb-3 text-xl font-bold">{t('article.faqTitle')}</h2>
+							<dl className="space-y-4">
+								{article.faq.map((item) => (
+									<div key={item.question}>
+										<dt className="mb-1 font-semibold">{item.question}</dt>
+										<dd className="text-muted-foreground leading-relaxed">
+											<Inline text={item.answer} />
+										</dd>
 									</div>
 								))}
 							</dl>

@@ -612,6 +612,11 @@
 			"metaTitle": "همهٔ گزینه‌های Prettier — مرجع",
 			"metaDescription": "همهٔ گزینه‌های Prettier را مرور کنید: printWidth، tabWidth، semi، trailingComma، singleQuote و بیشتر، هرکدام با مقدار پیش‌فرض و نمونهٔ .prettierrc.",
 			"generatedFrom": "ساخته‌شده از Prettier {version}."
+		},
+		"article": {
+			"upstream": "توضیح خودِ Prettier، از مستندات رسمی گزینه‌ها",
+			"faqTitle": "پرسش‌های متداول",
+			"fallbackNotice": "این راهنما هنوز به زبان شما ترجمه نشده است، بنابراین به انگلیسی نمایش داده می‌شود."
 		}
 	},
 	"NotFound": {

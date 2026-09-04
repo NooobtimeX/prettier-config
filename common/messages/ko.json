@@ -614,6 +614,11 @@
 			"metaTitle": "모든 Prettier 옵션 — 기본값 레퍼런스",
 			"metaDescription": "printWidth, tabWidth, semi, trailingComma, singleQuote 등 모든 Prettier 옵션을 기본값과 .prettierrc 예제와 함께 살펴보세요.",
 			"generatedFrom": "Prettier {version} 기준으로 생성됨."
+		},
+		"article": {
+			"upstream": "Prettier 공식 옵션 문서의 원문 설명",
+			"faqTitle": "자주 묻는 질문",
+			"fallbackNotice": "이 가이드는 아직 사용 중인 언어로 번역되지 않아 영어로 표시됩니다."
 		}
 	},
 	"NotFound": {

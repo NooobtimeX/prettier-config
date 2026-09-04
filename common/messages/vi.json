@@ -614,6 +614,11 @@
 			"metaTitle": "Tất cả tuỳ chọn Prettier — tham chiếu",
 			"metaDescription": "Duyệt mọi tuỳ chọn Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote và hơn thế, mỗi tuỳ chọn kèm giá trị mặc định và ví dụ .prettierrc.",
 			"generatedFrom": "Được tạo từ Prettier {version}."
+		},
+		"article": {
+			"upstream": "Mô tả của chính Prettier, từ tài liệu tùy chọn chính thức",
+			"faqTitle": "Câu hỏi thường gặp",
+			"fallbackNotice": "Hướng dẫn này chưa được dịch sang ngôn ngữ của bạn nên được hiển thị bằng tiếng Anh."
 		}
 	},
 	"NotFound": {

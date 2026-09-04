@@ -614,6 +614,11 @@
 			"metaTitle": "Prettier 全オプション — 既定値つきリファレンス",
 			"metaDescription": "printWidth、tabWidth、semi、trailingComma、singleQuote など Prettier のすべてのオプションを、既定値と .prettierrc の例つきで一覧。",
 			"generatedFrom": "Prettier {version} から生成。"
+		},
+		"article": {
+			"upstream": "Prettier 公式オプションドキュメントの説明文",
+			"faqTitle": "よくある質問",
+			"fallbackNotice": "このガイドはまだお使いの言語に翻訳されていないため、英語で表示しています。"
 		}
 	},
 	"NotFound": {

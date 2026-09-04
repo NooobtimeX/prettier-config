@@ -614,6 +614,11 @@
 			"metaTitle": "كل خيارات Prettier — مرجع بالقيم الافتراضية",
 			"metaDescription": "تصفّح كل خيارات Prettier: printWidth وtabWidth وsemi وtrailingComma وsingleQuote وغيرها، كل واحد بقيمته الافتراضية ومثال .prettierrc.",
 			"generatedFrom": "مُولَّد من Prettier {version}."
+		},
+		"article": {
+			"upstream": "وصف Prettier نفسه، من التوثيق الرسمي للخيارات",
+			"faqTitle": "أسئلة شائعة",
+			"fallbackNotice": "لم يُترجم هذا الدليل إلى لغتك بعد، لذا يُعرض بالإنجليزية."
 		}
 	},
 	"NotFound": {

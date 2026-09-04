@@ -612,6 +612,11 @@
 			"metaTitle": "ตัวเลือก Prettier ทั้งหมด — พร้อมค่าเริ่มต้น",
 			"metaDescription": "ดูตัวเลือก Prettier ทุกตัว: printWidth, tabWidth, semi, trailingComma, singleQuote และอื่น ๆ พร้อมค่าเริ่มต้นและตัวอย่าง .prettierrc",
 			"generatedFrom": "สร้างจาก Prettier {version}"
+		},
+		"article": {
+			"upstream": "คำอธิบายของ Prettier เอง จากเอกสารตัวเลือกอย่างเป็นทางการ",
+			"faqTitle": "คำถามที่พบบ่อย",
+			"fallbackNotice": "คู่มือนี้ยังไม่ได้แปลเป็นภาษาของคุณ จึงแสดงเป็นภาษาอังกฤษ"
 		}
 	},
 	"NotFound": {

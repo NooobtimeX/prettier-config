@@ -612,6 +612,11 @@
 			"metaTitle": "全部 Prettier 选项 — 含默认值参考",
 			"metaDescription": "浏览每个 Prettier 选项：printWidth、tabWidth、semi、trailingComma、singleQuote 等，各附默认值与 .prettierrc 示例。",
 			"generatedFrom": "生成自 Prettier {version}。"
+		},
+		"article": {
+			"upstream": "Prettier 官方选项文档中的原始描述",
+			"faqTitle": "常见问题",
+			"fallbackNotice": "本指南尚未翻译成你的语言，因此以英文显示。"
 		}
 	},
 	"NotFound": {

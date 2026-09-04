@@ -614,6 +614,11 @@
 			"metaTitle": "Все опции Prettier — справочник",
 			"metaDescription": "Просмотрите все опции Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote и другие, каждая со значением по умолчанию и примером .prettierrc.",
 			"generatedFrom": "Сгенерировано из Prettier {version}."
+		},
+		"article": {
+			"upstream": "Описание из официальной документации Prettier по опциям",
+			"faqTitle": "Частые вопросы",
+			"fallbackNotice": "Это руководство ещё не переведено на ваш язык, поэтому показано на английском."
 		}
 	},
 	"NotFound": {

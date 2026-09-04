@@ -614,6 +614,11 @@
 			"metaTitle": "Semua opsi Prettier — referensi",
 			"metaDescription": "Jelajahi setiap opsi Prettier: printWidth, tabWidth, semi, trailingComma, singleQuote, dan lainnya, masing-masing dengan nilai bawaan dan contoh .prettierrc.",
 			"generatedFrom": "Dibuat dari Prettier {version}."
+		},
+		"article": {
+			"upstream": "Deskripsi dari Prettier sendiri, dari dokumentasi opsi resmi",
+			"faqTitle": "Pertanyaan umum",
+			"fallbackNotice": "Panduan ini belum diterjemahkan ke bahasa Anda, jadi ditampilkan dalam bahasa Inggris."
 		}
 	},
 	"NotFound": {

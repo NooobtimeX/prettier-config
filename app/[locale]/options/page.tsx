@@ -6,6 +6,7 @@ import { buildPageMetadata } from '@/lib/seo';
 import { PRETTIER_SNAPSHOT_VERSION } from '@/lib/generated/prettierOptions';
 import { LISTED_OPTIONS, optionSlug } from '@/lib/optionRoutes';
 import { humanizeOptionName } from '@/lib/humanizeOptionName';
+import { resolveOptionArticle } from '@/lib/optionArticle';
 import Header from '../(components)/Header';
 import Footer from '../(components)/Footer';
 
@@ -41,6 +42,17 @@ export default async function OptionsIndexPage({
 }) {
 	const { locale } = await params;
 	const t = await getTranslations({ locale, namespace: 'Options.index' });
+
+	/**
+	 * Our own one-line description per option, replacing Prettier's `description`.
+	 * That sentence used to appear here, on the home page's reference, and again
+	 * on the option page itself — the same 251 borrowed words on three page types.
+	 */
+	const articles = new Map(
+		await Promise.all(
+			LISTED_OPTIONS.map(async (o) => [o.key, await resolveOptionArticle(locale, o.key)] as const),
+		),
+	);
 
 	// Group by Prettier's own categories so the page has real structure.
 	const byCategory = LISTED_OPTIONS.reduce<Record<string, typeof LISTED_OPTIONS>>((acc, option) => {
@@ -79,12 +91,17 @@ export default async function OptionsIndexPage({
 											<span className="text-muted-foreground ml-2 text-sm">
 												{humanizeOptionName(option.key)}
 											</span>
-											<span
-												lang="en"
-												className="text-muted-foreground mt-1 block text-sm leading-relaxed"
-											>
-												{option.description}
-											</span>
+											{(() => {
+												const resolved = articles.get(option.key);
+												return (
+													<span
+														lang={resolved ? (resolved.isFallback ? 'en' : undefined) : 'en'}
+														className="text-muted-foreground mt-1 block text-sm leading-relaxed"
+													>
+														{resolved ? resolved.article.tagline : option.description}
+													</span>
+												);
+											})()}
 										</Link>
 									</li>
 								))}

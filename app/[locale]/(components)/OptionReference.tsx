@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import {
 	STATIC_PRETTIER_OPTIONS,
 	PRETTIER_SNAPSHOT_VERSION,
@@ -6,6 +7,8 @@ import {
 import { IGNORED_OPTION_KEYS } from '@/lib/adaptSupportInfo';
 import { humanizeOptionName } from '@/lib/humanizeOptionName';
 import type { StaticPrettierOption } from '@/common/interface/StaticPrettierOption';
+import { optionSlug } from '@/lib/optionRoutes';
+import { resolveOptionArticle } from '@/lib/optionArticle';
 
 /**
  * Server-rendered reference for every Prettier option.
@@ -16,12 +19,12 @@ import type { StaticPrettierOption } from '@/common/interface/StaticPrettierOpti
  * footer chrome — and not one Prettier option name. Every option name,
  * default and description now reaches Googlebot on the first pass.
  *
- * Deliberately English for the option descriptions, in every locale. The
- * interactive cards above already render Prettier's own English descriptions
- * on all 20 locales (adaptSupportInfo copies opt.description verbatim), so
- * translating only this section would make it contradict the cards on the same
- * screen. `lang="en"` marks those runs honestly inside e.g. <html lang="ja">.
- * The surrounding prose IS translated.
+ * Each card now shows our own one-line description, taken from that option's
+ * article, and links to it. Previously it printed Prettier's `description`
+ * verbatim — the same 251 words that appeared on /options and again on every
+ * option page, which is precisely the replicated content AdSense flagged.
+ * Where no article exists yet we still fall back to upstream's sentence, marked
+ * `lang="en"` so the run is honest inside e.g. <html lang="ja">.
  */
 
 function formatDefault(value: StaticPrettierOption['default']): string {
@@ -34,6 +37,14 @@ export default async function OptionReference({ locale }: { locale: string }) {
 	const t = await getTranslations({ locale, namespace: 'Page.optionReference' });
 
 	const options = STATIC_PRETTIER_OPTIONS.filter((o) => !IGNORED_OPTION_KEYS.has(o.key));
+
+	// Build-time only: these resolve to static imports that Node caches across
+	// all 20 locales, so this is 26 module loads for the whole build.
+	const articles = new Map(
+		await Promise.all(
+			options.map(async (o) => [o.key, await resolveOptionArticle(locale, o.key)] as const),
+		),
+	);
 
 	return (
 		<section
@@ -63,23 +74,33 @@ export default async function OptionReference({ locale }: { locale: string }) {
 							{/* Both spellings deliberately: `printWidth` is what people type
 							    into Google, `Print Width` is what the UI shows. Before this,
 							    the camelCase key appeared nowhere as text on the whole site. */}
-							<code
-								dir="ltr"
-								className="bg-muted rounded px-1.5 py-0.5 font-mono text-sm font-semibold"
+							<Link
+								href={`/options/${optionSlug(option.key)}`}
+								className="hover:bg-accent rounded transition-colors"
 							>
-								{option.key}
-							</code>
+								<code
+									dir="ltr"
+									className="bg-muted rounded px-1.5 py-0.5 font-mono text-sm font-semibold underline-offset-2 hover:underline"
+								>
+									{option.key}
+								</code>
+							</Link>
 							<span className="text-muted-foreground text-sm font-medium">
 								{humanizeOptionName(option.key)}
 							</span>
 						</h3>
 
-						<p
-							lang="en"
-							className="text-muted-foreground mb-3 text-sm leading-relaxed"
-						>
-							{option.description}
-						</p>
+						{(() => {
+							const resolved = articles.get(option.key);
+							return (
+								<p
+									lang={resolved ? (resolved.isFallback ? 'en' : undefined) : 'en'}
+									className="text-muted-foreground mb-3 text-sm leading-relaxed"
+								>
+									{resolved ? resolved.article.tagline : option.description}
+								</p>
+							);
+						})()}
 
 						<dl className="grid grid-cols-1 gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
 							<div className="flex gap-2">

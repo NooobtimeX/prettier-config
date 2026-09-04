@@ -39,6 +39,7 @@ export const ARTICLE_COVERAGE: Readonly<Record<string, readonly string[]>> = {
 		'useTabs',
 		'vueIndentScriptAndStyle',
 	],
+	th: ['printWidth'],
 };
 
 /**
@@ -75,5 +76,8 @@ export const ARTICLES: Record<string, Record<string, () => Promise<ArticleModule
 		trailingComma: () => import('@/content/options/en/trailingComma'),
 		useTabs: () => import('@/content/options/en/useTabs'),
 		vueIndentScriptAndStyle: () => import('@/content/options/en/vueIndentScriptAndStyle'),
+	},
+	th: {
+		printWidth: () => import('@/content/options/th/printWidth'),
 	},
 };

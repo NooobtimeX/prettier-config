@@ -49,7 +49,14 @@ export function summarize(items) { return items.filter(i => i.active).map(i => i
  * Options that take a byte offset rather than a style choice. A worked example
  * of `rangeEnd: 40` teaches nothing and would be actively misleading.
  */
-const NO_EXAMPLE_KEYS = new Set(['rangeStart', 'rangeEnd', 'cursorOffset']);
+const NO_EXAMPLE_KEYS = new Set([
+	'rangeStart',
+	'rangeEnd',
+	'cursorOffset',
+	// The whole difference is which invisible characters end each line, so a
+	// rendered code block shows four identical-looking samples.
+	'endOfLine',
+]);
 
 /** The values worth demonstrating for an option. */
 function sampleValues(opt) {
@@ -81,9 +88,30 @@ async function buildExamples(opt) {
 		}
 	}
 
-	// No visible difference means this snippet cannot demonstrate the option.
+	// No visible difference at all means this snippet cannot demonstrate the
+	// option, so it gets no examples.
 	const unique = new Set(rendered.map((r) => r.code));
-	return unique.size > 1 ? rendered : [];
+	if (unique.size < 2) return [];
+
+	/*
+	 * Collapse values that produce byte-identical output into one block.
+	 *
+	 * Checking `unique.size > 1` above only establishes that *some* pair
+	 * differs; returning `rendered` unchanged then shipped the duplicates too.
+	 * trailingComma rendered three blocks with two distinct outputs, quoteProps
+	 * three with two, endOfLine four with three — so a reader saw the same
+	 * sixteen lines twice under different headings, which is the most visible
+	 * tell of machine-generated padding on the page.
+	 *
+	 * Grouping is better than dropping the later value: "all, es5" tells the
+	 * reader those two are equivalent for this snippet, which is information.
+	 */
+	const byCode = new Map();
+	for (const { value, code } of rendered) {
+		if (byCode.has(code)) byCode.get(code).push(value);
+		else byCode.set(code, [value]);
+	}
+	return [...byCode].map(([code, values]) => ({ value: values.join(', '), code }));
 }
 
 const examplesByKey = Object.fromEntries(

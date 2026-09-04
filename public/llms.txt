@@ -29,6 +29,9 @@ https://prettier-config.dev/
 | /{locale}          | Main config generator — interactive Prettier option selector with three tabs: Config (the generated .prettierrc), Preview (one purpose-built mis-formatted sample per language — TS, CSS, HTML, JSON, Markdown, YAML, Vue, GraphQL, and more — re-formatted under the current config, with a parser dropdown to switch between them), and Your Code (paste your own code and see the diff). |
 | /{locale}/faq      | 27 Q&A covering Prettier basics, usage, supported versions and languages, shareable URLs, token counting, persistence, and per-language Preview. |
 | /{locale}/about    | Tool overview, 9 feature cards, full tech stack, open source info, creator. |
+| /{locale}/options  | Index of every Prettier option, grouped by category, each with a one-line description and a link to its guide. |
+| /{locale}/options/{option-slug} | An in-depth guide to one option — what it controls, why its default is what it is, when to change it, trade-offs and team conventions, how it interacts with ESLint/editors/CI, common mistakes, and a short FAQ. Slugs are the kebab-case option name, e.g. /en/options/print-width for `printWidth`. 26 options, ~900 words each. |
+| /{locale}/privacy  | Privacy policy — what is stored in the browser, analytics, advertising, EEA/UK/Swiss consent, and your rights. |
 
 ## Supported UI Languages (20 locales)
 
@@ -91,6 +94,11 @@ Newer 3.x options like `objectWrap`, `experimentalTernaries`, and
 `experimentalOperatorPosition` appear automatically when their Prettier
 version is selected, because the form is derived from each version's actual
 `getSupportInfo()` output.
+
+Every one of these options also has its own written guide at
+/{locale}/options/{option-slug} — original explanatory prose rather than a
+restatement of Prettier's documentation, covering the reasoning behind each
+default and the practical trade-offs of changing it.
 
 ## Key Features
 

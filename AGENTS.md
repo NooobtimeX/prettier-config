@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-Guidance for Claude Code when working in this repo.
+Guidance for Codex when working in this repo.
 
 ## What this is
 
@@ -86,7 +86,7 @@ selected plugins' npm names under `plugins`.
 - **presets.ts** — one-click starter configs (`PRESETS`).
 - **plugins.ts** — third-party plugin registry (id ↔ npm name ↔ CDN URL lookups).
 - **tokenizers.ts** — `gpt-tokenizer` exact BPE for GPT models; `chars/N`
-  approximation for Claude/Gemini/Llama/Mistral. Exact encoders lazy-`import()`ed.
+  approximation for Codex/Gemini/Llama/Mistral. Exact encoders lazy-`import()`ed.
 - **versionDiff.ts** — `computeVersionConflicts()`: which active selections would
   vanish when switching versions (drives the warning dialog).
 - **seo.ts** — `buildPageMetadata`, canonical + hreflang, shared og:image.

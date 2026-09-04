@@ -4,11 +4,11 @@ Guidance for Codex when working in this repo.
 
 ## What this is
 
-**prettier-config.dev** — a browser-based Prettier playground / config builder. A
+**prettier-config.nooobtimex.me** — a browser-based Prettier playground / config builder. A
 better-than-official Prettier playground: pick a Prettier version + options
 visually, paste your code, see a GitHub-style diff, and copy/share the resulting
 `.prettierrc`. Everything runs **client-side** — no backend, nothing is sent to a
-server. Live at https://prettier-config.dev.
+server. Live at https://prettier-config.nooobtimex.me.
 
 The core trick: `prettier/standalone` and every parser plugin are fetched **at
 runtime from jsDelivr CDN** for whatever Prettier 3.x version the user picks, so
@@ -221,6 +221,17 @@ Railway's GitHub integration. Do not add config for any other platform.
   carry `'use client'`.
 
 ## Gotchas
+
+- **The site moved to `prettier-config.nooobtimex.me`** (2026-09-04).
+  `prettier-config.dev` is still owned and 301-redirects to it via a Cloudflare
+  Redirect Rule on that zone — no origin hit, no app code. `SITE_URL`
+  (`lib/seo.ts`) is the single source: `app/robots.ts` and
+  `app/[locale]/layout.tsx` now derive from it rather than repeating the literal,
+  which is how they drifted last time.
+- **`ads.txt` no longer works from this repo.** For a subdomain, crawlers read
+  `ads.txt` from the **root** domain only, so `nooobtimex.me/ads.txt` is the file
+  that counts and it lives in the portfolio service, not here. `public/ads.txt`
+  is now inert — keep it for the .dev domain until that redirect is retired.
 
 - **Never bundle Prettier _for runtime formatting_.** User code is formatted by
   the CDN-loaded copy — go through `loadPrettier()`. Note `prettier` is a regular

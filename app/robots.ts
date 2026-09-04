@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/seo';
 
 /**
  * IMPORTANT: do not add a `public/robots.txt`. Next.js resolves the public/
@@ -16,8 +17,8 @@ export default function robots(): MetadataRoute.Robots {
 			userAgent: '*',
 			allow: '/',
 		},
-		sitemap: 'https://prettier-config.dev/sitemap.xml',
+		sitemap: `${SITE_URL}/sitemap.xml`,
 		// /llms.txt is the emerging convention (plural). Nothing crawls `llm.txt`.
-		host: 'https://prettier-config.dev',
+		host: SITE_URL,
 	};
 }

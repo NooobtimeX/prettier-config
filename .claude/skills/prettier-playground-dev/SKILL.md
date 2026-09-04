@@ -1,11 +1,11 @@
 ---
 name: prettier-playground-dev
-description: Extend or modify the prettier-config.dev playground — add a Prettier parser, third-party plugin, preset, supported language, locale, or token-counter model; wire CDN-loaded Prettier; or touch the version/options/share/diff flow. Use when working in this repo on any of those features.
+description: Extend or modify the prettier-config.nooobtimex.me playground — add a Prettier parser, third-party plugin, preset, supported language, locale, or token-counter model; wire CDN-loaded Prettier; or touch the version/options/share/diff flow. Use when working in this repo on any of those features.
 ---
 
 # Prettier Playground Dev
 
-This skill encodes the repeatable extension workflows for **prettier-config.dev**,
+This skill encodes the repeatable extension workflows for **prettier-config.nooobtimex.me**,
 a fully client-side Prettier playground. Read [CLAUDE.md](../../../CLAUDE.md) for
 the full architecture; this file is the step-by-step for common changes.
 

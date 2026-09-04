@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { routing } from '@/next-intl.config';
 
-export const SITE_URL = 'https://prettier-config.dev';
+export const SITE_URL = 'https://prettier-config.nooobtimex.me';
 export const SITE_NAME = 'Prettier Config';
 export const TWITTER_CREATOR = '@nooobtimex';
 

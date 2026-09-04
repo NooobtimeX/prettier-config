@@ -117,17 +117,10 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: 'Prettier Config',
 		description: 'Interactive tool to generate a Prettier configuration file effortlessly.',
-		url: 'https://prettier-config.dev/',
+		url: `${SITE_URL}/`,
 		siteName: 'Prettier Config',
 		type: 'website',
-		images: [
-			{
-				url: 'https://prettier-config.dev/og-image.png',
-				width: 500,
-				height: 500,
-				alt: 'Prettier Config',
-			},
-		],
+		images: [OG_IMAGE],
 	},
 	twitter: {
 		card: 'summary_large_image',

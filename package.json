@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "next dev -p 2000",
 		"gen:options": "node scripts/generate-prettier-options.mjs",
-		"build": "bun run gen:options && next build",
+		"gen:articles": "node scripts/generate-article-registry.mjs",
+		"build": "bun run gen:options && bun run gen:articles && next build",
 		"start": "next start -p 2000",
 		"lint": "eslint --fix && prettier --write ."
 	},

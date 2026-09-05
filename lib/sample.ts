@@ -235,7 +235,7 @@ defaults: &defaults
   timeout: 30
 production:
   <<: *defaults
-  endpoint: https://prettier-config.nooobtimex.me
+  endpoint: https://prettier-config.dev
 `;
 
 const GRAPHQL_SAMPLE = `query GetUserWithPosts($id: ID!, $first: Int = 5, $orderBy: PostOrder = CREATED_AT_DESC) {

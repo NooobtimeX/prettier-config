@@ -469,7 +469,7 @@
 	"Privacy": {
 		"meta": {
 			"title": "Polityka prywatności – Prettier Config",
-			"description": "Jak prettier-config.nooobtimex.me obchodzi się z Twoimi danymi: Twój kod nigdy nie opuszcza przeglądarki. Szczegóły dotyczące pamięci lokalnej, analityki, plików cookie reklamowych i Twoich wyborów."
+			"description": "Jak prettier-config.dev obchodzi się z Twoimi danymi: Twój kod nigdy nie opuszcza przeglądarki. Szczegóły dotyczące pamięci lokalnej, analityki, plików cookie reklamowych i Twoich wyborów."
 		},
 		"hero": {
 			"badge": "Prywatność",
@@ -490,7 +490,7 @@
 			{
 				"title": "Kto jest odpowiedzialny",
 				"paragraphs": [
-					"prettier-config.nooobtimex.me to projekt open source prowadzony przez indywidualnego programistę, a nie firmę. W całej niniejszej polityce „my” i „witryna” odnoszą się do tego projektu.",
+					"prettier-config.dev to projekt open source prowadzony przez indywidualnego programistę, a nie firmę. W całej niniejszej polityce „my” i „witryna” odnoszą się do tego projektu.",
 					"Jeśli masz pytanie dotyczące czegokolwiek tutaj, dane kontaktowe znajdują się na końcu tej strony."
 				]
 			},
@@ -512,7 +512,7 @@
 					"prettier-config-layout-v2 — szerokości zmiennych paneli edytora.",
 					"theme — czy wybrano wygląd jasny, ciemny czy systemowy."
 				],
-				"footnote": "Możesz usunąć to wszystko w dowolnym momencie, czyszcząc dane witryny prettier-config.nooobtimex.me w ustawieniach przeglądarki. Nic się nie zepsuje — strona po prostu wróci do wartości domyślnych."
+				"footnote": "Możesz usunąć to wszystko w dowolnym momencie, czyszcząc dane witryny prettier-config.dev w ustawieniach przeglądarki. Nic się nie zepsuje — strona po prostu wróci do wartości domyślnych."
 			},
 			{
 				"title": "Analityka",

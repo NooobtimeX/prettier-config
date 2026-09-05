@@ -4,11 +4,11 @@ Guidance for Codex when working in this repo.
 
 ## What this is
 
-**prettier-config.nooobtimex.me** — a browser-based Prettier playground / config builder. A
+**prettier-config.dev** — a browser-based Prettier playground / config builder. A
 better-than-official Prettier playground: pick a Prettier version + options
 visually, paste your code, see a GitHub-style diff, and copy/share the resulting
 `.prettierrc`. Everything runs **client-side** — no backend, nothing is sent to a
-server. Live at https://prettier-config.nooobtimex.me.
+server. Live at https://prettier-config.dev.
 
 The core trick: `prettier/standalone` and every parser plugin are fetched **at
 runtime from jsDelivr CDN** for whatever Prettier 3.x version the user picks, so
@@ -222,16 +222,23 @@ Railway's GitHub integration. Do not add config for any other platform.
 
 ## Gotchas
 
-- **The site moved to `prettier-config.nooobtimex.me`** (2026-09-04).
-  `prettier-config.dev` is still owned and 301-redirects to it via a Cloudflare
-  Redirect Rule on that zone — no origin hit, no app code. `SITE_URL`
-  (`lib/seo.ts`) is the single source: `app/robots.ts` and
-  `app/[locale]/layout.tsx` now derive from it rather than repeating the literal,
-  which is how they drifted last time.
-- **`ads.txt` no longer works from this repo.** For a subdomain, crawlers read
-  `ads.txt` from the **root** domain only, so `nooobtimex.me/ads.txt` is the file
-  that counts and it lives in the portfolio service, not here. `public/ads.txt`
-  is now inert — keep it for the .dev domain until that redirect is retired.
+- **The site lives on `prettier-config.dev`.** It spent 2026-09-04 to 2026-09-05
+  on `prettier-config.nooobtimex.me` and then moved back; that subdomain now
+  301-redirects here via a Cloudflare Redirect Rule on the `nooobtimex.me` zone
+  — no origin hit, no app code. `SITE_URL` (`lib/seo.ts`) is the single source:
+  `app/robots.ts` and `app/[locale]/layout.tsx` derive from it rather than
+  repeating the literal, which is how they drifted the first time. Both
+  hostnames stay attached to the Railway service, so a bad rule degrades to
+  "serves the app on two hosts" rather than downtime — which also means the
+  redirect rule is the only thing preventing duplicate content. Never change
+  `SITE_URL` without flipping the Cloudflare rules in the same session, and keep
+  the order: ship code, delete the old rule, _then_ add the reverse one. Adding
+  the reverse rule first creates an infinite redirect loop.
+- **`public/ads.txt` is authoritative.** Crawlers read `ads.txt` from the root
+  domain of a host only. `prettier-config.dev` _is_ a root domain, so the file in
+  this repo is the one that counts. While the site sat on the subdomain this file
+  was inert and `nooobtimex.me/ads.txt` — in the portfolio service, a different
+  repo — did the job; that copy is now stale.
 
 - **Never bundle Prettier _for runtime formatting_.** User code is formatted by
   the CDN-loaded copy — go through `loadPrettier()`. Note `prettier` is a regular

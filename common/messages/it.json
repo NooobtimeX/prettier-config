@@ -469,7 +469,7 @@
 	"Privacy": {
 		"meta": {
 			"title": "Informativa sulla privacy – Prettier Config",
-			"description": "Come prettier-config.nooobtimex.me tratta i tuoi dati: il tuo codice non lascia mai il browser. Dettagli su archiviazione locale, analisi, cookie pubblicitari e le tue scelte."
+			"description": "Come prettier-config.dev tratta i tuoi dati: il tuo codice non lascia mai il browser. Dettagli su archiviazione locale, analisi, cookie pubblicitari e le tue scelte."
 		},
 		"hero": {
 			"badge": "Privacy",
@@ -490,7 +490,7 @@
 			{
 				"title": "Chi è il responsabile",
 				"paragraphs": [
-					"prettier-config.nooobtimex.me è un progetto open source gestito da uno sviluppatore individuale, non da un'azienda. In questa informativa, «noi» e «il sito» si riferiscono a tale progetto.",
+					"prettier-config.dev è un progetto open source gestito da uno sviluppatore individuale, non da un'azienda. In questa informativa, «noi» e «il sito» si riferiscono a tale progetto.",
 					"Se hai domande su quanto riportato qui, i recapiti si trovano in fondo a questa pagina."
 				]
 			},
@@ -512,7 +512,7 @@
 					"prettier-config-layout-v2 — le larghezze dei pannelli ridimensionabili dell'editor.",
 					"theme — se hai scelto l'aspetto chiaro, scuro o quello di sistema."
 				],
-				"footnote": "Puoi rimuovere tutto in qualsiasi momento cancellando i dati del sito prettier-config.nooobtimex.me nelle impostazioni del browser. Non si rompe nulla: la pagina torna semplicemente ai valori predefiniti."
+				"footnote": "Puoi rimuovere tutto in qualsiasi momento cancellando i dati del sito prettier-config.dev nelle impostazioni del browser. Non si rompe nulla: la pagina torna semplicemente ai valori predefiniti."
 			},
 			{
 				"title": "Analisi",

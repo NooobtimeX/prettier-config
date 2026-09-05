@@ -469,7 +469,7 @@
 	"Privacy": {
 		"meta": {
 			"title": "Datenschutzerklärung – Prettier Config",
-			"description": "Wie prettier-config.nooobtimex.me mit Ihren Daten umgeht: Ihr Code verlässt nie den Browser. Details zu lokalem Speicher, Analyse, Werbe-Cookies und Ihren Wahlmöglichkeiten."
+			"description": "Wie prettier-config.dev mit Ihren Daten umgeht: Ihr Code verlässt nie den Browser. Details zu lokalem Speicher, Analyse, Werbe-Cookies und Ihren Wahlmöglichkeiten."
 		},
 		"hero": {
 			"badge": "Datenschutz",
@@ -490,7 +490,7 @@
 			{
 				"title": "Verantwortlich",
 				"paragraphs": [
-					"prettier-config.nooobtimex.me ist ein Open-Source-Projekt, das von einem einzelnen Entwickler betrieben wird, nicht von einem Unternehmen. In dieser Erklärung beziehen sich „wir“ und „die Website“ auf dieses Projekt.",
+					"prettier-config.dev ist ein Open-Source-Projekt, das von einem einzelnen Entwickler betrieben wird, nicht von einem Unternehmen. In dieser Erklärung beziehen sich „wir“ und „die Website“ auf dieses Projekt.",
 					"Wenn Sie zu irgendetwas hier eine Frage haben, finden Sie die Kontaktdaten am Ende dieser Seite."
 				]
 			},
@@ -512,7 +512,7 @@
 					"prettier-config-layout-v2 — die Breiten der größenveränderbaren Editor-Bereiche.",
 					"theme — ob Sie helles, dunkles oder systemabhängiges Erscheinungsbild gewählt haben."
 				],
-				"footnote": "Sie können all das jederzeit entfernen, indem Sie in Ihren Browsereinstellungen die Websitedaten für prettier-config.nooobtimex.me löschen. Dabei geht nichts kaputt — die Seite kehrt einfach zu ihren Standardwerten zurück."
+				"footnote": "Sie können all das jederzeit entfernen, indem Sie in Ihren Browsereinstellungen die Websitedaten für prettier-config.dev löschen. Dabei geht nichts kaputt — die Seite kehrt einfach zu ihren Standardwerten zurück."
 			},
 			{
 				"title": "Analyse",

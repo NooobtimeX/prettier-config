@@ -469,7 +469,7 @@
 	"Privacy": {
 		"meta": {
 			"title": "Gizlilik Politikası – Prettier Config",
-			"description": "prettier-config.nooobtimex.me verilerinizi nasıl işliyor: kodunuz tarayıcınızdan asla çıkmaz. Yerel depolama, analitik, reklam çerezleri ve tercihleriniz hakkında ayrıntılar."
+			"description": "prettier-config.dev verilerinizi nasıl işliyor: kodunuz tarayıcınızdan asla çıkmaz. Yerel depolama, analitik, reklam çerezleri ve tercihleriniz hakkında ayrıntılar."
 		},
 		"hero": {
 			"badge": "Gizlilik",
@@ -490,7 +490,7 @@
 			{
 				"title": "Kim sorumlu",
 				"paragraphs": [
-					"prettier-config.nooobtimex.me, bir şirket değil, tek bir geliştirici tarafından yürütülen açık kaynaklı bir projedir. Bu politika boyunca “biz” ve “site” ifadeleri bu projeyi belirtir.",
+					"prettier-config.dev, bir şirket değil, tek bir geliştirici tarafından yürütülen açık kaynaklı bir projedir. Bu politika boyunca “biz” ve “site” ifadeleri bu projeyi belirtir.",
 					"Buradaki herhangi bir konu hakkında sorunuz varsa, iletişim bilgileri bu sayfanın sonundadır."
 				]
 			},
@@ -512,7 +512,7 @@
 					"prettier-config-layout-v2 — yeniden boyutlandırılabilir düzenleyici panellerinin genişlikleri.",
 					"theme — açık, koyu veya sistem görünümünden hangisini seçtiğiniz."
 				],
-				"footnote": "Tarayıcı ayarlarınızda prettier-config.nooobtimex.me için site verilerini temizleyerek bunların tamamını istediğiniz zaman kaldırabilirsiniz. Hiçbir şey bozulmaz — sayfa yalnızca varsayılan değerlerine döner."
+				"footnote": "Tarayıcı ayarlarınızda prettier-config.dev için site verilerini temizleyerek bunların tamamını istediğiniz zaman kaldırabilirsiniz. Hiçbir şey bozulmaz — sayfa yalnızca varsayılan değerlerine döner."
 			},
 			{
 				"title": "Analitik",

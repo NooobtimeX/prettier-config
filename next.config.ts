@@ -41,6 +41,28 @@ const nextConfig: NextConfig = {
 			},
 		];
 	},
+
+	/**
+	 * Any path containing a dot that survives `check_fs` is junk — scanner traffic
+	 * like /wp-login.php, /.env, /foo.php/about. proxy.ts deliberately skips dotted
+	 * paths (that is what keeps /ads.txt reachable for crawlers), so they arrive
+	 * un-localised and still match /[locale]'s `^/([^/]+?)$`. `dynamicParams: false`
+	 * then rejects them by throwing NoFallbackError — which Next also hands to
+	 * `waitUntil`, whose awaiter is built with `onError: console.error`, so every
+	 * scanner hit printed a bare stack to stderr and buried the real errors.
+	 *
+	 * `afterFiles` runs *after* `check_fs`, so public/ files and app routes
+	 * (/robots.txt, /sitemap.xml) are already resolved and never reach this rule.
+	 * What is left goes to the prebuilt /_not-found, whose .meta carries
+	 * `"status": 404` — a real 404 with no render, no ISR cache write, no log line.
+	 */
+	async rewrites() {
+		return {
+			beforeFiles: [],
+			afterFiles: [{ source: '/:dotted(.*\\..*)', destination: '/_not-found' }],
+			fallback: [],
+		};
+	},
 	typedRoutes: true,
 	output: 'standalone',
 
